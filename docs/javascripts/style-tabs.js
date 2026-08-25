@@ -5,28 +5,49 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttons = group.querySelectorAll(".style-tab-button");
     const panels = group.querySelectorAll(".style-tab-panel");
 
+    function activateTab(tabName, updateHash = true) {
+      const button = group.querySelector(
+        `.style-tab-button[data-tab="${tabName}"]`
+      );
+
+      const panel = group.querySelector(
+        `.style-tab-panel[data-panel="${tabName}"]`
+      );
+
+      if (!button || !panel) {
+        return;
+      }
+
+      buttons.forEach(function (item) {
+        item.classList.remove("active");
+      });
+
+      panels.forEach(function (item) {
+        item.classList.remove("active");
+      });
+
+      button.classList.add("active");
+      panel.classList.add("active");
+
+      if (updateHash) {
+        history.replaceState(
+          null,
+          "",
+          `#${tabName}`
+        );
+      }
+    }
+
     buttons.forEach(function (button) {
       button.addEventListener("click", function () {
-        const target = button.dataset.tab;
-
-        buttons.forEach(function (item) {
-          item.classList.remove("active");
-        });
-
-        panels.forEach(function (panel) {
-          panel.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        const targetPanel = group.querySelector(
-          `[data-panel="${target}"]`
-        );
-
-        if (targetPanel) {
-          targetPanel.classList.add("active");
-        }
+        activateTab(button.dataset.tab);
       });
     });
+
+    const initialTab = window.location.hash.replace("#", "");
+
+    if (initialTab) {
+      activateTab(initialTab, false);
+    }
   });
 });
