@@ -28,5 +28,8 @@ extra_javascript:
   - javascripts/style-tabs.js
 
 nav:
-  - Tier Lists: index.md
-  - Data Test: test-data.md
+  - Home: index.md
+  - Tier Lists: tier-lists/index.md
+  - Styles: styles/index.md
+  - Event Guides: events/index.md
+  - Other Resources: guides/index.md
