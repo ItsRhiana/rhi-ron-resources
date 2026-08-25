@@ -1,63 +1,85 @@
 /* Tier list */
 
-.tier-list {
-  width: 100%;
-  border-collapse: collapse;
+.tier-table {
+  display: grid;
+  grid-template-columns: 70px repeat(5, minmax(120px, 1fr));
+  gap: 2px;
+  margin-top: 1rem;
+  min-width: 750px;
 }
 
-.tier-list th,
-.tier-list td {
-  padding: 8px;
+.tier-header {
+  background: #292b31;
+  padding: 12px 8px;
   text-align: center;
-  vertical-align: top;
-}
-
-.tier-list th {
   font-weight: 700;
+  border-bottom: 2px solid #3f424a;
 }
 
 .tier-label {
-  width: 60px;
-  min-width: 60px;
-  font-size: 1.2rem;
-  font-weight: 700;
-  vertical-align: middle !important;
+  background: transparent;
+}
+
+.tier-rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #111;
 }
 
 .tier-t0 {
   background: #ef5350;
 }
 
-.tier-t1 {
-  background: #ff8a65;
+.tier-cell {
+  min-height: 150px;
+  padding: 10px;
+  background: #34363d;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.tier-t2 {
-  background: #ffb74d;
-}
-
-.tier-t3 {
-  background: #ffd54f;
-}
-
-.unit {
-  display: inline-block;
-  width: 90px;
-  margin: 3px;
-  text-decoration: none;
-}
-
-.unit img {
-  display: block;
-  width: 90px;
-  height: 90px;
+.tier-cell img {
+  width: 110px;
+  height: 140px;
   object-fit: cover;
+  display: block;
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
 }
 
-.unit-name {
-  display: block;
-  margin-top: 3px;
-  font-size: 0.65rem;
-  line-height: 1.15;
-  text-align: center;
+.tier-cell a:hover img {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+}
+
+/* Allow tier list to scroll horizontally on small screens */
+
+.md-content {
+  overflow-x: visible;
+}
+
+.tier-table {
+  overflow: visible;
+}
+
+@media screen and (max-width: 800px) {
+  .tier-table {
+    grid-template-columns: 55px repeat(5, 105px);
+    min-width: 580px;
+  }
+
+  .tier-cell {
+    min-height: 125px;
+    padding: 6px;
+  }
+
+  .tier-cell img {
+    width: 90px;
+    height: 115px;
+  }
 }
