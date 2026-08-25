@@ -71,20 +71,15 @@
 }
 
 .style-card-info {
-  padding: 6px 8px 7px;
-  line-height: 1.2;
+  padding: 5px 6px;
+  line-height: 1.1;
+  text-align: center;
 }
 
 .style-card-character {
   color: #ffffff;
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-.style-card-style {
-  color: #b7bac2;
-  font-size: 0.65rem;
-  margin-top: 2px;
+  font-size: 0.72rem;
+  font-weight: 600;
 }
 
 .tier-cell img {
