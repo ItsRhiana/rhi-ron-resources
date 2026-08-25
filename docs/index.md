@@ -21,54 +21,74 @@ Ratings compare Styles within their role only.
 
   <div class="tier-rank tier-t0">T0</div>
 
-  <div class="tier-cell">
-    <a href="styles/red-gloves-abyssal-judgment/">
-      <img
-        src="assets/styles/red-gloves-abyssal-judgment.png"
-        alt="Red Gloves — Abyssal Judgment"
-        title="Red Gloves — Abyssal Judgment"
-      >
-    </a>
-  </div>
+<div class="tier-cell">
+  <a class="style-card" href="styles/red-gloves-abyssal-judgment/">
+    <img
+      src="assets/styles/red-gloves-abyssal-judgment.png"
+      alt="Red Gloves — Abyssal Judgment"
+    >
 
-  <div class="tier-cell">
-    <a href="styles/fool-card-table-seer/">
-      <img
-        src="assets/styles/fool-card-table-seer.png"
-        alt="Fool — Card Table Seer"
-        title="Fool — Card Table Seer"
-      >
-    </a>
-  </div>
+    <div class="style-card-info">
+      <div class="style-card-character">Red Gloves</div>
+      <div class="style-card-style">Abyssal Judgment</div>
+    </div>
+  </a>
+</div>
 
-  <div class="tier-cell">
-    <a href="styles/wolf-patrol-guard/">
-      <img
-        src="assets/styles/wolf-patrol-guard.png"
-        alt="Wolf — Patrol Guard"
-        title="Wolf — Patrol Guard"
-      >
-    </a>
-  </div>
+<div class="tier-cell">
+  <a class="style-card" href="styles/fool-card-table-seer/">
+    <img
+      src="assets/styles/fool-card-table-seer.png"
+      alt="Fool — Card Table Seer"
+    >
 
-  <div class="tier-cell">
-    <a href="styles/general-thunder-commander/">
-      <img
-        src="assets/styles/general-thunder-commander.png"
-        alt="General — Thunder Commander"
-        title="General — Thunder Commander"
-      >
-    </a>
-  </div>
+    <div class="style-card-info">
+      <div class="style-card-character">Fool</div>
+      <div class="style-card-style">Card Table Seer</div>
+    </div>
+  </a>
+</div>
 
-  <div class="tier-cell">
-    <a href="styles/windward-money-loving-gentleman/">
-      <img
-        src="assets/styles/windward-money-loving-gentleman.png"
-        alt="Windward — Money-Loving Gentleman"
-        title="Windward — Money-Loving Gentleman"
-      >
-    </a>
-  </div>
+<div class="tier-cell">
+  <a class="style-card" href="styles/wolf-patrol-guard/">
+    <img
+      src="assets/styles/wolf-patrol-guard.png"
+      alt="Wolf — Patrol Guard"
+    >
+
+    <div class="style-card-info">
+      <div class="style-card-character">Wolf</div>
+      <div class="style-card-style">Patrol Guard</div>
+    </div>
+  </a>
+</div>
+
+<div class="tier-cell">
+  <a class="style-card" href="styles/general-thunder-commander/">
+    <img
+      src="assets/styles/general-thunder-commander.png"
+      alt="General — Thunder Commander"
+    >
+
+    <div class="style-card-info">
+      <div class="style-card-character">General</div>
+      <div class="style-card-style">Thunder Commander</div>
+    </div>
+  </a>
+</div>
+
+<div class="tier-cell">
+  <a class="style-card" href="styles/windward-money-loving-gentleman/">
+    <img
+      src="assets/styles/windward-money-loving-gentleman.png"
+      alt="Windward — Money-Loving Gentleman"
+    >
+
+    <div class="style-card-info">
+      <div class="style-card-character">Windward</div>
+      <div class="style-card-style">Money-Loving Gentleman</div>
+    </div>
+  </a>
+</div>
 
 </div>
