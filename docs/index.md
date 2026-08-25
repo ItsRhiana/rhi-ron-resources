@@ -30,7 +30,6 @@ Ratings compare Styles within their role only.
 
     <div class="style-card-info">
       <div class="style-card-character">Red Gloves</div>
-      <div class="style-card-style">Abyssal Judgment</div>
     </div>
   </a>
 </div>
@@ -44,7 +43,6 @@ Ratings compare Styles within their role only.
 
     <div class="style-card-info">
       <div class="style-card-character">Fool</div>
-      <div class="style-card-style">Card Table Seer</div>
     </div>
   </a>
 </div>
@@ -58,7 +56,6 @@ Ratings compare Styles within their role only.
 
     <div class="style-card-info">
       <div class="style-card-character">Wolf</div>
-      <div class="style-card-style">Patrol Guard</div>
     </div>
   </a>
 </div>
@@ -72,7 +69,6 @@ Ratings compare Styles within their role only.
 
     <div class="style-card-info">
       <div class="style-card-character">General</div>
-      <div class="style-card-style">Thunder Commander</div>
     </div>
   </a>
 </div>
@@ -86,7 +82,6 @@ Ratings compare Styles within their role only.
 
     <div class="style-card-info">
       <div class="style-card-character">Windward</div>
-      <div class="style-card-style">Money-Loving Gentleman</div>
     </div>
   </a>
 </div>
