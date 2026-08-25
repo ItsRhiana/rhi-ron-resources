@@ -1,31 +1,79 @@
-/* Tier list */
+/* =========================
+   Wider desktop content
+   ========================= */
+
+.md-grid {
+  max-width: 95rem;
+}
+
+
+/* =========================
+   Tier List
+   ========================= */
 
 .tier-table {
   display: grid;
-  grid-template-columns: 70px repeat(5, minmax(190px, 1fr));
+
+  grid-template-columns:
+    70px
+    repeat(5, minmax(155px, max-content));
+
   gap: 2px;
-  margin-top: 1rem;
-  min-width: 1020px;
+
+  margin: 1rem auto 0;
+
+  width: max-content;
 }
+
+
+/* =========================
+   Column headers
+   ========================= */
 
 .tier-header {
   background: #292b31;
-  padding: 12px 8px;
+
+  padding: 8px 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
   text-align: center;
   font-weight: 700;
+
   border-bottom: 2px solid #3f424a;
+}
+
+.role-icon {
+  width: 28px;
+  height: 28px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
 }
 
 .tier-label {
   background: transparent;
 }
 
+
+/* =========================
+   Tier labels
+   ========================= */
+
 .tier-rank {
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   font-size: 1.15rem;
   font-weight: 800;
+
   color: #111;
 }
 
@@ -33,94 +81,282 @@
   background: #ef5350;
 }
 
+.tier-t1 {
+  background: #ff8a65;
+}
+
+.tier-t2 {
+  background: #ffca69;
+}
+
+.tier-t3 {
+  background: #81c784;
+}
+
+
+/* =========================
+   Tier cells
+   ========================= */
+
 .tier-cell {
-  min-height: 150px;
-  padding: 10px;
+  min-width: 155px;
+  max-width: 286px;
+
+  min-height: 155px;
+
+  padding: 15px;
+
+  box-sizing: border-box;
+
   background: #34363d;
 
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 10px;
+
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  gap: 6px;
 }
+
+
+/* =========================
+   Style cards
+   ========================= */
 
 .style-card {
-  width: 170px;
+  position: relative;
+
+  flex: 0 0 125px;
+
+  width: 125px;
+  height: 125px;
+
   display: block;
-  background: #292b31;
-  text-decoration: none !important;
+
   overflow: hidden;
+
   border: 1px solid #454851;
+
+  text-decoration: none !important;
+
   transition:
     transform 0.15s ease,
-    border-color 0.15s ease;
-}
-
-.style-card:hover {
-  transform: translateY(-3px);
-  border-color: #777b87;
-}
-
-.style-card img {
-  width: 170px;
-  height: 108px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.style-card-info {
-  padding: 5px 6px;
-  line-height: 1.1;
-  text-align: center;
-}
-
-.style-card-character {
-  color: #ffffff;
-  font-size: 0.72rem;
-  font-weight: 600;
-}
-
-.tier-cell img {
-  width: 170px;
-  height: 108px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition:
-    transform 0.15s ease,
+    border-color 0.15s ease,
     filter 0.15s ease;
 }
 
-.tier-cell a:hover img {
-  transform: translateY(-3px);
+.style-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #777b87;
+
   filter: brightness(1.08);
 }
 
-/* Allow tier list to scroll horizontally on small screens */
 
-.md-content {
-  overflow-x: visible;
+/* =========================
+   Portrait image
+   ========================= */
+
+.style-card > .style-portrait {
+  width: 125px;
+  height: 125px;
+
+  min-width: 125px;
+  min-height: 125px;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
 }
 
-.tier-table {
-  overflow: visible;
+
+/* =========================
+   Desire icon
+   ========================= */
+
+.desire-badge {
+  position: absolute;
+
+  z-index: 3;
+
+  top: 0;
+  left: 0;
+
+  width: 25px;
+  height: 25px;
+
+  background: #000;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media screen and (max-width: 800px) {
+.desire-badge img {
+  width: 30px;
+  height: 30px;
+
+  max-width: none;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* =========================
+   Character name overlay
+   ========================= */
+
+.style-card-name {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 0;
+  right: 0;
+
+  /* Leave room for the rarity bar */
+  bottom: 4px;
+
+  padding:
+    18px
+    5px
+    5px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.9)
+    );
+
+  color: #fff;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  text-align: center;
+
+  line-height: 1.1;
+}
+
+
+/* =========================
+   Rarity bar
+   ========================= */
+
+.rarity-bar {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 4px;
+
+  pointer-events: none;
+}
+
+.style-card.rarity-6 .rarity-bar {
+  background: #B65641;
+}
+
+.style-card.rarity-5 .rarity-bar {
+  background: #AC8531;
+}
+
+.style-card.rarity-4 .rarity-bar {
+  background: #8862A0;
+}
+
+
+/* =========================
+   Small screens only
+   ========================= */
+
+@media screen and (max-width: 900px) {
+
+  .md-content {
+    overflow-x: auto;
+  }
+
   .tier-table {
-    grid-template-columns: 55px repeat(5, 105px);
-    min-width: 580px;
+    min-width: max-content;
+  }
+
+  .tier-header {
+    padding: 7px 8px;
+
+    gap: 5px;
+
+    font-size: 0.75rem;
+  }
+
+  .role-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .tier-rank {
+    font-size: 1rem;
   }
 
   .tier-cell {
-    min-height: 125px;
-    padding: 6px;
+    min-width: 120px;
+    max-width: 226px;
+
+    min-height: 120px;
+
+    padding: 10px;
+
+    gap: 6px;
   }
 
-  .tier-cell img {
-    width: 90px;
-    height: 115px;
+  .style-card {
+    flex-basis: 100px;
+
+    width: 100px;
+    height: 100px;
+  }
+
+  .style-card > .style-portrait {
+    width: 100px;
+    height: 100px;
+
+    min-width: 100px;
+    min-height: 100px;
+  }
+
+  .desire-badge {
+    width: 22px;
+    height: 22px;
+  }
+
+  .desire-badge img {
+    width: 27px;
+    height: 27px;
+  }
+
+  .style-card-name {
+    bottom: 4px;
+
+    font-size: 0.62rem;
+
+    padding:
+      14px
+      4px
+      4px;
+  }
+
+  .rarity-bar {
+    height: 4px;
   }
 }
