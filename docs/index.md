@@ -179,22 +179,10 @@ Ratings compare Styles within their role only.
 
   <!-- ST DPS -->
   <div class="tier-cell">
-    <a
-      class="style-card rarity-6"
-      href="../styles/lodestar-sea-rover/"
-      title="Lodestar — Sea Rover"
-    >
-      <img
-        class="style-portrait"
-        src="../assets/styles/lodestar-sea-rover.png"
-        alt="Lodestar — Sea Rover"
-      >
-      <div class="desire-badge">
-        <img src="../assets/icons/wrath.webp" alt="Wrath">
-      </div>
-      <div class="style-card-name">Lodestar</div>
-      <div class="rarity-bar"></div>
-    </a>
+<!-- ST DPS -->
+<div class="tier-cell">
+  {{ style_card("lodestar-sea-rover") }}
+</div>
   </div>
 
   <!-- AoE DPS -->

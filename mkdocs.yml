@@ -1,12 +1,31 @@
 site_name: Rhi's RoN Resources
+site_description: Reign of Nightfall guides, tier lists, tools and resources
 
 theme:
   name: material
   palette:
     scheme: slate
 
+plugins:
+  - search
+  - macros:
+      include_yaml:
+        - styles: data/styles.yml
+
 extra_css:
   - stylesheets/extra.css
 
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - javascripts/style-tabs.js
+
 nav:
-  - Tier List: index.md
+  - Home: index.md
+  - Tier Lists: tier-list/index.md
+  - Data Test: test-data.md
