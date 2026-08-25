@@ -8,3 +8,6 @@ theme:
 
 nav:
   - Tier List: index.md
+
+extra_css:
+  - stylesheets/extra.css
