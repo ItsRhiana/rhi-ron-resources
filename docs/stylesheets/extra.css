@@ -2,10 +2,10 @@
 
 .tier-table {
   display: grid;
-  grid-template-columns: 70px repeat(5, minmax(120px, 1fr));
+  grid-template-columns: 70px repeat(5, minmax(190px, 1fr));
   gap: 2px;
   margin-top: 1rem;
-  min-width: 750px;
+  min-width: 1020px;
 }
 
 .tier-header {
@@ -34,18 +34,19 @@
 }
 
 .tier-cell {
-  min-height: 150px;
+  min-height: 128px;
   padding: 10px;
   background: #34363d;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 }
 
 .tier-cell img {
-  width: 110px;
-  height: 140px;
+  width: 180px;
+  height: 108px;
   object-fit: cover;
+  object-position: center;
   display: block;
   transition:
     transform 0.15s ease,
