@@ -34,7 +34,7 @@
 }
 
 .tier-cell {
-  min-height: 128px;
+  min-height: 150px;
   padding: 10px;
   background: #34363d;
 
@@ -42,7 +42,49 @@
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 8px;
+  gap: 10px;
+}
+
+.style-card {
+  width: 170px;
+  display: block;
+  background: #292b31;
+  text-decoration: none !important;
+  overflow: hidden;
+  border: 1px solid #454851;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.style-card:hover {
+  transform: translateY(-3px);
+  border-color: #777b87;
+}
+
+.style-card img {
+  width: 170px;
+  height: 108px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.style-card-info {
+  padding: 6px 8px 7px;
+  line-height: 1.2;
+}
+
+.style-card-character {
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.style-card-style {
+  color: #b7bac2;
+  font-size: 0.65rem;
+  margin-top: 2px;
 }
 
 .tier-cell img {
