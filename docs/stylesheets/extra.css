@@ -1,0 +1,63 @@
+/* Tier list */
+
+.tier-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tier-list th,
+.tier-list td {
+  padding: 8px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.tier-list th {
+  font-weight: 700;
+}
+
+.tier-label {
+  width: 60px;
+  min-width: 60px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  vertical-align: middle !important;
+}
+
+.tier-t0 {
+  background: #ef5350;
+}
+
+.tier-t1 {
+  background: #ff8a65;
+}
+
+.tier-t2 {
+  background: #ffb74d;
+}
+
+.tier-t3 {
+  background: #ffd54f;
+}
+
+.unit {
+  display: inline-block;
+  width: 90px;
+  margin: 3px;
+  text-decoration: none;
+}
+
+.unit img {
+  display: block;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.unit-name {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.65rem;
+  line-height: 1.15;
+  text-align: center;
+}
