@@ -1,3 +1,5 @@
+from urllib.parse import urlsplit
+
 from markupsafe import Markup, escape
 
 
@@ -5,6 +7,34 @@ def define_env(env):
 
     def get_style(style_id):
         return env.variables["styles"][style_id]
+
+
+    # =========================================================
+    # Site URL helper
+    # =========================================================
+    #
+    # Example production site_url:
+    # https://username.github.io/rhi-ron-resources/
+    #
+    # site_path("assets/icons/wrath.webp")
+    # ->
+    # /rhi-ron-resources/assets/icons/wrath.webp
+    #
+    # MkDocs also mounts `mkdocs serve` under the path contained
+    # in site_url, so the same URL works locally.
+    # =========================================================
+
+    @env.macro
+    def site_path(path):
+        site_url = env.conf.get("site_url", "")
+
+        base_path = urlsplit(site_url).path.rstrip("/")
+        clean_path = str(path).lstrip("/")
+
+        if base_path:
+            return f"{base_path}/{clean_path}"
+
+        return f"/{clean_path}"
 
 
     # =========================================================
@@ -21,22 +51,34 @@ def define_env(env):
         desire = escape(s["desire"])
         image = escape(s["image"])
 
+        style_url = site_path(
+            f"styles/{style_id}/"
+        )
+
+        portrait_url = site_path(
+            f"assets/styles/{image}"
+        )
+
+        desire_url = site_path(
+            f"assets/icons/{desire}.webp"
+        )
+
         return Markup(
             f"""
 <a
   class="style-card rarity-{rarity}"
-  href="../styles/{style_id}/"
+  href="{style_url}"
   title="{character} — {style_name}"
 >
   <img
     class="style-portrait"
-    src="../assets/styles/{image}"
+    src="{portrait_url}"
     alt="{character} — {style_name}"
   >
 
   <div class="desire-badge">
     <img
-      src="../assets/icons/{desire}.webp"
+      src="{desire_url}"
       alt="{str(desire).title()}"
     >
   </div>
@@ -57,20 +99,40 @@ def define_env(env):
         s = get_style(style_id)
 
         character = escape(s["character"]["en"])
-        character_zh = escape(s["character"].get("zh", ""))
+        character_zh = escape(
+            s["character"].get("zh", "")
+        )
 
         style_name = escape(s["style"]["en"])
-        style_zh = escape(s["style"].get("zh", ""))
+        style_zh = escape(
+            s["style"].get("zh", "")
+        )
 
         rarity = s["rarity"]
 
         class_id = s["class"]
-        class_name = str(class_id).replace("-", " ").title()
+        class_name = (
+            str(class_id)
+            .replace("-", " ")
+            .title()
+        )
 
         desire_id = s["desire"]
         desire_name = str(desire_id).title()
 
         image = escape(s["image"])
+
+        portrait_url = site_path(
+            f"assets/styles/{image}"
+        )
+
+        class_icon_url = site_path(
+            f"assets/icons/{class_id}.webp"
+        )
+
+        desire_icon_url = site_path(
+            f"assets/icons/{desire_id}.webp"
+        )
 
         tags_html = ""
 
@@ -89,7 +151,7 @@ def define_env(env):
 
     <img
       class="style-detail-portrait"
-      src="../../assets/styles/{image}"
+      src="{portrait_url}"
       alt="{character} — {style_name}"
     >
 
@@ -101,21 +163,31 @@ def define_env(env):
   <div class="style-detail-heading">
 
     <h1>
-      <span title="{character_zh}">{character}</span>
-      <span class="style-detail-name-separator">—</span>
-      <span title="{style_zh}">{style_name}</span>
+      <span title="{character_zh}">
+        {character}
+      </span>
+
+      <span class="style-detail-name-separator">
+        —
+      </span>
+
+      <span title="{style_zh}">
+        {style_name}
+      </span>
     </h1>
 
 
     <div class="style-detail-meta">
 
-      <span class="style-detail-meta-item style-detail-rarity">
+      <span
+        class="style-detail-meta-item style-detail-rarity"
+      >
         {rarity}★
       </span>
 
       <span class="style-detail-meta-item">
         <img
-          src="../../assets/icons/{class_id}.webp"
+          src="{class_icon_url}"
           alt=""
         >
         {escape(class_name)}
@@ -123,7 +195,7 @@ def define_env(env):
 
       <span class="style-detail-meta-item">
         <img
-          src="../../assets/icons/{desire_id}.webp"
+          src="{desire_icon_url}"
           alt=""
         >
         {escape(desire_name)}
@@ -178,9 +250,15 @@ def define_env(env):
         for trait in s.get("recon_traits", []):
 
             grade = escape(trait["grade"])
-            name_en = escape(trait["name"]["en"])
-            name_zh = escape(trait["name"].get("zh", ""))
-            description = escape(trait["description"])
+            name_en = escape(
+                trait["name"]["en"]
+            )
+            name_zh = escape(
+                trait["name"].get("zh", "")
+            )
+            description = escape(
+                trait["description"]
+            )
 
             tooltip = ""
 
@@ -189,7 +267,9 @@ def define_env(env):
 
             grade_class = (
                 "trait-s"
-                if str(trait["grade"]).lower().startswith("s")
+                if str(
+                    trait["grade"]
+                ).lower().startswith("s")
                 else "trait-a"
             )
 
@@ -228,7 +308,7 @@ def define_env(env):
         skill_order = [
             ("basic", "Basic"),
             ("passive", "Passive"),
-            ("ultimate", "Ultimate")
+            ("ultimate", "Ultimate"),
         ]
 
         for key, label in skill_order:
@@ -239,17 +319,24 @@ def define_env(env):
 
             if ability.get("weapon"):
                 meta_parts.append(
-                    escape(ability["weapon"])
+                    escape(
+                        ability["weapon"]
+                    )
                 )
 
             if ability.get("trigger"):
                 meta_parts.append(
-                    escape(ability["trigger"])
+                    escape(
+                        ability["trigger"]
+                    )
                 )
 
             tags = ""
 
-            for tag in ability.get("tags", []):
+            for tag in ability.get(
+                "tags",
+                []
+            ):
                 tags += f"""
 <span class="skill-tag">
   {escape(tag)}
@@ -270,7 +357,10 @@ def define_env(env):
             if meta_parts:
                 meta_html = f"""
 <div class="kit-skill-meta">
-  {" · ".join(str(x) for x in meta_parts)}
+  {" · ".join(
+      str(x)
+      for x in meta_parts
+  )}
 </div>
 """
 
@@ -454,21 +544,50 @@ def define_env(env):
 
         recon_priority_html = ""
 
-        for trait in s.get("recon_priority", []):
+        for trait in s.get(
+            "recon_priority",
+            []
+        ):
 
             priority = trait["priority"]
-            grade = escape(trait["grade"])
+            grade = escape(
+                trait["grade"]
+            )
 
             name = ""
 
             if trait.get("name"):
                 name = escape(
-                    trait["name"].get("en", "")
+                    trait["name"].get(
+                        "en",
+                        ""
+                    )
                 )
 
             note = escape(
-                trait.get("note", "")
+                trait.get(
+                    "note",
+                    ""
+                )
             )
+
+            name_html = ""
+
+            if name:
+                name_html = f"""
+<div class="recon-priority-name">
+  {name}
+</div>
+"""
+
+            note_html = ""
+
+            if note:
+                note_html = f"""
+<div class="recon-priority-note">
+  {note}
+</div>
+"""
 
             recon_priority_html += f"""
 <div class="recon-priority-row">
@@ -483,17 +602,9 @@ def define_env(env):
       {grade}
     </div>
 
-    {
-        f'<div class="recon-priority-name">{name}</div>'
-        if name
-        else ''
-    }
+    {name_html}
 
-    {
-        f'<div class="recon-priority-note">{note}</div>'
-        if note
-        else ''
-    }
+    {note_html}
 
   </div>
 
@@ -510,13 +621,18 @@ def define_env(env):
 
     <div class="style-build-item">
       <span>Position</span>
-      <strong>{escape(s["position"])}</strong>
+      <strong>
+        {escape(s["position"])}
+      </strong>
     </div>
 
     <div class="style-build-item">
       <span>Skill Target</span>
+
       <strong>
-        {skill["basic"]}/{skill["passive"]}/{skill["ultimate"]}
+        {skill["basic"]}/
+        {skill["passive"]}/
+        {skill["ultimate"]}
       </strong>
     </div>
 
@@ -544,7 +660,10 @@ def define_env(env):
 
         review_html = ""
 
-        for item in s.get("review", []):
+        for item in s.get(
+            "review",
+            []
+        ):
             review_html += f"""
 <li>{escape(item)}</li>
 """
