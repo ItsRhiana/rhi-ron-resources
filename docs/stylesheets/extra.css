@@ -37,13 +37,16 @@
   min-height: 128px;
   padding: 10px;
   background: #34363d;
+
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 .tier-cell img {
-  width: 180px;
+  width: 170px;
   height: 108px;
   object-fit: cover;
   object-position: center;
