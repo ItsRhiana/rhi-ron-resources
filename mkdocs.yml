@@ -19,7 +19,7 @@ theme:
 plugins:
   - search
   - macros:
-      module_name: main
+      module_name: macros.main
 
 extra:
   site_base_path: /rhi-ron-resources
