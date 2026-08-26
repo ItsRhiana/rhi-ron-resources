@@ -1,0 +1,119 @@
+{% set guide = style.guide %}
+
+<div class="style-tab-content style-build">
+
+  <h2>Recommended Investment</h2>
+
+  <div class="style-build-summary">
+
+    <div class="style-build-item">
+
+      <span>Position</span>
+
+      <strong>
+        {{ guide.position }}
+      </strong>
+
+    </div>
+
+
+    <div class="style-build-item">
+
+      <span>Skill Target</span>
+
+      <strong>
+        {{ guide.skill_target.basic }}/{{ guide.skill_target.passive }}/{{ guide.skill_target.ultimate }}
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <h2>Recon Priority</h2>
+
+  <div class="recon-priority-list">
+
+    {% for item in guide.recon_priority | default([]) %}
+
+      <div class="recon-priority-row">
+
+        <div class="recon-priority-number">
+          {{ item.priority }}
+        </div>
+
+
+        <div class="recon-priority-body">
+
+
+          <!-- ==========================================
+               Specific trait
+               Example:
+               trait: tactical-balance
+               ========================================== -->
+
+          {% if item.trait %}
+
+            {% set trait = recon_traits[item.trait] %}
+
+            <div class="recon-priority-grade">
+              {{ trait.grade }}
+            </div>
+
+            <div
+              class="recon-priority-name"
+              {% if trait.name.zh %}
+                title="{{ trait.name.zh }}"
+              {% endif %}
+            >
+              {{ trait.name.en }}
+            </div>
+
+
+          <!-- ==========================================
+               General trait grades
+               Example:
+               grades:
+                 - S-trait
+                 - A-trait
+               ========================================== -->
+
+          {% elif item.grades %}
+
+            <div class="recon-priority-grade">
+              {{ item.grades | join(" or ") }}
+            </div>
+
+
+            <!-- Excluded traits -->
+
+            {% if item.exclude %}
+
+              <div class="recon-priority-note">
+
+                Except
+
+                {% for trait_id in item.exclude %}
+
+                  {% set trait = recon_traits[trait_id] %}
+
+                  {{ trait.name.en }}{% if not loop.last %}, {% endif %}
+
+                {% endfor %}
+
+              </div>
+
+            {% endif %}
+
+          {% endif %}
+
+
+        </div>
+
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+</div>

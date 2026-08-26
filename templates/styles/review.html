@@ -1,0 +1,15 @@
+<div class="style-tab-content style-review">
+
+  <ul>
+
+    {% for item in style.guide.summary | default([]) %}
+
+      <li>
+        {{ item }}
+      </li>
+
+    {% endfor %}
+
+  </ul>
+
+</div>

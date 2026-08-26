@@ -1,0 +1,13 @@
+id: chef-veteran-butcher
+
+character:
+  en: Chef
+  zh: 主厨
+
+style:
+  en: Veteran Butcher
+  zh: 熟手屠夫
+
+rarity: 5
+class: annihilation
+desire: greed

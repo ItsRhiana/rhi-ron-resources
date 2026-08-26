@@ -1,0 +1,13 @@
+id: red-gloves-ace-lawyer
+
+character:
+  en: Red Gloves
+  zh: 红手套
+
+style:
+  en: Ace Lawyer
+  zh: 金牌律师
+
+rarity: 5
+class: vanguard
+desire: sloth

@@ -1,0 +1,13 @@
+id: ghost-vengeful-nursery-rhyme
+
+character:
+  en: Ghost
+  zh: 幽灵
+
+style:
+  en: Vengeful Nursery Rhyme
+  zh: 复仇童谣
+
+rarity: 6
+class: annihilation
+desire: envy
