@@ -1,0 +1,44 @@
+<div class="tier-table">
+
+  <div class="tier-header tier-label"></div>
+
+  {% for column in columns %}
+
+    <div class="tier-header">
+
+      <img
+        src="{{ column.icon_url }}"
+        class="role-icon"
+        alt=""
+      >
+
+      <span>
+        {{ column.name }}
+      </span>
+
+    </div>
+
+  {% endfor %}
+
+
+  {% for tier in tiers %}
+
+    <div class="tier-rank tier-{{ tier.id }}">
+      {{ tier.name }}
+    </div>
+
+    {% for cell in tier.cells %}
+
+      <div class="tier-cell">
+
+        {% for card in cell.cards %}
+          {{ card }}
+        {% endfor %}
+
+      </div>
+
+    {% endfor %}
+
+  {% endfor %}
+
+</div>

@@ -1,0 +1,226 @@
+{% set kit = style.kit %}
+
+<div class="style-tab-content style-kit">
+
+  <div class="kit-overview-grid">
+
+
+    <!-- =====================================================
+         Stats & Reflection
+         ===================================================== -->
+
+    <div class="kit-overview-column">
+
+      <div class="style-section-title">
+        <span></span>
+        STATS & REFLECTION
+      </div>
+
+      <div class="kit-panel compact-panel">
+
+        <div class="kit-panel-title">
+          Lv.{{ kit.stats.level }} Base Stats
+        </div>
+
+        <div class="kit-stat-row">
+          <span>HP</span>
+          <strong>{{ "{:,}".format(kit.stats.hp) }}</strong>
+        </div>
+
+        <div class="kit-stat-row">
+          <span>ATK</span>
+          <strong>{{ "{:,}".format(kit.stats.atk) }}</strong>
+        </div>
+
+        <div class="kit-stat-row">
+          <span>DEF</span>
+          <strong>{{ "{:,}".format(kit.stats.def) }}</strong>
+        </div>
+
+
+        <div class="kit-panel-subtitle">
+          Reflection
+        </div>
+
+        {% for item in kit.reflection | default([]) %}
+
+          <div class="kit-stat-row">
+            <span>{{ item.stat }}</span>
+            <strong>{{ item.value }}</strong>
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         Reconstruction Traits
+         ===================================================== -->
+
+    <div class="kit-overview-column">
+
+      <div class="style-section-title">
+        <span></span>
+        RECONSTRUCTION TRAITS
+      </div>
+
+      <div class="kit-recon-list">
+
+        {% for trait_id in kit.recon_traits | default([]) %}
+
+          {% set trait = recon_traits[trait_id] %}
+
+          <div class="kit-recon-card">
+
+            <div class="kit-recon-header">
+
+              <div
+                class="kit-recon-grade {% if trait.grade.startswith('S') %}trait-s{% else %}trait-a{% endif %}"
+              >
+                {{ trait.grade }}
+              </div>
+
+              <div
+                class="kit-recon-name"
+                {% if trait.name.zh %}
+                  title="{{ trait.name.zh }}"
+                {% endif %}
+              >
+                {{ trait.name.en }}
+              </div>
+
+            </div>
+
+            <div class="kit-recon-description">
+              {{ trait.description }}
+            </div>
+
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         Dupes
+         ===================================================== -->
+
+    <div class="kit-overview-column">
+
+      <div class="style-section-title">
+        <span></span>
+        DUPES
+      </div>
+
+      <div class="kit-dupe-list">
+
+        {% for dupe in kit.dupes | default([]) %}
+
+          <div class="kit-dupe-card">
+
+            <div class="kit-dupe-number">
+              D{{ dupe.dupe }}
+            </div>
+
+            <div class="kit-dupe-description">
+              {{ dupe.description }}
+            </div>
+
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       Skills
+       ===================================================== -->
+
+  <div class="style-section-title">
+    <span></span>
+    SKILLS
+  </div>
+
+  <div class="kit-skill-grid">
+
+    {% for key in ["basic", "passive", "ultimate"] %}
+
+      {% set ability = kit.skills[key] %}
+
+      <div class="kit-skill-card skill-{{ key }}">
+
+        <div class="kit-skill-header">
+
+          <div class="kit-skill-type">
+            {{ ability.name }}
+          </div>
+
+          {% if ability.cost %}
+
+            <div class="skill-cost">
+              {{ ability.cost }}
+            </div>
+
+          {% endif %}
+
+        </div>
+
+
+        {% if ability.weapon or ability.trigger %}
+
+          <div class="kit-skill-meta">
+
+            {% if ability.weapon %}
+              {{ ability.weapon }}
+            {% endif %}
+
+            {% if ability.weapon and ability.trigger %}
+              ·
+            {% endif %}
+
+            {% if ability.trigger %}
+              {{ ability.trigger }}
+            {% endif %}
+
+          </div>
+
+        {% endif %}
+
+
+        <div class="kit-skill-tags">
+
+{% for tag_id in ability.tags | default([]) %}
+
+  {% set tag = tags[tag_id] %}
+
+  <span class="skill-tag tag-{{ tag.targeting }}">
+    {{ tag.name }}
+  </span>
+
+{% endfor %}
+
+        </div>
+
+
+        <div class="kit-skill-description">
+          {{ ability.description }}
+        </div>
+
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+</div>

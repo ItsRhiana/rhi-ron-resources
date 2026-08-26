@@ -1,0 +1,13 @@
+id: tyrant-lord-of-terra
+
+character:
+  en: Tyrant
+  zh: 暴君
+
+style:
+  en: Lord of Terra
+  zh: 泰拉之主
+
+rarity: 6
+class: vanguard
+desire: pride

@@ -1,0 +1,13 @@
+id: headmistress-scorching-sands-knight
+
+character:
+  en: Headmistress
+  zh: 教鞭
+
+style:
+  en: Scorching Sands Knight
+  zh: 热沙骑士
+
+rarity: 6
+class: special-attack
+desire: gluttony

@@ -1,0 +1,13 @@
+id: general-thunder-commander
+
+character:
+  en: General
+  zh: 将军
+
+style:
+  en: Thunder Commander
+  zh: 雷霆统帅
+
+rarity: 6
+class: special-attack
+desire: sloth

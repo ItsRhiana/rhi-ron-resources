@@ -1,0 +1,13 @@
+id: ghost-covert-investigator
+
+character:
+  en: Ghost
+  zh: 幽灵
+
+style:
+  en: Covert Investigator
+  zh: 暗访者
+
+rarity: 5
+class: special-attack
+desire: pride

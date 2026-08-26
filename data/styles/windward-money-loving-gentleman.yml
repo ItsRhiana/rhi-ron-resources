@@ -1,0 +1,13 @@
+id: windward-money-loving-gentleman
+
+character:
+  en: Windward
+  zh: 东南西北
+
+style:
+  en: Money-Loving Gentleman
+  zh: 爱财君子
+
+rarity: 6
+class: healer
+desire: greed

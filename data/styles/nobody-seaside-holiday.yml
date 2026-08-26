@@ -1,0 +1,13 @@
+id: nobody-seaside-holiday
+
+character:
+  en: Nobody
+  zh: 某某人
+
+style:
+  en: Seaside Holiday
+  zh: 海滨假日
+
+rarity: 5
+class: annihilation
+desire: pride

@@ -1,0 +1,117 @@
+id: lodestar-sea-rover
+
+character:
+  en: Lodestar
+  zh: 星闪
+
+style:
+  en: Sea Rover
+  zh: 海上浪子
+
+rarity: 6
+class: annihilation
+desire: wrath
+
+tags:
+  - single-target
+
+
+# =========================================================
+# Kit
+# Factual game data
+# =========================================================
+
+kit:
+
+  stats:
+    level: 100
+    hp: 33831
+    atk: 18755
+    def: 11061
+
+  reflection:
+    - stat: ATK
+      value: "+42%"
+
+    - stat: CRIT Rate
+      value: "+33.6%"
+
+    - stat: DMG
+      value: "+36.48%"
+
+  recon_traits:
+    - raging-sea-assault
+    - tactical-balance
+    - all-or-nothing
+    - fleeting-brilliance
+
+  skills:
+
+    basic:
+      name: Basic
+      weapon: Shotgun
+
+      tags:
+        - single-target
+
+      description: "Deals 126% ATK as DMG to an enemy."
+
+    passive:
+      name: Passive
+      trigger: "15s cooldown"
+
+      tags:
+        - single-target
+
+      description: "Fires 11 bullets toward the current target, each dealing 31% ATK damage."
+
+    ultimate:
+      name: Ultimate
+      cost: "3 Flames"
+
+      tags:
+        - single-target
+
+      description: "Deals 95% ATK ×12 to random enemies in a circular area. Each repeated hit on the same target grants +6% CRIT DMG for 10s."
+
+  dupes:
+    - dupe: 1
+      description: "ULT hit count +4; ATK +7%."
+
+    - dupe: 2
+      description: "CRIT Rate +10%."
+
+    - dupe: 3
+      description: "3rd Aptitude +1; ATK +21%."
+
+
+# =========================================================
+# Guide
+# Rhi's recommendations / analysis
+# =========================================================
+
+guide:
+
+  position: "Off-field > On-field"
+
+  skill_target:
+    basic: 1
+    passive: 1
+    ultimate: 10
+
+  recon_priority:
+    - priority: 1
+      trait: tactical-balance
+
+    - priority: 2
+      grades:
+        - S-trait
+        - A-trait
+      exclude:
+        - fleeting-brilliance
+
+  summary:
+    - "ULT grants a 10s buff — the fewer enemies it hits, the stronger."
+    - "Lacks innate CRIT Rate."
+    - "A-trait Tactical Balance enables off-field positioning."
+    - "Without Tactical Balance, Lodestar needs on-fielding for allied CRIT buffs."

@@ -1,0 +1,13 @@
+id: ng-dream-producer
+
+character:
+  en: NG
+  zh: NG
+
+style:
+  en: Dream Producer
+  zh: 造梦制片人
+
+rarity: 6
+class: special-attack
+desire: greed

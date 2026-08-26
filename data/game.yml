@@ -1,0 +1,61 @@
+# =========================================================
+# Game Metadata
+# =========================================================
+
+
+# =========================================================
+# Classes
+# =========================================================
+
+classes:
+
+  vanguard:
+    name: Vanguard
+    icon: vanguard.webp
+
+  annihilation:
+    name: Annihilation
+    icon: annihilation.webp
+
+  special-attack:
+    name: Special Attack
+    icon: special-attack.webp
+
+  healer:
+    name: Healer
+    icon: healer.webp
+
+
+# =========================================================
+# Desires
+# =========================================================
+
+desires:
+
+  envy:
+    name: Envy
+    icon: envy.webp
+
+  greed:
+    name: Greed
+    icon: greed.webp
+
+  pride:
+    name: Pride
+    icon: pride.webp
+
+  sloth:
+    name: Sloth
+    icon: sloth.webp
+
+  lust:
+    name: Lust
+    icon: lust.webp
+
+  wrath:
+    name: Wrath
+    icon: wrath.webp
+
+  gluttony:
+    name: Gluttony
+    icon: gluttony.webp
