@@ -30,7 +30,7 @@ jobs:
         run: pip install -r requirements.txt
       
       - name: Verify macro module
-        run: python -c "import macros.main; print('Macro module OK')"
+        run: python -c "import macros; print('Macro module OK:', macros.__file__)"
 
       - name: Build site
         run: mkdocs build --strict
