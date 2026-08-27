@@ -1,0 +1,707 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { Icon } from "astro-icon/components";
+
+import lodestar from "../../data/styles/lodestar-sea-rover";
+
+const base = import.meta.env.BASE_URL;
+
+const executionDupe = lodestar.kit.dupes.find((dupe) =>
+    dupe.effects.some(
+        (effect) =>
+            effect.type === "actionFocus" && effect.target === "execution",
+    ),
+);
+
+const actionFocus = lodestar.kit.actionFocus;
+---
+
+<StarlightPage
+    frontmatter={{
+        title: `${lodestar.character} — ${lodestar.style}`,
+        description: `${lodestar.character} — ${lodestar.style} Style details.`,
+        tableOfContents: false,
+        prev: false,
+        next: false,
+    }}
+>
+    <div class="style-page">
+        <!-- ==================================================
+         Header
+         ================================================== -->
+
+        <section class="style-header">
+            <!-- ==================================================
+           Left: Art + Identity
+           ================================================== -->
+
+            <div class="style-identity">
+                <div class="style-art-frame">
+                    <img
+                        class="style-art"
+                        src={`${base}assets/styles/${lodestar.id}.png`}
+                        alt={`${lodestar.character} — ${lodestar.style}`}
+                    />
+                </div>
+
+                <div class="style-name-line">
+                    <strong>
+                        {lodestar.character}
+                    </strong>
+
+                    <span class="name-separator"> — </span>
+
+                    <span class="style-name">
+                        {lodestar.style}
+                    </span>
+                </div>
+
+                <div class="rarity">
+                    {"★".repeat(lodestar.rarity)}
+                </div>
+
+                <div class="style-meta">
+                    <span class="meta-item">
+                        <img
+                            src={`${base}assets/icons/${lodestar.desire}.webp`}
+                            alt=""
+                        />
+
+                        Wrath
+                    </span>
+
+                    <span class="meta-item">
+                        <img
+                            src={`${base}assets/icons/${lodestar.class}.webp`}
+                            alt=""
+                        />
+
+                        Annihilation
+                    </span>
+                </div>
+
+                <div class="style-tags">
+                    {
+                        lodestar.kit.tags.map((tag) => (
+                            <span class="style-tag">
+                                {tag === "single-target"
+                                    ? "Single Target"
+                                    : tag}
+                            </span>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- ==================================================
+           Right: Action Focus + Stats
+           ================================================== -->
+
+            <div class="style-overview">
+                <!-- Action Focus -->
+
+                <div class="action-focus">
+                    <div class="focus-item">
+                        <span class="focus-name"> INTEL </span>
+
+                        <span class="focus-value">
+                            ✦ {actionFocus.intel}
+                        </span>
+                    </div>
+
+                    <div class="focus-item">
+                        <span class="focus-name"> SUPPLIES </span>
+
+                        <span class="focus-value">
+                            ✦ {actionFocus.supplies}
+                        </span>
+                    </div>
+
+                    <div
+                        class:list={[
+                            "focus-item",
+                            {
+                                modified: executionDupe,
+                            },
+                        ]}
+                        title={executionDupe
+                            ? "Dupe III — Execution Action Focus increased."
+                            : undefined}
+                    >
+                        <span class="focus-name"> EXECUTION </span>
+
+                        <span class="focus-value">
+                            ✦ {actionFocus.execution}
+                        </span>
+                    </div>
+
+                    <div class="focus-item">
+                        <span class="focus-name"> STRATEGY </span>
+
+                        <span class="focus-value">
+                            ✦ {actionFocus.strategy}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- ==================================================
+             Base Stats
+             ================================================== -->
+
+                <div class="core-stats">
+                    <div class="stats-heading">LV.100 BASE STATS</div>
+
+                    <div class="stat-row">
+                        <span class="stat-name">
+                            <Icon name="hugeicons:favourite" size="20" />
+                            HP
+                        </span>
+
+                        <strong>
+                            {lodestar.kit.stats.hp.toLocaleString()}
+                        </strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span class="stat-name">
+                            <Icon name="hugeicons:gun" size="20" />
+                            ATK
+                        </span>
+
+                        <strong>
+                            {lodestar.kit.stats.atk.toLocaleString()}
+                        </strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span class="stat-name">
+                            <Icon name="hugeicons:shield-half" size="20" />
+                            DEF
+                        </span>
+
+                        <strong>
+                            {lodestar.kit.stats.def.toLocaleString()}
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================
+         Tabs
+         ================================================== -->
+
+        <nav class="style-tabs">
+            <button class="active" type="button"> KIT </button>
+
+            <button type="button"> BUILD &amp; SYNERGIES </button>
+
+            <button type="button"> REVIEW </button>
+        </nav>
+
+        <!-- ==================================================
+         Temporary Kit Area
+         ================================================== -->
+
+        <section class="style-kit-placeholder">Kit content comes next.</section>
+    </div>
+</StarlightPage>
+
+<style>
+    /* ======================================================
+     Page
+     ====================================================== */
+
+    .style-page {
+        width: 100%;
+
+        color: #e9e5dc;
+    }
+
+    /* ======================================================
+     Remove Starlight prose spacing from custom Style UI
+     ====================================================== */
+
+    :global(.sl-markdown-content .style-page *) {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* ======================================================
+     Header
+     ====================================================== */
+
+    .style-header {
+        display: grid;
+
+        grid-template-columns:
+            minmax(260px, 0.8fr)
+            minmax(0, 1.5fr);
+
+        gap: 28px;
+
+        width: 100%;
+
+        padding: 16px;
+
+        box-sizing: border-box;
+
+        background: linear-gradient(135deg, #17191d, #202329);
+
+        border: 1px solid #3b3e45;
+    }
+
+    /* ======================================================
+     Identity
+     ====================================================== */
+
+    .style-identity {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 7px;
+
+        min-width: 0;
+    }
+
+    /* ======================================================
+     Style Art
+     ====================================================== */
+
+    .style-art-frame {
+        width: 100%;
+        max-width: 320px;
+
+        aspect-ratio: 5 / 3;
+
+        box-sizing: border-box;
+
+        padding: 3px;
+
+        margin: 0;
+        margin-bottom: 8px !important;
+
+        background: #17191d;
+
+        border: 1px solid #756c58;
+        border-radius: 7px;
+
+        overflow: hidden;
+    }
+
+    .style-art {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        margin: 0 !important;
+
+        object-fit: cover;
+        object-position: center;
+
+        border: 0;
+        border-radius: 4px;
+    }
+
+    /* ======================================================
+     Name
+     ====================================================== */
+
+    .style-name-line {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        align-items: baseline;
+
+        gap: 7px;
+
+        margin: 0;
+    }
+
+    .style-name-line strong {
+        color: #f2eee5;
+
+        font-size: 1.5rem;
+        font-weight: 800;
+
+        line-height: 1.15;
+    }
+
+    .style-name {
+        color: #c3c5ca;
+
+        font-size: 1.25rem;
+        font-weight: 500;
+
+        line-height: 1.15;
+    }
+
+    .name-separator {
+        color: #777b84;
+
+        font-size: 1.1rem;
+
+        line-height: 1.15;
+    }
+
+    /* ======================================================
+     Rarity
+     ====================================================== */
+
+    .rarity {
+        margin: 0;
+
+        color: #b65641;
+
+        font-size: 1.5rem;
+
+        line-height: 0.7;
+
+        letter-spacing: 0.08em;
+    }
+
+    /* ======================================================
+     Desire + Class
+     ====================================================== */
+
+    .style-meta {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        align-items: center;
+
+        gap: 7px;
+
+        margin: 0;
+
+        color: #d6d7db;
+
+        line-height: 1.2;
+    }
+
+    .meta-item {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        margin: 0;
+    }
+
+    .meta-item img {
+        width: 30px;
+        height: 30px;
+
+        max-width: none;
+
+        display: block;
+
+        margin: 0;
+        padding: 0;
+
+        object-fit: contain;
+    }
+
+    /* ======================================================
+     Tags
+     ====================================================== */
+
+    .style-tags {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 6px;
+
+        margin: 100px 0 0 !important;
+    }
+
+    .style-tag {
+        display: inline-block;
+
+        margin: 0;
+
+        padding: 3px 7px;
+
+        background: #d23f25;
+
+        color: #fff;
+
+        font-size: 0.72rem;
+        font-weight: 700;
+
+        line-height: 1.2;
+
+        text-transform: uppercase;
+    }
+
+    /* ======================================================
+     Overview
+     ====================================================== */
+
+    .style-overview {
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 18px;
+
+        min-width: 0;
+
+        margin: 0;
+    }
+
+    /* ======================================================
+     Action Focus
+     ====================================================== */
+
+    .action-focus {
+        display: grid;
+
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        margin: 0 !important;
+
+        border-bottom: 1px solid #555860;
+    }
+
+    .focus-item {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 9px;
+
+        min-width: 0;
+
+        margin: 0;
+
+        padding: 10px 6px 14px;
+
+        border-right: 1px solid #555860;
+    }
+
+    .focus-item:last-child {
+        border-right: 0;
+    }
+
+    .focus-name {
+        width: 100%;
+
+        margin: 0;
+
+        color: #d5d2cb;
+
+        font-size: 0.72rem;
+        font-weight: 800;
+
+        line-height: 1;
+
+        letter-spacing: 0.04em;
+
+        text-align: center;
+
+        white-space: nowrap;
+    }
+
+    .focus-value {
+        width: 100%;
+
+        margin: 0;
+
+        color: #ece8df;
+
+        font-size: 1.15rem;
+        font-weight: 700;
+
+        line-height: 1;
+
+        text-align: center;
+    }
+
+    .focus-item.modified .focus-value {
+        color: #d87945;
+
+        cursor: help;
+    }
+
+    /* ======================================================
+     Stats
+     ====================================================== */
+
+    .core-stats {
+        margin: 0;
+
+        border-top: 0;
+    }
+
+    .stats-heading {
+        margin: 0;
+
+        padding: 8px 10px;
+
+        border-bottom: 1px solid #555860;
+
+        color: #aeb1b8;
+
+        font-size: 0.72rem;
+        font-weight: 800;
+
+        line-height: 1.2;
+
+        letter-spacing: 0.05em;
+    }
+
+    .stat-row {
+        display: grid;
+
+        grid-template-columns:
+            1fr
+            auto;
+
+        align-items: center;
+
+        min-height: 42px;
+
+        margin: 0;
+
+        padding: 8px 10px;
+
+        box-sizing: border-box;
+
+        background: transparent;
+
+        border-bottom: 1px solid #33363d;
+    }
+
+    .stat-row span {
+        margin: 0;
+
+        color: #d6d3cb;
+
+        font-weight: 700;
+
+        line-height: 1.2;
+    }
+
+    .stat-row strong {
+        margin: 0;
+
+        color: #f2eee5;
+
+        font-size: 1.05rem;
+
+        line-height: 1.2;
+    }
+
+    .stat-name {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .stat-name :global(svg) {
+        color: #d9d5cb;
+        flex: 0 0 auto;
+    }
+
+    /* ======================================================
+     Tabs
+     ====================================================== */
+
+    .style-tabs {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        margin: 16px 0 0;
+
+        border-bottom: 1px solid #3d4048;
+    }
+
+    .style-tabs button {
+        position: relative;
+
+        margin: 0;
+
+        padding: 13px 10px;
+
+        background: transparent;
+
+        border: 0;
+
+        color: #8f939c;
+
+        font: inherit;
+
+        font-size: 0.85rem;
+        font-weight: 800;
+
+        cursor: pointer;
+    }
+
+    .style-tabs button.active {
+        color: #17191d;
+    }
+
+    .style-tabs button.active::after {
+        content: "";
+
+        position: absolute;
+
+        left: 14%;
+        right: 14%;
+        bottom: -1px;
+
+        height: 3px;
+
+        background: #b65641;
+    }
+
+    /* ======================================================
+     Temporary Kit Area
+     ====================================================== */
+
+    .style-kit-placeholder {
+        min-height: 160px;
+
+        margin: 0;
+
+        padding: 24px;
+
+        box-sizing: border-box;
+
+        background: #1b1d22;
+
+        border: 1px solid #3b3e45;
+        border-top: 0;
+
+        color: #979aa2;
+    }
+
+    /* ======================================================
+     Smaller Screens
+     ====================================================== */
+
+    @media (max-width: 900px) {
+        .style-header {
+            grid-template-columns: 1fr;
+
+            gap: 18px;
+        }
+
+        .style-art {
+            max-width: 400px;
+        }
+    }
+</style>

@@ -1,0 +1,425 @@
+---
+import StyleCard from './StyleCard.astro';
+import lodestar from '../data/styles/lodestar-sea-rover';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<div class="tier-table">
+  <!-- =====================================================
+       Headers
+       ===================================================== -->
+
+  <div class="tier-header tier-label"></div>
+
+  <div class="tier-header">
+    <img src={`${base}assets/icons/vanguard.webp`} alt="" />
+    <span>Vanguard</span>
+  </div>
+
+  <div class="tier-header">
+    <img src={`${base}assets/icons/annihilation.webp`} alt="" />
+    <span>ST DPS</span>
+  </div>
+
+  <div class="tier-header">
+    <img src={`${base}assets/icons/annihilation.webp`} alt="" />
+    <span>AoE DPS</span>
+  </div>
+
+  <div class="tier-header">
+    <img src={`${base}assets/icons/special-attack.webp`} alt="" />
+    <span>Support</span>
+  </div>
+
+  <div class="tier-header">
+    <img src={`${base}assets/icons/healer.webp`} alt="" />
+    <span>Healer</span>
+  </div>
+
+  <!-- =====================================================
+       T0
+       ===================================================== -->
+
+  <div class="tier-rank tier-t0">T0</div>
+
+  <!-- Vanguard -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="red-gloves-abyssal-judgment"
+      character="Red Gloves"
+      styleName="Abyssal Judgment"
+      rarity={6}
+      desire="lust"
+    />
+  </div>
+
+  <!-- ST DPS -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="fool-card-table-seer"
+      character="Fool"
+      styleName="Card Table Seer"
+      rarity={6}
+      desire="envy"
+    />
+  </div>
+
+  <!-- AoE DPS -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="wolf-patrol-guard"
+      character="Wolf"
+      styleName="Patrol Guard"
+      rarity={6}
+      desire="greed"
+    />
+  </div>
+
+  <!-- Support -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="general-thunder-commander"
+      character="General"
+      styleName="Thunder Commander"
+      rarity={6}
+      desire="sloth"
+    />
+  </div>
+
+  <!-- Healer -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="windward-money-loving-gentleman"
+      character="Windward"
+      styleName="Money-Loving Gentleman"
+      rarity={6}
+      desire="greed"
+    />
+  </div>
+
+  <!-- =====================================================
+     T1
+     ===================================================== -->
+
+  <div class="tier-rank tier-t1">T1</div>
+
+  <!-- Vanguard -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="tyrant-lord-of-terra"
+      character="Tyrant"
+      styleName="Lord of Terra"
+      rarity={6}
+      desire="pride"
+    />
+  </div>
+
+  <!-- ST DPS -->
+
+  <div class="tier-cell">
+<StyleCard
+  id={lodestar.id}
+  character={lodestar.character}
+  styleName={lodestar.styleName}
+  rarity={lodestar.rarity}
+  desire={lodestar.desire}
+/>
+  </div>
+
+  <!-- AoE DPS -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="ghost-vengeful-nursery-rhyme"
+      character="Ghost"
+      styleName="Vengeful Nursery Rhyme"
+      rarity={6}
+      desire="envy"
+    />
+  </div>
+
+  <!-- Support -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="ng-dream-producer"
+      character="NG"
+      styleName="Dream Producer"
+      rarity={6}
+      desire="greed"
+    />
+  </div>
+
+  <!-- Healer -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="rainmaker-world-cleansing-rain"
+      character="Rainmaker"
+      styleName="World-Cleansing Rain"
+      rarity={6}
+      desire="gluttony"
+    />
+  </div>
+
+  <!-- =====================================================
+     T2
+     ===================================================== -->
+
+  <div class="tier-rank tier-t2">T2</div>
+
+  <!-- Vanguard -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="red-gloves-ace-lawyer"
+      character="Red Gloves"
+      styleName="Ace Lawyer"
+      rarity={5}
+      desire="sloth"
+    />
+  </div>
+
+  <!-- ST DPS -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="chef-veteran-butcher"
+      character="Chef"
+      styleName="Veteran Butcher"
+      rarity={5}
+      desire="greed"
+    />
+  </div>
+
+  <!-- AoE DPS -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="nobody-seaside-holiday"
+      character="Nobody"
+      styleName="Seaside Holiday"
+      rarity={5}
+      desire="pride"
+    />
+  </div>
+
+  <!-- Support -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="headmistress-scorching-sands-knight"
+      character="Headmistress"
+      styleName="Scorching Sands Knight"
+      rarity={6}
+      desire="gluttony"
+    />
+
+    <StyleCard
+      id="gift-player-in-the-play"
+      character="Gift"
+      styleName="Player in the Play"
+      rarity={5}
+      desire="gluttony"
+    />
+  </div>
+
+  <!-- Healer -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="laksa-spice-merchant"
+      character="Laksa"
+      styleName="Spice Merchant"
+      rarity={5}
+      desire="lust"
+    />
+  </div>
+
+  <!-- =====================================================
+     T3
+     ===================================================== -->
+
+  <div class="tier-rank tier-t3">T3</div>
+
+  <!-- Vanguard -->
+
+  <div class="tier-cell"></div>
+
+  <!-- ST DPS -->
+
+  <div class="tier-cell"></div>
+
+  <!-- AoE DPS -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="manipulator-technology-minister"
+      character="Manipulator"
+      styleName="Technology Minister"
+      rarity={6}
+      desire="lust"
+    />
+  </div>
+
+  <!-- Support -->
+
+  <div class="tier-cell">
+    <StyleCard
+      id="ghost-covert-investigator"
+      character="Ghost"
+      styleName="Covert Investigator"
+      rarity={5}
+      desire="pride"
+    />
+
+    <StyleCard
+      id="the-ref-silent-verdict"
+      character="The Ref"
+      styleName="Silent Verdict"
+      rarity={6}
+      desire="wrath"
+    />
+  </div>
+
+  <!-- Healer -->
+
+  <div class="tier-cell"></div>
+</div>
+
+<style>
+  /* =====================================================
+     Tier table
+     ===================================================== */
+
+  .tier-table {
+    display: grid;
+
+    grid-template-columns:
+      70px
+      repeat(5, minmax(145px, max-content));
+
+    column-gap: 9px;
+    row-gap: 2px;
+
+    width: max-content;
+
+    margin: 1rem auto 0;
+  }
+
+  /*
+   * Starlight adds margins between block elements
+   * inside documentation content.
+   */
+  .tier-table > * {
+    margin: 0 !important;
+  }
+
+  /* =====================================================
+     Headers
+     ===================================================== */
+
+  .tier-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 2px;
+
+    padding: 10px 12px;
+
+    background: #292b31;
+
+    border-bottom: 2px solid #3f424a;
+
+    color: #d7d8dd;
+
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .tier-header img {
+    width: 32px;
+    height: 32px;
+
+    max-width: none;
+
+    display: block;
+
+    margin: 0;
+    padding: 0;
+
+    object-fit: contain;
+  }
+
+  .tier-label {
+    background: transparent;
+    border-bottom: 0;
+  }
+
+  /* =====================================================
+     Tier labels
+     ===================================================== */
+
+  .tier-rank {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 145px;
+
+    color: #111;
+
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+
+  .tier-t0 {
+    background: #ef5350;
+  }
+
+  .tier-t1 {
+    background: #ff8a65;
+  }
+
+  .tier-t2 {
+    background: #ffca69;
+  }
+
+  .tier-t3 {
+    background: #81c784;
+  }
+
+  /* =====================================================
+     Tier cells
+     ===================================================== */
+
+  .tier-cell {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 145px;
+    min-height: 145px;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    gap: 10px;
+
+    background: #34363d;
+  }
+</style>

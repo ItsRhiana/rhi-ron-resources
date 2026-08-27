@@ -1,0 +1,231 @@
+---
+interface Props {
+  id: string;
+  character: string;
+  styleName: string;
+  rarity: 4 | 5 | 6;
+  desire: string;
+}
+
+const {
+  id,
+  character,
+  styleName,
+  rarity,
+  desire,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+
+const styleUrl = `${base}styles/${id}/`;
+const portraitUrl = `${base}assets/styles/${id}.png`;
+const desireUrl = `${base}assets/icons/${desire}.webp`;
+---
+
+<a
+  class={`style-card rarity-${rarity}`}
+  href={styleUrl}
+  title={`${character} — ${styleName}`}
+>
+  <img
+    class="style-portrait"
+    src={portraitUrl}
+    alt={`${character} — ${styleName}`}
+  />
+
+  <div class="desire-badge">
+    <img
+      src={desireUrl}
+      alt={desire}
+    />
+  </div>
+
+  <div class="style-card-name">
+    {character}
+  </div>
+
+  <div class="rarity-bar"></div>
+</a>
+
+
+<style>
+  /* =====================================================
+     Style card
+     ===================================================== */
+
+  .style-card {
+    width: 125px;
+    height: 125px;
+
+    flex: 0 0 125px;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #454851;
+
+    line-height: normal;
+
+    text-decoration: none;
+
+    transition:
+      transform 0.15s ease,
+      border-color 0.15s ease,
+      filter 0.15s ease;
+  }
+
+  .style-card:hover {
+    transform: translateY(-2px);
+
+    border-color: #777b87;
+
+    filter: brightness(1.08);
+  }
+
+
+  /* =====================================================
+     Shared card layers
+     ===================================================== */
+
+  .style-portrait,
+  .desire-badge,
+  .style-card-name,
+  .rarity-bar {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+
+  /* =====================================================
+     Portrait
+     ===================================================== */
+
+  .style-portrait {
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    align-self: stretch;
+    justify-self: stretch;
+
+    display: block;
+
+    margin: 0;
+    padding: 0;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+
+  /* =====================================================
+     Desire
+     ===================================================== */
+
+  .desire-badge {
+    width: 25px;
+    height: 25px;
+
+    align-self: start;
+    justify-self: start;
+
+    z-index: 3;
+
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+
+    background: #000;
+  }
+
+  .desire-badge img {
+    width: 30px;
+    height: 30px;
+
+    max-width: none;
+
+    display: block;
+
+    margin: -2.5px;
+    padding: 0;
+
+    object-fit: contain;
+  }
+
+
+  /* =====================================================
+     Name
+     ===================================================== */
+
+  .style-card-name {
+    align-self: end;
+    justify-self: stretch;
+
+    z-index: 4;
+
+    margin: 0 0 4px;
+
+    padding:
+      18px
+      5px
+      5px;
+
+    box-sizing: border-box;
+
+    background:
+      linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.9)
+      );
+
+    color: #fff;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    line-height: 1.1;
+
+    text-align: center;
+
+    pointer-events: none;
+  }
+
+
+  /* =====================================================
+     Rarity
+     ===================================================== */
+
+  .rarity-bar {
+    height: 4px;
+
+    align-self: end;
+    justify-self: stretch;
+
+    z-index: 5;
+
+    pointer-events: none;
+  }
+
+  .rarity-6 .rarity-bar {
+    background: #B65641;
+  }
+
+  .rarity-5 .rarity-bar {
+    background: #AC8531;
+  }
+
+  .rarity-4 .rarity-bar {
+    background: #8862A0;
+  }
+</style>
