@@ -1,0 +1,44 @@
+/* =========================================================
+   Design tokens
+   ========================================================= */
+
+:root {
+  /* Rarity */
+  --rarity-6: #B65641;
+  --rarity-5: #AC8531;
+  --rarity-4: #8862A0;
+
+  /* Accent */
+  --accent: #7666df;
+  --accent-dark: #6559c9;
+
+  /* Surfaces */
+  --surface-1: #1f2025;
+  --surface-2: #202126;
+  --surface-3: #23242a;
+  --surface-4: #25262c;
+  --surface-5: #27282e;
+  --surface-6: #2c2d33;
+  --surface-7: #34363d;
+
+  /* Borders */
+  --border: #3b3d45;
+  --border-light: #454851;
+
+  /* Text */
+  --text-primary: #fff;
+  --text-secondary: #d2d3d8;
+  --text-muted: #aeb1ba;
+
+    --tag-enemy: #D23F25;
+  --tag-ally: #3F8865;
+}
+
+
+/* =========================================================
+   Wider desktop content
+   ========================================================= */
+
+.md-grid {
+  max-width: 95rem;
+}
