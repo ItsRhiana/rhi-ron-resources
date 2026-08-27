@@ -85,7 +85,7 @@ const actionFocus = lodestar.kit.actionFocus;
                         lodestar.kit.tags.map((tag) => (
                             <span class="style-tag">
                                 {tag === "single-target"
-                                    ? "Single Target"
+                                    ? "Single-Target"
                                     : tag}
                             </span>
                         ))
@@ -158,7 +158,7 @@ const actionFocus = lodestar.kit.actionFocus;
                         </span>
 
                         <strong>
-                            {lodestar.kit.stats.hp.toLocaleString()}
+                            {lodestar.kit.stats.hp.toLocaleString('en-US')}
                         </strong>
                     </div>
 
@@ -169,7 +169,7 @@ const actionFocus = lodestar.kit.actionFocus;
                         </span>
 
                         <strong>
-                            {lodestar.kit.stats.atk.toLocaleString()}
+                            {lodestar.kit.stats.atk.toLocaleString('en-US')}
                         </strong>
                     </div>
 
@@ -180,7 +180,7 @@ const actionFocus = lodestar.kit.actionFocus;
                         </span>
 
                         <strong>
-                            {lodestar.kit.stats.def.toLocaleString()}
+                            {lodestar.kit.stats.def.toLocaleString('en-US')}
                         </strong>
                     </div>
                 </div>
@@ -379,6 +379,7 @@ const actionFocus = lodestar.kit.actionFocus;
         margin: 0;
 
         color: #d6d7db;
+        font-size: 1.01rem;
 
         line-height: 1.2;
     }
@@ -426,13 +427,13 @@ const actionFocus = lodestar.kit.actionFocus;
 
         margin: 0;
 
-        padding: 3px 7px;
+        padding: 4px 8px;
 
         background: #d23f25;
 
         color: #fff;
 
-        font-size: 0.72rem;
+        font-size: 0.82rem;
         font-weight: 700;
 
         line-height: 1.2;
@@ -540,7 +541,9 @@ const actionFocus = lodestar.kit.actionFocus;
      ====================================================== */
 
     .core-stats {
-        margin: 0;
+        width: 60%;
+
+        margin: 0 auto;
 
         border-top: 0;
     }
@@ -548,13 +551,13 @@ const actionFocus = lodestar.kit.actionFocus;
     .stats-heading {
         margin: 0;
 
-        padding: 8px 10px;
+        padding: 7px 10px;
 
         border-bottom: 1px solid #555860;
 
         color: #aeb1b8;
 
-        font-size: 0.72rem;
+        font-size: 0.82rem;
         font-weight: 800;
 
         line-height: 1.2;
