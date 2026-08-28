@@ -5,24 +5,30 @@ import infiniteStairway from "../data/tier-lists/infinite-stairway";
 import styles from "../data/styles";
 
 const base = import.meta.env.BASE_URL;
+
+const columnCount = infiniteStairway.columns.length;
 ---
 
 <div class="tier-list">
 
-  <!-- =====================================================
-       Header
-       ===================================================== -->
+  <div
+    class="tier-table"
+    style={`--tier-column-count: ${columnCount}`}
+  >
 
-  <div class="tier-header">
+    <!-- =====================================================
+         Column headers
+         ===================================================== -->
 
-    <div class="tier-corner"></div>
+    <div class="tier-header tier-label"></div>
 
     {
       infiniteStairway.columns.map((column) => (
-        <div class="tier-role">
+        <div class="tier-header">
 
           <img
             src={`${base}assets/icons/${column.icon}.webp`}
+            class="role-icon"
             alt=""
           />
 
@@ -34,115 +40,113 @@ const base = import.meta.env.BASE_URL;
       ))
     }
 
+
+    <!-- =====================================================
+         Tiers
+         ===================================================== -->
+
+    {
+      infiniteStairway.tiers.map((tier) => (
+        <>
+
+          <div
+            class:list={[
+              "tier-rank",
+              `tier-${tier.rank.toLowerCase()}`,
+            ]}
+          >
+            {tier.rank}
+          </div>
+
+          {
+            infiniteStairway.columns.map((column) => {
+              const styleIds =
+                tier.cells[column.id];
+
+              return (
+                <div class="tier-cell">
+
+                  {styleIds.map((styleId) => {
+                    const style = styles[styleId];
+
+                    return (
+                      <StyleCard
+                        id={style.id}
+                        characterName={style.characterName}
+                        styleName={style.styleName}
+                        rarity={style.rarity}
+                        desire={style.desire}
+                      />
+                    );
+                  })}
+
+                </div>
+              );
+            })
+          }
+
+        </>
+      ))
+    }
+
   </div>
-
-
-  <!-- =====================================================
-       Tiers
-       ===================================================== -->
-
-  {
-    infiniteStairway.tiers.map((tier) => (
-      <div class="tier-row">
-
-        <div class="tier-rank">
-          {tier.rank}
-        </div>
-
-        {
-          infiniteStairway.columns.map((column) => {
-            const styleIds =
-              tier.cells[column.id];
-
-            return (
-              <div class="tier-cell">
-
-                {styleIds.map((styleId) => {
-                  const style = styles[styleId];
-
-                  return (
-                    <StyleCard
-                      id={style.id}
-                      characterName={style.characterName}
-                      styleName={style.styleName}
-                      rarity={style.rarity}
-                      desire={style.desire}
-                    />
-                  );
-                })}
-
-              </div>
-            );
-          })
-        }
-
-      </div>
-    ))
-  }
 
 </div>
 
 
 <style>
 
-  /* =====================================================
-     Tier list
-     ===================================================== */
+  /* =========================================================
+     Tier List
+     ========================================================= */
 
-  .tier-list {
-    width: 100%;
+.tier-list {
+  width: max-content;
 
-    overflow-x: auto;
+  margin: 0 !important;
+  padding: 0 !important;
 
-    border:
-      1px
-      solid
-      #3b3e45;
+  overflow-x: auto;
 
-    background: #17191d;
-  }
+  background: #17191d;
+}
+
+.tier-table {
+  display: grid;
+
+  grid-template-columns:
+    70px
+    repeat(
+      var(--tier-column-count),
+      minmax(155px, max-content)
+    );
+
+  /* Gap between COLUMNS only */
+  column-gap: 14px;
+
+  /* No gap between tier rows */
+  row-gap: 0;
+
+  width: max-content;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: #17191d;
+}
 
 
-  /* =====================================================
-     Shared grid
-     ===================================================== */
-
-  .tier-header,
-  .tier-row {
-    display: grid;
-
-    grid-template-columns:
-      60px
-      repeat(
-        5,
-        minmax(150px, 1fr)
-      );
-
-    min-width: 810px;
-  }
+/* Kill Starlight markdown margins inside the grid */
+.tier-table > * {
+  margin: 0 !important;
+}
 
 
-  /* =====================================================
-     Header
-     ===================================================== */
+  /* =========================================================
+     Column headers
+     ========================================================= */
 
   .tier-header {
-    background: #202329;
-
-    border-bottom:
-      1px
-      solid
-      #555860;
-  }
-
-  .tier-corner {
-    border-right:
-      1px
-      solid
-      #3b3e45;
-  }
-
-  .tier-role {
     display: flex;
 
     align-items: center;
@@ -150,40 +154,42 @@ const base = import.meta.env.BASE_URL;
 
     gap: 7px;
 
-    min-height: 48px;
-
     padding:
       8px
       10px;
 
     box-sizing: border-box;
 
-    border-right:
-      1px
-      solid
-      #3b3e45;
+    background: #292b31;
 
-    color: #d7d4cc;
+    border-bottom:
+      2px
+      solid
+      #3f424a;
+
+    color: #e9e5dc;
 
     font-size: 0.85rem;
-    font-weight: 800;
+    font-weight: 700;
 
-    line-height: 1.1;
+    line-height: 1.2;
 
     text-align: center;
   }
 
-  .tier-role:last-child {
-    border-right: 0;
+  .tier-label {
+    background: #17191d;
   }
 
-  .tier-role img {
-    width: 26px;
-    height: 26px;
+  .role-icon {
+    width: 28px;
+    height: 28px;
 
     max-width: none;
 
     display: block;
+
+    flex-shrink: 0;
 
     margin: 0;
 
@@ -191,25 +197,9 @@ const base = import.meta.env.BASE_URL;
   }
 
 
-  /* =====================================================
-     Tier rows
-     ===================================================== */
-
-  .tier-row {
-    border-bottom:
-      1px
-      solid
-      #3b3e45;
-  }
-
-  .tier-row:last-child {
-    border-bottom: 0;
-  }
-
-
-  /* =====================================================
-     Rank
-     ===================================================== */
+  /* =========================================================
+     Tier labels
+     ========================================================= */
 
   .tier-rank {
     display: flex;
@@ -217,52 +207,103 @@ const base = import.meta.env.BASE_URL;
     align-items: center;
     justify-content: center;
 
-    min-height: 145px;
-
-    padding: 10px;
+    min-height: 155px;
 
     box-sizing: border-box;
 
-    border-right:
-      1px
-      solid
-      #3b3e45;
-
-    color: #eee9df;
+    color: #111;
 
     font-size: 1.15rem;
     font-weight: 800;
   }
 
+  .tier-t0 {
+    background: #ef5350;
+  }
 
-  /* =====================================================
+  .tier-t1 {
+    background: #ff8a65;
+  }
+
+  .tier-t2 {
+    background: #ffca69;
+  }
+
+  .tier-t3 {
+    background: #81c784;
+  }
+
+
+  /* =========================================================
      Cells
-     ===================================================== */
+     ========================================================= */
 
   .tier-cell {
     display: flex;
 
     flex-wrap: wrap;
 
-    align-content: flex-start;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 
-    gap: 10px;
+    gap: 6px;
 
-    min-width: 0;
-    min-height: 145px;
+    min-width: 155px;
+    max-width: 286px;
 
-    padding: 10px;
+    min-height: 155px;
+
+    padding: 15px;
 
     box-sizing: border-box;
 
-    border-right:
-      1px
-      solid
-      #3b3e45;
+    background: #202228;
   }
 
-  .tier-cell:last-child {
-    border-right: 0;
+
+  /* =========================================================
+     Small screens
+     ========================================================= */
+
+  @media screen and (max-width: 900px) {
+
+    .tier-table {
+      min-width: max-content;
+    }
+
+    .tier-header {
+      gap: 5px;
+
+      padding:
+        7px
+        8px;
+
+      font-size: 0.75rem;
+    }
+
+    .role-icon {
+      width: 22px;
+      height: 22px;
+    }
+
+    .tier-rank {
+      min-height: 120px;
+
+      font-size: 1rem;
+    }
+
+    .tier-cell {
+      min-width: 120px;
+      max-width: 226px;
+
+      min-height: 120px;
+
+      padding: 10px;
+
+      gap: 6px;
+    }
+
   }
 
 </style>

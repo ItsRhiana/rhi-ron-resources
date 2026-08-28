@@ -31,24 +31,25 @@ const parts = effect.description.split(/(\{[^}]+\}|\n)/g);
                 return <br />;
             }
 
-            const match = part.match(/^\{([^}]+)\}$/);
+            const match = part.match(/^\{([^}%]+)(%)?\}$/);
 
-            if (!match) {
-                return part;
-            }
+if (!match) {
+    return part;
+}
 
-            const key = match[1];
-            const value = values[key];
+const key = match[1];
+const suffix = match[2] ?? "";
+const value = values[key];
 
-            if (value === undefined) {
-                return part;
-            }
+if (value === undefined) {
+    return part;
+}
 
-            return (
-                <span class="multiplier">
-                    {value}
-                </span>
-            );
+return (
+    <span class="multiplier">
+        {value}{suffix}
+    </span>
+);
         })
     }
 </p>
