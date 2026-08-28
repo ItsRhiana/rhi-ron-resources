@@ -1,4 +1,8 @@
 ---
+import {
+    formatAwakeningLevel,
+} from "../utils/awakening";
+
 interface Props {
     awakening: Array<{
         level: number;
@@ -9,8 +13,6 @@ interface Props {
 }
 
 const { awakening } = Astro.props;
-
-const roman = ["I", "II", "III", "IV", "V"];
 ---
 
 <aside class="kit-awakening">
@@ -25,7 +27,7 @@ const roman = ["I", "II", "III", "IV", "V"];
             <div class="awakening-row">
 
                 <div class="awakening-level">
-                    {roman[awakeningLevel.level - 1]}
+                    {formatAwakeningLevel(awakeningLevel.level)}
                 </div>
 
                 <div class="awakening-effects">

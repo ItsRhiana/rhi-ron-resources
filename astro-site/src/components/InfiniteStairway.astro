@@ -1,372 +1,214 @@
 ---
-import StyleCard from './StyleCard.astro';
-import lodestar from '../data/styles/lodestar-sea-rover';
+import StyleCard from "./StyleCard.astro";
+
+import infiniteStairway from "../data/tier-lists/infinite-stairway";
+import styles from "../data/styles";
 
 const base = import.meta.env.BASE_URL;
 ---
 
-<div class="tier-table">
+<div class="tier-list">
+
   <!-- =====================================================
-       Headers
+       Header
        ===================================================== -->
 
-  <div class="tier-header tier-label"></div>
-
   <div class="tier-header">
-    <img src={`${base}assets/icons/vanguard.webp`} alt="" />
-    <span>Vanguard</span>
+
+    <div class="tier-corner"></div>
+
+    {
+      infiniteStairway.columns.map((column) => (
+        <div class="tier-role">
+
+          <img
+            src={`${base}assets/icons/${column.icon}.webp`}
+            alt=""
+          />
+
+          <span>
+            {column.name}
+          </span>
+
+        </div>
+      ))
+    }
+
   </div>
 
-  <div class="tier-header">
-    <img src={`${base}assets/icons/annihilation.webp`} alt="" />
-    <span>ST DPS</span>
-  </div>
-
-  <div class="tier-header">
-    <img src={`${base}assets/icons/annihilation.webp`} alt="" />
-    <span>AoE DPS</span>
-  </div>
-
-  <div class="tier-header">
-    <img src={`${base}assets/icons/special-attack.webp`} alt="" />
-    <span>Support</span>
-  </div>
-
-  <div class="tier-header">
-    <img src={`${base}assets/icons/healer.webp`} alt="" />
-    <span>Healer</span>
-  </div>
 
   <!-- =====================================================
-       T0
+       Tiers
        ===================================================== -->
 
-  <div class="tier-rank tier-t0">T0</div>
+  {
+    infiniteStairway.tiers.map((tier) => (
+      <div class="tier-row">
 
-  <!-- Vanguard -->
+        <div class="tier-rank">
+          {tier.rank}
+        </div>
 
-  <div class="tier-cell">
-    <StyleCard
-      id="red-gloves-abyssal-judgment"
-      characterName="Red Gloves"
-      styleName="Abyssal Judgment"
-      rarity={6}
-      desire="lust"
-    />
-  </div>
+        {
+          infiniteStairway.columns.map((column) => {
+            const styleIds =
+              tier.cells[column.id];
 
-  <!-- ST DPS -->
+            return (
+              <div class="tier-cell">
 
-  <div class="tier-cell">
-    <StyleCard
-      id="fool-card-table-seer"
-      characterName="Fool"
-      styleName="Card Table Seer"
-      rarity={6}
-      desire="envy"
-    />
-  </div>
+                {styleIds.map((styleId) => {
+                  const style = styles[styleId];
 
-  <!-- AoE DPS -->
+                  return (
+                    <StyleCard
+                      id={style.id}
+                      characterName={style.characterName}
+                      styleName={style.styleName}
+                      rarity={style.rarity}
+                      desire={style.desire}
+                    />
+                  );
+                })}
 
-  <div class="tier-cell">
-    <StyleCard
-      id="wolf-patrol-guard"
-      characterName="Wolf"
-      styleName="Patrol Guard"
-      rarity={6}
-      desire="greed"
-    />
-  </div>
+              </div>
+            );
+          })
+        }
 
-  <!-- Support -->
+      </div>
+    ))
+  }
 
-  <div class="tier-cell">
-    <StyleCard
-      id="general-thunder-commander"
-      characterName="General"
-      styleName="Thunder Commander"
-      rarity={6}
-      desire="sloth"
-    />
-  </div>
-
-  <!-- Healer -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="windward-money-loving-gentleman"
-      characterName="Windward"
-      styleName="Money-Loving Gentleman"
-      rarity={6}
-      desire="greed"
-    />
-  </div>
-
-  <!-- =====================================================
-     T1
-     ===================================================== -->
-
-  <div class="tier-rank tier-t1">T1</div>
-
-  <!-- Vanguard -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="tyrant-lord-of-terra"
-      characterName="Tyrant"
-      styleName="Lord of Terra"
-      rarity={6}
-      desire="pride"
-    />
-  </div>
-
-  <!-- ST DPS -->
-
-  <div class="tier-cell">
-<StyleCard
-  id={lodestar.id}
-  characterName={lodestar.characterName}
-  styleName={lodestar.styleName}
-  rarity={lodestar.rarity}
-  desire={lodestar.desire}
-/>
-  </div>
-
-  <!-- AoE DPS -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="ghost-vengeful-nursery-rhyme"
-      characterName="Ghost"
-      styleName="Vengeful Nursery Rhyme"
-      rarity={6}
-      desire="envy"
-    />
-  </div>
-
-  <!-- Support -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="ng-dream-producer"
-      characterName="NG"
-      styleName="Dream Producer"
-      rarity={6}
-      desire="greed"
-    />
-  </div>
-
-  <!-- Healer -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="rainmaker-world-cleansing-rain"
-      characterName="Rainmaker"
-      styleName="World-Cleansing Rain"
-      rarity={6}
-      desire="gluttony"
-    />
-  </div>
-
-  <!-- =====================================================
-     T2
-     ===================================================== -->
-
-  <div class="tier-rank tier-t2">T2</div>
-
-  <!-- Vanguard -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="red-gloves-ace-lawyer"
-      characterName="Red Gloves"
-      styleName="Ace Lawyer"
-      rarity={5}
-      desire="sloth"
-    />
-  </div>
-
-  <!-- ST DPS -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="chef-veteran-butcher"
-      characterName="Chef"
-      styleName="Veteran Butcher"
-      rarity={5}
-      desire="greed"
-    />
-  </div>
-
-  <!-- AoE DPS -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="nobody-seaside-holiday"
-      characterName="Nobody"
-      styleName="Seaside Holiday"
-      rarity={5}
-      desire="pride"
-    />
-  </div>
-
-  <!-- Support -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="headmistress-scorching-sands-knight"
-      characterName="Headmistress"
-      styleName="Scorching Sands Knight"
-      rarity={6}
-      desire="gluttony"
-    />
-
-    <StyleCard
-      id="gift-player-in-the-play"
-      characterName="Gift"
-      styleName="Player in the Play"
-      rarity={5}
-      desire="gluttony"
-    />
-  </div>
-
-  <!-- Healer -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="laksa-spice-merchant"
-      characterName="Laksa"
-      styleName="Spice Merchant"
-      rarity={5}
-      desire="lust"
-    />
-  </div>
-
-  <!-- =====================================================
-     T3
-     ===================================================== -->
-
-  <div class="tier-rank tier-t3">T3</div>
-
-  <!-- Vanguard -->
-
-  <div class="tier-cell"></div>
-
-  <!-- ST DPS -->
-
-  <div class="tier-cell"></div>
-
-  <!-- AoE DPS -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="manipulator-technology-minister"
-      characterName="Manipulator"
-      styleName="Technology Minister"
-      rarity={6}
-      desire="lust"
-    />
-  </div>
-
-  <!-- Support -->
-
-  <div class="tier-cell">
-    <StyleCard
-      id="ghost-covert-investigator"
-      characterName="Ghost"
-      styleName="Covert Investigator"
-      rarity={5}
-      desire="pride"
-    />
-
-    <StyleCard
-      id="the-ref-silent-verdict"
-      characterName="The Ref"
-      styleName="Silent Verdict"
-      rarity={6}
-      desire="wrath"
-    />
-  </div>
-
-  <!-- Healer -->
-
-  <div class="tier-cell"></div>
 </div>
 
+
 <style>
+
   /* =====================================================
-     Tier table
+     Tier list
      ===================================================== */
 
-  .tier-table {
+  .tier-list {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border:
+      1px
+      solid
+      #3b3e45;
+
+    background: #17191d;
+  }
+
+
+  /* =====================================================
+     Shared grid
+     ===================================================== */
+
+  .tier-header,
+  .tier-row {
     display: grid;
 
     grid-template-columns:
-      70px
-      repeat(5, minmax(145px, max-content));
+      60px
+      repeat(
+        5,
+        minmax(150px, 1fr)
+      );
 
-    column-gap: 9px;
-    row-gap: 2px;
-
-    width: max-content;
-
-    margin: 1rem auto 0;
+    min-width: 810px;
   }
 
-  /*
-   * Starlight adds margins between block elements
-   * inside documentation content.
-   */
-  .tier-table > * {
-    margin: 0 !important;
-  }
 
   /* =====================================================
-     Headers
+     Header
      ===================================================== */
 
   .tier-header {
+    background: #202329;
+
+    border-bottom:
+      1px
+      solid
+      #555860;
+  }
+
+  .tier-corner {
+    border-right:
+      1px
+      solid
+      #3b3e45;
+  }
+
+  .tier-role {
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 2px;
+    gap: 7px;
 
-    padding: 10px 12px;
+    min-height: 48px;
 
-    background: #292b31;
+    padding:
+      8px
+      10px;
 
-    border-bottom: 2px solid #3f424a;
+    box-sizing: border-box;
 
-    color: #d7d8dd;
+    border-right:
+      1px
+      solid
+      #3b3e45;
 
-    font-size: 1rem;
-    font-weight: 700;
+    color: #d7d4cc;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    text-align: center;
   }
 
-  .tier-header img {
-    width: 32px;
-    height: 32px;
+  .tier-role:last-child {
+    border-right: 0;
+  }
+
+  .tier-role img {
+    width: 26px;
+    height: 26px;
 
     max-width: none;
 
     display: block;
 
     margin: 0;
-    padding: 0;
 
     object-fit: contain;
   }
 
-  .tier-label {
-    background: transparent;
+
+  /* =====================================================
+     Tier rows
+     ===================================================== */
+
+  .tier-row {
+    border-bottom:
+      1px
+      solid
+      #3b3e45;
+  }
+
+  .tier-row:last-child {
     border-bottom: 0;
   }
 
+
   /* =====================================================
-     Tier labels
+     Rank
      ===================================================== */
 
   .tier-rank {
@@ -377,30 +219,24 @@ const base = import.meta.env.BASE_URL;
 
     min-height: 145px;
 
-    color: #111;
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    border-right:
+      1px
+      solid
+      #3b3e45;
+
+    color: #eee9df;
 
     font-size: 1.15rem;
     font-weight: 800;
   }
 
-  .tier-t0 {
-    background: #ef5350;
-  }
-
-  .tier-t1 {
-    background: #ff8a65;
-  }
-
-  .tier-t2 {
-    background: #ffca69;
-  }
-
-  .tier-t3 {
-    background: #81c784;
-  }
 
   /* =====================================================
-     Tier cells
+     Cells
      ===================================================== */
 
   .tier-cell {
@@ -408,18 +244,25 @@ const base = import.meta.env.BASE_URL;
 
     flex-wrap: wrap;
 
-    align-items: center;
-    justify-content: center;
+    align-content: flex-start;
 
-    min-width: 145px;
+    gap: 10px;
+
+    min-width: 0;
     min-height: 145px;
 
     padding: 10px;
 
     box-sizing: border-box;
 
-    gap: 10px;
-
-    background: #34363d;
+    border-right:
+      1px
+      solid
+      #3b3e45;
   }
+
+  .tier-cell:last-child {
+    border-right: 0;
+  }
+
 </style>
