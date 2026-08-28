@@ -2,6 +2,11 @@
 import StyleTag from "./StyleTag.astro";
 import SkillEffect from "./SkillEffect.astro";
 
+import {
+    getAwakeningModifiersForTarget,
+    formatAwakeningLevel,
+} from "../utils/awakening";
+
 interface Props {
     skills: any;
     awakening: any[];
@@ -17,43 +22,26 @@ const {
    Skill Awakening Effects
    ========================================================= */
 
-const skillAwakeningEffects = awakening.flatMap((awakeningLevel) =>
-    awakeningLevel.effects
-        .filter(
-            (effect) =>
-                "type" in effect &&
-                effect.type === "skillModifier",
-        )
-        .map((effect) => ({
-            level: awakeningLevel.level,
-            target: effect.target,
-            description: effect.description,
-        })),
-);
-
-function getSkillAwakeningEffects(target: string) {
-    return skillAwakeningEffects.filter(
-        (effect) =>
-            effect.target === target,
-    );
-}
-
 const basicAttackAwakeningEffects =
-    getSkillAwakeningEffects("basicAttack");
+    getAwakeningModifiersForTarget(
+        awakening,
+        "skillModifier",
+        "basicAttack",
+    );
 
 const passiveAwakeningEffects =
-    getSkillAwakeningEffects("passive");
+    getAwakeningModifiersForTarget(
+        awakening,
+        "skillModifier",
+        "passive",
+    );
 
 const ultimateAwakeningEffects =
-    getSkillAwakeningEffects("ultimate");
-
-const roman = [
-    "I",
-    "II",
-    "III",
-    "IV",
-    "V",
-];
+    getAwakeningModifiersForTarget(
+        awakening,
+        "skillModifier",
+        "ultimate",
+    );
 ---
 
 <div class="kit-skills">
@@ -140,7 +128,8 @@ const roman = [
                         <div class="skill-awakening-effect">
 
                             <span class="awakening-label">
-                                AWAKENING {roman[effect.level - 1]}
+                                AWAKENING{" "}
+                                {formatAwakeningLevel(effect.level)}
                             </span>
 
                             <span>
@@ -206,7 +195,8 @@ const roman = [
                         <div class="skill-awakening-effect">
 
                             <span class="awakening-label">
-                                AWAKENING {roman[effect.level - 1]}
+                                AWAKENING{" "}
+                                {formatAwakeningLevel(effect.level)}
                             </span>
 
                             <span>
@@ -272,7 +262,8 @@ const roman = [
                         <div class="skill-awakening-effect">
 
                             <span class="awakening-label">
-                                AWAKENING {roman[effect.level - 1]}
+                                AWAKENING{" "}
+                                {formatAwakeningLevel(effect.level)}
                             </span>
 
                             <span>

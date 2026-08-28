@@ -5,6 +5,11 @@ import stats from "../data/stats";
 import desires from "../data/desires";
 import classes from "../data/classes";
 
+import {
+    getAwakeningModifiersForTarget,
+    formatAwakeningLevel,
+} from "../utils/awakening";
+
 import StyleTag from "./StyleTag.astro";
 
 interface Props {
@@ -25,26 +30,12 @@ const styleClass = classes[style.class];
    Action Focus Awakening Effects
    ========================================================= */
 
-const actionFocusAwakeningEffects =
-    style.kit.awakening.flatMap((awakeningLevel: any) =>
-        awakeningLevel.effects
-            .filter(
-                (effect: any) =>
-                    effect.type === "actionFocusModifier",
-            )
-            .map((effect: any) => ({
-                level: awakeningLevel.level,
-                target: effect.target,
-                amount: effect.amount,
-                description: effect.description,
-            })),
-    );
-
 function getActionFocusAwakening(target: string) {
-    return actionFocusAwakeningEffects.find(
-        (effect: any) =>
-            effect.target === target,
-    );
+    return getAwakeningModifiersForTarget(
+        style.kit.awakening,
+        "actionFocusModifier",
+        target,
+    )[0];
 }
 
 const focusItems = [
@@ -189,7 +180,7 @@ const focusItems = [
                             ]}
                             title={
                                 awakeningEffect
-                                    ? `Awakening ${awakeningEffect.level}: ${awakeningEffect.description}`
+                                    ? `Awakening ${formatAwakeningLevel(awakeningEffect.level)}: ${awakeningEffect.description}`
                                     : undefined
                             }
                         >
