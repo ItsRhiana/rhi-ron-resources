@@ -1,0 +1,118 @@
+---
+import { Icon } from "astro-icon/components";
+
+import stats from "../data/stats";
+import reconTraits from "../data/recon-traits";
+
+interface Props {
+    deepening: Array<{
+        stat: keyof typeof stats;
+        value: string;
+    }>;
+
+    reconstruction: Array<keyof typeof reconTraits>;
+}
+
+const {
+    deepening,
+    reconstruction,
+} = Astro.props;
+---
+
+<aside class="kit-reconstruction">
+
+    <div class="section-heading">
+        REFLECTION
+    </div>
+
+
+    <div class="recon-grid">
+
+        <!-- Deepening -->
+
+        <div class="recon-subsection">
+
+            <div class="recon-subheading">
+                DEEPENING
+            </div>
+
+            <div class="reflection-list">
+
+                {deepening.map((item) => {
+                    const stat = stats[item.stat];
+
+                    return (
+                        <div class="reflection-row">
+
+                            <span class="deepening-stat">
+
+                                <Icon
+                                    name={stat.icon}
+                                    size="20"
+                                />
+
+                                {stat.name}
+
+                            </span>
+
+                            <strong>
+                                {item.value}
+                            </strong>
+
+                        </div>
+                    );
+                })}
+
+            </div>
+
+        </div>
+
+
+        <!-- Reconstruction -->
+
+        <div class="recon-subsection">
+
+            <div class="recon-subheading">
+                RECONSTRUCTION
+            </div>
+
+            <div class="trait-list">
+
+                {reconstruction.map((traitId) => {
+                    const trait = reconTraits[traitId];
+
+                    return (
+                        <div class="trait-row">
+
+                            <div
+                                class:list={[
+                                    "trait-rank",
+                                    `trait-${trait.rank.toLowerCase()}`,
+                                ]}
+                            >
+                                {trait.rank}
+                            </div>
+
+                            <div class="trait-content">
+
+                                <strong>
+                                    {trait.name}
+                                </strong>
+
+                                <span>
+                                    {trait.effect}
+                                </span>
+
+                            </div>
+
+                        </div>
+                    );
+                })}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>

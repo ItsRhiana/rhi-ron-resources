@@ -1,0 +1,33 @@
+---
+import SkillPanel from "./SkillPanel.astro";
+import DupePanel from "./DupePanel.astro";
+import ReflectionPanel from "./ReflectionPanel.astro";
+
+interface Props {
+    style: any;
+}
+
+const { style } = Astro.props;
+---
+
+<section class="style-kit">
+
+    <div class="kit-main-grid">
+
+        <SkillPanel
+            skills={style.kit.skills}
+            dupes={style.kit.dupes}
+        />
+
+        <DupePanel
+            dupes={style.kit.dupes}
+        />
+
+        <ReflectionPanel
+            deepening={style.kit.reflection}
+            reconstruction={style.kit.reconTraits}
+        />
+
+    </div>
+
+</section>

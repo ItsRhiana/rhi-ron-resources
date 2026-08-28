@@ -328,7 +328,7 @@
    ========================================================= */
 
 .core-stats {
-    width: 60%;
+    width: 50%;
 
     margin: 0 auto;
 }
@@ -595,8 +595,11 @@ font-size: 0.95rem;
 
 .kit-main-grid {
     display: grid;
+
     grid-template-columns:
-        minmax(0, 2fr) minmax(240px, 0.8fr) minmax(300px, 1.1fr);
+        minmax(0, 1.65fr)
+        minmax(240px, 0.8fr)
+        minmax(380px, 1.45fr);
 
     gap: 18px;
 
@@ -913,7 +916,8 @@ font-size: 0.95rem;
     display: grid;
 
     grid-template-columns:
-        minmax(145px, 0.8fr) minmax(0, 1.2fr);
+        minmax(190px, 0.75fr)
+        minmax(0, 1.45fr);
 
     gap: 12px;
 
@@ -922,6 +926,20 @@ font-size: 0.95rem;
     width: 100%;
 
     margin: 0;
+}
+
+.deepening-stat {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    white-space: nowrap;
+}
+
+.deepening-stat svg {
+    flex: 0 0 auto;
 }
 
 .recon-subsection {
@@ -1069,7 +1087,7 @@ font-size: 0.95rem;
     margin: 0;
     padding: 0;
 
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 800;
 
     line-height: 1;

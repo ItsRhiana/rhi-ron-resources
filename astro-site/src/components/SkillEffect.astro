@@ -3,35 +3,53 @@ interface Props {
     effect: {
         text: string;
         multiplier?: number;
+        multipliers?: Record<string, number>;
     };
 }
 
 const { effect } = Astro.props;
 
-const hasMultiplier =
-    effect.multiplier !== undefined &&
-    effect.text.includes("{multiplier}");
+const values: Record<string, number> = {
+    ...(effect.multiplier !== undefined
+        ? { multiplier: effect.multiplier }
+        : {}),
+    ...(effect.multipliers ?? {}),
+};
 
-const parts = hasMultiplier
-    ? effect.text.split("{multiplier}")
-    : null;
+/*
+ * Split on both:
+ * - multiplier placeholders: {m1}, {multiplier}, etc.
+ * - line breaks
+ */
+const parts = effect.text.split(/(\{[^}]+\}|\n)/g);
 ---
 
 <p class="skill-effect">
     {
-        parts ? (
-            <>
-                {parts[0]}
+        parts.map((part) => {
+            if (part === "\n") {
+                return <br />;
+            }
 
+            const match = part.match(/^\{([^}]+)\}$/);
+
+            if (!match) {
+                return part;
+            }
+
+            const key = match[1];
+            const value = values[key];
+
+            if (value === undefined) {
+                return part;
+            }
+
+            return (
                 <span class="multiplier">
-                    {effect.multiplier}%
+                    {value}
                 </span>
-
-                {parts[1]}
-            </>
-        ) : (
-            effect.text
-        )
+            );
+        })
     }
 </p>
 
@@ -42,7 +60,6 @@ const parts = hasMultiplier
         color: #dedbd3;
 
         font-size: 0.96rem;
-
         line-height: 1.5;
     }
 
