@@ -28,15 +28,15 @@ const lodestarSeaRover = {
 
     reflection: [
       {
-        stat: 'ATK',
+        stat: 'atk',
         value: '+42%',
       },
       {
-        stat: 'CRIT Rate',
+        stat: 'crit-rate',
         value: '+33.6%',
       },
       {
-        stat: 'DMG',
+        stat: 'dmg',
         value: '+36.48%',
       },
     ],
