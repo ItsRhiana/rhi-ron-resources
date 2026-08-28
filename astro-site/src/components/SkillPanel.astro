@@ -1,0 +1,278 @@
+---
+import StyleTag from "./StyleTag.astro";
+import SkillEffect from "./SkillEffect.astro";
+
+interface Props {
+    skills: any;
+    dupes: any[];
+}
+
+const {
+    skills,
+    dupes,
+} = Astro.props;
+
+
+/* =========================================================
+   Skill Dupe Effects
+   ========================================================= */
+
+const skillDupeEffects = dupes.flatMap((dupe) =>
+    dupe.effects
+        .filter(
+            (effect) =>
+                "type" in effect &&
+                effect.type === "skill",
+        )
+        .map((effect) => ({
+            dupe: dupe.dupe,
+            target: effect.target,
+            text: effect.text,
+        })),
+);
+
+function getSkillDupes(target: string) {
+    return skillDupeEffects.filter(
+        (effect) =>
+            effect.target === target,
+    );
+}
+
+const basicDupes = getSkillDupes("basic");
+const passiveDupes = getSkillDupes("passive");
+const ultimateDupes = getSkillDupes("ultimate");
+
+const roman = [
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+];
+---
+
+<div class="kit-skills">
+
+    <div class="section-heading">
+        LV.10 SKILLS
+    </div>
+
+
+    <div class="skills-grid">
+
+
+        <!-- ==================================================
+             Basic
+             ================================================== -->
+
+        <article class="skill-column">
+
+            <div class="skill-title">
+                BASIC
+            </div>
+
+
+            <div class="skill-meta">
+
+                <div class="attack-meta">
+
+                    <span>
+                        Hit Count
+
+                        <strong>
+                            {skills.basic.attack.hitCount}
+                        </strong>
+                    </span>
+
+
+                    <span>
+                        Speed
+
+                        <strong>
+                            {skills.basic.attack.speed}
+                        </strong>
+                    </span>
+
+
+                    <span>
+                        Range
+
+                        <strong>
+                            {skills.basic.attack.range}
+                        </strong>
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-divider"></div>
+
+
+            <div class="skill-effects">
+
+                {skills.basic.effects.map((effect) => (
+                    <SkillEffect effect={effect} />
+                ))}
+
+            </div>
+
+
+            {basicDupes.length > 0 && (
+                <div class="skill-dupe-effects">
+
+                    {basicDupes.map((effect) => (
+                        <div class="skill-dupe-effect">
+
+                            <span class="dupe-label">
+                                DUPE {roman[effect.dupe - 1]}
+                            </span>
+
+                            <span>
+                                {effect.text}
+                            </span>
+
+                        </div>
+                    ))}
+
+                </div>
+            )}
+
+        </article>
+
+
+        <!-- ==================================================
+             Passive
+             ================================================== -->
+
+        <article class="skill-column">
+
+            <div class="skill-title">
+                PASSIVE
+            </div>
+
+
+            <div class="skill-meta">
+
+                {skills.passive.tags.length > 0 && (
+                    <div class="skill-tags">
+
+                        {skills.passive.tags.map((tagId) => (
+                            <StyleTag id={tagId} />
+                        ))}
+
+                    </div>
+                )}
+
+
+                <div class="skill-meta-line">
+                    {skills.passive.trigger}
+                </div>
+
+            </div>
+
+
+            <div class="skill-divider"></div>
+
+
+            <div class="skill-effects">
+
+                {skills.passive.effects.map((effect) => (
+                    <SkillEffect effect={effect} />
+                ))}
+
+            </div>
+
+
+            {passiveDupes.length > 0 && (
+                <div class="skill-dupe-effects">
+
+                    {passiveDupes.map((effect) => (
+                        <div class="skill-dupe-effect">
+
+                            <span class="dupe-label">
+                                DUPE {roman[effect.dupe - 1]}
+                            </span>
+
+                            <span>
+                                {effect.text}
+                            </span>
+
+                        </div>
+                    ))}
+
+                </div>
+            )}
+
+        </article>
+
+
+        <!-- ==================================================
+             Ultimate
+             ================================================== -->
+
+        <article class="skill-column">
+
+            <div class="skill-title">
+                ULTIMATE
+            </div>
+
+
+            <div class="skill-meta">
+
+                {skills.ultimate.tags.length > 0 && (
+                    <div class="skill-tags">
+
+                        {skills.ultimate.tags.map((tagId) => (
+                            <StyleTag id={tagId} />
+                        ))}
+
+                    </div>
+                )}
+
+
+                <div class="skill-meta-line">
+                    Flame Cost {skills.ultimate.cost}
+                </div>
+
+            </div>
+
+
+            <div class="skill-divider"></div>
+
+
+            <div class="skill-effects">
+
+                {skills.ultimate.effects.map((effect) => (
+                    <SkillEffect effect={effect} />
+                ))}
+
+            </div>
+
+
+            {ultimateDupes.length > 0 && (
+                <div class="skill-dupe-effects">
+
+                    {ultimateDupes.map((effect) => (
+                        <div class="skill-dupe-effect">
+
+                            <span class="dupe-label">
+                                DUPE {roman[effect.dupe - 1]}
+                            </span>
+
+                            <span>
+                                {effect.text}
+                            </span>
+
+                        </div>
+                    ))}
+
+                </div>
+            )}
+
+        </article>
+
+    </div>
+
+</div>

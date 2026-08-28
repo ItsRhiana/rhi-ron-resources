@@ -26,6 +26,14 @@ const reconTraits = {
         nameZh: "一瞬灿烂",
         effect: "Passive cooldown -5s.",
     },
+
+    // delete this later
+        "crimson-command": {
+        rank: "A",
+        name: "Crimson Command",
+        nameZh: "一瞬灿烂",
+        effect: "Each initial Passive trigger grants 4 Card Luck; while above 50% HP, CRIT Rate +5%.",
+    },
 } as const;
 
 export default reconTraits;
