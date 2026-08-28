@@ -59,7 +59,7 @@ const lodestarSeaRover = {
         effects: [
           {
             description:
-              'Deals DMG equal to {multiplier}% ATK to an enemy.',
+              'Deals DMG equal to {multiplier%} ATK to an enemy.',
             multiplier: 126,
           },
         ],
@@ -75,7 +75,7 @@ const lodestarSeaRover = {
         effects: [
           {
             description:
-              'Fires 11 bullets toward the current target, each dealing DMG equal to {multiplier}% ATK.',
+              'Fires 11 bullets toward the current target, each dealing DMG equal to {multiplier%} ATK.',
             multiplier: 31,
           },
         ],
@@ -91,7 +91,7 @@ const lodestarSeaRover = {
         effects: [
           {
             description:
-              'Deals DMG equal to {multiplier}% ATK ×12 to random enemies in a circular area.',
+              'Deals DMG equal to {multiplier%} ATK ×12 to random enemies in a circular area.',
             multiplier: 95,
           },
           {

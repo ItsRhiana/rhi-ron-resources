@@ -326,21 +326,24 @@
     z-index: 20;
 
     width: max-content;
-    max-width: 240px;
+    max-width: 260px;
 
-    padding: 9px 11px;
+    padding:
+        10px
+        12px;
 
     box-sizing: border-box;
 
-    background: #17191d;
+    background: #292c32;
 
-    border: 1px solid #555860;
+    border-left: 3px solid #C7565E;
 
     opacity: 0;
     visibility: hidden;
 
     transform:
-        translateX(-50%) translateY(-4px);
+        translateX(-50%)
+        translateY(-4px);
 
     transition:
         opacity 0.12s ease,
@@ -348,6 +351,44 @@
         visibility 0.12s ease;
 
     pointer-events: none;
+}
+
+.focus-tooltip strong {
+    display: block;
+
+    margin: 0 0 5px;
+
+    color: #C7565E;
+
+    font-size: 0.82rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.04em;
+
+    white-space: nowrap;
+}
+
+.focus-tooltip span {
+    display: block;
+
+    margin: 0;
+
+    color: #c8c9ce;
+
+    font-size: 0.9rem;
+
+    line-height: 1.4;
+}
+
+.focus-item.modified:hover .focus-tooltip {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
 .focus-tooltip strong {
