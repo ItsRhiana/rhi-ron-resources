@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 
 import stats from "../data/stats";
-import reconTraits from "../data/recon-traits";
+import reconstructionEffects from "../data/reconstruction";
 
 interface Props {
     deepening: Array<{
@@ -10,7 +10,7 @@ interface Props {
         value: string;
     }>;
 
-    reconstruction: Array<keyof typeof reconTraits>;
+    reconstruction: Array<keyof typeof reconstructionEffects>;
 }
 
 const {
@@ -19,30 +19,30 @@ const {
 } = Astro.props;
 ---
 
-<aside class="kit-reconstruction">
+<aside class="kit-reflection">
 
     <div class="section-heading">
         REFLECTION
     </div>
 
 
-    <div class="recon-grid">
+    <div class="reflection-grid">
 
         <!-- Deepening -->
 
-        <div class="recon-subsection">
+        <div class="reflection-section">
 
-            <div class="recon-subheading">
+            <div class="reflection-subheading">
                 DEEPENING
             </div>
 
-            <div class="reflection-list">
+            <div class="deepening-list">
 
                 {deepening.map((item) => {
                     const stat = stats[item.stat];
 
                     return (
-                        <div class="reflection-row">
+                        <div class="deepening-row">
 
                             <span class="deepening-stat">
 
@@ -70,37 +70,38 @@ const {
 
         <!-- Reconstruction -->
 
-        <div class="recon-subsection">
+        <div class="reflection-section">
 
-            <div class="recon-subheading">
+            <div class="reflection-subheading">
                 RECONSTRUCTION
             </div>
 
-            <div class="trait-list">
+            <div class="reconstruction-list">
 
-                {reconstruction.map((traitId) => {
-                    const trait = reconTraits[traitId];
+                {reconstruction.map((effectId) => {
+                    const effect =
+                        reconstructionEffects[effectId];
 
                     return (
-                        <div class="trait-row">
+                        <div class="reconstruction-row">
 
                             <div
                                 class:list={[
-                                    "trait-rank",
-                                    `trait-${trait.rank.toLowerCase()}`,
+                                    "reconstruction-rank",
+                                    `reconstruction-${effect.rank.toLowerCase()}`,
                                 ]}
                             >
-                                {trait.rank}
+                                {effect.rank}
                             </div>
 
-                            <div class="trait-content">
+                            <div class="reconstruction-content">
 
                                 <strong>
-                                    {trait.name}
+                                    {effect.name}
                                 </strong>
 
                                 <span>
-                                    {trait.effect}
+                                    {effect.description}
                                 </span>
 
                             </div>

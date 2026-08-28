@@ -16,6 +16,7 @@
     margin-bottom: 0 !important;
 }
 
+
 /* =========================================================
    Style Header
    ========================================================= */
@@ -404,6 +405,7 @@
     color: #d9d5cb;
 }
 
+
 /* =========================================================
    Tabs
    ========================================================= */
@@ -469,6 +471,7 @@
     background: #b65641;
 }
 
+
 /* =========================================================
    Header — medium Style-page width
    ========================================================= */
@@ -508,6 +511,7 @@
     }
 
 }
+
 
 /* =========================================================
    Header — narrow Style-page width
@@ -575,12 +579,14 @@
 
 }
 
+
 /* =========================================================
    Kit shell
    ========================================================= */
 
 .style-kit {
-font-size: 0.95rem;
+    font-size: 0.95rem;
+
     margin: 0;
     padding: 18px;
 
@@ -604,13 +610,15 @@ font-size: 0.95rem;
     gap: 18px;
 
     width: 100%;
+
     margin: 0;
 }
 
 .kit-skills,
-.kit-dupes,
-.kit-reconstruction {
+.kit-awakening,
+.kit-reflection {
     min-width: 0;
+
     margin: 0;
 }
 
@@ -621,6 +629,7 @@ font-size: 0.95rem;
 
 .section-heading {
     margin: 0 0 12px !important;
+
     padding: 7px 10px;
 
     color: #aeb1b8;
@@ -629,7 +638,9 @@ font-size: 0.95rem;
 
     font-size: 0.82rem;
     font-weight: 800;
+
     line-height: 1.2;
+
     letter-spacing: 0.05em;
 }
 
@@ -640,10 +651,13 @@ font-size: 0.95rem;
 
 .skills-grid {
     display: grid;
+
     grid-template-columns:
-        minmax(150px, 0.6fr) minmax(300px, 1.4fr);
+        minmax(150px, 0.6fr)
+        minmax(300px, 1.4fr);
 
     width: 100%;
+
     margin: 0;
 
     border: 1px solid #3b3e45;
@@ -695,17 +709,21 @@ font-size: 0.95rem;
 
     font-size: 0.95rem;
     font-weight: 800;
+
     line-height: 1.2;
 }
 
 .skill-meta {
     display: flex;
+
     flex-direction: column;
+
     align-items: flex-start;
 
     gap: 8px;
 
     min-height: 54px;
+
     margin: 0;
 }
 
@@ -716,11 +734,13 @@ font-size: 0.95rem;
 
     font-size: 0.92rem;
     font-weight: 600;
+
     line-height: 1.35;
 }
 
 .skill-tags {
     display: flex;
+
     flex-wrap: wrap;
 
     gap: 5px;
@@ -735,11 +755,13 @@ font-size: 0.95rem;
 
 .attack-meta {
     display: grid;
+
     grid-template-columns: 1fr;
 
     gap: 0;
 
     width: 100%;
+
     margin: 0;
 }
 
@@ -760,6 +782,7 @@ font-size: 0.95rem;
     color: #aeb1b8;
 
     font-size: 0.9rem;
+
     line-height: 1.2;
 }
 
@@ -768,6 +791,7 @@ font-size: 0.95rem;
 
     font-size: 0.9rem;
     font-weight: inherit;
+
     line-height: 1.2;
 
     text-transform: capitalize;
@@ -788,6 +812,7 @@ font-size: 0.95rem;
 
 .skill-effects {
     display: flex;
+
     flex-direction: column;
 
     gap: 14px;
@@ -795,12 +820,14 @@ font-size: 0.95rem;
     margin: 0;
 }
 
+
 /* =========================================================
-   Skill-linked Dupe effect
+   Skill-linked Awakening effect
    ========================================================= */
 
-.skill-dupe-effects {
+.skill-awakening-effects {
     display: flex;
+
     flex-direction: column;
 
     gap: 8px;
@@ -808,14 +835,18 @@ font-size: 0.95rem;
     margin-top: 22px !important;
 }
 
-.skill-dupe-effect {
+.skill-awakening-effect {
     display: flex;
+
     flex-direction: column;
 
     gap: 5px;
 
     margin: 0;
-    padding: 10px 12px;
+
+    padding:
+        10px
+        12px;
 
     color: #c8c9ce;
     background: #292c32;
@@ -823,24 +854,27 @@ font-size: 0.95rem;
     border-left: 3px solid #C7565E;
 
     font-size: 0.9rem;
+
     line-height: 1.4;
 }
 
-.dupe-label {
+.awakening-label {
     color: #C7565E;
 
     font-size: 0.82rem;
     font-weight: 800;
+
     line-height: 1.2;
+
     letter-spacing: 0.04em;
 }
 
 
 /* =========================================================
-   Dupes Panel
+   Awakening Panel
    ========================================================= */
 
-.dupe-list {
+.awakening-list {
     margin: 0;
 
     border: 1px solid #3b3e45;
@@ -848,11 +882,12 @@ font-size: 0.95rem;
     background: #202228;
 }
 
-.dupe-row {
+.awakening-row {
     display: grid;
 
     grid-template-columns:
-        48px minmax(0, 1fr);
+        48px
+        minmax(0, 1fr);
 
     min-height: 64px;
 
@@ -861,11 +896,11 @@ font-size: 0.95rem;
     border-bottom: 1px solid #3b3e45;
 }
 
-.dupe-row:last-child {
+.awakening-row:last-child {
     border-bottom: 0;
 }
 
-.dupe-number {
+.awakening-level {
     display: flex;
 
     align-items: center;
@@ -881,8 +916,9 @@ font-size: 0.95rem;
     font-weight: 800;
 }
 
-.dupe-effects {
+.awakening-effects {
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
@@ -894,10 +930,11 @@ font-size: 0.95rem;
     margin: 0;
 
     padding:
-        10px 12px;
+        10px
+        12px;
 }
 
-.dupe-effect {
+.awakening-effect {
     margin: 0;
 
     color: #dedbd3;
@@ -909,10 +946,10 @@ font-size: 0.95rem;
 
 
 /* =========================================================
-   Reconstruction
+   Reflection
    ========================================================= */
 
-.recon-grid {
+.reflection-grid {
     display: grid;
 
     grid-template-columns:
@@ -928,21 +965,7 @@ font-size: 0.95rem;
     margin: 0;
 }
 
-.deepening-stat {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    white-space: nowrap;
-}
-
-.deepening-stat svg {
-    flex: 0 0 auto;
-}
-
-.recon-subsection {
+.reflection-section {
     min-width: 0;
 
     margin: 0;
@@ -954,12 +977,7 @@ font-size: 0.95rem;
     background: #202228;
 }
 
-
-/* =========================================================
-   Reconstruction Subheading
-   ========================================================= */
-
-.recon-subheading {
+.reflection-subheading {
     display: flex;
 
     align-items: center;
@@ -969,7 +987,8 @@ font-size: 0.95rem;
     margin: 0;
 
     padding:
-        0 12px;
+        0
+        12px;
 
     box-sizing: border-box;
 
@@ -987,18 +1006,19 @@ font-size: 0.95rem;
 
 
 /* =========================================================
-   Reflection
+   Deepening
    ========================================================= */
 
-.reflection-list {
+.deepening-list {
     margin: 0;
 }
 
-.reflection-row {
+.deepening-row {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr) auto;
+        minmax(0, 1fr)
+        auto;
 
     align-items: center;
 
@@ -1007,18 +1027,19 @@ font-size: 0.95rem;
     margin: 0;
 
     padding:
-        0 10px;
+        0
+        10px;
 
     box-sizing: border-box;
 
     border-bottom: 1px solid #33363d;
 }
 
-.reflection-row:last-child {
+.deepening-row:last-child {
     border-bottom: 0;
 }
 
-.reflection-row span {
+.deepening-row span {
     align-self: center;
 
     margin: 0;
@@ -1030,7 +1051,7 @@ font-size: 0.95rem;
     line-height: 1;
 }
 
-.reflection-row strong {
+.deepening-row strong {
     align-self: center;
     justify-self: end;
 
@@ -1046,20 +1067,35 @@ font-size: 0.95rem;
     white-space: nowrap;
 }
 
+.deepening-stat {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    white-space: nowrap;
+}
+
+.deepening-stat svg {
+    flex: 0 0 auto;
+}
+
 
 /* =========================================================
-   Reconstruction Traits
+   Reconstruction
    ========================================================= */
 
-.trait-list {
+.reconstruction-list {
     margin: 0;
 }
 
-.trait-row {
+.reconstruction-row {
     display: grid;
 
     grid-template-columns:
-        36px minmax(0, 1fr);
+        36px
+        minmax(0, 1fr);
 
     min-height: 88px;
 
@@ -1068,16 +1104,16 @@ font-size: 0.95rem;
     border-bottom: 1px solid #33363d;
 }
 
-.trait-row:last-child {
+.reconstruction-row:last-child {
     border-bottom: 0;
 }
 
 
 /* =========================================================
-   Trait Rank
+   Reconstruction Rank
    ========================================================= */
 
-.trait-rank {
+.reconstruction-rank {
     display: grid;
 
     place-items: center;
@@ -1093,24 +1129,24 @@ font-size: 0.95rem;
     line-height: 1;
 }
 
-.trait-s {
+.reconstruction-s {
     color: #C94244;
 }
 
-.trait-a {
+.reconstruction-a {
     color: #CFA542;
 }
 
-.trait-b {
+.reconstruction-b {
     color: #846BEF;
 }
 
 
 /* =========================================================
-   Trait Content
+   Reconstruction Content
    ========================================================= */
 
-.trait-content {
+.reconstruction-content {
     display: grid;
 
     align-content: center;
@@ -1123,14 +1159,15 @@ font-size: 0.95rem;
     margin: 0;
 
     padding:
-        10px 12px;
+        10px
+        12px;
 
     box-sizing: border-box;
 
     border-left: 1px solid #3b3e45;
 }
 
-.trait-content strong {
+.reconstruction-content strong {
     margin: 0;
 
     color: #ebe7de;
@@ -1141,7 +1178,7 @@ font-size: 0.95rem;
     line-height: 1.25;
 }
 
-.trait-content span {
+.reconstruction-content span {
     margin: 0;
 
     color: #b6b8be;
@@ -1151,21 +1188,13 @@ font-size: 0.95rem;
     line-height: 1.4;
 }
 
-.trait-content span {
-    margin: 0;
-
-    color: #b6b8be;
-
-    font-size: 0.91rem;
-
-    line-height: 1.4;
-}
 
 /* =========================================================
    Kit — medium
    ========================================================= */
 
 @container (max-width: 1150px) {
+
     .kit-main-grid {
         grid-template-columns:
             minmax(0, 1fr)
@@ -1173,7 +1202,7 @@ font-size: 0.95rem;
 
         grid-template-areas:
             "skills skills"
-            "dupes reflection";
+            "awakening reflection";
 
         gap: 18px;
     }
@@ -1182,26 +1211,29 @@ font-size: 0.95rem;
         grid-area: skills;
     }
 
-    .kit-dupes {
-        grid-area: dupes;
+    .kit-awakening {
+        grid-area: awakening;
     }
 
-    .kit-reconstruction {
+    .kit-reflection {
         grid-area: reflection;
     }
+
 }
+
 
 /* =========================================================
    Kit — narrow
    ========================================================= */
 
 @container (max-width: 720px) {
+
     .kit-main-grid {
         grid-template-columns: 1fr;
 
         grid-template-areas:
             "skills"
-            "dupes"
+            "awakening"
             "reflection";
 
         gap: 18px;
@@ -1225,7 +1257,8 @@ font-size: 0.95rem;
         border-bottom: 0;
     }
 
-    .recon-grid {
+    .reflection-grid {
         grid-template-columns: 1fr;
     }
+
 }

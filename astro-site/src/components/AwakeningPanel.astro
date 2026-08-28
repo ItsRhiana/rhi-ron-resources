@@ -1,0 +1,46 @@
+---
+interface Props {
+    awakening: Array<{
+        level: number;
+        effects: Array<{
+            description: string;
+        }>;
+    }>;
+}
+
+const { awakening } = Astro.props;
+
+const roman = ["I", "II", "III", "IV", "V"];
+---
+
+<aside class="kit-awakening">
+
+    <div class="section-heading">
+        AWAKENING
+    </div>
+
+    <div class="awakening-list">
+
+        {awakening.map((awakeningLevel) => (
+            <div class="awakening-row">
+
+                <div class="awakening-level">
+                    {roman[awakeningLevel.level - 1]}
+                </div>
+
+                <div class="awakening-effects">
+
+                    {awakeningLevel.effects.map((effect) => (
+                        <div class="awakening-effect">
+                            {effect.description}
+                        </div>
+                    ))}
+
+                </div>
+
+            </div>
+        ))}
+
+    </div>
+
+</aside>

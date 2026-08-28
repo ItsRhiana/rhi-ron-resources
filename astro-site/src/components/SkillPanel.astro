@@ -4,43 +4,48 @@ import SkillEffect from "./SkillEffect.astro";
 
 interface Props {
     skills: any;
-    dupes: any[];
+    awakening: any[];
 }
 
 const {
     skills,
-    dupes,
+    awakening,
 } = Astro.props;
 
 
 /* =========================================================
-   Skill Dupe Effects
+   Skill Awakening Effects
    ========================================================= */
 
-const skillDupeEffects = dupes.flatMap((dupe) =>
-    dupe.effects
+const skillAwakeningEffects = awakening.flatMap((awakeningLevel) =>
+    awakeningLevel.effects
         .filter(
             (effect) =>
                 "type" in effect &&
-                effect.type === "skill",
+                effect.type === "skillModifier",
         )
         .map((effect) => ({
-            dupe: dupe.dupe,
+            level: awakeningLevel.level,
             target: effect.target,
-            text: effect.text,
+            description: effect.description,
         })),
 );
 
-function getSkillDupes(target: string) {
-    return skillDupeEffects.filter(
+function getSkillAwakeningEffects(target: string) {
+    return skillAwakeningEffects.filter(
         (effect) =>
             effect.target === target,
     );
 }
 
-const basicDupes = getSkillDupes("basic");
-const passiveDupes = getSkillDupes("passive");
-const ultimateDupes = getSkillDupes("ultimate");
+const basicAttackAwakeningEffects =
+    getSkillAwakeningEffects("basicAttack");
+
+const passiveAwakeningEffects =
+    getSkillAwakeningEffects("passive");
+
+const ultimateAwakeningEffects =
+    getSkillAwakeningEffects("ultimate");
 
 const roman = [
     "I",
@@ -62,13 +67,13 @@ const roman = [
 
 
         <!-- ==================================================
-             Basic
+             Basic Attack
              ================================================== -->
 
         <article class="skill-column">
 
             <div class="skill-title">
-                BASIC
+                BASIC ATTACK
             </div>
 
 
@@ -77,10 +82,19 @@ const roman = [
                 <div class="attack-meta">
 
                     <span>
+                        Weapon
+
+                        <strong>
+                            {skills.basicAttack.weapon}
+                        </strong>
+                    </span>
+
+
+                    <span>
                         Hit Count
 
                         <strong>
-                            {skills.basic.attack.hitCount}
+                            {skills.basicAttack.hitCount}
                         </strong>
                     </span>
 
@@ -89,7 +103,7 @@ const roman = [
                         Speed
 
                         <strong>
-                            {skills.basic.attack.speed}
+                            {skills.basicAttack.speed}
                         </strong>
                     </span>
 
@@ -98,7 +112,7 @@ const roman = [
                         Range
 
                         <strong>
-                            {skills.basic.attack.range}
+                            {skills.basicAttack.range}
                         </strong>
                     </span>
 
@@ -112,25 +126,25 @@ const roman = [
 
             <div class="skill-effects">
 
-                {skills.basic.effects.map((effect) => (
+                {skills.basicAttack.effects.map((effect) => (
                     <SkillEffect effect={effect} />
                 ))}
 
             </div>
 
 
-            {basicDupes.length > 0 && (
-                <div class="skill-dupe-effects">
+            {basicAttackAwakeningEffects.length > 0 && (
+                <div class="skill-awakening-effects">
 
-                    {basicDupes.map((effect) => (
-                        <div class="skill-dupe-effect">
+                    {basicAttackAwakeningEffects.map((effect) => (
+                        <div class="skill-awakening-effect">
 
-                            <span class="dupe-label">
-                                DUPE {roman[effect.dupe - 1]}
+                            <span class="awakening-label">
+                                AWAKENING {roman[effect.level - 1]}
                             </span>
 
                             <span>
-                                {effect.text}
+                                {effect.description}
                             </span>
 
                         </div>
@@ -185,18 +199,18 @@ const roman = [
             </div>
 
 
-            {passiveDupes.length > 0 && (
-                <div class="skill-dupe-effects">
+            {passiveAwakeningEffects.length > 0 && (
+                <div class="skill-awakening-effects">
 
-                    {passiveDupes.map((effect) => (
-                        <div class="skill-dupe-effect">
+                    {passiveAwakeningEffects.map((effect) => (
+                        <div class="skill-awakening-effect">
 
-                            <span class="dupe-label">
-                                DUPE {roman[effect.dupe - 1]}
+                            <span class="awakening-label">
+                                AWAKENING {roman[effect.level - 1]}
                             </span>
 
                             <span>
-                                {effect.text}
+                                {effect.description}
                             </span>
 
                         </div>
@@ -233,7 +247,7 @@ const roman = [
 
 
                 <div class="skill-meta-line">
-                    Flame Cost {skills.ultimate.cost}
+                    Flame Cost {skills.ultimate.flameCost}
                 </div>
 
             </div>
@@ -251,18 +265,18 @@ const roman = [
             </div>
 
 
-            {ultimateDupes.length > 0 && (
-                <div class="skill-dupe-effects">
+            {ultimateAwakeningEffects.length > 0 && (
+                <div class="skill-awakening-effects">
 
-                    {ultimateDupes.map((effect) => (
-                        <div class="skill-dupe-effect">
+                    {ultimateAwakeningEffects.map((effect) => (
+                        <div class="skill-awakening-effect">
 
-                            <span class="dupe-label">
-                                DUPE {roman[effect.dupe - 1]}
+                            <span class="awakening-label">
+                                AWAKENING {roman[effect.level - 1]}
                             </span>
 
                             <span>
-                                {effect.text}
+                                {effect.description}
                             </span>
 
                         </div>
