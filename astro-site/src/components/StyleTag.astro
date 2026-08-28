@@ -1,0 +1,40 @@
+---
+import { tags, tagTypes } from "../data/tags";
+
+interface Props {
+    id: keyof typeof tags;
+}
+
+const { id } = Astro.props;
+
+const tag = tags[id];
+const color = tagTypes[tag.type].color;
+---
+
+<span
+    class="style-tag"
+    style={`--tag-color: ${color}`}
+>
+    {tag.name}
+</span>
+
+<style>
+    .style-tag {
+        display: inline-block;
+
+        margin: 0;
+
+        padding: 4px 8px;
+
+        background: var(--tag-color);
+
+        color: #fff;
+
+        font-size: 0.82rem;
+        font-weight: 700;
+
+        line-height: 1.2;
+
+        text-transform: uppercase;
+    }
+</style>
