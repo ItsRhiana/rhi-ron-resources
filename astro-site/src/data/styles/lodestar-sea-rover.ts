@@ -50,7 +50,6 @@ const lodestarSeaRover = {
 
     skills: {
       basicAttack: {
-        weapon: 'gunblade',
         hitCount: 1,
         speed: 'slow',
         range: 'mid',
@@ -60,7 +59,7 @@ const lodestarSeaRover = {
         effects: [
           {
             description:
-              'Deals {multiplier} ATK as DMG to an enemy.',
+              'Deals DMG equal to {multiplier}% ATK to an enemy.',
             multiplier: 126,
           },
         ],
@@ -76,7 +75,7 @@ const lodestarSeaRover = {
         effects: [
           {
             description:
-              'Fires 11 bullets toward the current target, each dealing {multiplier} ATK DMG.',
+              'Fires 11 bullets toward the current target, each dealing DMG equal to {multiplier}% ATK.',
             multiplier: 31,
           },
         ],
@@ -92,7 +91,7 @@ const lodestarSeaRover = {
         effects: [
           {
             description:
-              'Deals {multiplier} ATK ×12 to random enemies in a circular area.',
+              'Deals DMG equal to {multiplier}% ATK ×12 to random enemies in a circular area.',
             multiplier: 95,
           },
           {

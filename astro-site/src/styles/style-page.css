@@ -29,11 +29,9 @@
     box-sizing: border-box;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #17191d,
-            #202329
-        );
+            #202329);
 
     border: 1px solid #3b3e45;
 }
@@ -42,9 +40,7 @@
     display: grid;
 
     grid-template-columns:
-        400px
-        240px
-        480px;
+        400px 240px 480px;
 
     grid-template-areas:
         "art identity overview";
@@ -258,6 +254,8 @@
 }
 
 .focus-item {
+    position: relative;
+
     display: flex;
 
     flex-direction: column;
@@ -272,9 +270,7 @@
     margin: 0;
 
     padding:
-        10px
-        6px
-        14px;
+        10px 6px 14px;
 
     border-right: 1px solid #555860;
 }
@@ -319,10 +315,75 @@
 
 .focus-item.modified .focus-value {
     color: #d87945;
-
-    cursor: help;
 }
 
+.focus-tooltip {
+    position: absolute;
+
+    left: 50%;
+    top: calc(100% + 8px);
+
+    z-index: 20;
+
+    width: max-content;
+    max-width: 240px;
+
+    padding: 9px 11px;
+
+    box-sizing: border-box;
+
+    background: #17191d;
+
+    border: 1px solid #555860;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateX(-50%) translateY(-4px);
+
+    transition:
+        opacity 0.12s ease,
+        transform 0.12s ease,
+        visibility 0.12s ease;
+
+    pointer-events: none;
+}
+
+.focus-tooltip strong {
+    display: block;
+
+    margin: 0 0 4px;
+
+    color: #C7565E;
+
+    font-size: 0.78rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+.focus-tooltip span {
+    display: block;
+
+    margin: 0;
+
+    color: #dedbd3;
+
+    font-size: 0.86rem;
+
+    line-height: 1.35;
+}
+
+.focus-item.modified:hover .focus-tooltip {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateX(-50%) translateY(0);
+}
 
 /* =========================================================
    Base Stats
@@ -338,8 +399,7 @@
     margin: 0;
 
     padding:
-        7px
-        10px;
+        7px 10px;
 
     border-bottom: 1px solid #555860;
 
@@ -357,8 +417,7 @@
     display: grid;
 
     grid-template-columns:
-        1fr
-        auto;
+        1fr auto;
 
     align-items: center;
 
@@ -367,8 +426,7 @@
     margin: 0;
 
     padding:
-        8px
-        10px;
+        8px 10px;
 
     box-sizing: border-box;
 
@@ -432,8 +490,7 @@
     margin: 0;
 
     padding:
-        13px
-        10px;
+        13px 10px;
 
     background: transparent;
 
@@ -480,8 +537,7 @@
 
     .style-header-inner {
         grid-template-columns:
-            320px
-            minmax(220px, 1fr);
+            320px minmax(220px, 1fr);
 
         grid-template-areas:
             "art identity"
@@ -521,8 +577,7 @@
 
     .style-header {
         padding:
-            16px
-            14px;
+            16px 14px;
     }
 
     .style-header-inner {
@@ -603,9 +658,7 @@
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.65fr)
-        minmax(240px, 0.8fr)
-        minmax(380px, 1.45fr);
+        minmax(0, 1.65fr) minmax(240px, 0.8fr) minmax(380px, 1.45fr);
 
     gap: 18px;
 
@@ -653,8 +706,7 @@
     display: grid;
 
     grid-template-columns:
-        minmax(150px, 0.6fr)
-        minmax(300px, 1.4fr);
+        minmax(150px, 0.6fr) minmax(300px, 1.4fr);
 
     width: 100%;
 
@@ -765,12 +817,11 @@
     margin: 0;
 }
 
-.attack-meta > span {
+.attack-meta>span {
     display: grid;
 
     grid-template-columns:
-        70px
-        auto;
+        70px auto;
 
     justify-content: start;
     align-items: center;
@@ -845,8 +896,7 @@
     margin: 0;
 
     padding:
-        10px
-        12px;
+        10px 12px;
 
     color: #c8c9ce;
     background: #292c32;
@@ -886,8 +936,7 @@
     display: grid;
 
     grid-template-columns:
-        48px
-        minmax(0, 1fr);
+        48px minmax(0, 1fr);
 
     min-height: 64px;
 
@@ -930,8 +979,7 @@
     margin: 0;
 
     padding:
-        10px
-        12px;
+        10px 12px;
 }
 
 .awakening-effect {
@@ -953,8 +1001,7 @@
     display: grid;
 
     grid-template-columns:
-        minmax(190px, 0.75fr)
-        minmax(0, 1.45fr);
+        minmax(190px, 0.75fr) minmax(0, 1.45fr);
 
     gap: 12px;
 
@@ -987,8 +1034,7 @@
     margin: 0;
 
     padding:
-        0
-        12px;
+        0 12px;
 
     box-sizing: border-box;
 
@@ -1017,8 +1063,7 @@
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr)
-        auto;
+        minmax(0, 1fr) auto;
 
     align-items: center;
 
@@ -1027,8 +1072,7 @@
     margin: 0;
 
     padding:
-        0
-        10px;
+        0 10px;
 
     box-sizing: border-box;
 
@@ -1094,8 +1138,7 @@
     display: grid;
 
     grid-template-columns:
-        36px
-        minmax(0, 1fr);
+        36px minmax(0, 1fr);
 
     min-height: 88px;
 
@@ -1159,8 +1202,7 @@
     margin: 0;
 
     padding:
-        10px
-        12px;
+        10px 12px;
 
     box-sizing: border-box;
 
@@ -1197,8 +1239,7 @@
 
     .kit-main-grid {
         grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
+            minmax(0, 1fr) minmax(0, 1fr);
 
         grid-template-areas:
             "skills skills"
