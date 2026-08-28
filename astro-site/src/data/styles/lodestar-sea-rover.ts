@@ -1,8 +1,8 @@
 const lodestarSeaRover = {
   id: 'lodestar-sea-rover',
 
-  character: 'Lodestar',
-  style: 'Sea Rover',
+  characterName: 'Lodestar',
+  styleName: 'Sea Rover',
 
   rarity: 6 as const,
   class: 'annihilation',
@@ -26,7 +26,7 @@ const lodestarSeaRover = {
       def: 11061,
     },
 
-    reflection: [
+    deepening: [
       {
         stat: 'atk',
         value: '+42%',
@@ -41,7 +41,7 @@ const lodestarSeaRover = {
       },
     ],
 
-    reconTraits: [
+    reconstruction: [
       'raging-sea-assault',
       'tactical-balance',
       'all-or-nothing',
@@ -49,21 +49,17 @@ const lodestarSeaRover = {
     ],
 
     skills: {
-      basic: {
-        name: 'Basic',
-
-        attack: {
-          weapon: 'gunblade',
-          hitCount: 1,
-          speed: 'slow',
-          range: 'mid',
-        },
+      basicAttack: {
+        weapon: 'gunblade',
+        hitCount: 1,
+        speed: 'slow',
+        range: 'mid',
 
         tags: [],
 
         effects: [
           {
-            text:
+            description:
               'Deals {multiplier} ATK as DMG to an enemy.',
             multiplier: 126,
           },
@@ -71,8 +67,6 @@ const lodestarSeaRover = {
       },
 
       passive: {
-        name: 'Passive',
-
         trigger: '15s cooldown',
 
         tags: [
@@ -81,7 +75,7 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            text:
+            description:
               'Fires 11 bullets toward the current target, each dealing {multiplier} ATK DMG.',
             multiplier: 31,
           },
@@ -89,9 +83,7 @@ const lodestarSeaRover = {
       },
 
       ultimate: {
-        name: 'Ultimate',
-
-        cost: 3,
+        flameCost: 3,
 
         tags: [
           'single-target',
@@ -99,81 +91,79 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            text:
+            description:
               'Deals {multiplier} ATK ×12 to random enemies in a circular area.',
             multiplier: 95,
           },
           {
-            text:
+            description:
               'Each repeated hit on the same target grants +6% CRIT DMG for 10s.',
           },
         ],
       },
     },
 
-    dupes: [
+    awakening: [
       {
-        dupe: 1,
+        level: 1,
 
         effects: [
           {
-            type: 'skill',
+            type: 'skillModifier',
             target: 'ultimate',
-            field: 'hitCount',
-            amount: 4,
-            text: 'ULT hit count +4.',
+            description: 'ULT hit count +4.',
           },
           {
-            text: 'ATK +7%.',
+            description: 'ATK +7%.',
           },
         ],
       },
 
       {
-        dupe: 2,
+        level: 2,
 
         effects: [
           {
-            text: 'CRIT Rate +10%.',
+            description: 'CRIT Rate +10%.',
           },
         ],
       },
 
       {
-        dupe: 3,
+        level: 3,
 
         effects: [
           {
-            type: 'actionFocus',
+            type: 'actionFocusModifier',
             target: 'execution',
             amount: 1,
-            text: 'Execution +1.',
+            description: 'Execution +1.',
           },
           {
-            text: 'ATK +21%.',
-          },
-        ],
-      },
-
-      {
-        dupe: 4,
-
-        effects: [
-          {
-            text: 'CRIT Rate +10%.',
+            description: 'ATK +21%.',
           },
         ],
       },
 
       {
-        dupe: 5,
+        level: 4,
 
         effects: [
           {
-            text: 'ATK +14%.',
+            description: 'CRIT Rate +10%.',
+          },
+        ],
+      },
+
+      {
+        level: 5,
+
+        effects: [
+          {
+            description: 'ATK +14%.',
           },
           {
-            text: 'CRIT Rate +15%.',
+            description: 'CRIT Rate +15%.',
           },
         ],
       },

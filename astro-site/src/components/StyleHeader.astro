@@ -22,25 +22,26 @@ const styleClass = classes[style.class];
 
 
 /* =========================================================
-   Action Focus Dupe Effects
+   Action Focus Awakening Effects
    ========================================================= */
 
-const actionFocusDupeEffects = style.kit.dupes.flatMap((dupe: any) =>
-    dupe.effects
-        .filter(
-            (effect: any) =>
-                effect.type === "actionFocus",
-        )
-        .map((effect: any) => ({
-            dupe: dupe.dupe,
-            target: effect.target,
-            amount: effect.amount,
-            text: effect.text,
-        })),
-);
+const actionFocusAwakeningEffects =
+    style.kit.awakening.flatMap((awakeningLevel: any) =>
+        awakeningLevel.effects
+            .filter(
+                (effect: any) =>
+                    effect.type === "actionFocusModifier",
+            )
+            .map((effect: any) => ({
+                level: awakeningLevel.level,
+                target: effect.target,
+                amount: effect.amount,
+                description: effect.description,
+            })),
+    );
 
-function getActionFocusDupe(target: string) {
-    return actionFocusDupeEffects.find(
+function getActionFocusAwakening(target: string) {
+    return actionFocusAwakeningEffects.find(
         (effect: any) =>
             effect.target === target,
     );
@@ -86,7 +87,7 @@ const focusItems = [
                 <img
                     class="style-art"
                     src={`${base}assets/styles/${style.id}.png`}
-                    alt={`${style.character} · ${style.style}`}
+                    alt={`${style.characterName} · ${style.styleName}`}
                 />
 
             </div>
@@ -103,7 +104,7 @@ const focusItems = [
             <div class="style-name-line">
 
                 <strong>
-                    {style.character}
+                    {style.characterName}
                 </strong>
 
                 <span class="name-separator">
@@ -111,7 +112,7 @@ const focusItems = [
                 </span>
 
                 <span class="style-name">
-                    {style.style}
+                    {style.styleName}
                 </span>
 
             </div>
@@ -175,20 +176,20 @@ const focusItems = [
             <div class="action-focus">
 
                 {focusItems.map((focus) => {
-                    const dupeEffect =
-                        getActionFocusDupe(focus.id);
+                    const awakeningEffect =
+                        getActionFocusAwakening(focus.id);
 
                     return (
                         <div
                             class:list={[
                                 "focus-item",
                                 {
-                                    modified: !!dupeEffect,
+                                    modified: !!awakeningEffect,
                                 },
                             ]}
                             title={
-                                dupeEffect
-                                    ? `Dupe ${dupeEffect.dupe}: ${dupeEffect.text}`
+                                awakeningEffect
+                                    ? `Awakening ${awakeningEffect.level}: ${awakeningEffect.description}`
                                     : undefined
                             }
                         >

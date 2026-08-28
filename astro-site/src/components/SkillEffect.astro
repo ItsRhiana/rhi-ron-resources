@@ -1,7 +1,7 @@
 ---
 interface Props {
     effect: {
-        text: string;
+        description: string;
         multiplier?: number;
         multipliers?: Record<string, number>;
     };
@@ -21,7 +21,7 @@ const values: Record<string, number> = {
  * - multiplier placeholders: {m1}, {multiplier}, etc.
  * - line breaks
  */
-const parts = effect.text.split(/(\{[^}]+\}|\n)/g);
+const parts = effect.description.split(/(\{[^}]+\}|\n)/g);
 ---
 
 <p class="skill-effect">

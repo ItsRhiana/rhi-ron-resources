@@ -1,7 +1,7 @@
 ---
 interface Props {
   id: string;
-  character: string;
+  characterName: string;
   styleName: string;
   rarity: 4 | 5 | 6;
   desire: string;
@@ -9,7 +9,7 @@ interface Props {
 
 const {
   id,
-  character,
+  characterName,
   styleName,
   rarity,
   desire,
@@ -25,12 +25,12 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
 <a
   class={`style-card rarity-${rarity}`}
   href={styleUrl}
-  title={`${character} — ${styleName}`}
+  title={`${characterName} — ${styleName}`}
 >
   <img
     class="style-portrait"
     src={portraitUrl}
-    alt={`${character} — ${styleName}`}
+    alt={`${characterName} — ${styleName}`}
   />
 
   <div class="desire-badge">
@@ -41,12 +41,11 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
   </div>
 
   <div class="style-card-name">
-    {character}
+    {characterName}
   </div>
 
   <div class="rarity-bar"></div>
 </a>
-
 
 <style>
   /* =====================================================

@@ -1,6 +1,6 @@
 ---
 import SkillPanel from "./SkillPanel.astro";
-import DupePanel from "./DupePanel.astro";
+import AwakeningPanel from "./AwakeningPanel.astro";
 import ReflectionPanel from "./ReflectionPanel.astro";
 
 interface Props {
@@ -11,23 +11,14 @@ const { style } = Astro.props;
 ---
 
 <section class="style-kit">
-
     <div class="kit-main-grid">
+        <SkillPanel skills={style.kit.skills} awakening={style.kit.awakening} />
 
-        <SkillPanel
-            skills={style.kit.skills}
-            dupes={style.kit.dupes}
-        />
-
-        <DupePanel
-            dupes={style.kit.dupes}
-        />
+        <AwakeningPanel awakening={style.kit.awakening} />
 
         <ReflectionPanel
-            deepening={style.kit.reflection}
-            reconstruction={style.kit.reconTraits}
+            deepening={style.kit.deepening}
+            reconstruction={style.kit.reconstruction}
         />
-
     </div>
-
 </section>
