@@ -1,0 +1,14 @@
+@import "@fontsource/cinzel/400.css";
+@import "@fontsource/cinzel/500.css";
+@import "@fontsource/cinzel/600.css";
+@import "@fontsource/cinzel/700.css";
+
+@import "@fontsource/source-serif-4/400.css";
+@import "@fontsource/source-serif-4/500.css";
+@import "@fontsource/source-serif-4/600.css";
+@import "@fontsource/source-serif-4/700.css";
+
+:root {
+    --font-display: "Cinzel", serif; /* Only use for uppercase/display text. */
+    --font-body: "Source Serif 4", serif;
+}

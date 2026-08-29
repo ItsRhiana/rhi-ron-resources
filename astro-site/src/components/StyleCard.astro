@@ -47,12 +47,15 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
   <div class="rarity-bar"></div>
 </a>
 
+
 <style>
   /* =====================================================
      Style card
      ===================================================== */
 
   .style-card {
+    position: relative;
+
     width: 125px;
     height: 125px;
 
@@ -68,9 +71,9 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
     padding: 0;
     margin: 0;
 
-    overflow: hidden;
+    overflow: visible;
 
-    border: 1px solid #454851;
+    border: 0;
 
     line-height: normal;
 
@@ -78,16 +81,49 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
 
     transition:
       transform 0.15s ease,
-      border-color 0.15s ease,
       filter 0.15s ease;
+  }
+
+
+  /* =====================================================
+     Hover line
+     ===================================================== */
+
+  .style-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    box-sizing: border-box;
+
+    border-right: 1px solid var(--color-art-border);
+    border-bottom: 1px solid var(--color-art-border);
+
+    opacity: 0;
+
+    transform: translate(0, 0);
+
+    transition:
+      opacity 0.15s ease,
+      transform 0.15s ease;
+
+    pointer-events: none;
   }
 
   .style-card:hover {
     transform: translateY(-2px);
 
-    border-color: #777b87;
-
     filter: brightness(1.08);
+  }
+
+  .style-card:hover::after {
+    opacity: 1;
+
+    transform: translate(4px, 4px);
   }
 
 
@@ -145,60 +181,65 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
     margin: 0;
     padding: 0;
 
-    background: #000;
+    background: var(--color-style-card-desire-bg);
   }
 
-  .desire-badge img {
-    width: 30px;
-    height: 30px;
+.desire-badge img {
+  width: 33px;
+  height: 33px;
 
-    max-width: none;
+  max-width: none;
 
-    display: block;
+  display: block;
 
-    margin: -2.5px;
-    padding: 0;
+  margin: -4px;
+  padding: 0;
 
-    object-fit: contain;
-  }
+  object-fit: contain;
+}
 
 
   /* =====================================================
      Name
      ===================================================== */
 
-  .style-card-name {
-    align-self: end;
-    justify-self: stretch;
+.style-card-name {
+  align-self: end;
+  justify-self: stretch;
 
-    z-index: 4;
+  z-index: 2;
 
-    margin: 0 0 4px;
+  margin: 0;
+  padding:
+    24px
+    6px
+    7px;
 
-    padding:
-      18px
-      5px
-      5px;
+  box-sizing: border-box;
 
-    box-sizing: border-box;
+  color: var(--color-text-primary);
 
-    background:
-      linear-gradient(
-        transparent,
-        rgba(0, 0, 0, 0.9)
-      );
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.98) 0%,
+      rgba(0, 0, 0, 0.82) 36%,
+      rgba(0, 0, 0, 0) 100%
+    );
 
-    color: #fff;
+  font-family: var(--font-display);
 
-    font-size: 1rem;
-    font-weight: 500;
+  font-size: 0.84rem;
+  font-weight: 700;
 
-    line-height: 1.1;
+  line-height: 1.1;
 
-    text-align: center;
+  text-align: center;
 
-    pointer-events: none;
-  }
+  text-transform: uppercase;
+
+  pointer-events: none;
+}
 
 
   /* =====================================================
@@ -206,25 +247,27 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
      ===================================================== */
 
   .rarity-bar {
+    width: 100%;
     height: 4px;
 
     align-self: end;
     justify-self: stretch;
 
-    z-index: 5;
+    z-index: 4;
 
-    pointer-events: none;
+    margin: 0;
+    padding: 0;
   }
 
   .rarity-6 .rarity-bar {
-    background: #B65641;
+    background: var(--color-rarity-6);
   }
 
   .rarity-5 .rarity-bar {
-    background: #AC8531;
+    background: var(--color-rarity-5);
   }
 
   .rarity-4 .rarity-bar {
-    background: #8862A0;
+    background: var(--color-rarity-4);
   }
 </style>
