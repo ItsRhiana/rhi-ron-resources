@@ -1,0 +1,65 @@
+<button
+    class="sidebar-collapse-button"
+    type="button"
+    aria-label="Collapse sidebar"
+    aria-expanded="true"
+>
+    ‹
+</button>
+
+<script>
+    const root = document.documentElement;
+
+    const button =
+        document.querySelector<HTMLButtonElement>(
+            ".sidebar-collapse-button"
+        );
+
+    if (button) {
+        const updateButton = () => {
+            const collapsed =
+                root.classList.contains(
+                    "sidebar-collapsed"
+                );
+
+            button.textContent =
+                collapsed ? "›" : "‹";
+
+            button.setAttribute(
+                "aria-expanded",
+                String(!collapsed)
+            );
+
+            button.setAttribute(
+                "aria-label",
+                collapsed
+                    ? "Expand sidebar"
+                    : "Collapse sidebar"
+            );
+        };
+
+        const autoCollapse =
+            window.matchMedia(
+                "(max-width: 1200px)"
+            ).matches;
+
+        if (autoCollapse) {
+            root.classList.add(
+                "sidebar-collapsed"
+            );
+        }
+
+        button.addEventListener(
+            "click",
+            () => {
+                root.classList.toggle(
+                    "sidebar-collapsed"
+                );
+
+                updateButton();
+            }
+        );
+
+        updateButton();
+    }
+</script>

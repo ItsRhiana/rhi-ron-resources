@@ -15,7 +15,13 @@ export default defineConfig({
 			customCss: [
 				'./src/styles/fonts.css',
 				'./src/styles/colors.css',
+				"./src/styles/sidebar.css",
+
 			],
+
+			components: {
+    Header: "./src/components/Header.astro",
+},
 
 			sidebar: [
 				{
