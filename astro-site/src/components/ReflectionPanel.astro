@@ -22,7 +22,7 @@ const {
 <aside class="kit-reflection">
 
     <div class="section-heading">
-        REFLECTION
+        Reflection
     </div>
 
 
@@ -85,14 +85,13 @@ const {
                     return (
                         <div class="reconstruction-row">
 
-                            <div
-                                class:list={[
-                                    "reconstruction-rank",
-                                    `reconstruction-${effect.rank.toLowerCase()}`,
-                                ]}
-                            >
-                                {effect.rank}
-                            </div>
+<div
+    class:list={[
+        "reconstruction-rank",
+        `reconstruction-${effect.rank.toLowerCase()}`,
+    ]}
+    data-rank={effect.rank}
+></div>
 
                             <div class="reconstruction-content">
 
