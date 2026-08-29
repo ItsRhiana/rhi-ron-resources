@@ -12,6 +12,11 @@ export default defineConfig({
 		starlight({
 			title: "Rhi's RoN Resources",
 
+			customCss: [
+				'./src/styles/fonts.css',
+				'./src/styles/colors.css',
+			],
+
 			sidebar: [
 				{
 					label: 'Home',

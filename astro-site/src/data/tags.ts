@@ -37,10 +37,10 @@ export const tags = {
 
 export const tagTypes = {
     enemy: {
-        color: "#D23F25",
+        color: "var(--color-tag-enemy)",
     },
 
     ally: {
-        color: "#3F8865",
+        color: "var(--color-tag-ally)",
     },
 } as const;

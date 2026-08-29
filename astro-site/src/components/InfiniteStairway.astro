@@ -100,46 +100,49 @@ const columnCount = infiniteStairway.columns.length;
      Tier List
      ========================================================= */
 
-.tier-list {
-  width: max-content;
+  .tier-list {
+    width: max-content;
 
-  margin: 0 !important;
-  padding: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 
-  overflow-x: auto;
+    overflow-x: auto;
 
-  background: #17191d;
-}
+    background: var(--color-bg);
 
-.tier-table {
-  display: grid;
-
-  grid-template-columns:
-    70px
-    repeat(
-      var(--tier-column-count),
-      minmax(155px, max-content)
-    );
-
-  /* Gap between COLUMNS only */
-  column-gap: 14px;
-
-  /* No gap between tier rows */
-  row-gap: 0;
-
-  width: max-content;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  background: #17191d;
-}
+    font-family: var(--font-body);
+  }
 
 
-/* Kill Starlight markdown margins inside the grid */
-.tier-table > * {
-  margin: 0 !important;
-}
+  .tier-table {
+    display: grid;
+
+    grid-template-columns:
+      70px
+      repeat(
+        var(--tier-column-count),
+        minmax(155px, max-content)
+      );
+
+    /* Gap between role columns */
+    column-gap: 14px;
+
+    /* Tier rows remain connected vertically */
+    row-gap: 0;
+
+    width: max-content;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: var(--color-bg);
+  }
+
+
+  /* Kill Starlight markdown margins inside the grid */
+  .tier-table > * {
+    margin: 0 !important;
+  }
 
 
   /* =========================================================
@@ -160,26 +163,30 @@ const columnCount = infiniteStairway.columns.length;
 
     box-sizing: border-box;
 
-    background: #292b31;
+    background: var(--color-panel-bg-accent);
 
     border-bottom:
       2px
       solid
-      #3f424a;
+      var(--color-border-soft);
 
-    color: #e9e5dc;
+    color: var(--color-text-primary);
 
-    font-size: 0.85rem;
-    font-weight: 700;
+    font-family: var(--font-body);
+
+    font-size: 1rem;
+    font-weight: 500;
 
     line-height: 1.2;
 
     text-align: center;
   }
 
+
   .tier-label {
-    background: #17191d;
+    background: var(--color-bg);
   }
+
 
   .role-icon {
     width: 28px;
@@ -211,31 +218,51 @@ const columnCount = infiniteStairway.columns.length;
 
     box-sizing: border-box;
 
-    color: #111;
+    color: var(--color-panel-bg);
 
-    font-size: 1.15rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+
+    font-size: 1.3rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-transform: uppercase;
   }
+
 
   .tier-t0 {
-    background: #ef5350;
+    background: var(--color-tier-0);
   }
+
 
   .tier-t1 {
-    background: #ff8a65;
+    background: var(--color-tier-1);
   }
+
 
   .tier-t2 {
-    background: #ffca69;
+    background: var(--color-tier-2);
   }
 
+
   .tier-t3 {
-    background: #81c784;
+    background: var(--color-tier-3);
   }
 
 
   /* =========================================================
      Cells
+
+     StyleCard = 125px wide.
+
+     One-card cells remain at the normal minimum column width.
+
+     Cells containing 2+ cards can expand to fit exactly
+     two cards per row:
+       125 + 125 + 14 gap + 30 padding = 294px
+
+     Additional cards wrap onto the next line.
      ========================================================= */
 
   .tier-cell {
@@ -247,10 +274,10 @@ const columnCount = infiniteStairway.columns.length;
     align-content: center;
     justify-content: center;
 
-    gap: 6px;
+    gap: 14px;
 
     min-width: 155px;
-    max-width: 286px;
+    max-width: 294px;
 
     min-height: 155px;
 
@@ -258,12 +285,17 @@ const columnCount = infiniteStairway.columns.length;
 
     box-sizing: border-box;
 
-    background: #202228;
+    background: var(--color-panel-bg);
   }
 
 
   /* =========================================================
      Small screens
+
+     Do not collapse a multi-card cell to one card per row.
+     The table remains horizontally scrollable instead.
+
+     125 + 125 + 14 gap + 20 padding = 284px
      ========================================================= */
 
   @media screen and (max-width: 900px) {
@@ -271,6 +303,7 @@ const columnCount = infiniteStairway.columns.length;
     .tier-table {
       min-width: max-content;
     }
+
 
     .tier-header {
       gap: 5px;
@@ -282,10 +315,12 @@ const columnCount = infiniteStairway.columns.length;
       font-size: 0.75rem;
     }
 
+
     .role-icon {
       width: 22px;
       height: 22px;
     }
+
 
     .tier-rank {
       min-height: 120px;
@@ -293,15 +328,16 @@ const columnCount = infiniteStairway.columns.length;
       font-size: 1rem;
     }
 
+
     .tier-cell {
-      min-width: 120px;
-      max-width: 226px;
+      min-width: 155px;
+      max-width: 284px;
 
       min-height: 120px;
 
       padding: 10px;
 
-      gap: 6px;
+      gap: 14px;
     }
 
   }
