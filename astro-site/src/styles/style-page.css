@@ -8,7 +8,7 @@
     --compact-stat-column-width: 240px;
 
     width: 100%;
-    max-width: 1587px;
+    max-width: 1586px;
 
     margin-inline: auto;
 
@@ -38,6 +38,7 @@
 
     border: 1px solid var(--color-border);
 
+    border-top: 0;
     border-left: 0;
     border-right: 0;
 }
@@ -73,7 +74,7 @@
 
     justify-content: center;
 
-    gap: 10px;
+    gap: 8px;
 
     min-width: 0;
 
@@ -174,17 +175,6 @@
     line-height: 1.1;
 }
 
-.name-separator {
-    color: var(--color-text-muted);
-
-    font-family: var(--font-body);
-
-    font-size: 1.2rem;
-    font-weight: 700;
-
-    line-height: 1.15;
-}
-
 .rarity-6,
 .rarity-5,
 .rarity-4 {
@@ -236,7 +226,7 @@
 
     align-items: center;
 
-    gap: 3px;
+    gap: 2px;
 
     margin: 0;
 }
@@ -293,14 +283,14 @@
     align-items: center;
     justify-content: center;
 
-    gap: 9px;
+    gap: 7px;
 
     min-width: 0;
 
     margin: 0;
 
     padding:
-        10px 6px 14px;
+        9px 6px 12px;
 }
 
 .focus-item:not(:last-child)::after {
@@ -309,12 +299,12 @@
     position: absolute;
 
     right: 0;
-    top: 22%;
-    bottom: 22%;
+    top: 25%;
+    bottom: 25%;
 
     width: 1px;
 
-    background: var(--color-border);
+    background: var(--color-border-soft);
 }
 
 .focus-name {
@@ -326,8 +316,8 @@
 
     font-family: var(--font-display);
 
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.72rem;
+    font-weight: 600;
 
     line-height: 1;
 
@@ -370,7 +360,7 @@
     z-index: 20;
 
     width: max-content;
-    max-width: 260px;
+    max-width: min(280px, calc(100vw - 32px));
 
     padding:
         10px 12px;
@@ -395,23 +385,29 @@
     pointer-events: none;
 }
 
+/* Keep edge Action Focus tooltips inside the overview area */
+
+.focus-item:first-child .focus-tooltip {
+    left: 0;
+
+    transform:
+        translateX(0) translateY(-4px);
+}
+
+.focus-item:last-child .focus-tooltip {
+    left: auto;
+    right: 0;
+
+    transform:
+        translateX(0) translateY(-4px);
+}
+
 .focus-tooltip strong {
     display: block;
 
-    margin: 0 0 4px;
-
-    color: var(--color-awakening);
-
-    font-family: var(--font-display);
-
-    font-size: 0.95rem;
-    font-weight: 800;
-
-    line-height: 1.2;
+    margin: 0 0 6px;
 
     white-space: nowrap;
-
-    text-transform: uppercase;
 }
 
 .focus-tooltip span {
@@ -423,9 +419,9 @@
 
     font-family: var(--font-body);
 
-    font-size: 0.95rem;
+    font-size: 1.05rem;
 
-    line-height: 1.35;
+    line-height: 1.45;
 }
 
 .focus-item.modified:hover .focus-tooltip {
@@ -436,6 +432,11 @@
         translateX(-50%) translateY(0);
 }
 
+.focus-item:first-child.modified:hover .focus-tooltip,
+.focus-item:last-child.modified:hover .focus-tooltip {
+    transform:
+        translateX(0) translateY(0);
+}
 
 /* =========================================================
    Base Stats
@@ -453,18 +454,18 @@
     padding:
         7px 10px;
 
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border-soft);
 
     color: var(--color-text-muted);
 
     font-family: var(--font-display);
 
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: 0.9rem;
+    font-weight: 600;
 
     line-height: 1.2;
 
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
 
     text-transform: uppercase;
 }
@@ -477,7 +478,7 @@
 
     align-items: center;
 
-    min-height: 42px;
+    min-height: 44px;
 
     margin: 0;
 
@@ -487,6 +488,10 @@
     box-sizing: border-box;
 
     border-bottom: 1px solid var(--color-border-soft);
+}
+
+.stat-row:last-child {
+    border-bottom: 0;
 }
 
 .stat-row span,
@@ -532,10 +537,8 @@
 
     background: var(--color-bg);
 
-    border: 1px solid var(--color-border);
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .style-tabs button {
@@ -581,9 +584,9 @@
     top: 22%;
     bottom: 22%;
 
-    width: 2px;
+    width: 1px;
 
-    background: var(--color-border);
+    background: var(--color-border-soft);
 }
 
 .style-tabs button:hover {
@@ -621,14 +624,14 @@
 
     .style-header-inner {
         grid-template-columns:
-            320px minmax(220px, 1fr);
+            320px minmax(260px, 1fr);
 
         grid-template-areas:
             "art identity"
             "overview overview";
 
-        column-gap: 28px;
-        row-gap: 24px;
+        column-gap: 24px;
+        row-gap: 18px;
 
         width: min(100%, 900px);
     }
@@ -638,6 +641,15 @@
         height: 192px;
     }
 
+    .style-identity {
+        gap: 7px;
+    }
+
+    .style-meta {
+        column-gap: 8px;
+        row-gap: 2px;
+    }
+
     .style-overview {
         width: min(100%, 620px);
 
@@ -645,7 +657,6 @@
 
         margin-left: 0;
     }
-
 }
 
 
@@ -657,7 +668,7 @@
 
     .style-header {
         padding:
-            16px 14px;
+            14px 12px;
     }
 
     .style-header-inner {
@@ -668,7 +679,7 @@
             "identity"
             "overview";
 
-        row-gap: 18px;
+        row-gap: 16px;
 
         width: 100%;
     }
@@ -681,17 +692,26 @@
         justify-content: center;
     }
 
-    .style-art-frame {
+    .style-art-frame,
+    .style-identity {
         width: min(400px, 100%);
+    }
+
+    .style-art-frame {
         height: auto;
 
         aspect-ratio: 5 / 3;
     }
 
     .style-identity {
-        width: min(100%, 400px);
-
         justify-self: center;
+
+        gap: 6px;
+    }
+
+    .style-meta {
+        column-gap: 8px;
+        row-gap: 1px;
     }
 
     .style-name-line {
@@ -701,7 +721,6 @@
 
         gap: 8px;
     }
-
 
     .style-overview {
         width: 100%;
@@ -721,7 +740,6 @@
 
         margin: 0 auto;
     }
-
 }
 
 
@@ -742,6 +760,7 @@
     border-top: 0;
     border-left: 0;
     border-right: 0;
+    border-bottom: 0;
 
     font-family: var(--font-body);
     font-size: 1.05rem;
@@ -793,10 +812,6 @@
    Shared section heading
    ========================================================= */
 
-/* =========================================================
-   Shared section heading
-   ========================================================= */
-
 .section-heading {
     display: flex;
 
@@ -804,7 +819,7 @@
 
     gap: 14px;
 
-    margin: 0 0 12px !important;
+    margin: 0 0 14px !important;
 
     padding: 0;
 
@@ -834,6 +849,7 @@
     background: var(--color-border-soft);
 }
 
+
 /* =========================================================
    Skills
    ========================================================= */
@@ -844,6 +860,17 @@
     grid-template-columns:
         minmax(220px, 0.58fr) minmax(300px, 1.21fr) minmax(300px, 1.21fr);
 
+    /*
+       Shared internal card rows:
+       1. title
+       2. metadata
+       3. divider
+       4. skill effects
+       5. Awakening modifiers
+    */
+    grid-template-rows:
+        auto auto auto auto auto;
+
     width: 100%;
 
     margin: 0;
@@ -852,6 +879,14 @@
 }
 
 .skill-column {
+    display: grid;
+
+    grid-row:
+        1 / 6;
+
+    grid-template-rows:
+        subgrid;
+
     min-width: 0;
 
     margin: 0;
@@ -861,17 +896,21 @@
 
     background: var(--color-panel-bg);
 
-    border-right: 1px solid var(--color-border);
+    border-right:
+        1px solid var(--color-border-soft);
 }
 
-.skill-column:nth-child(1),
-.skill-column:nth-child(2),
-.skill-column:nth-child(3) {
-    grid-column: auto;
-    grid-row: auto;
+.skill-column:nth-child(1) {
+    grid-column: 1;
+}
+
+.skill-column:nth-child(2) {
+    grid-column: 2;
 }
 
 .skill-column:nth-child(3) {
+    grid-column: 3;
+
     border-right: 0;
 }
 
@@ -904,22 +943,43 @@
 
     gap: 9px;
 
-    min-height: 62px;
-
     margin: 0;
 }
 
 .skill-meta-line {
-    margin: 0;
+    display: grid;
 
-    color: var(--color-text-value);
+    grid-template-columns:
+        96px minmax(0, 1fr);
+
+    align-items: baseline;
+
+    margin: 0;
 
     font-family: var(--font-body);
 
     font-size: 1.07rem;
-    font-weight: 600;
 
     line-height: 1.35;
+}
+
+.skill-meta-label {
+    color: var(--color-text-muted);
+
+    font-weight: 400;
+}
+
+.skill-meta-value {
+    color: var(--color-text-value);
+
+    font-weight: 600;
+}
+
+.skill-meta-value,
+.attack-meta strong {
+    min-width: 0;
+
+    overflow-wrap: break-word;
 }
 
 .skill-tags {
@@ -931,7 +991,6 @@
 
     margin: 0;
 }
-
 
 /* =========================================================
    Basic attack metadata
@@ -953,7 +1012,7 @@
     display: grid;
 
     grid-template-columns:
-        96px auto;
+        96px minmax(0, 1fr);
 
     justify-content: start;
     align-items: center;
@@ -990,10 +1049,11 @@
    ========================================================= */
 
 .skill-divider {
+    width: calc(100% - 8px);
     height: 1px;
 
     margin:
-        18px 0 !important;
+        18px auto !important;
 
     background: var(--color-border-soft);
 }
@@ -1003,6 +1063,8 @@
 
     flex-direction: column;
 
+    gap: 16px;
+
     margin: 0;
 }
 
@@ -1011,6 +1073,12 @@
    Skill-linked Awakening effect
    ========================================================= */
 
+.skill-awakening-slot {
+    min-width: 0;
+
+    margin: 0;
+}
+
 .skill-awakening-effects {
     display: flex;
 
@@ -1018,7 +1086,8 @@
 
     gap: 8px;
 
-    margin-top: 24px !important;
+    margin:
+        24px 0 0 !important;
 }
 
 .skill-awakening-effect {
@@ -1026,17 +1095,17 @@
 
     flex-direction: column;
 
-    gap: 6px;
+    gap: 5px;
 
     margin: 0;
 
     padding:
-        11px 13px;
+        10px 12px;
 
     color: var(--color-text-description);
     background: var(--color-panel-bg-accent);
 
-    border-left: 3px solid var(--color-awakening);
+    border-left: 2px solid var(--color-awakening);
 
     font-family: var(--font-body);
 
@@ -1045,7 +1114,8 @@
     line-height: 1.5;
 }
 
-.awakening-label {
+.awakening-label,
+.focus-tooltip strong {
     color: var(--color-awakening);
 
     font-family: var(--font-display);
@@ -1059,7 +1129,6 @@
 
     text-transform: uppercase;
 }
-
 
 /* =========================================================
    Awakening Panel
@@ -1086,12 +1155,12 @@
 
     align-items: center;
 
-    min-height: 72px;
+    min-height: 78px;
 
     margin: 0;
 
     padding:
-        14px 0;
+        16px 0;
 
     box-sizing: border-box;
 
@@ -1127,7 +1196,7 @@
 
     justify-content: center;
 
-    gap: 4px;
+    gap: 16px;
 
     min-width: 0;
 
@@ -1145,7 +1214,7 @@
     font-size: 1.14rem;
     font-weight: 400;
 
-    line-height: 1.45;
+    line-height: 1.2;
 }
 
 
@@ -1159,7 +1228,7 @@
     grid-template-columns:
         var(--compact-stat-column-width) minmax(0, 1fr);
 
-    gap: 12px;
+    gap: 18px;
 
     align-items: start;
 
@@ -1211,6 +1280,7 @@
     text-transform: none;
 }
 
+
 /* =========================================================
    Deepening
    ========================================================= */
@@ -1219,7 +1289,7 @@
     margin: 0;
 
     padding:
-        0 16px;
+        0 18px;
 }
 
 .deepening-row {
@@ -1230,12 +1300,15 @@
 
     align-items: center;
 
-    min-height: 64px;
+    min-height: 72px;
 
     margin: 0;
 
     padding:
-        12px 0;
+        16px 0;
+
+    column-gap: 12px;
+
 
     box-sizing: border-box;
 
@@ -1262,14 +1335,10 @@
     white-space: nowrap;
 }
 
-
-/* Stat name */
 .deepening-row span {
     font-weight: 500;
 }
 
-
-/* Stat value */
 .deepening-row strong {
     justify-self: end;
 
@@ -1314,12 +1383,11 @@
 
     align-items: center;
 
-    min-height: 94px;
-
+    min-height: 96px;
     margin: 0;
 
     padding:
-        14px 0;
+        16px 0;
 
     box-sizing: border-box;
 
@@ -1388,7 +1456,7 @@
 
     align-content: center;
 
-    gap: 4px;
+    gap: 5px;
 
     min-width: 0;
 
@@ -1423,8 +1491,9 @@
     font-size: 1.14rem;
     font-weight: 400;
 
-    line-height: 1.45;
+    line-height: 1.2;
 }
+
 
 /* =========================================================
    Kit — medium
@@ -1434,28 +1503,41 @@
 
     .skills-grid {
         grid-template-columns:
-            minmax(200px, 0.68fr) minmax(250px, 1.16fr) minmax(250px, 1.16fr);
+            minmax(190px, 0.62fr) minmax(240px, 1.19fr) minmax(240px, 1.19fr);
     }
 
     .kit-row-progression {
+        display: grid;
+
         grid-template-columns:
-            minmax(270px, 1fr) minmax(0, 1.55fr);
+            calc((100% - 276px) / 2) minmax(0, 1fr);
+
+        gap: 18px;
+
+        align-items: start;
+
+        min-width: 0;
+
+        margin: 0;
     }
 
     .reflection-grid {
         grid-template-columns:
-            minmax(180px,
-                var(--compact-stat-column-width)) minmax(0, 1fr);
+            minmax(210px, 0.75fr) minmax(0, 1.25fr);
     }
 
 }
-
 
 /* =========================================================
    Kit — narrow
    ========================================================= */
 
-@container (max-width: 760px) {
+@container (max-width: 700px) {
+
+    .style-kit {
+        padding:
+            14px 12px;
+    }
 
     .kit-main-grid {
         gap: 22px;
@@ -1467,8 +1549,26 @@
         gap: 22px;
     }
 
+
+    /* =====================================================
+       Skills — stacked
+       ===================================================== */
+
     .skills-grid {
         grid-template-columns: 1fr;
+
+        /*
+           Desktop uses shared subgrid rows.
+           Once stacked, each card should size independently.
+        */
+        grid-template-rows: none;
+    }
+
+    .skill-column {
+        display: grid;
+
+        grid-template-rows:
+            auto auto auto auto auto;
     }
 
     .skill-column:nth-child(1),
@@ -1478,12 +1578,19 @@
         grid-row: auto;
 
         border-right: 0;
-        border-bottom: 1px solid var(--color-border);
+
+        border-bottom:
+            1px solid var(--color-border-soft);
     }
 
     .skill-column:nth-child(3) {
         border-bottom: 0;
     }
+
+
+    /* =====================================================
+       Reflection — stacked
+       ===================================================== */
 
     .reflection-grid {
         grid-template-columns: 1fr;
