@@ -67,6 +67,17 @@ const ultimateAwakeningEffects =
 
             <div class="skill-meta">
 
+                {skills.basicAttack.tags?.length > 0 && (
+                    <div class="skill-tags">
+
+                        {skills.basicAttack.tags.map((tagId) => (
+                            <StyleTag id={tagId} />
+                        ))}
+
+                    </div>
+                )}
+
+
                 <div class="attack-meta">
 
                     <span>
@@ -112,26 +123,30 @@ const ultimateAwakeningEffects =
             </div>
 
 
-            {basicAttackAwakeningEffects.length > 0 && (
-                <div class="skill-awakening-effects">
+            <div class="skill-awakening-slot">
 
-                    {basicAttackAwakeningEffects.map((effect) => (
-                        <div class="skill-awakening-effect">
+                {basicAttackAwakeningEffects.length > 0 && (
+                    <div class="skill-awakening-effects">
 
-                            <span class="awakening-label">
-                                AWAKENING{" "}
-                                {formatAwakeningLevel(effect.level)}
-                            </span>
+                        {basicAttackAwakeningEffects.map((effect) => (
+                            <div class="skill-awakening-effect">
 
-                            <span>
-                                {effect.description}
-                            </span>
+                                <span class="awakening-label">
+                                    AWAKENING{" "}
+                                    {formatAwakeningLevel(effect.level)}
+                                </span>
 
-                        </div>
-                    ))}
+                                <span>
+                                    {effect.description}
+                                </span>
 
-                </div>
-            )}
+                            </div>
+                        ))}
+
+                    </div>
+                )}
+
+            </div>
 
         </article>
 
@@ -161,7 +176,15 @@ const ultimateAwakeningEffects =
 
 
                 <div class="skill-meta-line">
-                    {skills.passive.trigger}
+
+                    <span class="skill-meta-label">
+                        Trigger
+                    </span>
+
+                    <span class="skill-meta-value">
+                        {skills.passive.trigger}
+                    </span>
+
                 </div>
 
             </div>
@@ -179,26 +202,30 @@ const ultimateAwakeningEffects =
             </div>
 
 
-            {passiveAwakeningEffects.length > 0 && (
-                <div class="skill-awakening-effects">
+            <div class="skill-awakening-slot">
 
-                    {passiveAwakeningEffects.map((effect) => (
-                        <div class="skill-awakening-effect">
+                {passiveAwakeningEffects.length > 0 && (
+                    <div class="skill-awakening-effects">
 
-                            <span class="awakening-label">
-                                AWAKENING{" "}
-                                {formatAwakeningLevel(effect.level)}
-                            </span>
+                        {passiveAwakeningEffects.map((effect) => (
+                            <div class="skill-awakening-effect">
 
-                            <span>
-                                {effect.description}
-                            </span>
+                                <span class="awakening-label">
+                                    AWAKENING{" "}
+                                    {formatAwakeningLevel(effect.level)}
+                                </span>
 
-                        </div>
-                    ))}
+                                <span>
+                                    {effect.description}
+                                </span>
 
-                </div>
-            )}
+                            </div>
+                        ))}
+
+                    </div>
+                )}
+
+            </div>
 
         </article>
 
@@ -228,7 +255,15 @@ const ultimateAwakeningEffects =
 
 
                 <div class="skill-meta-line">
-                    Flame Cost {skills.ultimate.flameCost}
+
+                    <span class="skill-meta-label">
+                        Flame Cost
+                    </span>
+
+                    <span class="skill-meta-value">
+                        {skills.ultimate.flameCost}
+                    </span>
+
                 </div>
 
             </div>
@@ -246,26 +281,30 @@ const ultimateAwakeningEffects =
             </div>
 
 
-            {ultimateAwakeningEffects.length > 0 && (
-                <div class="skill-awakening-effects">
+            <div class="skill-awakening-slot">
 
-                    {ultimateAwakeningEffects.map((effect) => (
-                        <div class="skill-awakening-effect">
+                {ultimateAwakeningEffects.length > 0 && (
+                    <div class="skill-awakening-effects">
 
-                            <span class="awakening-label">
-                                AWAKENING{" "}
-                                {formatAwakeningLevel(effect.level)}
-                            </span>
+                        {ultimateAwakeningEffects.map((effect) => (
+                            <div class="skill-awakening-effect">
 
-                            <span>
-                                {effect.description}
-                            </span>
+                                <span class="awakening-label">
+                                    AWAKENING{" "}
+                                    {formatAwakeningLevel(effect.level)}
+                                </span>
 
-                        </div>
-                    ))}
+                                <span>
+                                    {effect.description}
+                                </span>
 
-                </div>
-            )}
+                            </div>
+                        ))}
+
+                    </div>
+                )}
+
+            </div>
 
         </article>
 
