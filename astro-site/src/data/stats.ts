@@ -33,6 +33,6 @@ const stats = {
         name: "Healing",
         icon: "hugeicons:heart-add",
     },
-} as const;
+};
 
 export default stats;

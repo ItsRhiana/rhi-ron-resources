@@ -3,17 +3,11 @@ interface Props {
   id: string;
   characterName: string;
   styleName: string;
-  rarity: 4 | 5 | 6;
+  rarity: any;
   desire: string;
 }
 
-const {
-  id,
-  characterName,
-  styleName,
-  rarity,
-  desire,
-} = Astro.props;
+const { id, characterName, styleName, rarity, desire } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
 
@@ -34,10 +28,7 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
   />
 
   <div class="desire-badge">
-    <img
-      src={desireUrl}
-      alt={desire}
-    />
+    <img src={desireUrl} alt={desire} />
   </div>
 
   <div class="style-card-name">
@@ -46,7 +37,6 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
 
   <div class="rarity-bar"></div>
 </a>
-
 
 <style>
   /* =====================================================
@@ -83,7 +73,6 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
       transform 0.15s ease,
       filter 0.15s ease;
   }
-
 
   /* =====================================================
      Hover line
@@ -126,7 +115,6 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
     transform: translate(4px, 4px);
   }
 
-
   /* =====================================================
      Shared card layers
      ===================================================== */
@@ -138,7 +126,6 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
     grid-column: 1;
     grid-row: 1;
   }
-
 
   /* =====================================================
      Portrait
@@ -162,7 +149,6 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
     object-position: center;
   }
 
-
   /* =====================================================
      Desire
      ===================================================== */
@@ -184,63 +170,57 @@ const desireUrl = `${base}assets/icons/${desire}.webp`;
     background: var(--color-style-card-desire-bg);
   }
 
-.desire-badge img {
-  width: 33px;
-  height: 33px;
+  .desire-badge img {
+    width: 33px;
+    height: 33px;
 
-  max-width: none;
+    max-width: none;
 
-  display: block;
+    display: block;
 
-  margin: -4px;
-  padding: 0;
+    margin: -4px;
+    padding: 0;
 
-  object-fit: contain;
-}
-
+    object-fit: contain;
+  }
 
   /* =====================================================
      Name
      ===================================================== */
 
-.style-card-name {
-  align-self: end;
-  justify-self: stretch;
+  .style-card-name {
+    align-self: end;
+    justify-self: stretch;
 
-  z-index: 2;
+    z-index: 2;
 
-  margin: 0;
-  padding:
-    24px
-    6px
-    7px;
+    margin: 0;
+    padding: 24px 6px 7px;
 
-  box-sizing: border-box;
+    box-sizing: border-box;
 
-  color: var(--color-text-primary);
+    color: var(--color-text-primary);
 
-  background:
-    linear-gradient(
+    background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.98) 0%,
-      rgba(0, 0, 0, 0.82) 36%,
-      rgba(0, 0, 0, 0) 100%
+      color-mix(in srgb, var(--color-overlay-bg) 98%, transparent) 0%,
+      color-mix(in srgb, var(--color-overlay-bg) 82%, transparent) 36%,
+      transparent 100%
     );
 
-  font-family: var(--font-display);
+    font-family: var(--font-display);
 
-  font-size: 0.84rem;
-  font-weight: 700;
+    font-size: 0.84rem;
+    font-weight: 700;
 
-  line-height: 1.1;
+    line-height: 1.1;
 
-  text-align: center;
+    text-align: center;
 
-  text-transform: uppercase;
+    text-transform: uppercase;
 
-  pointer-events: none;
-}
-
+    pointer-events: none;
+  }
 
   /* =====================================================
      Rarity

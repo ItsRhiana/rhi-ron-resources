@@ -26,6 +26,6 @@ const desires = {
     wrath: {
         name: "Wrath",
     },
-} as const;
+};
 
 export default desires;

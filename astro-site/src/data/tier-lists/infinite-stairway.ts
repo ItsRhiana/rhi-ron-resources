@@ -128,6 +128,6 @@ const infiniteStairway = {
       },
     },
   ],
-} as const;
+};
 
 export default infiniteStairway;

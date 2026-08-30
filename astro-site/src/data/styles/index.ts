@@ -146,6 +146,6 @@ const styles = {
     rarity: 5,
     desire: "sloth",
   },
-} as const;
+};
 
 export default styles;
