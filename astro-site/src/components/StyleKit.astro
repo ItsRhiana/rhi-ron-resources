@@ -11,29 +11,22 @@ const { style } = Astro.props;
 ---
 
 <section class="style-kit">
-
     <div class="kit-main-grid">
-
         <div class="kit-row-skills">
             <SkillPanel
                 skills={style.kit.skills}
                 awakening={style.kit.awakening}
+                reconstruction={style.kit.reconstruction}
             />
         </div>
 
         <div class="kit-row-progression">
-
-            <AwakeningPanel
-                awakening={style.kit.awakening}
-            />
+            <AwakeningPanel awakening={style.kit.awakening} />
 
             <ReflectionPanel
                 deepening={style.kit.deepening}
                 reconstruction={style.kit.reconstruction}
             />
-
         </div>
-
     </div>
-
 </section>
