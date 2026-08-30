@@ -28,6 +28,6 @@ const reconstructionEffects = {
         description: "Passive cooldown -5s.",
         target: "passive",
     },
-} as const;
+};
 
 export default reconstructionEffects;

@@ -4,7 +4,7 @@ const lodestarSeaRover = {
   characterName: 'Lodestar',
   styleName: 'Sea Rover',
 
-  rarity: 6 as const,
+  rarity: 6,
   class: 'annihilation',
   desire: 'wrath',
 

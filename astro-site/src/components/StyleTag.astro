@@ -2,9 +2,8 @@
 import { tags, tagTypes } from "../data/tags";
 
 interface Props {
-    id: keyof typeof tags;
+    id: any;
 }
-
 const { id } = Astro.props;
 
 const tag = tags[id];

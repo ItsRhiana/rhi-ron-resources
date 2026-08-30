@@ -1,15 +1,11 @@
 ---
 interface Props {
-    effect: {
-        description: string;
-        multiplier?: number;
-        multipliers?: Record<string, number>;
-    };
+    effect: any;
 }
 
 const { effect } = Astro.props;
 
-const values: Record<string, number> = {
+const values = {
     ...(effect.multiplier !== undefined
         ? { multiplier: effect.multiplier }
         : {}),
@@ -31,25 +27,22 @@ const parts = effect.description.split(/(\{[^}]+\}|\n)/g);
                 return <br />;
             }
 
-            const match = part.match(/^\{([^}%]+)(%)?\}$/);
+            const match =
+                part.match(/^\{([^}%]+)(%)?\}$/);
 
-if (!match) {
-    return part;
-}
+            if (!match) {
+                return part;
+            }
 
-const key = match[1];
-const suffix = match[2] ?? "";
-const value = values[key];
+            const key = match[1];
+            const suffix = match[2] ?? "";
 
-if (value === undefined) {
-    return part;
-}
-
-return (
-    <span class="multiplier">
-        {value}{suffix}
-    </span>
-);
+            return (
+                <span class="multiplier">
+                    {values[key]}
+                    {suffix}
+                </span>
+            );
         })
     }
 </p>

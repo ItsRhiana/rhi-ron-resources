@@ -1,20 +1,21 @@
 ---
 import StyleTag from "./StyleTag.astro";
+import { sortTags } from "../data/tags";
 import SkillEffect from "./SkillEffect.astro";
+import SkillModifiers from "./SkillModifiers.astro";
+
 import reconstructionEffects from "../data/reconstruction";
 
-import {
-    getAwakeningModifiersForTarget,
-    formatAwakeningLevel,
-} from "../utils/awakening";
+import { getAwakeningModifiersForTarget } from "../utils/awakening";
 
 interface Props {
     skills: any;
     awakening: any[];
-    reconstruction: Array<keyof typeof reconstructionEffects>;
+    reconstruction: any[];
 }
 
 const { skills, awakening, reconstruction } = Astro.props;
+
 /* =========================================================
    Skill Awakening Effects
    ========================================================= */
@@ -37,22 +38,22 @@ const ultimateAwakeningEffects = getAwakeningModifiersForTarget(
     "ultimate",
 );
 
-const styleReconstructionEffects = reconstruction.map((effectId) => ({
-    id: effectId,
-    ...reconstructionEffects[effectId],
-}));
+/* =========================================================
+   Skill Reconstruction Effects
+   ========================================================= */
 
-const basicAttackReconstructionEffects = styleReconstructionEffects.filter(
-    (effect) => "target" in effect && effect.target === "basicAttack",
-);
+function getReconstructionForTarget(target: string) {
+    return reconstruction
+        .map((effectId) => reconstructionEffects[effectId])
+        .filter((effect) => effect.target === target);
+}
 
-const passiveReconstructionEffects = styleReconstructionEffects.filter(
-    (effect) => "target" in effect && effect.target === "passive",
-);
+const basicAttackReconstructionEffects =
+    getReconstructionForTarget("basicAttack");
 
-const ultimateReconstructionEffects = styleReconstructionEffects.filter(
-    (effect) => "target" in effect && effect.target === "ultimate",
-);
+const passiveReconstructionEffects = getReconstructionForTarget("passive");
+
+const ultimateReconstructionEffects = getReconstructionForTarget("ultimate");
 ---
 
 <div class="kit-skills">
@@ -68,7 +69,7 @@ const ultimateReconstructionEffects = styleReconstructionEffects.filter(
 
             <div class="skill-meta">
                 {
-                    skills.basicAttack.tags?.length > 0 && (
+                    skills.basicAttack.tags.length > 0 && (
                         <div class="skill-tags">
                             {skills.basicAttack.tags.map((tagId) => (
                                 <StyleTag id={tagId} />
@@ -114,49 +115,10 @@ const ultimateReconstructionEffects = styleReconstructionEffects.filter(
                 }
             </div>
 
-            <div class="skill-modifier-slot">
-                <div class="skill-modifier-effects">
-                    {
-                        basicAttackAwakeningEffects.map((effect) => (
-                            <div class="skill-awakening-effect">
-                                <span class="awakening-label">
-                                    AWAKENING{" "}
-                                    {formatAwakeningLevel(effect.level)}
-                                </span>
-
-                                <span>{effect.description}</span>
-                            </div>
-                        ))
-                    }
-
-                    {
-                        basicAttackReconstructionEffects.map((effect) => (
-                            <div
-                                class:list={[
-                                    "skill-reconstruction-effect",
-                                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                                ]}
-                            >
-                                <span class="reconstruction-skill-label">
-                                    <span class="reconstruction-skill-rank">
-                                        {effect.rank}
-                                    </span>
-
-                                    <span class="reconstruction-skill-separator">
-                                        ·
-                                    </span>
-
-                                    <span class="reconstruction-skill-name">
-                                        {effect.name}
-                                    </span>
-                                </span>
-
-                                <span>{effect.description}</span>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
+            <SkillModifiers
+                awakeningEffects={basicAttackAwakeningEffects}
+                reconstructionEffects={basicAttackReconstructionEffects}
+            />
         </article>
 
         <!-- ==================================================
@@ -196,49 +158,10 @@ const ultimateReconstructionEffects = styleReconstructionEffects.filter(
                 }
             </div>
 
-            <div class="skill-modifier-slot">
-                <div class="skill-modifier-effects">
-                    {
-                        passiveAwakeningEffects.map((effect) => (
-                            <div class="skill-awakening-effect">
-                                <span class="awakening-label">
-                                    AWAKENING{" "}
-                                    {formatAwakeningLevel(effect.level)}
-                                </span>
-
-                                <span>{effect.description}</span>
-                            </div>
-                        ))
-                    }
-
-                    {
-                        passiveReconstructionEffects.map((effect) => (
-                            <div
-                                class:list={[
-                                    "skill-reconstruction-effect",
-                                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                                ]}
-                            >
-                                <span class="reconstruction-skill-label">
-                                    <span class="reconstruction-skill-rank">
-                                        {effect.rank}
-                                    </span>
-
-                                    <span class="reconstruction-skill-separator">
-                                        ·
-                                    </span>
-
-                                    <span class="reconstruction-skill-name">
-                                        {effect.name}
-                                    </span>
-                                </span>
-
-                                <span>{effect.description}</span>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
+            <SkillModifiers
+                awakeningEffects={passiveAwakeningEffects}
+                reconstructionEffects={passiveReconstructionEffects}
+            />
         </article>
 
         <!-- ==================================================
@@ -278,49 +201,10 @@ const ultimateReconstructionEffects = styleReconstructionEffects.filter(
                 }
             </div>
 
-            <div class="skill-modifier-slot">
-                <div class="skill-modifier-effects">
-                    {
-                        ultimateAwakeningEffects.map((effect) => (
-                            <div class="skill-awakening-effect">
-                                <span class="awakening-label">
-                                    AWAKENING{" "}
-                                    {formatAwakeningLevel(effect.level)}
-                                </span>
-
-                                <span>{effect.description}</span>
-                            </div>
-                        ))
-                    }
-
-                    {
-                        ultimateReconstructionEffects.map((effect) => (
-                            <div
-                                class:list={[
-                                    "skill-reconstruction-effect",
-                                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                                ]}
-                            >
-                                <span class="reconstruction-skill-label">
-                                    <span class="reconstruction-skill-rank">
-                                        {effect.rank}
-                                    </span>
-
-                                    <span class="reconstruction-skill-separator">
-                                        ·
-                                    </span>
-
-                                    <span class="reconstruction-skill-name">
-                                        {effect.name}
-                                    </span>
-                                </span>
-
-                                <span>{effect.description}</span>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
+            <SkillModifiers
+                awakeningEffects={ultimateAwakeningEffects}
+                reconstructionEffects={ultimateReconstructionEffects}
+            />
         </article>
     </div>
 </div>

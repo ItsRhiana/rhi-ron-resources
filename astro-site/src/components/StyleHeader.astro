@@ -11,6 +11,7 @@ import {
 } from "../utils/awakening";
 
 import StyleTag from "./StyleTag.astro";
+import { sortTags } from "../data/tags";
 
 interface Props {
     style: any;
@@ -25,7 +26,6 @@ const actionFocus = style.kit.actionFocus;
 const desire = desires[style.desire];
 const styleClass = classes[style.class];
 
-
 /* =========================================================
    Action Focus Awakening Effects
    ========================================================= */
@@ -38,61 +38,31 @@ function getActionFocusAwakening(target: string) {
     )[0];
 }
 
-const focusItems = [
-    {
-        id: "intel",
-        name: "INTEL",
-        value: actionFocus.intel,
-    },
-    {
-        id: "supplies",
-        name: "SUPPLIES",
-        value: actionFocus.supplies,
-    },
-    {
-        id: "execution",
-        name: "EXECUTION",
-        value: actionFocus.execution,
-    },
-    {
-        id: "strategy",
-        name: "STRATEGY",
-        value: actionFocus.strategy,
-    },
-];
+const focusItems = ["intel", "supplies", "execution", "strategy"];
 ---
 
 <section class="style-header">
-
     <div class="style-header-inner">
-
         <!-- ==================================================
              Art
              ================================================== -->
 
         <div class="style-art-column">
-
             <div class="style-art-frame">
-
                 <img
                     class="style-art"
                     src={`${base}assets/styles/${style.id}.png`}
                     alt={`${style.characterName} ${style.styleName}`}
                 />
-
             </div>
-
         </div>
-
 
         <!-- ==================================================
              Identity
              ================================================== -->
 
         <div class="style-identity">
-
             <div class="style-name-line">
-
                 <strong class="character-name">
                     {style.characterName}
                 </strong>
@@ -100,24 +70,14 @@ const focusItems = [
                 <span class="style-name">
                     {style.styleName}
                 </span>
-
             </div>
 
-
-            <div
-                class:list={[
-                    "rarity",
-                    `rarity-${style.rarity}`,
-                ]}
-            >
+            <div class:list={["rarity", `rarity-${style.rarity}`]}>
                 {"★".repeat(style.rarity)}
             </div>
 
-
             <div class="style-meta">
-
                 <span class="meta-item">
-
                     <img
                         src={`${base}assets/icons/${style.desire}.webp`}
                         alt=""
@@ -126,12 +86,9 @@ const focusItems = [
                     <span>
                         {desire.name}
                     </span>
-
                 </span>
 
-
                 <span class="meta-item">
-
                     <img
                         src={`${base}assets/icons/${style.class}.webp`}
                         alt=""
@@ -140,69 +97,52 @@ const focusItems = [
                     <span>
                         {styleClass.name}
                     </span>
-
                 </span>
-
             </div>
 
-
             <div class="style-tags">
-
                 {
-                    style.kit.tags.map((tagId: any) => (
+                    sortTags(style.kit.tags).map((tagId) => (
                         <StyleTag id={tagId} />
                     ))
                 }
-
             </div>
-
         </div>
-
 
         <!-- ==================================================
              Overview
              ================================================== -->
 
         <div class="style-overview">
-
-
             <!-- ==================================================
                  Action Focus
                  ================================================== -->
 
             <div class="action-focus">
-
                 {
-                    focusItems.map((focus) => {
+                    focusItems.map((focusId) => {
                         const awakeningEffect =
-                            getActionFocusAwakening(
-                                focus.id,
-                            );
+                            getActionFocusAwakening(focusId);
 
                         return (
                             <div
                                 class:list={[
                                     "focus-item",
                                     {
-                                        modified:
-                                            !!awakeningEffect,
+                                        modified: !!awakeningEffect,
                                     },
                                 ]}
                             >
-
                                 <span class="focus-name">
-                                    {focus.name}
+                                    {focusId.toUpperCase()}
                                 </span>
-
 
                                 <span class="focus-value">
-                                    ✦ {focus.value}
+                                    ✦ {actionFocus[focusId]}
                                 </span>
-
 
                                 {awakeningEffect && (
                                     <div class="focus-tooltip">
-
                                         <strong>
                                             AWAKENING{" "}
                                             {formatAwakeningLevel(
@@ -211,69 +151,42 @@ const focusItems = [
                                         </strong>
 
                                         <span>
-                                            {
-                                                awakeningEffect.description
-                                            }
+                                            {awakeningEffect.description}
                                         </span>
-
                                     </div>
                                 )}
-
                             </div>
                         );
                     })
                 }
-
             </div>
-
 
             <!-- ==================================================
                  Base Stats
                  ================================================== -->
 
             <div class="core-stats">
-
-                <div class="stats-heading">
-                    LV.100 BASE STATS
-                </div>
-
+                <div class="stats-heading">LV.100 BASE STATS</div>
 
                 {
-                    (["hp", "atk", "def"] as const).map(
-                        (statId) => {
-                            const stat = stats[statId];
-                            const value =
-                                style.kit.stats[statId];
+                    ["hp", "atk", "def"].map((statId) => {
+                        const stat = stats[statId];
+                        const value = style.kit.stats[statId];
 
-                            return (
-                                <div class="stat-row">
+                        return (
+                            <div class="stat-row">
+                                <span class="stat-name">
+                                    <Icon name={stat.icon} size="20" />
 
-                                    <span class="stat-name">
+                                    {stat.name}
+                                </span>
 
-                                        <Icon
-                                            name={stat.icon}
-                                            size="20"
-                                        />
-
-                                        {stat.name}
-
-                                    </span>
-
-
-                                    <strong>
-                                        {value.toLocaleString()}
-                                    </strong>
-
-                                </div>
-                            );
-                        },
-                    )
+                                <strong>{value.toLocaleString()}</strong>
+                            </div>
+                        );
+                    })
                 }
-
             </div>
-
         </div>
-
     </div>
-
 </section>

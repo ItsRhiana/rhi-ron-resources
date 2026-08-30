@@ -5,12 +5,8 @@ import stats from "../data/stats";
 import reconstructionEffects from "../data/reconstruction";
 
 interface Props {
-    deepening: Array<{
-        stat: keyof typeof stats;
-        value: string;
-    }>;
-
-    reconstruction: Array<keyof typeof reconstructionEffects>;
+    deepening: any[];
+    reconstruction: any[];
 }
 
 const {

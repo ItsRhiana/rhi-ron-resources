@@ -788,7 +788,7 @@
     display: grid;
 
     grid-template-columns:
-        calc((100% - 270px) / 2) minmax(0, 1fr);
+        calc((100% - 276px) / 2) minmax(0, 1fr);
 
     gap: 18px;
 
@@ -861,13 +861,13 @@
         minmax(220px, 0.58fr) minmax(300px, 1.21fr) minmax(300px, 1.21fr);
 
     /*
-       Shared internal card rows:
-       1. title
-       2. metadata
-       3. divider
-       4. skill effects
-       5. Awakening modifiers
-    */
+   Shared internal card rows:
+   1. title
+   2. metadata
+   3. divider
+   4. skill effects
+   5. external modifiers
+*/
     grid-template-rows:
         auto auto auto auto auto;
 
@@ -1070,25 +1070,27 @@
 
 
 /* =========================================================
-   Skill-linked Awakening effect
+   Skill-linked modifiers
    ========================================================= */
 
-.skill-awakening-slot {
+.skill-modifier-slot {
     min-width: 0;
 
     margin: 0;
 }
 
-.skill-awakening-effects {
+.skill-modifier-effects {
     display: flex;
 
     flex-direction: column;
 
-    gap: 8px;
+    gap: 12px;
 
     margin:
         24px 0 0 !important;
 }
+
+/* Awakening */
 
 .skill-awakening-effect {
     display: flex;
@@ -1105,13 +1107,14 @@
     color: var(--color-text-description);
     background: var(--color-panel-bg-accent);
 
-    border-left: 2px solid var(--color-awakening);
+    border-left:
+        2px solid var(--color-awakening);
 
     font-family: var(--font-body);
 
     font-size: 1.12rem;
 
-    line-height: 1.5;
+    line-height: 1.2;
 }
 
 .awakening-label,
@@ -1129,6 +1132,8 @@
 
     text-transform: uppercase;
 }
+
+/* Reconstruction */
 
 .skill-reconstruction-effect {
     display: flex;
@@ -1155,10 +1160,6 @@
     line-height: 1.2;
 }
 
-
-/* =========================================================
-   Reconstruction modifier heading
-   ========================================================= */
 
 .reconstruction-skill-label {
     display: flex;
@@ -1192,11 +1193,6 @@
 .reconstruction-skill-name {
     font-weight: 700;
 }
-
-
-/* =========================================================
-   Reconstruction rank colors
-   ========================================================= */
 
 .skill-reconstruction-s {
     --reconstruction-color:

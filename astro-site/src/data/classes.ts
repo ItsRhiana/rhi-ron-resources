@@ -14,6 +14,6 @@ const classes = {
     healer: {
         name: "Healer",
     },
-} as const;
+};
 
 export default classes;
