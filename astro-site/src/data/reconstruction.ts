@@ -4,6 +4,7 @@ const reconstructionEffects = {
         name: "Raging Sea Assault",
         nameZh: "",
         description: "ULT's CRIT DMG gain increases to 11%.",
+        target: "ultimate",
     },
 
     "tactical-balance": {
@@ -25,6 +26,7 @@ const reconstructionEffects = {
         name: "Fleeting Brilliance",
         nameZh: "一瞬灿烂",
         description: "Passive cooldown -5s.",
+        target: "passive",
     },
 } as const;
 
