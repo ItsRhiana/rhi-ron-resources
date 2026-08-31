@@ -1,0 +1,67 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+import "../../styles/fonts.css";
+import "../../styles/colors.css";
+import "../../styles/style-page.css";
+
+import ng from "../../data/styles/ng-dream-producer";
+
+import StyleHeader from "../../components/StyleHeader.astro";
+import StyleKit from "../../components/StyleKit.astro";
+---
+
+<StarlightPage
+    frontmatter={{
+        title: `${ng.characterName} — ${ng.styleName}`,
+        description: `${ng.characterName} — ${ng.styleName} Style details.`,
+        tableOfContents: false,
+        prev: false,
+        next: false,
+
+        head: [
+            {
+                tag: "style",
+                content: `
+                    :root {
+                        --sl-content-width: 100% !important;
+                    }
+
+                    .sl-markdown-content {
+                        max-width: none !important;
+                    }
+                `,
+            },
+        ],
+    }}
+>
+    <div class="style-page">
+
+        <StyleHeader style={ng} />
+
+        <nav class="style-tabs">
+
+            <button class="active" type="button">
+                <span class="tab-label">
+                    KIT
+                </span>
+            </button>
+
+            <button type="button">
+                <span class="tab-label">
+                    BUILD &amp; SYNERGIES
+                </span>
+            </button>
+
+            <button type="button">
+                <span class="tab-label">
+                    REVIEW
+                </span>
+            </button>
+
+        </nav>
+
+        <StyleKit style={ng} />
+
+    </div>
+</StarlightPage>

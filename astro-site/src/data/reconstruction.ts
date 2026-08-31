@@ -5,6 +5,13 @@ const reconstructionEffects = {
         description: "ULT's CRIT DMG gain increases to 11%.",
         target: "ultimate",
     },
+    "into-the-frame": {
+        rank: "S",
+        name: "Into the Frame",
+        description:
+            "ULT +2 {stack:storyboard}.",
+        target: "ultimate",
+    },
 
     "tactical-balance": {
         rank: "A",
@@ -53,6 +60,20 @@ const reconstructionEffects = {
         name: "CRIT Rate",
         description:
             "CRIT Rate +8%.",
+    },
+    "inspiring-horn": {
+        rank: "A",
+        name: "Inspiring Horn",
+        description:
+            "Every 25s, increases team DMG dealt by 8% for 10s.",
+    },
+
+    "asset-allocation": {
+        rank: "A",
+        name: "Asset Allocation",
+        description:
+            "Reduces the first ULT Flame cost by 1.",
+        target: "ultimate",
     },
 };
 
