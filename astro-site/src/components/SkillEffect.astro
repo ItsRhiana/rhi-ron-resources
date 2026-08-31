@@ -10,34 +10,131 @@ const { effect } = Astro.props;
 const values = {
     ...(effect.multiplier !== undefined
         ? {
-            multiplier:
-                effect.multiplier,
-        }
+              multiplier: effect.multiplier,
+          }
         : {}),
     ...(effect.multipliers ?? {}),
 };
 ---
 
-<p class="skill-effect">
-    <EffectText
-        text={effect.description}
-        values={values}
-    />
-</p>
+{
+    effect.items ? (
+        <div class="skill-effect-group">
+            <div class="skill-effect-intro">{effect.intro}</div>
+
+            <div class="skill-effect-list">
+                {effect.items.map((item) => (
+                    <div class="skill-effect-list-item">
+                        <span class="skill-effect-marker">•</span>
+
+                        <span>
+                            <EffectText
+                                text={item.description}
+                                values={item.multipliers}
+                            />
+                        </span>
+                    </div>
+                ))}
+            </div>
+
+            <div class="skill-effect-footer">{effect.footer}</div>
+
+            <div class="skill-effect-note">{effect.note}</div>
+        </div>
+    ) : (
+        <p class="skill-effect">
+            <EffectText text={effect.description} values={values} />
+        </p>
+    )
+}
 
 <style>
     .skill-effect {
         margin: 0;
 
-        color:
-            var(--color-text-description);
+        color: var(--color-text-description);
 
-        font-family:
-            var(--font-body);
+        font-family: var(--font-body);
 
         font-size: 1.14rem;
         font-weight: 400;
 
         line-height: 1.2;
+    }
+
+    .skill-effect-group {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        margin: 0;
+
+        color: var(--color-text-description);
+
+        font-family: var(--font-body);
+
+        font-size: 1.14rem;
+        font-weight: 400;
+
+        line-height: 1.2;
+    }
+
+    .skill-effect-intro {
+        margin: 0;
+    }
+
+    .skill-effect-list {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        margin: 0;
+    }
+
+    .skill-effect-list-item {
+        display: grid;
+
+        grid-template-columns: 14px minmax(0, 1fr);
+
+        gap: 8px;
+
+        align-items: start;
+
+        margin: 0;
+    }
+
+    .skill-effect-marker {
+        color: var(--color-text-muted);
+
+        font-size: 0.6rem;
+
+        line-height: 1.8;
+    }
+
+    .skill-effect-footer {
+        margin: 0;
+
+        color: var(--color-text-description);
+
+        font-family: var(--font-body);
+
+        font-size: 1.14rem;
+        font-weight: 400;
+
+        line-height: 1.2;
+    }
+
+    .skill-effect-note {
+        margin: 2px 0 0;
+
+        color: var(--color-text-muted);
+
+        font-size: 1rem;
+
+        font-style: italic;
     }
 </style>

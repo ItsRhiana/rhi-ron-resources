@@ -2,6 +2,7 @@ import lodestarSeaRover from "./lodestar-sea-rover";
 import giftPlayerInThePlay from "./gift-player-in-the-play";
 import ngDreamProducer from "./ng-dream-producer";
 import windwardMoneyLovingGentleman from "./windward-money-loving-gentleman";
+import rainmakerWorldCleansingRain from "./rainmaker-world-cleansing-rain";
 
 const styles = {
   "red-gloves-abyssal-judgment": {
@@ -60,13 +61,8 @@ const styles = {
   "ng-dream-producer":
     ngDreamProducer,
 
-  "rainmaker-world-cleansing-rain": {
-    id: "rainmaker-world-cleansing-rain",
-    characterName: "Rainmaker",
-    styleName: "World-Cleansing Rain",
-    rarity: 6,
-    desire: "gluttony",
-  },
+  "rainmaker-world-cleansing-rain":
+    rainmakerWorldCleansingRain,
 
   "red-gloves-ace-lawyer": {
     id: "red-gloves-ace-lawyer",

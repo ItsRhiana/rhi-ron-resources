@@ -14,6 +14,11 @@ const stacks = {
         description:
             "Receives healing once every 2s.",
     },
+    stigmata: {
+        name: "Stigmata",
+        description:
+            "Max 100 stacks.",
+    },
 };
 
 export default stacks;
