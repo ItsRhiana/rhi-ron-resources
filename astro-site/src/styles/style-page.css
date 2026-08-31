@@ -6,6 +6,7 @@
     container-type: inline-size;
 
     --compact-stat-column-width: 240px;
+    --deepening-column-width: 260px;
 
     width: 100%;
     max-width: 1586px;
@@ -47,7 +48,7 @@
     display: grid;
 
     grid-template-columns:
-        400px 245px 480px;
+        400px 276px 480px;
 
     grid-template-areas:
         "art identity overview";
@@ -788,7 +789,7 @@
     display: grid;
 
     grid-template-columns:
-        calc((100% - 276px) / 2) minmax(0, 1fr);
+        calc((100% - 296px) / 2) minmax(0, 1fr);
 
     gap: 18px;
 
@@ -858,16 +859,16 @@
     display: grid;
 
     grid-template-columns:
-        minmax(220px, 0.58fr) minmax(300px, 1.21fr) minmax(300px, 1.21fr);
+        minmax(220px, 0.59fr) minmax(300px, 1.205fr) minmax(300px, 1.205fr);
 
     /*
-   Shared internal card rows:
-   1. title
-   2. metadata
-   3. divider
-   4. skill effects
-   5. external modifiers
-*/
+       Shared internal card rows:
+       1. title
+       2. metadata
+       3. divider
+       4. skill effects
+       5. external modifiers
+    */
     grid-template-rows:
         auto auto auto auto auto;
 
@@ -1039,8 +1040,6 @@
     font-weight: inherit;
 
     line-height: 1.2;
-
-    text-transform: capitalize;
 }
 
 
@@ -1300,7 +1299,7 @@
     display: grid;
 
     grid-template-columns:
-        var(--compact-stat-column-width) minmax(0, 1fr);
+        var(--deepening-column-width) minmax(0, 1fr);
 
     gap: 18px;
 
@@ -1555,7 +1554,7 @@
     text-transform: none;
 }
 
-.reconstruction-content span {
+.reconstruction-description {
     margin: 0;
 
     color: var(--color-text-description);
@@ -1577,29 +1576,22 @@
 
     .skills-grid {
         grid-template-columns:
-            minmax(190px, 0.62fr) minmax(240px, 1.19fr) minmax(240px, 1.19fr);
+            minmax(190px, 0.62fr)
+            minmax(240px, 1.19fr)
+            minmax(240px, 1.19fr);
     }
 
     .kit-row-progression {
-        display: grid;
-
         grid-template-columns:
-            calc((100% - 276px) / 2) minmax(0, 1fr);
-
-        gap: 18px;
-
-        align-items: start;
-
-        min-width: 0;
-
-        margin: 0;
+            minmax(0, 1fr)
+            minmax(0, 2fr);
     }
 
     .reflection-grid {
         grid-template-columns:
-            minmax(210px, 0.75fr) minmax(0, 1.25fr);
+            minmax(250px, 0.75fr)
+            minmax(0, 1.25fr);
     }
-
 }
 
 /* =========================================================
