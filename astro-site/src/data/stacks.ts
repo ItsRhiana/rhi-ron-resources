@@ -9,6 +9,11 @@ const stacks = {
         description:
             "At 5 stacks, consumes all stacks to reduce the next ULT Flame cost by 1.",
     },
+    hot: {
+        name: "HoT",
+        description:
+            "Receives healing once every 2s.",
+    },
 };
 
 export default stacks;

@@ -12,6 +12,13 @@ const reconstructionEffects = {
             "ULT +2 {stack:storyboard}.",
         target: "ultimate",
     },
+    "like-spring-rain": {
+        rank: "S",
+        name: "Like Spring Rain",
+        description:
+            "ULT additionally heals the target for 10% HP.",
+        target: "ultimate",
+    },
 
     "tactical-balance": {
         rank: "A",
@@ -43,7 +50,7 @@ const reconstructionEffects = {
         rank: "A",
         name: "Crimson Command",
         description:
-            "ULT deducts 10% HP from the team, granting allies a 12% DMG increase for 10s.",
+            "ULT deducts 10% HP from the team, granting teamwide 12% DMG increase for 10s.",
         target: "ultimate",
     },
 
@@ -73,6 +80,22 @@ const reconstructionEffects = {
         name: "Asset Allocation",
         description:
             "Reduces the first ULT Flame cost by 1.",
+        target: "ultimate",
+    },
+
+    "battle-spirit-relay": {
+        rank: "A",
+        name: "Battle Spirit Relay",
+        description:
+            "ULT grants the target a 10% CRIT Rate increase for 10s.",
+        target: "ultimate",
+    },
+
+    "healing-enhancement": {
+        rank: "A",
+        name: "Healing Enhancement",
+        description:
+            "Each ULT increases own Healing Recovery Rate by 8%, stacking up to 24%.",
         target: "ultimate",
     },
 };
