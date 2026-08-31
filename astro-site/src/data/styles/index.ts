@@ -1,6 +1,7 @@
 import lodestarSeaRover from "./lodestar-sea-rover";
 import giftPlayerInThePlay from "./gift-player-in-the-play";
 import ngDreamProducer from "./ng-dream-producer";
+import windwardMoneyLovingGentleman from "./windward-money-loving-gentleman";
 
 const styles = {
   "red-gloves-abyssal-judgment": {
@@ -35,13 +36,8 @@ const styles = {
     desire: "sloth",
   },
 
-  "windward-money-loving-gentleman": {
-    id: "windward-money-loving-gentleman",
-    characterName: "Windward",
-    styleName: "Money-Loving Gentleman",
-    rarity: 6,
-    desire: "greed",
-  },
+  "windward-money-loving-gentleman":
+    windwardMoneyLovingGentleman,
 
   "tyrant-lord-of-terra": {
     id: "tyrant-lord-of-terra",
@@ -61,7 +57,7 @@ const styles = {
     desire: "envy",
   },
 
-"ng-dream-producer":
+  "ng-dream-producer":
     ngDreamProducer,
 
   "rainmaker-world-cleansing-rain": {

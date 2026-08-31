@@ -32,6 +32,35 @@ export const tags = {
         name: "Support",
         type: "ally",
     },
+    "healing": {
+        name: "Healing",
+        type: "ally",
+    },
+
+    "atk": {
+        name: "ATK",
+        type: "ally",
+    },
+
+    "def": {
+        name: "DEF",
+        type: "ally",
+    },
+
+    "hot": {
+        name: "HoT",
+        type: "ally",
+    },
+
+    "def-up": {
+        name: "DEF Up",
+        type: "ally",
+    },
+
+    "atk-up": {
+        name: "ATK Up",
+        type: "ally",
+    },
 };
 
 export const tagTypes = {
