@@ -1,35 +1,27 @@
 ---
-import {
-    formatAwakeningLevel,
-} from "../utils/awakening";
+import { formatAwakeningLevel } from "../utils/awakening";
+import EffectText from "./EffectText.astro";
 
 interface Props {
     awakeningEffects: any[];
     reconstructionEffects: any[];
 }
 
-const {
-    awakeningEffects,
-    reconstructionEffects,
-} = Astro.props;
+const { awakeningEffects, reconstructionEffects } = Astro.props;
 ---
 
 <div class="skill-modifier-slot">
     <div class="skill-modifier-effects">
-
         {
             awakeningEffects.map((effect) => (
                 <div class="skill-awakening-effect">
-
                     <span class="awakening-label">
-                        AWAKENING{" "}
-                        {formatAwakeningLevel(effect.level)}
+                        AWAKENING {formatAwakeningLevel(effect.level)}
                     </span>
 
                     <span>
-                        {effect.description}
+                        <EffectText text={effect.description} />
                     </span>
-
                 </div>
             ))
         }
@@ -42,30 +34,23 @@ const {
                         `skill-reconstruction-${effect.rank.toLowerCase()}`,
                     ]}
                 >
-
                     <span class="reconstruction-skill-label">
-
                         <span class="reconstruction-skill-rank">
                             {effect.rank}
                         </span>
 
-                        <span class="reconstruction-skill-separator">
-                            ◇
-                        </span>
+                        <span class="reconstruction-skill-separator">◇</span>
 
                         <span class="reconstruction-skill-name">
                             {effect.name}
                         </span>
-
                     </span>
 
                     <span>
-                        {effect.description}
+                        <EffectText text={effect.description} />
                     </span>
-
                 </div>
             ))
         }
-
     </div>
 </div>

@@ -1,4 +1,5 @@
 import lodestarSeaRover from "./lodestar-sea-rover";
+import giftPlayerInThePlay from "./gift-player-in-the-play";
 
 const styles = {
   "red-gloves-abyssal-judgment": {
@@ -107,13 +108,8 @@ const styles = {
     desire: "gluttony",
   },
 
-  "gift-player-in-the-play": {
-    id: "gift-player-in-the-play",
-    characterName: "Gift",
-    styleName: "Player in the Play",
-    rarity: 5,
-    desire: "gluttony",
-  },
+  "gift-player-in-the-play":
+    giftPlayerInThePlay,
 
   "laksa-spice-merchant": {
     id: "laksa-spice-merchant",

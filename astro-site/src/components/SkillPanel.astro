@@ -5,6 +5,9 @@ import SkillEffect from "./SkillEffect.astro";
 import SkillModifiers from "./SkillModifiers.astro";
 
 import reconstructionEffects from "../data/reconstruction";
+import reconstructionEffects, {
+    sortReconstruction,
+} from "../data/reconstruction";
 
 import { getAwakeningModifiersForTarget } from "../utils/awakening";
 
@@ -43,9 +46,14 @@ const ultimateAwakeningEffects = getAwakeningModifiersForTarget(
    ========================================================= */
 
 function getReconstructionForTarget(target: string) {
-    return reconstruction
-        .map((effectId) => reconstructionEffects[effectId])
-        .filter((effect) => effect.target === target);
+    return sortReconstruction(reconstruction)
+        .map((effectId) =>
+            reconstructionEffects[effectId]
+        )
+        .filter(
+            (effect) =>
+                effect.target === target,
+        );
 }
 
 const basicAttackReconstructionEffects =
@@ -80,10 +88,10 @@ const ultimateReconstructionEffects = getReconstructionForTarget("ultimate");
 
                 <div class="attack-meta">
                     <span>
-                        Hit Count
+                        Shots
 
                         <strong>
-                            {skills.basicAttack.hitCount}
+                            {skills.basicAttack.shots}
                         </strong>
                     </span>
 

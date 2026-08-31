@@ -3,15 +3,37 @@ export const tags = {
         name: "Single-Target",
         type: "enemy",
     },
+
+    "aoe": {
+        name: "AoE",
+        type: "enemy",
+    },
+
+    "atk-down": {
+        name: "ATK Down",
+        type: "enemy",
+    },
+
+    "crit-up": {
+        name: "CRIT Up",
+        type: "ally",
+    },
+
+    "crit": {
+        name: "CRIT",
+        type: "ally",
+    },
 };
 
 export const tagTypes = {
-    enemy: {
-        color: "var(--color-tag-enemy)",
+    ally: {
+        order: 1,
+        color: "var(--color-tag-ally)",
     },
 
-    ally: {
-        color: "var(--color-tag-ally)",
+    enemy: {
+        order: 2,
+        color: "var(--color-tag-enemy)",
     },
 };
 
@@ -20,14 +42,12 @@ export function sortTags(tagIds: any[]) {
         const tagA = tags[a];
         const tagB = tags[b];
 
-        const typeOrderA =
-            tagTypes[tagA.type].order;
-
-        const typeOrderB =
+        const typeDifference =
+            tagTypes[tagA.type].order -
             tagTypes[tagB.type].order;
 
-        if (typeOrderA !== typeOrderB) {
-            return typeOrderA - typeOrderB;
+        if (typeDifference !== 0) {
+            return typeDifference;
         }
 
         return tagA.name.localeCompare(tagB.name);

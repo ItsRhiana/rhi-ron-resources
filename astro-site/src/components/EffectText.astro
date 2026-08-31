@@ -1,0 +1,179 @@
+---
+import stacks from "../data/stacks";
+
+interface Props {
+    text: string;
+    values?: any;
+}
+
+const {
+    text,
+    values = {},
+} = Astro.props;
+
+const parts = text.split(
+    /(\{stack:[^}]+\}|\{[^}]+\}|\n)/g,
+);
+---
+
+<>
+    {
+        parts.map((part) => {
+            if (part === "\n") {
+                return <br />;
+            }
+
+            const stackMatch =
+                part.match(
+                    /^\{stack:([^}]+)\}$/,
+                );
+
+            if (stackMatch) {
+                const stack =
+                    stacks[stackMatch[1]];
+
+                return (
+                    <span
+                        class="skill-stack"
+                        tabindex="0"
+                    >
+                        [{stack.name}]
+
+<span class="skill-stack-tooltip">
+
+    <span class="skill-stack-tooltip-title">
+        [{stack.name}]
+    </span>
+
+    <span class="skill-stack-tooltip-description">
+        {stack.description}
+    </span>
+
+</span>
+                    </span>
+                );
+            }
+
+            const multiplierMatch =
+                part.match(
+                    /^\{([^}%]+)(%)?\}$/,
+                );
+
+            if (!multiplierMatch) {
+                return part;
+            }
+
+            const key =
+                multiplierMatch[1];
+
+            const suffix =
+                multiplierMatch[2] ?? "";
+
+            return (
+                <span class="multiplier">
+                    {values[key]}
+                    {suffix}
+                </span>
+            );
+        })
+    }
+</>
+
+<style>
+    .multiplier {
+        color: var(--color-multiplier);
+    }
+
+.skill-stack {
+    position: relative;
+
+    color: var(--color-skill-stack);
+
+    cursor: help;
+}
+
+.skill-stack-tooltip {
+    position: absolute;
+
+    left: 50%;
+    top: calc(100% + 8px);
+
+    z-index: 30;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    width: max-content;
+    max-width: 200px;
+
+    padding:
+        10px 12px;
+
+    box-sizing: border-box;
+
+    color: var(--color-text-description);
+    background: var(--color-panel-bg-accent);
+
+    border-left:
+        2px solid
+        var(--color-skill-stack);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+    translateX(calc(-50% + 18px))
+        translateY(-4px);
+
+    transition:
+        opacity 0.12s ease,
+        transform 0.12s ease,
+        visibility 0.12s ease;
+
+    pointer-events: none;
+}
+
+.skill-stack-tooltip-title {
+    display: block;
+
+    margin: 0;
+
+    color: var(--color-skill-stack);
+
+    font-family: var(--font-display);
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.02em;
+}
+
+.skill-stack-tooltip-description {
+    display: block;
+
+    margin: 0;
+
+    color: var(--color-text-description);
+
+    font-family: var(--font-body);
+
+    font-size: 1.12rem;
+    font-weight: 400;
+
+    line-height: 1.2;
+}
+
+.skill-stack:hover .skill-stack-tooltip,
+.skill-stack:focus .skill-stack-tooltip {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateX(-50% + 18px)
+        translateY(0);
+}
+</style>

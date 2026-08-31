@@ -1,8 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
-
+import EffectText from "./EffectText.astro";
 import stats from "../data/stats";
-import reconstructionEffects from "../data/reconstruction";
+import reconstructionEffects, {
+    sortReconstruction,
+} from "../data/reconstruction";
 
 interface Props {
     deepening: any[];
@@ -47,7 +49,7 @@ const {
                                     size="20"
                                 />
 
-                                {stat.name}
+                                {stat.deepeningName}
 
                             </span>
 
@@ -74,7 +76,7 @@ const {
 
             <div class="reconstruction-list">
 
-                {reconstruction.map((effectId) => {
+                {sortReconstruction(reconstruction).map((effectId) => {
                     const effect =
                         reconstructionEffects[effectId];
 
@@ -95,9 +97,11 @@ const {
                                     {effect.name}
                                 </strong>
 
-                                <span>
-                                    {effect.description}
-                                </span>
+<span class="reconstruction-description">
+    <EffectText
+        text={effect.description}
+    />
+</span>
 
                             </div>
 
