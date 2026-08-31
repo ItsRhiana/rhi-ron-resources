@@ -13,20 +13,6 @@ const { awakeningEffects, reconstructionEffects } = Astro.props;
 <div class="skill-modifier-slot">
     <div class="skill-modifier-effects">
         {
-            awakeningEffects.map((effect) => (
-                <div class="skill-awakening-effect">
-                    <span class="awakening-label">
-                        AWAKENING {formatAwakeningLevel(effect.level)}
-                    </span>
-
-                    <span>
-                        <EffectText text={effect.description} />
-                    </span>
-                </div>
-            ))
-        }
-
-        {
             reconstructionEffects.map((effect) => (
                 <div
                     class:list={[
@@ -44,6 +30,20 @@ const { awakeningEffects, reconstructionEffects } = Astro.props;
                         <span class="reconstruction-skill-name">
                             {effect.name}
                         </span>
+                    </span>
+
+                    <span>
+                        <EffectText text={effect.description} />
+                    </span>
+                </div>
+            ))
+        }
+
+        {
+            awakeningEffects.map((effect) => (
+                <div class="skill-awakening-effect">
+                    <span class="awakening-label">
+                        AWAKENING {formatAwakeningLevel(effect.level)}
                     </span>
 
                     <span>

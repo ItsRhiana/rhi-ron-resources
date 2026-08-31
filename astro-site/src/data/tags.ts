@@ -23,6 +23,15 @@ export const tags = {
         name: "CRIT",
         type: "ally",
     },
+    "crit-dmg": {
+        name: "CRIT DMG",
+        type: "ally",
+    },
+
+    "support": {
+        name: "Support",
+        type: "ally",
+    },
 };
 
 export const tagTypes = {

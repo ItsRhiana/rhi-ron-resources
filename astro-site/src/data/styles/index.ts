@@ -1,5 +1,6 @@
 import lodestarSeaRover from "./lodestar-sea-rover";
 import giftPlayerInThePlay from "./gift-player-in-the-play";
+import ngDreamProducer from "./ng-dream-producer";
 
 const styles = {
   "red-gloves-abyssal-judgment": {
@@ -60,13 +61,8 @@ const styles = {
     desire: "envy",
   },
 
-  "ng-dream-producer": {
-    id: "ng-dream-producer",
-    characterName: "NG",
-    styleName: "Dream Producer",
-    rarity: 6,
-    desire: "greed",
-  },
+"ng-dream-producer":
+    ngDreamProducer,
 
   "rainmaker-world-cleansing-rain": {
     id: "rainmaker-world-cleansing-rain",

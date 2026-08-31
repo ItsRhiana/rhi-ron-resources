@@ -4,6 +4,11 @@ const stacks = {
         description:
             "Takes DMG once every 2s.",
     },
+    storyboard: {
+        name: "Storyboard",
+        description:
+            "At 5 stacks, consumes all stacks to reduce the next ULT Flame cost by 1.",
+    },
 };
 
 export default stacks;
