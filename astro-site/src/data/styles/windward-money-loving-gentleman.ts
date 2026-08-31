@@ -175,7 +175,6 @@ const windwardMoneyLovingGentleman = {
                     {
                         type: "actionFocusModifier",
                         target: "supplies",
-                        amount: 1,
                         description:
                             "Supplies 3 → 4.",
                     },

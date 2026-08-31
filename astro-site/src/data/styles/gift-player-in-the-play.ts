@@ -198,7 +198,6 @@ const giftPlayerInThePlay = {
                     {
                         type: "actionFocusModifier",
                         target: "strategy",
-                        amount: 1,
                         description:
                             "Strategy 1 → 2.",
                     },
