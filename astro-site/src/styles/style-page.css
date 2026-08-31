@@ -861,7 +861,7 @@
        5. external modifiers
     */
     grid-template-rows:
-        auto auto auto auto auto;
+        auto auto auto auto;
 
     width: 100%;
 
@@ -874,7 +874,7 @@
     display: grid;
 
     grid-row:
-        1 / 6;
+        1 / 5;
 
     grid-template-rows:
         subgrid;
@@ -1565,21 +1565,17 @@
 
     .skills-grid {
         grid-template-columns:
-            minmax(190px, 0.62fr)
-            minmax(240px, 1.19fr)
-            minmax(240px, 1.19fr);
+            minmax(190px, 0.62fr) minmax(240px, 1.19fr) minmax(240px, 1.19fr);
     }
 
     .kit-row-progression {
         grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 2fr);
+            minmax(0, 1fr) minmax(0, 2fr);
     }
 
     .reflection-grid {
         grid-template-columns:
-            minmax(250px, 0.75fr)
-            minmax(0, 1.25fr);
+            minmax(250px, 0.75fr) minmax(0, 1.25fr);
     }
 }
 
@@ -1623,7 +1619,7 @@
         display: grid;
 
         grid-template-rows:
-            auto auto auto auto auto;
+            auto auto auto auto;
     }
 
     .skill-column:nth-child(1),
