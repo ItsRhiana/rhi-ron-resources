@@ -61,6 +61,11 @@ export const tags = {
         name: "ATK Up",
         type: "ally",
     },
+
+    "shield": {
+        name: "Shield",
+        type: "ally",
+    },
 };
 
 export const tagTypes = {

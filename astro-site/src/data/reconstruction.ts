@@ -98,6 +98,28 @@ const reconstructionEffects = {
             "Each ULT increases own Healing Recovery Rate by 8%, stacking up to 24%.",
         target: "ultimate",
     },
+    "rain-once-fell": {
+        rank: "S",
+        name: "Rain Once Fell",
+        description:
+            "ULT grants the target {stack:hot} for 20s, totaling 12% of Rainmaker's Max HP.",
+        target: "ultimate",
+    },
+
+    "guard-all-realms": {
+        rank: "A",
+        name: "Guard All Realms",
+        description:
+            "ULT grants teamwide shield equal to 7% HP for 35s.",
+        target: "ultimate",
+    },
+
+    "against-all-odds": {
+        rank: "A",
+        name: "Against All Odds",
+        description:
+            "When below 40% HP, restores 20% HP. 30s cooldown.",
+    },
 };
 
 export default reconstructionEffects;

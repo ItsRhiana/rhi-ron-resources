@@ -1,6 +1,7 @@
 const stats = {
     hp: {
         name: "HP",
+        deepeningName: "HP Bonus",
         icon: "hugeicons:favourite",
     },
 
