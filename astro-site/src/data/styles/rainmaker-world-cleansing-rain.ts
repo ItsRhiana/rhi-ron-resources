@@ -199,7 +199,6 @@ const rainmakerWorldCleansingRain = {
                     {
                         type: "actionFocusModifier",
                         target: "intel",
-                        amount: 1,
                         description:
                             "Intel 3 → 4.",
                     },

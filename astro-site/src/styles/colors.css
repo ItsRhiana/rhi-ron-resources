@@ -8,79 +8,79 @@
    ========================================================================== */
 
 :root {
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
        Surfaces
        ---------------------------------------------------------------------- */
 
-   /* Background Color. */
-   --color-bg: #171717;
+    /* Background Color. */
+    --color-bg: #171717;
 
-   /* Main custom panel/card background.
+    /* Main custom panel/card background.
        Example: Basic Attack / Passive / Ultimate panels.
        Tierlist cells
    */
-   --color-panel-bg: #232323;
+    --color-panel-bg: #232323;
 
-   /* Raised/secondary surface and hover state.
+    /* Raised/secondary surface and hover state.
    Examples:
    - Awakening effect box
    - Tooltip surface
    - Highlighted custom surfaces
    - Tierlist Header
 */
-   --color-panel-bg-accent: #2B2B2B;
+    --color-panel-bg-accent: #2B2B2B;
 
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
    General UI Accents
    ---------------------------------------------------------------------- */
 
-   /* Primary interface accent.
+    /* Primary interface accent.
    Examples:
    - Active tab indicator
 */
-   --color-ui-accent: white;
+    --color-ui-accent: white;
 
-   /* Decorative illustration frame.
+    /* Decorative illustration frame.
    Example:
    - Style illustration border
 */
-   --color-art-border: #766F69;
+    --color-art-border: #766F69;
 
 
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
        Borders & Dividers
        ---------------------------------------------------------------------- */
 
-   /* Main structural border.
+    /* Main structural border.
        Example: outer skill panel border, column separators. */
-   --color-border: #545454;
+    --color-border: #545454;
 
-   /* Subtle internal divider.
+    /* Subtle internal divider.
        Example: line between skill metadata and effect description. */
-   --color-border-soft: #3f3f3f;
+    --color-border-soft: #3f3f3f;
 
 
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
        Text
        ---------------------------------------------------------------------- */
 
-   /* Normal Text */
-   --color-text-primary: #ffffff;
+    /* Normal Text */
+    --color-text-primary: #ffffff;
 
-   /* Muted Text
+    /* Muted Text
        Examples:
        - Inactive tabs
     */
-   --color-text-muted: #aaa8a3;
+    --color-text-muted: #aaa8a3;
 
-   /* Long-form/descriptive text.
+    /* Long-form/descriptive text.
        Examples:
        - Skill effect descriptions
        - Reconstruction effect descriptions
     */
-   --color-text-description: #b8b6b1;
+    --color-text-description: #b8b6b1;
 
-   /* Metadata values.
+    /* Metadata values.
        Examples:
        - 1
        - Slow
@@ -88,87 +88,84 @@
        - 15s cooldown
        - Flame Cost 3
     */
-   --color-text-value: #f59456;
+    --color-text-value: #f59456;
 
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
    Rarity
    ---------------------------------------------------------------------- */
 
-   --color-rarity-6: #b65641;
-   --color-rarity-5: #ac8531;
-   --color-rarity-4: #8862a0;
+    --color-rarity-6: #b65641;
+    --color-rarity-5: #ac8531;
+    --color-rarity-4: #8862a0;
 
 
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
        Combat / Skill Accents
        ---------------------------------------------------------------------- */
 
-   /* Skill multipliers.
+    /* Skill multipliers.
        Example: 126%, 31%, 95%. */
-   --color-multiplier: #d27d44;
+    --color-multiplier: #d27d44;
 
-   /* Named combat stacks/resources.
+    /* Named combat stacks/resources.
        Examples:
        - Electrode stacks
        - Stigmata
     */
-   --color-skill-stack: #d23f25;
+    --color-skill-stack: #d23f25;
 
 
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
        Awakening
        ---------------------------------------------------------------------- */
 
-   /* Awakening label and its associated accent line.
+    /* Awakening label and its associated accent line.
        Example: Awakening, Awakening effects appeare in Action Focus, Action Focus modified by Awakening, Skills */
-   --color-awakening: #FE1748;
+    --color-awakening: #FE1748;
 
 
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
        Reconstruction
        ---------------------------------------------------------------------- */
 
-   /* Reconstruction rank colors. */
-   --color-reconstruction-s: #c94244;
-   --color-reconstruction-a: #cfa541;
+    /* Reconstruction rank colors. */
+    --color-reconstruction-s: #c94244;
+    --color-reconstruction-a: #cfa541;
 
 
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
        Tags
        ---------------------------------------------------------------------- */
 
-   /* Enemy-targeting/offensive tags.
+    /* Enemy-targeting/offensive tags.
        Example: SINGLE-TARGET enemy tag. */
-   --color-tag-enemy: #d23f25;
+    --color-tag-enemy: #d23f25;
 
-   /* Ally-targeting/support tags. */
-   --color-tag-ally: #3f8865;
+    /* Ally-targeting/support tags. */
+    --color-tag-ally: #3f8865;
 
-   /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
        Style Card
        ---------------------------------------------------------------------- */
 
-   /* Dark overlay/background used over artwork. */
-   --color-overlay-bg: #000000;
+    /* Dark overlay/background used over artwork. */
+    --color-overlay-bg: #000000;
 
-   /* Strong artwork gradient overlay. */
-   --color-overlay-bg-strong: rgba(0, 0, 0, 0.9);
+    /* Style card Desire badge background. */
+    --color-style-card-desire-bg: #323131;
 
-   /* Style card Desire badge background. */
-   --color-style-card-desire-bg: #323131;
-
-      /* ----------------------------------------------------------------------
+    /* ----------------------------------------------------------------------
        Tier List
        ---------------------------------------------------------------------- */
 
-   --color-tier-0: #FF7F7F;
+    --color-tier-0: #FF7F7F;
 
-   --color-tier-1: #FFBF7F;
+    --color-tier-1: #FFBF7F;
 
-   --color-tier-2: #FFDF7F;
+    --color-tier-2: #FFDF7F;
 
-   --color-tier-3: #FFFF7F;
+    --color-tier-3: #FFFF7F;
 
-   --color-tier-4: #BFFF7F;
- 
+    --color-tier-4: #BFFF7F;
+
 }

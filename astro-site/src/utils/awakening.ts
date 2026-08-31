@@ -1,12 +1,14 @@
-export function getAwakeningModifiers(
+export function getAwakeningModifiersForTarget(
     awakening: any[],
     type: string,
+    target: string,
 ) {
     return awakening.flatMap((awakeningLevel) =>
         awakeningLevel.effects
             .filter(
                 (effect: any) =>
-                    effect.type === type,
+                    effect.type === type &&
+                    effect.target === target,
             )
             .map((effect: any) => ({
                 ...effect,
@@ -15,32 +17,16 @@ export function getAwakeningModifiers(
     );
 }
 
-
-export function getAwakeningModifiersForTarget(
-    awakening: any[],
-    type: string,
-    target: string,
-) {
-    return getAwakeningModifiers(
-        awakening,
-        type,
-    ).filter(
-        (effect) =>
-            effect.target === target,
-    );
-}
-
+const romanLevels = [
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+];
 
 export function formatAwakeningLevel(
     level: number,
 ) {
-    const roman = [
-        "I",
-        "II",
-        "III",
-        "IV",
-        "V",
-    ];
-
-    return roman[level - 1] ?? String(level);
+    return romanLevels[level - 1];
 }

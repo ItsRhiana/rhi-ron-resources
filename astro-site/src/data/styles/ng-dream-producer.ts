@@ -167,7 +167,6 @@ const ngDreamProducer = {
                     {
                         type: "actionFocusModifier",
                         target: "execution",
-                        amount: 1,
                         description:
                             "Execution 3 → 4.",
                     },

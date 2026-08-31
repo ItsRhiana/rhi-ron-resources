@@ -4,7 +4,6 @@ import { sortTags } from "../data/tags";
 import SkillEffect from "./SkillEffect.astro";
 import SkillModifiers from "./SkillModifiers.astro";
 
-import reconstructionEffects from "../data/reconstruction";
 import reconstructionEffects, {
     sortReconstruction,
 } from "../data/reconstruction";
@@ -74,7 +73,7 @@ const ultimateReconstructionEffects = getReconstructionForTarget("ultimate");
                 {
                     skills.basicAttack.tags.length > 0 && (
                         <div class="skill-tags">
-                            {skills.basicAttack.tags.map((tagId) => (
+                            {sortTags(skills.basicAttack.tags).map((tagId) => (
                                 <StyleTag id={tagId} />
                             ))}
                         </div>
@@ -182,7 +181,7 @@ const ultimateReconstructionEffects = getReconstructionForTarget("ultimate");
                 {
                     skills.ultimate.tags.length > 0 && (
                         <div class="skill-tags">
-                            {skills.ultimate.tags.map((tagId) => (
+                            {sortTags(skills.ultimate.tags).map((tagId) => (
                                 <StyleTag id={tagId} />
                             ))}
                         </div>
@@ -190,7 +189,7 @@ const ultimateReconstructionEffects = getReconstructionForTarget("ultimate");
                 }
 
                 <div class="skill-meta-line">
-                    <span class="skill-meta-label"> Flame Cost </span>
+                    <span class="skill-meta-label"> Flame Cost</span>
 
                     <span class="skill-meta-value">
                         {skills.ultimate.flameCost}
