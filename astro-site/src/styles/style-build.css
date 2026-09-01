@@ -1,0 +1,1158 @@
+/* =========================================================
+   Build & Synergies
+   ========================================================= */
+
+.style-build {
+    margin: 0;
+    padding: 18px;
+
+    box-sizing: border-box;
+
+    color: var(--color-text-primary);
+    background: var(--color-bg);
+
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   Top Row
+   ========================================================= */
+
+.build-top-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.72fr)
+        minmax(0, 1.28fr);
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+.build-section {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   Recommended Build
+   ========================================================= */
+
+.build-summary {
+    border:
+        1px solid var(--color-border);
+
+    background:
+        var(--color-panel-bg);
+}
+
+.build-summary-main {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    padding: 16px;
+
+    border-bottom:
+        1px solid var(--color-border-soft);
+}
+
+
+/* =========================================================
+   Build Header
+   ========================================================= */
+
+.build-header-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+}
+
+.build-level {
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   Position
+   ========================================================= */
+
+.build-position {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-left: auto;
+}
+
+.position-primary,
+.position-secondary {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 120px;
+
+    padding:
+        9px 16px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid var(--color-border);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+}
+
+.position-primary {
+    color:
+        var(--color-text-primary);
+
+    background:
+        var(--color-panel-bg-accent);
+}
+
+.position-secondary {
+    color:
+        var(--color-text-muted);
+
+    background: transparent;
+}
+
+.position-arrow {
+    color:
+        var(--color-text-muted);
+
+    font-size: 1.5rem;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   Skill Levels
+   ========================================================= */
+
+.build-skill-levels {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    border-top:
+        1px solid var(--color-border-soft);
+
+    border-bottom:
+        1px solid var(--color-border-soft);
+}
+
+.build-skill-levels > div {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    padding:
+        10px 12px;
+}
+
+.build-skill-levels > div:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 25%;
+    bottom: 25%;
+
+    width: 1px;
+
+    background:
+        var(--color-border-soft);
+}
+
+.build-skill-levels span {
+    color:
+        var(--color-text-muted);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    line-height: 1.1;
+}
+
+.build-skill-levels strong {
+    color:
+        var(--color-text-value);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   Recommended Build Explanation
+   ========================================================= */
+
+.build-summary-note {
+    padding:
+        16px 18px;
+
+    white-space: pre-line;
+
+    color:
+        var(--color-text-description);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.14rem;
+    font-weight: 400;
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   Build Reconstruction
+   ========================================================= */
+
+.build-reconstruction-list {
+    border:
+        1px solid var(--color-border);
+
+    background:
+        var(--color-panel-bg);
+}
+
+.build-reconstruction-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(320px, 1fr)
+        minmax(300px, 1fr);
+
+    min-height: 86px;
+}
+
+.build-reconstruction-row +
+.build-reconstruction-row {
+    border-top:
+        1px solid var(--color-border-soft);
+}
+
+
+/* =========================================================
+   Reconstruction Recommendation
+   ========================================================= */
+
+.build-reconstruction-choice {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-width: 0;
+
+    padding:
+        16px 18px;
+
+    border-right:
+        1px solid var(--color-border-soft);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.08rem;
+}
+
+.build-reconstruction-number {
+    flex: 0 0 auto;
+
+    color:
+        var(--color-text-muted);
+
+    font-weight: 600;
+}
+
+.build-reconstruction-recommendation {
+    flex: 0 0 auto;
+
+    font-weight: 600;
+}
+
+.build-reconstruction-effect {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: baseline;
+
+    gap: 6px;
+
+    min-width: 0;
+
+    font-family:
+        var(--font-display);
+
+    font-weight: 700;
+}
+
+.build-reconstruction-diamond {
+    flex: 0 0 auto;
+}
+
+.build-reconstruction-s {
+    color:
+        var(--color-reconstruction-s);
+}
+
+.build-reconstruction-a {
+    color:
+        var(--color-reconstruction-a);
+}
+
+
+/* =========================================================
+   Reconstruction Tooltip
+   ========================================================= */
+
+.build-reconstruction-tooltip {
+    position: absolute;
+
+    left: 0;
+    top: calc(100% + 8px);
+
+    z-index: 30;
+
+    width: max-content;
+    max-width: 280px;
+
+    padding:
+        10px 12px;
+
+    box-sizing: border-box;
+
+    color:
+        var(--color-text-description);
+
+    background:
+        var(--color-panel-bg-accent);
+
+    border-left:
+        2px solid currentColor;
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.05rem;
+    font-weight: 400;
+
+    line-height: 1.25;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(-4px);
+
+    transition:
+        opacity 0.12s ease,
+        transform 0.12s ease,
+        visibility 0.12s ease;
+
+    pointer-events: none;
+}
+
+.build-reconstruction-effect:hover
+.build-reconstruction-tooltip,
+.build-reconstruction-effect:focus
+.build-reconstruction-tooltip {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   Reconstruction Explanation
+   ========================================================= */
+
+.build-reconstruction-note {
+    display: flex;
+
+    align-items: center;
+
+    min-width: 0;
+
+    padding:
+        16px 18px;
+
+    color:
+        var(--color-text-description);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.12rem;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   Generic Team
+   ========================================================= */
+
+.build-team-section {
+    margin-top: 28px;
+}
+
+.team-composition {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 34px;
+
+    width: 100%;
+
+    padding:
+        18px 20px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid var(--color-border);
+
+    background:
+        var(--color-panel-bg);
+}
+
+.team-on-field,
+.team-off-field {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 14px;
+}
+
+.team-on-field {
+    flex: 1;
+}
+
+.team-off-field {
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   Team Role Slot
+
+   A logical team position may contain one or more Styles.
+   ========================================================= */
+
+.team-role-slot {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.team-slot-styles {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 8px;
+}
+
+
+/* =========================================================
+   Team Style
+   ========================================================= */
+
+.team-slot {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 125px;
+
+    flex:
+        0 0 125px;
+
+    margin: 0;
+
+    color:
+        var(--color-text-primary);
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   Team Card
+   ========================================================= */
+
+.team-card {
+    position: relative;
+
+    width: 125px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid var(--color-border);
+
+    background:
+        var(--color-panel-bg-accent);
+}
+
+
+/* On-field = dome */
+
+.team-slot-on-field .team-card {
+    height: 155px;
+
+    border-radius:
+        62px 62px 0 0;
+}
+
+
+/* Off-field = horizontal rectangle */
+
+.team-slot-off-field {
+    width: 145px;
+
+    flex-basis: 145px;
+}
+
+.team-slot-off-field .team-card {
+    width: 145px;
+    height: 96px;
+
+    border-radius: 0;
+}
+
+
+/* =========================================================
+   Team Artwork
+   ========================================================= */
+
+.team-card-art {
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    display: block;
+
+    margin: 0 !important;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================================================
+   Team Card Bottom
+   ========================================================= */
+
+.team-card-bottom {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 4px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+
+    padding:
+        12px 6px 4px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            to top,
+            color-mix(
+                in srgb,
+                var(--color-overlay-bg) 96%,
+                transparent
+            ) 0%,
+            color-mix(
+                in srgb,
+                var(--color-overlay-bg) 72%,
+                transparent
+            ) 55%,
+            transparent 100%
+        );
+}
+
+
+/* Desire = left aligned */
+
+.team-desire-row {
+    display: flex;
+
+    justify-content: flex-start;
+
+    width: 100%;
+}
+
+.team-desire {
+    width: 22px;
+    height: 22px;
+
+    max-width: none;
+
+    display: block;
+
+    margin: 0 !important;
+
+    object-fit: contain;
+}
+
+
+/* Name = centered below Desire */
+
+.team-card-name {
+    width: 100%;
+
+    overflow: hidden;
+
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    text-align: center;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   Team Rarity
+   ========================================================= */
+
+.team-rarity-line {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 4px;
+}
+
+.team-rarity-line.rarity-6 {
+    background:
+        var(--color-rarity-6);
+}
+
+.team-rarity-line.rarity-5 {
+    background:
+        var(--color-rarity-5);
+}
+
+.team-rarity-line.rarity-4 {
+    background:
+        var(--color-rarity-4);
+}
+
+
+/* =========================================================
+   Team Role
+   ========================================================= */
+
+.team-role {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    width: 100%;
+}
+
+.team-role img {
+    width: 24px;
+    height: 24px;
+
+    max-width: none;
+
+    display: block;
+
+    margin: 0 !important;
+
+    object-fit: contain;
+}
+
+.team-role span {
+    color:
+        var(--color-text-description);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   Team Dimmed State
+
+   Used for filler/default Styles in Special Synergy teams.
+   ========================================================= */
+
+.team-slot-dimmed {
+    filter:
+        grayscale(1)
+        brightness(0.55);
+
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   Special Synergies
+   ========================================================= */
+
+.build-synergy-section {
+    margin-top: 28px;
+}
+
+.special-synergy-warning {
+    margin:
+        -4px 0 12px;
+
+    color:
+        var(--color-text-muted);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1rem;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   Special Synergy List
+   ========================================================= */
+
+.special-synergy-list {
+    border:
+        1px solid var(--color-border);
+
+    background:
+        var(--color-panel-bg);
+}
+
+.special-synergy-row {
+    display: grid;
+
+    grid-template-columns:
+        157px
+        minmax(280px, 0.9fr)
+        minmax(0, 1.1fr);
+
+    min-width: 0;
+}
+
+.special-synergy-row +
+.special-synergy-row {
+    border-top:
+        1px solid var(--color-border-soft);
+}
+
+
+/* =========================================================
+   Special Synergy Style Card
+   ========================================================= */
+
+.special-synergy-style {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 16px;
+
+    box-sizing: border-box;
+
+    text-decoration: none;
+}
+
+.special-synergy-card {
+    position: relative;
+
+    width: 125px;
+    height: 125px;
+
+    overflow: hidden;
+
+    background:
+        var(--color-panel-bg-accent);
+}
+
+.special-synergy-art {
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    display: block;
+
+    margin: 0 !important;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================================================
+   Special Synergy Style Identity
+   ========================================================= */
+
+.special-synergy-overlay {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 4px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+
+    padding:
+        12px 6px 4px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            to top,
+            color-mix(
+                in srgb,
+                var(--color-overlay-bg) 96%,
+                transparent
+            ),
+            transparent
+        );
+}
+
+.special-synergy-desire {
+    width: 22px;
+    height: 22px;
+
+    max-width: none;
+
+    display: block;
+
+    margin: 0 !important;
+
+    object-fit: contain;
+}
+
+.special-synergy-name {
+    width: 100%;
+
+    overflow: hidden;
+
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    text-align: center;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   Special Synergy Rarity
+   ========================================================= */
+
+.special-synergy-rarity {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 4px;
+}
+
+.special-synergy-rarity.rarity-6 {
+    background:
+        var(--color-rarity-6);
+}
+
+.special-synergy-rarity.rarity-5 {
+    background:
+        var(--color-rarity-5);
+}
+
+.special-synergy-rarity.rarity-4 {
+    background:
+        var(--color-rarity-4);
+}
+
+
+/* =========================================================
+   Special Synergy Ability
+   ========================================================= */
+
+.special-synergy-ability {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    min-width: 0;
+
+    padding:
+        18px 20px;
+
+    border-left:
+        1px solid var(--color-border-soft);
+
+    border-right:
+        1px solid var(--color-border-soft);
+}
+
+.special-synergy-ability-label {
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+}
+
+.special-synergy-ability-description {
+    color:
+        var(--color-text-description);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.1rem;
+
+    line-height: 1.3;
+
+    white-space: pre-line;
+}
+
+
+/* =========================================================
+   Special Synergy Analysis
+   ========================================================= */
+
+.special-synergy-note {
+    min-width: 0;
+
+    padding:
+        18px 20px;
+
+    color:
+        var(--color-text-description);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.1rem;
+
+    line-height: 1.3;
+
+    white-space: pre-line;
+}
+
+
+/* =========================================================
+   Special Synergy Team
+   ========================================================= */
+
+.special-synergy-team {
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   Build — Medium
+   ========================================================= */
+
+@container (max-width: 1050px) {
+
+    .build-top-grid {
+        grid-template-columns: 1fr;
+
+        gap: 28px;
+    }
+
+    .team-composition {
+        overflow-x: auto;
+    }
+
+    .team-on-field {
+        flex: 0 0 auto;
+    }
+
+}
+
+
+/* =========================================================
+   Special Synergies — Medium
+   ========================================================= */
+
+@container (max-width: 900px) {
+
+    .special-synergy-row {
+        grid-template-columns:
+            157px minmax(0, 1fr);
+    }
+
+    .special-synergy-ability {
+        border-right: 0;
+    }
+
+    .special-synergy-note {
+        grid-column:
+            1 / -1;
+
+        border-top:
+            1px solid var(--color-border-soft);
+    }
+
+}
+
+
+/* =========================================================
+   Build — Narrow
+   ========================================================= */
+
+@container (max-width: 760px) {
+
+    .style-build {
+        padding:
+            14px 12px;
+    }
+
+    .build-header-row {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .build-position {
+        margin-left: 0;
+    }
+
+    .build-reconstruction-row {
+        grid-template-columns: 1fr;
+    }
+
+    .build-reconstruction-choice {
+        border-right: 0;
+
+        border-bottom:
+            1px solid var(--color-border-soft);
+    }
+
+}

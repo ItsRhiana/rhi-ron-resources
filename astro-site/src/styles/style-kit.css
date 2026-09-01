@@ -1,0 +1,934 @@
+/* =========================================================
+   Kit
+   ========================================================= */
+
+.style-kit {
+    --deepening-column-width: 260px;
+
+    margin: 0;
+    padding: 18px;
+
+    box-sizing: border-box;
+
+    color: var(--color-text-primary);
+    background: var(--color-bg);
+
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+}
+
+.kit-main-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap: 28px;
+
+    width: 100%;
+
+    margin: 0;
+}
+
+.kit-row-skills {
+    min-width: 0;
+
+    margin: 0;
+}
+
+.kit-row-progression {
+    display: grid;
+
+    grid-template-columns:
+        calc((100% - 296px) / 2)
+        minmax(0, 1fr);
+
+    gap: 18px;
+
+    align-items: start;
+
+    min-width: 0;
+
+    margin: 0;
+}
+
+.kit-skills,
+.kit-awakening,
+.kit-reflection {
+    min-width: 0;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   Skills
+   ========================================================= */
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 0.59fr)
+        minmax(300px, 1.205fr)
+        minmax(300px, 1.205fr);
+
+    /*
+       Shared internal card rows:
+       1. title
+       2. metadata
+       3. divider
+       4. skill effects / modifiers
+    */
+    grid-template-rows:
+        auto auto auto auto;
+
+    width: 100%;
+
+    margin: 0;
+
+    border:
+        1px solid var(--color-border);
+}
+
+.skill-column {
+    display: grid;
+
+    grid-row:
+        1 / 5;
+
+    grid-template-rows:
+        subgrid;
+
+    min-width: 0;
+
+    margin: 0;
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background:
+        var(--color-panel-bg);
+
+    border-right:
+        1px solid var(--color-border-soft);
+}
+
+.skill-column:nth-child(1) {
+    grid-column: 1;
+}
+
+.skill-column:nth-child(2) {
+    grid-column: 2;
+}
+
+.skill-column:nth-child(3) {
+    grid-column: 3;
+
+    border-right: 0;
+}
+
+
+/* =========================================================
+   Skill Title + Metadata
+   ========================================================= */
+
+.skill-title {
+    margin:
+        0 0 14px !important;
+
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    text-transform: uppercase;
+}
+
+.skill-meta {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin: 0;
+}
+
+.skill-meta-line {
+    display: grid;
+
+    grid-template-columns:
+        96px minmax(0, 1fr);
+
+    align-items: baseline;
+
+    margin: 0;
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.07rem;
+
+    line-height: 1.35;
+}
+
+.skill-meta-label {
+    color:
+        var(--color-text-muted);
+
+    font-weight: 400;
+}
+
+.skill-meta-value {
+    color:
+        var(--color-text-value);
+
+    font-weight: 600;
+}
+
+.skill-meta-value,
+.attack-meta strong {
+    min-width: 0;
+
+    overflow-wrap: break-word;
+}
+
+.skill-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   Basic Attack Metadata
+   ========================================================= */
+
+.attack-meta {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 2px;
+
+    width: 100%;
+
+    margin: 0;
+}
+
+.attack-meta > span {
+    display: grid;
+
+    grid-template-columns:
+        96px minmax(0, 1fr);
+
+    justify-content: start;
+    align-items: center;
+
+    min-height: 24px;
+
+    margin: 0;
+
+    color:
+        var(--color-text-muted);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.05rem;
+
+    line-height: 1.2;
+}
+
+.attack-meta strong {
+    color:
+        var(--color-text-value);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.05rem;
+    font-weight: inherit;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   Skill Content
+   ========================================================= */
+
+.skill-divider {
+    width:
+        calc(100% - 8px);
+
+    height: 1px;
+
+    margin:
+        18px auto !important;
+
+    background:
+        var(--color-border-soft);
+}
+
+.skill-effects {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   Skill-linked Modifiers
+   ========================================================= */
+
+.skill-modifier-slot {
+    min-width: 0;
+
+    margin: 0;
+}
+
+.skill-modifier-effects {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin:
+        24px 0 0 !important;
+}
+
+
+/* =========================================================
+   Skill Awakening Modifier
+   ========================================================= */
+
+.skill-awakening-effect {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin: 0;
+
+    padding:
+        10px 12px;
+
+    color:
+        var(--color-text-description);
+
+    background:
+        var(--color-panel-bg-accent);
+
+    border-left:
+        2px solid var(--color-awakening);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.12rem;
+
+    line-height: 1.2;
+}
+
+.awakening-label,
+.focus-tooltip strong {
+    color:
+        var(--color-awakening);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.02em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   Skill Reconstruction Modifier
+   ========================================================= */
+
+.skill-reconstruction-effect {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin: 0;
+
+    padding:
+        10px 12px;
+
+    color:
+        var(--color-text-description);
+
+    background:
+        var(--color-panel-bg-accent);
+
+    border-left:
+        2px solid var(--reconstruction-color);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.12rem;
+
+    line-height: 1.2;
+}
+
+.reconstruction-skill-label {
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 6px;
+
+    color:
+        var(--reconstruction-color);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.02em;
+
+    text-transform: uppercase;
+}
+
+.reconstruction-skill-rank {
+    font-weight: 800;
+}
+
+.reconstruction-skill-separator {
+    opacity: 0.65;
+}
+
+.reconstruction-skill-name {
+    font-weight: 700;
+}
+
+.skill-reconstruction-s {
+    --reconstruction-color:
+        var(--color-reconstruction-s);
+}
+
+.skill-reconstruction-a {
+    --reconstruction-color:
+        var(--color-reconstruction-a);
+}
+
+
+/* =========================================================
+   Awakening Panel
+   ========================================================= */
+
+.awakening-list {
+    margin: 0;
+
+    padding:
+        0 18px;
+
+    background:
+        var(--color-panel-bg);
+
+    border:
+        1px solid var(--color-border);
+}
+
+.awakening-row {
+    display: grid;
+
+    grid-template-columns:
+        42px minmax(0, 1fr);
+
+    gap: 14px;
+
+    align-items: center;
+
+    min-height: 78px;
+
+    margin: 0;
+
+    padding:
+        16px 0;
+
+    box-sizing: border-box;
+
+    border-bottom:
+        1px solid var(--color-border-soft);
+}
+
+.awakening-row:last-child {
+    border-bottom: 0;
+}
+
+.awakening-level {
+    display: block;
+
+    margin: 0;
+
+    color:
+        var(--color-awakening);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 1.5rem;
+    font-weight: 800;
+
+    line-height: 1;
+
+    text-align: left;
+}
+
+.awakening-effects {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+}
+
+.awakening-effect {
+    margin: 0;
+
+    color:
+        var(--color-text-description);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.14rem;
+    font-weight: 400;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   Reflection
+   ========================================================= */
+
+.reflection-grid {
+    display: grid;
+
+    grid-template-columns:
+        var(--deepening-column-width)
+        minmax(0, 1fr);
+
+    gap: 18px;
+
+    align-items: start;
+
+    width: 100%;
+
+    margin: 0;
+}
+
+.reflection-section {
+    min-width: 0;
+
+    margin: 0;
+
+    border:
+        1px solid var(--color-border);
+
+    background:
+        var(--color-panel-bg);
+}
+
+.reflection-subheading {
+    display: flex;
+
+    align-items: center;
+
+    height: 38px;
+
+    margin: 0;
+
+    padding:
+        0 16px;
+
+    box-sizing: border-box;
+
+    border-bottom:
+        1px solid var(--color-border);
+
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 0.02em;
+
+    text-transform: none;
+}
+
+
+/* =========================================================
+   Deepening
+   ========================================================= */
+
+.deepening-list {
+    margin: 0;
+
+    padding:
+        0 18px;
+}
+
+.deepening-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    min-height: 72px;
+
+    margin: 0;
+
+    padding:
+        16px 0;
+
+    column-gap: 12px;
+
+    box-sizing: border-box;
+
+    border-bottom:
+        1px solid var(--color-border-soft);
+}
+
+.deepening-row:last-child {
+    border-bottom: 0;
+}
+
+.deepening-row span,
+.deepening-row strong {
+    margin: 0;
+
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.05rem;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+.deepening-row span {
+    font-weight: 500;
+}
+
+.deepening-row strong {
+    justify-self: end;
+
+    font-weight: 500;
+}
+
+.deepening-stat {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    white-space: nowrap;
+}
+
+.deepening-stat svg {
+    flex: 0 0 auto;
+
+    color:
+        var(--color-text-primary);
+}
+
+
+/* =========================================================
+   Reconstruction
+   ========================================================= */
+
+.reconstruction-list {
+    margin: 0;
+
+    padding:
+        0 18px;
+}
+
+.reconstruction-row {
+    display: grid;
+
+    grid-template-columns:
+        42px minmax(0, 1fr);
+
+    gap: 14px;
+
+    align-items: center;
+
+    min-height: 96px;
+
+    margin: 0;
+
+    padding:
+        16px 0;
+
+    box-sizing: border-box;
+
+    border-bottom:
+        1px solid var(--color-border-soft);
+}
+
+.reconstruction-row:last-child {
+    border-bottom: 0;
+}
+
+
+/* =========================================================
+   Reconstruction Rank Diamond
+   ========================================================= */
+
+.reconstruction-rank {
+    width: 28px;
+    height: 28px;
+
+    display: grid;
+
+    place-items: center;
+
+    justify-self: center;
+
+    margin: 0;
+
+    border:
+        1px solid currentColor;
+
+    transform:
+        rotate(45deg);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 0;
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+.reconstruction-rank::after {
+    content:
+        attr(data-rank);
+
+    transform:
+        rotate(-45deg);
+
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.reconstruction-s {
+    color:
+        var(--color-reconstruction-s);
+}
+
+.reconstruction-a {
+    color:
+        var(--color-reconstruction-a);
+}
+
+
+/* =========================================================
+   Reconstruction Content
+   ========================================================= */
+
+.reconstruction-content {
+    display: grid;
+
+    align-content: center;
+
+    gap: 5px;
+
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+}
+
+.reconstruction-content strong {
+    margin: 0;
+
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 0.92rem;
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    text-transform: none;
+}
+
+.reconstruction-description {
+    margin: 0;
+
+    color:
+        var(--color-text-description);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.14rem;
+    font-weight: 400;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   Kit — Medium
+   ========================================================= */
+
+@container (max-width: 1050px) {
+
+    .skills-grid {
+        grid-template-columns:
+            minmax(190px, 0.62fr)
+            minmax(240px, 1.19fr)
+            minmax(240px, 1.19fr);
+    }
+
+    .kit-row-progression {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 2fr);
+    }
+
+    .reflection-grid {
+        grid-template-columns:
+            minmax(250px, 0.75fr)
+            minmax(0, 1.25fr);
+    }
+
+}
+
+
+/* =========================================================
+   Kit — Narrow
+   ========================================================= */
+
+@container (max-width: 700px) {
+
+    .style-kit {
+        padding:
+            14px 12px;
+    }
+
+    .kit-main-grid {
+        gap: 22px;
+    }
+
+    .kit-row-progression {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+
+    /* =====================================================
+       Skills — Stacked
+       ===================================================== */
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+
+        /*
+           Desktop uses shared subgrid rows.
+           Once stacked, each card sizes independently.
+        */
+        grid-template-rows: none;
+    }
+
+    .skill-column {
+        display: grid;
+
+        grid-template-rows:
+            auto auto auto auto;
+    }
+
+    .skill-column:nth-child(1),
+    .skill-column:nth-child(2),
+    .skill-column:nth-child(3) {
+        grid-column: 1;
+        grid-row: auto;
+
+        border-right: 0;
+
+        border-bottom:
+            1px solid var(--color-border-soft);
+    }
+
+    .skill-column:nth-child(3) {
+        border-bottom: 0;
+    }
+
+
+    /* =====================================================
+       Reflection — Stacked
+       ===================================================== */
+
+    .reflection-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
