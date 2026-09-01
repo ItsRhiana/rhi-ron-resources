@@ -9,6 +9,7 @@ import lodestar from "../../data/styles/lodestar-sea-rover";
 
 import StyleHeader from "../../components/StyleHeader.astro";
 import StyleKit from "../../components/StyleKit.astro";
+import StyleBuild from "../../components/StyleBuild.astro";
 ---
 
 <StarlightPage
@@ -48,19 +49,29 @@ import StyleKit from "../../components/StyleKit.astro";
 
 <nav class="style-tabs">
 
-    <button class="active" type="button">
+    <button
+        class="active"
+        type="button"
+        data-style-tab="kit"
+    >
         <span class="tab-label">
             KIT
         </span>
     </button>
 
-    <button type="button">
+    <button
+        type="button"
+        data-style-tab="build"
+    >
         <span class="tab-label">
             BUILD &amp; SYNERGIES
         </span>
     </button>
 
-    <button type="button">
+    <button
+        type="button"
+        data-style-tab="review"
+    >
         <span class="tab-label">
             REVIEW
         </span>
@@ -72,6 +83,47 @@ import StyleKit from "../../components/StyleKit.astro";
              Kit
              ================================================== -->
 
-<StyleKit style={lodestar} />
+<div data-style-panel="kit">
+    <StyleKit style={lodestar} />
+</div>
+
+<div data-style-panel="build" hidden>
+    <StyleBuild style={lodestar} />
+</div>
+
+<div data-style-panel="review" hidden>
+    REVIEW
+</div>
     </div>
+
+    <script>
+    const tabs =
+        document.querySelectorAll<HTMLButtonElement>(
+            "[data-style-tab]"
+        );
+
+    const panels =
+        document.querySelectorAll<HTMLElement>(
+            "[data-style-panel]"
+        );
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const target =
+                tab.dataset.styleTab;
+
+            tabs.forEach((item) => {
+                item.classList.toggle(
+                    "active",
+                    item === tab
+                );
+            });
+
+            panels.forEach((panel) => {
+                panel.hidden =
+                    panel.dataset.stylePanel !== target;
+            });
+        });
+    });
+</script>
 </StarlightPage>
