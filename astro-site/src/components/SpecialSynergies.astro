@@ -1,0 +1,77 @@
+---
+import styles from "../data/styles";
+import EffectText from "./EffectText.astro";
+
+interface Props {
+    synergies: any[];
+}
+
+const { synergies } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+---
+
+<div class="special-synergy-list">
+    {
+        synergies.map((synergy) => {
+            const style = styles[synergy.style];
+
+            return (
+                <div class="special-synergy-row">
+                    <a
+                        class="special-synergy-style"
+                        href={`${base}styles/${style.id}/`}
+                        title={`${style.characterName} — ${style.styleName}`}
+                    >
+                        <div class="special-synergy-card">
+                            <img
+                                class="special-synergy-art"
+                                src={`${base}assets/styles/${style.id}.png`}
+                                alt={`${style.characterName} — ${style.styleName}`}
+                            />
+
+                            <div class="special-synergy-overlay">
+                                <img
+                                    class="special-synergy-desire"
+                                    src={`${base}assets/icons/${style.desire}.webp`}
+                                    alt=""
+                                />
+
+                                <div class="special-synergy-name">
+                                    {style.characterName}
+                                </div>
+                            </div>
+
+                            <div
+                                class:list={[
+                                    "special-synergy-rarity",
+                                    `rarity-${style.rarity}`,
+                                ]}
+                            />
+                        </div>
+                    </a>
+                    <div class="special-synergy-ability">
+                        {synergy.ability && (
+                            <>
+                                <div class="special-synergy-ability-label">
+                                    {synergy.ability.label}
+                                </div>
+
+                                <div class="special-synergy-ability-description">
+                                    <EffectText
+                                        text={synergy.ability.description}
+                                    />
+                                </div>
+                            </>
+                        )}
+                    </div>
+                    {synergy.note && (
+                        <div class="special-synergy-note">
+                            <EffectText text={synergy.note} />
+                        </div>
+                    )}{" "}
+                </div>
+            );
+        })
+    }
+</div>
