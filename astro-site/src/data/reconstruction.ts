@@ -62,11 +62,11 @@ const reconstructionEffects = {
         target: "basicAttack",
     },
 
-    "crit-rate-8": {
+    "crit": {
         rank: "A",
-        name: "CRIT Rate",
+        name: "CRIT",
         description:
-            "CRIT Rate +8%.",
+            "CRIT +8%.",
     },
     "inspiring-horn": {
         rank: "A",

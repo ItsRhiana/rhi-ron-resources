@@ -66,7 +66,7 @@ const giftPlayerInThePlay = {
             "aid-the-strong",
             "crimson-command",
             "scorch-to-the-bone",
-            "crit-rate-8",
+            "crit",
         ],
 
 
