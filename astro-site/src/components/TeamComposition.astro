@@ -2,6 +2,8 @@
 import styles from "../data/styles";
 import infiniteStairway from "../data/tier-lists/infinite-stairway";
 
+import TeamStyleCard from "./TeamStyleCard.astro";
+
 interface Props {
     team: any;
     highlightedStyles?: string[];
@@ -34,172 +36,138 @@ function isDimmed(styleId: string) {
 
 <div class="team-composition">
 
+    <!-- =====================================================
+         On-field
+         ===================================================== -->
+
     <div class="team-on-field">
 
-        {team.onField.map((slot) => {
-            const role = getRole(slot.role);
+        {
+            team.onField.map((slot) => {
+                const role = getRole(slot.role);
 
-            return (
-                <div class="team-role-slot">
+                return (
+                    <div class="team-role-slot">
 
-                    <div class="team-slot-styles">
+                        <div class="team-slot-styles">
 
-                        {slot.styles.map((styleId) => {
-                            const style =
-                                getStyle(styleId);
+                            {
+                                slot.styles.map((styleId) => {
+                                    const style =
+                                        getStyle(styleId);
 
-                            return (
-                                <a
-                                    class:list={[
-                                        "team-slot",
-                                        "team-slot-on-field",
-                                        {
-                                            "team-slot-dimmed":
-                                                isDimmed(styleId),
-                                        },
-                                    ]}
-                                    href={`${base}styles/${style.id}/`}
-                                    title={`${style.characterName} — ${style.styleName}`}
-                                >
-                                    <div class="team-card">
-
-                                        <img
-                                            class="team-card-art"
-                                            src={`${base}assets/styles/${style.id}.png`}
-                                            alt={`${style.characterName} — ${style.styleName}`}
+                                    return (
+                                        <TeamStyleCard
+                                            id={style.id}
+                                            characterName={
+                                                style.characterName
+                                            }
+                                            styleName={
+                                                style.styleName
+                                            }
+                                            rarity={
+                                                style.rarity
+                                            }
+                                            desire={
+                                                style.desire
+                                            }
+                                            position="on-field"
+                                            dimmed={
+                                                isDimmed(styleId)
+                                            }
                                         />
+                                    );
+                                })
+                            }
 
-                                        <div class="team-card-bottom">
+                        </div>
 
-                                            <div class="team-desire-row">
-                                                <img
-                                                    class="team-desire"
-                                                    src={`${base}assets/icons/${style.desire}.webp`}
-                                                    alt=""
-                                                />
-                                            </div>
 
-                                            <div class="team-card-name">
-                                                {style.characterName}
-                                            </div>
+                        <div class="team-role">
 
-                                        </div>
+                            <img
+                                src={`${base}assets/icons/${role.icon}.webp`}
+                                alt=""
+                            />
 
-                                        <div
-                                            class:list={[
-                                                "team-rarity-line",
-                                                `rarity-${style.rarity}`,
-                                            ]}
-                                        ></div>
+                            <span>
+                                {role.name}
+                            </span>
 
-                                    </div>
-                                </a>
-                            );
-                        })}
+                        </div>
 
                     </div>
-
-                    <div class="team-role">
-
-                        <img
-                            src={`${base}assets/icons/${role.icon}.webp`}
-                            alt=""
-                        />
-
-                        <span>
-                            {role.name}
-                        </span>
-
-                    </div>
-
-                </div>
-            );
-        })}
+                );
+            })
+        }
 
     </div>
 
 
+    <!-- =====================================================
+         Off-field
+         ===================================================== -->
+
     <div class="team-off-field">
 
-        {team.offField.map((slot) => {
-            const role = getRole(slot.role);
+        {
+            team.offField.map((slot) => {
+                const role = getRole(slot.role);
 
-            return (
-                <div class="team-role-slot">
+                return (
+                    <div class="team-role-slot">
 
-                    <div class="team-slot-styles">
+                        <div class="team-slot-styles">
 
-                        {slot.styles.map((styleId) => {
-                            const style =
-                                getStyle(styleId);
+                            {
+                                slot.styles.map((styleId) => {
+                                    const style =
+                                        getStyle(styleId);
 
-                            return (
-                                <a
-                                    class:list={[
-                                        "team-slot",
-                                        "team-slot-off-field",
-                                        {
-                                            "team-slot-dimmed":
-                                                isDimmed(styleId),
-                                        },
-                                    ]}
-                                    href={`${base}styles/${style.id}/`}
-                                    title={`${style.characterName} — ${style.styleName}`}
-                                >
-                                    <div class="team-card">
-
-                                        <img
-                                            class="team-card-art"
-                                            src={`${base}assets/styles/${style.id}.png`}
-                                            alt={`${style.characterName} — ${style.styleName}`}
+                                    return (
+                                        <TeamStyleCard
+                                            id={style.id}
+                                            characterName={
+                                                style.characterName
+                                            }
+                                            styleName={
+                                                style.styleName
+                                            }
+                                            rarity={
+                                                style.rarity
+                                            }
+                                            desire={
+                                                style.desire
+                                            }
+                                            position="off-field"
+                                            dimmed={
+                                                isDimmed(styleId)
+                                            }
                                         />
+                                    );
+                                })
+                            }
 
-                                        <div class="team-card-bottom">
+                        </div>
 
-                                            <div class="team-desire-row">
-                                                <img
-                                                    class="team-desire"
-                                                    src={`${base}assets/icons/${style.desire}.webp`}
-                                                    alt=""
-                                                />
-                                            </div>
 
-                                            <div class="team-card-name">
-                                                {style.characterName}
-                                            </div>
+                        <div class="team-role">
 
-                                        </div>
+                            <img
+                                src={`${base}assets/icons/${role.icon}.webp`}
+                                alt=""
+                            />
 
-                                        <div
-                                            class:list={[
-                                                "team-rarity-line",
-                                                `rarity-${style.rarity}`,
-                                            ]}
-                                        ></div>
+                            <span>
+                                {role.name}
+                            </span>
 
-                                    </div>
-                                </a>
-                            );
-                        })}
+                        </div>
 
                     </div>
-
-                    <div class="team-role">
-
-                        <img
-                            src={`${base}assets/icons/${role.icon}.webp`}
-                            alt=""
-                        />
-
-                        <span>
-                            {role.name}
-                        </span>
-
-                    </div>
-
-                </div>
-            );
-        })}
+                );
+            })
+        }
 
     </div>
 

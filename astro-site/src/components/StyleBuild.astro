@@ -56,80 +56,70 @@ const build = style.build;
                         </div>
                     </div>
 
-<div class="build-skill-levels">
+                    <div class="build-skill-levels">
+                        <!-- Basic Attack -->
 
-    <!-- Basic Attack -->
+                        <div class="build-skill-level-item">
+                            <div class="build-skill-level-content">
+                                <span class="build-skill-level-label">
+                                    BASIC ATTACK
+                                </span>
 
-    <div class="build-skill-level-item">
+                                <strong class="build-skill-level-value">
+                                    Lv.{build.skillLevels.basicAttack}
+                                </strong>
+                            </div>
 
-        <div class="build-skill-level-content">
-            <span class="build-skill-level-label">
-                BASIC ATTACK
-            </span>
+                            <div class="build-skill-preview">
+                                <SkillPanel
+                                    skills={style.kit.skills}
+                                    previewSkill="basicAttack"
+                                />
+                            </div>
+                        </div>
 
-            <strong class="build-skill-level-value">
-                Lv.{build.skillLevels.basicAttack}
-            </strong>
-        </div>
+                        <!-- Passive -->
 
-        <div class="build-skill-preview">
-            <SkillPanel
-                skills={style.kit.skills}
-                previewSkill="basicAttack"
-            />
-        </div>
+                        <div class="build-skill-level-item">
+                            <div class="build-skill-level-content">
+                                <span class="build-skill-level-label">
+                                    PASSIVE
+                                </span>
 
-    </div>
+                                <strong class="build-skill-level-value">
+                                    Lv.{build.skillLevels.passive}
+                                </strong>
+                            </div>
 
+                            <div class="build-skill-preview">
+                                <SkillPanel
+                                    skills={style.kit.skills}
+                                    previewSkill="passive"
+                                />
+                            </div>
+                        </div>
 
-    <!-- Passive -->
+                        <!-- Ultimate -->
 
-    <div class="build-skill-level-item">
+                        <div class="build-skill-level-item">
+                            <div class="build-skill-level-content">
+                                <span class="build-skill-level-label">
+                                    ULTIMATE
+                                </span>
 
-        <div class="build-skill-level-content">
-            <span class="build-skill-level-label">
-                PASSIVE
-            </span>
+                                <strong class="build-skill-level-value">
+                                    Lv.{build.skillLevels.ultimate}
+                                </strong>
+                            </div>
 
-            <strong class="build-skill-level-value">
-                Lv.{build.skillLevels.passive}
-            </strong>
-        </div>
-
-        <div class="build-skill-preview">
-            <SkillPanel
-                skills={style.kit.skills}
-                previewSkill="passive"
-            />
-        </div>
-
-    </div>
-
-
-    <!-- Ultimate -->
-
-    <div class="build-skill-level-item">
-
-        <div class="build-skill-level-content">
-            <span class="build-skill-level-label">
-                ULTIMATE
-            </span>
-
-            <strong class="build-skill-level-value">
-                Lv.{build.skillLevels.ultimate}
-            </strong>
-        </div>
-
-        <div class="build-skill-preview">
-            <SkillPanel
-                skills={style.kit.skills}
-                previewSkill="ultimate"
-            />
-        </div>
-
-    </div>
-
-</div>
+                            <div class="build-skill-preview">
+                                <SkillPanel
+                                    skills={style.kit.skills}
+                                    previewSkill="ultimate"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="build-summary-note">
@@ -152,79 +142,70 @@ const build = style.build;
 
                         return (
                             <div class="build-reconstruction-row">
-<div class="build-reconstruction-choice">
+                                <div class="build-reconstruction-choice">
+                                    <span class="build-reconstruction-number">
+                                        {index + 1}.
+                                    </span>
 
-    <span class="build-reconstruction-number">
-        {index + 1}.
-    </span>
+                                    {item.recommendation && (
+                                        <span class="build-reconstruction-recommendation">
+                                            {item.recommendation}
+                                        </span>
+                                    )}
 
-    {item.recommendation && (
-        <span class="build-reconstruction-recommendation">
-            {item.recommendation}
-        </span>
-    )}
+                                    <span
+                                        class:list={[
+                                            "build-reconstruction-effect",
+                                            `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                                        ]}
+                                        tabindex="0"
+                                    >
+                                        <span class="reconstruction-skill-label">
+                                            <span class="reconstruction-skill-rank">
+                                                {effect.rank}
+                                            </span>
 
-    <span
-        class:list={[
-            "build-reconstruction-effect",
-            `skill-reconstruction-${effect.rank.toLowerCase()}`,
-        ]}
-        tabindex="0"
-    >
-        <span class="reconstruction-skill-label">
+                                            <span class="reconstruction-skill-separator">
+                                                ◇
+                                            </span>
 
-            <span class="reconstruction-skill-rank">
-                {effect.rank}
-            </span>
+                                            <span class="reconstruction-skill-name">
+                                                {effect.name}
+                                            </span>
+                                        </span>
 
-            <span class="reconstruction-skill-separator">
-                ◇
-            </span>
+                                        <span class="build-reconstruction-tooltip">
+                                            <span
+                                                class:list={[
+                                                    "skill-reconstruction-effect",
+                                                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                                                ]}
+                                            >
+                                                <span class="reconstruction-skill-label">
+                                                    <span class="reconstruction-skill-rank">
+                                                        {effect.rank}
+                                                    </span>
 
-            <span class="reconstruction-skill-name">
-                {effect.name}
-            </span>
+                                                    <span class="reconstruction-skill-separator">
+                                                        ◇
+                                                    </span>
 
-        </span>
+                                                    <span class="reconstruction-skill-name">
+                                                        {effect.name}
+                                                    </span>
+                                                </span>
 
-
-        <span class="build-reconstruction-tooltip">
-
-            <span
-                class:list={[
-                    "skill-reconstruction-effect",
-                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                ]}
-            >
-                <span class="reconstruction-skill-label">
-
-                    <span class="reconstruction-skill-rank">
-                        {effect.rank}
-                    </span>
-
-                    <span class="reconstruction-skill-separator">
-                        ◇
-                    </span>
-
-                    <span class="reconstruction-skill-name">
-                        {effect.name}
-                    </span>
-
-                </span>
-
-                <span>
-                    <EffectText
-                        text={effect.description}
-                    />
-                </span>
-
-            </span>
-
-        </span>
-
-    </span>
-
-</div>
+                                                <span>
+                                                    <EffectText
+                                                        text={
+                                                            effect.description
+                                                        }
+                                                    />
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
 
                                 <div class="build-reconstruction-note">
                                     {item.note}
@@ -244,7 +225,10 @@ const build = style.build;
     <div class="build-team-section">
         <div class="section-heading">Generic Team</div>
 
-        <TeamComposition team={build.genericTeam} />
+        <TeamComposition
+            team={build.genericTeam}
+            highlightedStyles={[style.id]}
+        />
     </div>
 
     <!-- =====================================================
