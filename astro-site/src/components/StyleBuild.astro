@@ -142,70 +142,90 @@ const build = style.build;
 
                         return (
                             <div class="build-reconstruction-row">
-                                <div class="build-reconstruction-choice">
-                                    <span class="build-reconstruction-number">
-                                        {index + 1}.
-                                    </span>
+<div class="build-reconstruction-choice">
 
-                                    {item.recommendation && (
-                                        <span class="build-reconstruction-recommendation">
-                                            {item.recommendation}
-                                        </span>
-                                    )}
+    <div class="build-reconstruction-rank">
+        <span class="build-reconstruction-symbol">
+            ϒ
+        </span>
 
-                                    <span
-                                        class:list={[
-                                            "build-reconstruction-effect",
-                                            `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                                        ]}
-                                        tabindex="0"
-                                    >
-                                        <span class="reconstruction-skill-label">
-                                            <span class="reconstruction-skill-rank">
-                                                {effect.rank}
-                                            </span>
+        <span class="build-reconstruction-number">
+            {index + 1}
+        </span>
+    </div>
 
-                                            <span class="reconstruction-skill-separator">
-                                                ◇
-                                            </span>
 
-                                            <span class="reconstruction-skill-name">
-                                                {effect.name}
-                                            </span>
-                                        </span>
+    <div class="build-reconstruction-content">
 
-                                        <span class="build-reconstruction-tooltip">
-                                            <span
-                                                class:list={[
-                                                    "skill-reconstruction-effect",
-                                                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                                                ]}
-                                            >
-                                                <span class="reconstruction-skill-label">
-                                                    <span class="reconstruction-skill-rank">
-                                                        {effect.rank}
-                                                    </span>
+        {item.recommendation && (
+            <span class="build-reconstruction-recommendation">
+                {item.recommendation}
+            </span>
+        )}
 
-                                                    <span class="reconstruction-skill-separator">
-                                                        ◇
-                                                    </span>
+        <span
+            class:list={[
+                "build-reconstruction-effect",
+                `skill-reconstruction-${effect.rank.toLowerCase()}`,
+            ]}
+            tabindex="0"
+        >
+            <span class="reconstruction-skill-label">
 
-                                                    <span class="reconstruction-skill-name">
-                                                        {effect.name}
-                                                    </span>
-                                                </span>
+                <span class="reconstruction-skill-rank">
+                    {effect.rank}
+                </span>
 
-                                                <span>
-                                                    <EffectText
-                                                        text={
-                                                            effect.description
-                                                        }
-                                                    />
-                                                </span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </div>
+                <span class="reconstruction-skill-separator">
+                    ◇
+                </span>
+
+                <span class="reconstruction-skill-name">
+                    {effect.name}
+                </span>
+
+            </span>
+
+
+            <span class="build-reconstruction-tooltip">
+
+                <span
+                    class:list={[
+                        "skill-reconstruction-effect",
+                        `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                    ]}
+                >
+                    <span class="reconstruction-skill-label">
+
+                        <span class="reconstruction-skill-rank">
+                            {effect.rank}
+                        </span>
+
+                        <span class="reconstruction-skill-separator">
+                            ◇
+                        </span>
+
+                        <span class="reconstruction-skill-name">
+                            {effect.name}
+                        </span>
+
+                    </span>
+
+                    <span>
+                        <EffectText
+                            text={effect.description}
+                        />
+                    </span>
+
+                </span>
+
+            </span>
+
+        </span>
+
+    </div>
+
+</div>
 
                                 <div class="build-reconstruction-note">
                                     {item.note}

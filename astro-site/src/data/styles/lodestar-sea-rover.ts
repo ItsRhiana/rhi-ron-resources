@@ -261,6 +261,17 @@ const lodestarSeaRover = {
       },
 
       {
+        style: "windward-money-loving-gentleman",
+
+        ability: {
+          label: "A ◆ Battle Spirit Relay",
+
+          description:
+            "ULT grants the target +10% CRIT Rate for 10s.",
+        },
+      },
+
+      {
         style: "ng-dream-producer",
 
         ability: {
@@ -272,17 +283,6 @@ const lodestarSeaRover = {
 
         note:
           "Lodestar's ULT builds up to 72% CRIT DMG for 10s. If NG pulls him forward for a second ULT before the self-buff expires, the new stacks can overlap with the first, reaching 144% CRIT DMG from Lodestar's own ULT effect.\n\nNG also adds another 58% CRIT DMG to the next ULT, although Lodestar is already heavily saturated with CRIT DMG at this point.\n\nThe main weakness is CRIT consistency: NG provides no CRIT Rate, so Lodestar still needs it from his build or another ally to reliably capitalize on the burst window.",
-      },
-
-      {
-        style: "windward-money-loving-gentleman",
-
-        ability: {
-          label: "A ◆ Battle Spirit Relay",
-
-          description:
-            "ULT grants the target +10% CRIT Rate for 10s.",
-        },
       },
 
       {
