@@ -1,5 +1,5 @@
 /* =========================================================
-   Build & Synergies
+   Build Recommendation
    ========================================================= */
 
 .style-build {
@@ -24,23 +24,72 @@
     display: grid;
 
     grid-template-columns:
-        minmax(0, 0.72fr) minmax(0, 1.28fr);
+        minmax(0, 0.72fr)
+        minmax(0, 1.28fr);
 
-    gap: 18px;
+    grid-template-rows:
+        auto auto;
+
+    column-gap: 18px;
 
     align-items: start;
 }
 
+
+/*
+   The wrappers do not create their own layout boxes.
+   Their children participate directly in build-top-grid.
+
+   This forces both section headings onto the exact same row.
+*/
+
 .build-section {
-    min-width: 0;
+    display: contents;
 }
 
 
+/* Level & Position heading */
+
+.build-section:nth-child(1)
+> .section-heading {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+
+/* Level & Position table */
+
+.build-section:nth-child(1)
+> .build-summary {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+
+/* Reconstruction heading */
+
+.build-section:nth-child(2)
+> .section-heading {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+
+/* Reconstruction table */
+
+.build-section:nth-child(2)
+> .build-reconstruction-list {
+    grid-column: 2;
+    grid-row: 2;
+}
+
 /* =========================================================
-   Recommended Build
+   Level & Position
    ========================================================= */
 
 .build-summary {
+    margin: 0 !important;
+
     border:
         1px solid var(--color-border);
 
@@ -56,7 +105,6 @@
     gap: 14px;
 
     padding: 16px;
-
 }
 
 
@@ -151,6 +199,12 @@
     border:
         1px solid var(--color-border);
 
+    color:
+        var(--color-text-primary);
+
+    background:
+        var(--color-panel-bg-accent);
+
     font-family:
         var(--font-display);
 
@@ -166,12 +220,6 @@
 /* Off-field = rectangle */
 
 .position-primary {
-    color:
-        var(--color-text-primary);
-
-    background:
-        var(--color-panel-bg-accent);
-
     border-radius: 0;
 }
 
@@ -182,12 +230,6 @@
     min-height: 46px;
 
     padding-top: 12px;
-
-    color:
-        var(--color-text-primary);
-
-    background:
-        var(--color-panel-bg-accent);
 
     border-radius:
         28px 28px 0 0;
@@ -208,6 +250,7 @@
     line-height: 1;
 }
 
+
 /* =========================================================
    Skill Levels
    ========================================================= */
@@ -218,18 +261,109 @@
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
+    position: relative;
+
+    padding:
+        14px 0 16px;
+}
+
+
+/* =========================================================
+   Individual Skill Recommendation
+   ========================================================= */
+
+.build-skill-level-item {
+    position: relative;
+
+    min-width: 0;
+
+    margin: 0 !important;
+
+    cursor: default;
+}
+
+.build-skill-level-content {
+    display: grid;
+
     grid-template-rows:
         24px 30px;
 
     row-gap: 6px;
 
     align-items: center;
+    justify-items: center;
 
-    padding:
-        14px 0 16px;
+    width: 100%;
 
-    position: relative;
+    margin: 0 !important;
 }
+
+
+/* =========================================================
+   Skill Recommendation Label
+   ========================================================= */
+
+.build-skill-level-label {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 24px;
+
+    margin: 0 !important;
+    padding: 0;
+
+    color:
+        var(--color-text-muted);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   Skill Recommendation Level
+   ========================================================= */
+
+.build-skill-level-value {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 30px;
+
+    margin: 0 !important;
+    padding: 0;
+
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.35rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   Skill Dividers
+   ========================================================= */
 
 .build-skill-levels::before,
 .build-skill-levels::after {
@@ -255,109 +389,91 @@
 }
 
 
-/* Let all six pieces participate in the SAME grid */
+/* =========================================================
+   Skill Hover Preview
+   ========================================================= */
 
-.build-skill-levels>div {
-    display: contents;
+.build-skill-preview {
+    position: absolute;
+
+    left: 50%;
+    top: calc(100% + 10px);
+
+    z-index: 100;
+
+    width: 360px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateX(-50%)
+        translateY(-4px);
+
+    transition:
+        opacity 0.12s ease,
+        transform 0.12s ease,
+        visibility 0.12s ease;
+
+    pointer-events: none;
 }
 
+.build-skill-level-item:hover
+.build-skill-preview,
+.build-skill-level-item:focus-within
+.build-skill-preview {
+    opacity: 1;
+    visibility: visible;
 
-/* Labels */
-
-.build-skill-levels span {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-
-    margin: 0 !important;
-    padding: 0;
-
-    color:
-        var(--color-text-muted);
-
-    font-family:
-        var(--font-display);
-
-    font-size: 0.95rem;
-    font-weight: 600;
-
-    line-height: 1;
-
-    text-align: center;
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
-
-/* Levels */
-
-.build-skill-levels strong {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-
-    margin: 0 !important;
-    padding: 0;
-
-    color:
-        var(--color-text-primary);
-
-    font-family:
-        var(--font-body);
-
-    font-size: 1.35rem;
-    font-weight: 600;
-
-    line-height: 1;
-
-    text-align: center;
-}
-
-
-/* Basic Attack */
-
-.build-skill-levels>div:nth-child(1) span {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.build-skill-levels>div:nth-child(1) strong {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-
-/* Passive */
-
-.build-skill-levels>div:nth-child(2) span {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.build-skill-levels>div:nth-child(2) strong {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-
-/* Ultimate */
-
-.build-skill-levels>div:nth-child(3) span {
-    grid-column: 3;
-    grid-row: 1;
-}
-
-.build-skill-levels>div:nth-child(3) strong {
-    grid-column: 3;
-    grid-row: 2;
-}
 
 /* =========================================================
-   Recommended Build Explanation
+   Reuse Kit Skill Presentation
+
+   Only override the multi-column layout.
+   All typography/content styling still comes from style-kit.css.
+   ========================================================= */
+
+.build-skill-preview .kit-skills {
+    width: 100%;
+
+    margin: 0;
+}
+
+.build-skill-preview .skills-grid {
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+
+    border:
+        1px solid var(--color-border);
+}
+
+.build-skill-preview .skill-column {
+    display: grid;
+
+    grid-template-rows:
+        auto auto auto auto;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    border-right: 0;
+}
+
+
+/* =========================================================
+   Level & Position Explanation
    ========================================================= */
 
 .build-summary-note {
@@ -388,10 +504,12 @@
 
 
 /* =========================================================
-   Build Reconstruction
+   Reconstruction
    ========================================================= */
 
 .build-reconstruction-list {
+    margin: 0 !important;
+
     border:
         1px solid var(--color-border);
 
@@ -403,12 +521,14 @@
     display: grid;
 
     grid-template-columns:
-        minmax(320px, 1fr) minmax(300px, 1fr);
+        minmax(320px, 1fr)
+        minmax(300px, 1fr);
 
-    min-height: 86px;
+    min-height: 110px;
 }
 
-.build-reconstruction-row+.build-reconstruction-row {
+.build-reconstruction-row
++ .build-reconstruction-row {
     border-top:
         1px solid var(--color-border-soft);
 }
@@ -423,20 +543,17 @@
 
     align-items: center;
 
-    gap: 8px;
+    gap: 9px;
 
     min-width: 0;
 
     padding:
-        16px 18px;
-
-    border-right:
-        1px solid var(--color-border-soft);
+        18px 20px;
 
     font-family:
         var(--font-body);
 
-    font-size: 1.08rem;
+    font-size: 1.18rem;
 }
 
 .build-reconstruction-number {
@@ -445,13 +562,22 @@
     color:
         var(--color-text-muted);
 
+    font-size: 1.08rem;
     font-weight: 600;
 }
 
 .build-reconstruction-recommendation {
     flex: 0 0 auto;
 
-    font-weight: 600;
+    color:
+        var(--color-text-primary);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.18rem;
+
+    line-height: 1.2;
 }
 
 .build-reconstruction-effect {
@@ -459,30 +585,9 @@
 
     display: inline-flex;
 
-    align-items: baseline;
-
-    gap: 6px;
-
     min-width: 0;
 
-    font-family:
-        var(--font-display);
-
-    font-weight: 700;
-}
-
-.build-reconstruction-diamond {
-    flex: 0 0 auto;
-}
-
-.build-reconstruction-s {
-    color:
-        var(--color-reconstruction-s);
-}
-
-.build-reconstruction-a {
-    color:
-        var(--color-reconstruction-a);
+    cursor: default;
 }
 
 
@@ -498,30 +603,7 @@
 
     z-index: 30;
 
-    width: max-content;
-    max-width: 280px;
-
-    padding:
-        10px 12px;
-
-    box-sizing: border-box;
-
-    color:
-        var(--color-text-description);
-
-    background:
-        var(--color-panel-bg-accent);
-
-    border-left:
-        2px solid currentColor;
-
-    font-family:
-        var(--font-body);
-
-    font-size: 1.05rem;
-    font-weight: 400;
-
-    line-height: 1.25;
+    width: 300px;
 
     opacity: 0;
     visibility: hidden;
@@ -537,8 +619,31 @@
     pointer-events: none;
 }
 
-.build-reconstruction-effect:hover .build-reconstruction-tooltip,
-.build-reconstruction-effect:focus .build-reconstruction-tooltip {
+
+/*
+   Tooltip appearance comes from the existing Kit
+   skill-reconstruction-effect styling.
+*/
+
+.build-reconstruction-tooltip
+.skill-reconstruction-effect {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.12rem;
+    font-weight: 400;
+
+    line-height: 1.2;
+}
+
+.build-reconstruction-effect:hover
+.build-reconstruction-tooltip,
+.build-reconstruction-effect:focus
+.build-reconstruction-tooltip {
     opacity: 1;
     visibility: visible;
 
@@ -552,24 +657,29 @@
    ========================================================= */
 
 .build-reconstruction-note {
-    display: flex;
-
-    align-items: center;
-
-    min-width: 0;
+    margin:
+        14px;
 
     padding:
         16px 18px;
 
+    min-width: 0;
+
+    background:
+        #F0EEED;
+
     color:
-        var(--color-text-description);
+        #373737;
+
+    border-radius:
+        10px;
 
     font-family:
         var(--font-body);
 
-    font-size: 1.12rem;
+    font-size: 1.14rem;
 
-    line-height: 1.3;
+    line-height: 1.2;
 }
 
 
@@ -622,8 +732,6 @@
 
 /* =========================================================
    Team Role Slot
-
-   A logical team position may contain one or more Styles.
    ========================================================= */
 
 .team-role-slot {
@@ -693,7 +801,8 @@
 
 /* On-field = dome */
 
-.team-slot-on-field .team-card {
+.team-slot-on-field
+.team-card {
     height: 155px;
 
     border-radius:
@@ -709,7 +818,8 @@
     flex-basis: 145px;
 }
 
-.team-slot-off-field .team-card {
+.team-slot-off-field
+.team-card {
     width: 145px;
     height: 96px;
 
@@ -759,14 +869,20 @@
     box-sizing: border-box;
 
     background:
-        linear-gradient(to top,
-            color-mix(in srgb,
+        linear-gradient(
+            to top,
+            color-mix(
+                in srgb,
                 var(--color-overlay-bg) 96%,
-                transparent) 0%,
-            color-mix(in srgb,
+                transparent
+            ) 0%,
+            color-mix(
+                in srgb,
                 var(--color-overlay-bg) 72%,
-                transparent) 55%,
-            transparent 100%);
+                transparent
+            ) 55%,
+            transparent 100%
+        );
 }
 
 
@@ -896,13 +1012,12 @@
 
 /* =========================================================
    Team Dimmed State
-
-   Used for filler/default Styles in Special Synergy teams.
    ========================================================= */
 
 .team-slot-dimmed {
     filter:
-        grayscale(1) brightness(0.55);
+        grayscale(1)
+        brightness(0.55);
 
     opacity: 0.55;
 }
@@ -948,12 +1063,15 @@
     display: grid;
 
     grid-template-columns:
-        157px minmax(280px, 0.9fr) minmax(0, 1.1fr);
+        157px
+        minmax(280px, 0.9fr)
+        minmax(0, 1.1fr);
 
     min-width: 0;
 }
 
-.special-synergy-row+.special-synergy-row {
+.special-synergy-row
++ .special-synergy-row {
     border-top:
         1px solid var(--color-border-soft);
 }
@@ -1026,11 +1144,15 @@
     box-sizing: border-box;
 
     background:
-        linear-gradient(to top,
-            color-mix(in srgb,
+        linear-gradient(
+            to top,
+            color-mix(
+                in srgb,
                 var(--color-overlay-bg) 96%,
-                transparent),
-            transparent);
+                transparent
+            ),
+            transparent
+        );
 }
 
 .special-synergy-desire {
@@ -1197,7 +1319,42 @@
     .build-top-grid {
         grid-template-columns: 1fr;
 
-        gap: 28px;
+        grid-template-rows:
+            auto auto auto auto;
+
+        row-gap: 0;
+    }
+
+
+    /* Level & Position stays in rows 1–2 */
+
+    .build-section:nth-child(1)
+    > .section-heading {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .build-section:nth-child(1)
+    > .build-summary {
+        grid-column: 1;
+        grid-row: 2;
+
+        margin-bottom: 28px;
+    }
+
+
+    /* Reconstruction moves below it */
+
+    .build-section:nth-child(2)
+    > .section-heading {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .build-section:nth-child(2)
+    > .build-reconstruction-list {
+        grid-column: 1;
+        grid-row: 4;
     }
 
     .team-composition {
@@ -1219,7 +1376,8 @@
 
     .special-synergy-row {
         grid-template-columns:
-            157px minmax(0, 1fr);
+            157px
+            minmax(0, 1fr);
     }
 
     .special-synergy-ability {
@@ -1265,8 +1423,6 @@
     }
 
     .build-reconstruction-choice {
-        border-right: 0;
-
         border-bottom:
             1px solid var(--color-border-soft);
     }

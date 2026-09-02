@@ -2,7 +2,7 @@
 import EffectText from "./EffectText.astro";
 import TeamComposition from "./TeamComposition.astro";
 import SpecialSynergies from "./SpecialSynergies.astro";
-
+import SkillPanel from "./SkillPanel.astro";
 import reconstructionEffects from "../data/reconstruction";
 
 interface Props {
@@ -56,31 +56,80 @@ const build = style.build;
                         </div>
                     </div>
 
-                    <div class="build-skill-levels">
-                        <div>
-                            <span> BASIC ATTACK </span>
+<div class="build-skill-levels">
 
-                            <strong>
-                                Lv.{build.skillLevels.basicAttack}
-                            </strong>
-                        </div>
+    <!-- Basic Attack -->
 
-                        <div>
-                            <span> PASSIVE </span>
+    <div class="build-skill-level-item">
 
-                            <strong>
-                                Lv.{build.skillLevels.passive}
-                            </strong>
-                        </div>
+        <div class="build-skill-level-content">
+            <span class="build-skill-level-label">
+                BASIC ATTACK
+            </span>
 
-                        <div>
-                            <span> ULTIMATE </span>
+            <strong class="build-skill-level-value">
+                Lv.{build.skillLevels.basicAttack}
+            </strong>
+        </div>
 
-                            <strong>
-                                Lv.{build.skillLevels.ultimate}
-                            </strong>
-                        </div>
-                    </div>
+        <div class="build-skill-preview">
+            <SkillPanel
+                skills={style.kit.skills}
+                previewSkill="basicAttack"
+            />
+        </div>
+
+    </div>
+
+
+    <!-- Passive -->
+
+    <div class="build-skill-level-item">
+
+        <div class="build-skill-level-content">
+            <span class="build-skill-level-label">
+                PASSIVE
+            </span>
+
+            <strong class="build-skill-level-value">
+                Lv.{build.skillLevels.passive}
+            </strong>
+        </div>
+
+        <div class="build-skill-preview">
+            <SkillPanel
+                skills={style.kit.skills}
+                previewSkill="passive"
+            />
+        </div>
+
+    </div>
+
+
+    <!-- Ultimate -->
+
+    <div class="build-skill-level-item">
+
+        <div class="build-skill-level-content">
+            <span class="build-skill-level-label">
+                ULTIMATE
+            </span>
+
+            <strong class="build-skill-level-value">
+                Lv.{build.skillLevels.ultimate}
+            </strong>
+        </div>
+
+        <div class="build-skill-preview">
+            <SkillPanel
+                skills={style.kit.skills}
+                previewSkill="ultimate"
+            />
+        </div>
+
+    </div>
+
+</div>
                 </div>
 
                 <div class="build-summary-note">
@@ -103,40 +152,79 @@ const build = style.build;
 
                         return (
                             <div class="build-reconstruction-row">
-                                <div class="build-reconstruction-choice">
-                                    <span class="build-reconstruction-number">
-                                        {index + 1}.
-                                    </span>
+<div class="build-reconstruction-choice">
 
-                                    <span
-                                        class:list={[
-                                            "build-reconstruction-recommendation",
-                                            `build-reconstruction-${effect.rank.toLowerCase()}`,
-                                        ]}
-                                    >
-                                        {item.recommendation}
-                                    </span>
+    <span class="build-reconstruction-number">
+        {index + 1}.
+    </span>
 
-                                    <span
-                                        class:list={[
-                                            "build-reconstruction-effect",
-                                            `build-reconstruction-${effect.rank.toLowerCase()}`,
-                                        ]}
-                                        tabindex="0"
-                                    >
-                                        <span class="build-reconstruction-diamond">
-                                            ◆
-                                        </span>
+    {item.recommendation && (
+        <span class="build-reconstruction-recommendation">
+            {item.recommendation}
+        </span>
+    )}
 
-                                        <span>{effect.name}</span>
+    <span
+        class:list={[
+            "build-reconstruction-effect",
+            `skill-reconstruction-${effect.rank.toLowerCase()}`,
+        ]}
+        tabindex="0"
+    >
+        <span class="reconstruction-skill-label">
 
-                                        <span class="build-reconstruction-tooltip">
-                                            <EffectText
-                                                text={effect.description}
-                                            />
-                                        </span>
-                                    </span>
-                                </div>
+            <span class="reconstruction-skill-rank">
+                {effect.rank}
+            </span>
+
+            <span class="reconstruction-skill-separator">
+                ◇
+            </span>
+
+            <span class="reconstruction-skill-name">
+                {effect.name}
+            </span>
+
+        </span>
+
+
+        <span class="build-reconstruction-tooltip">
+
+            <span
+                class:list={[
+                    "skill-reconstruction-effect",
+                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                ]}
+            >
+                <span class="reconstruction-skill-label">
+
+                    <span class="reconstruction-skill-rank">
+                        {effect.rank}
+                    </span>
+
+                    <span class="reconstruction-skill-separator">
+                        ◇
+                    </span>
+
+                    <span class="reconstruction-skill-name">
+                        {effect.name}
+                    </span>
+
+                </span>
+
+                <span>
+                    <EffectText
+                        text={effect.description}
+                    />
+                </span>
+
+            </span>
+
+        </span>
+
+    </span>
+
+</div>
 
                                 <div class="build-reconstruction-note">
                                     {item.note}

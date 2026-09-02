@@ -188,7 +188,7 @@ const lodestarSeaRover = {
     reconstruction: [
       {
         effect: "tactical-balance",
-        recommendation: "A",
+        recommendation: "",
 
         note:
           "With strong built-in CRIT DMG but only 38.6% CRIT Rate, trading 20% CRIT DMG for 20% CRIT Rate is favorable, making his ULT much more consistent.",
@@ -196,7 +196,7 @@ const lodestarSeaRover = {
 
       {
         effect: "fleeting-brilliance",
-        recommendation: "Any effect except A",
+        recommendation: "Any effect except",
 
         note:
           "His Passive contributes little, and off-field he cannot trigger it at all.",
