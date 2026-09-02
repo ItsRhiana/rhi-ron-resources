@@ -202,49 +202,49 @@ const lodestarSeaRover = {
           "His Passive contributes little, and off-field he cannot trigger it at all.",
       },
     ],
-genericTeam: {
-    onField: [
+    genericTeam: {
+      onField: [
         {
-            styles: [
-                "red-gloves-abyssal-judgment",
-            ],
-            role: "vanguard",
+          styles: [
+            "red-gloves-ace-lawyer",
+          ],
+          role: "vanguard",
         },
         {
-            styles: [
-                "ghost-vengeful-nursery-rhyme",
-            ],
-            role: "aoe-dps",
+          styles: [
+            "lodestar-sea-rover",
+          ],
+          role: "st-dps",
         },
         {
-            styles: [
-                "nobody-seaside-holiday",
-            ],
-            role: "aoe-dps",
+          styles: [
+            "nobody-seaside-holiday",
+          ],
+          role: "aoe-dps",
         },
         {
-            styles: [
-                "general-thunder-commander",
-            ],
-            role: "support",
+          styles: [
+            "general-thunder-commander",
+          ],
+          role: "support",
         },
-    ],
+      ],
 
-    offField: [
+      offField: [
         {
-            styles: [
-                "laksa-spice-merchant",
-            ],
-            role: "healer",
+          styles: [
+            "laksa-spice-merchant",
+          ],
+          role: "healer",
         },
         {
-            styles: [
-                "lodestar-sea-rover",
-            ],
-            role: "st-dps",
+          styles: [
+            "lodestar-sea-rover",
+          ],
+          role: "st-dps",
         },
-    ],
-},
+      ],
+    },
     specialSynergies: [
       {
         style: "gift-player-in-the-play",
@@ -299,50 +299,50 @@ genericTeam: {
           "The healing initially appears anti-synergistic with the HP-based CRIT Rate buff, but it is not applied immediately and takes roughly 3s to complete.\n\nThis creates a short timing window: Let Lodestar's HP drop critically low, cast Rainmaker's ULT, then cast Lodestar's ULT immediately before the healing pushes him back above 40%. This lets him receive the maximum CRIT Rate bonus while still being healed to safety.",
       },
     ],
-specialSynergyTeam: {
-    onField: [
+    specialSynergyTeam: {
+      onField: [
         {
-            styles: [
-                "red-gloves-ace-lawyer",
-            ],
-            role: "vanguard",
+          styles: [
+            "red-gloves-ace-lawyer",
+          ],
+          role: "vanguard",
         },
         {
-            styles: [
-                "lodestar-sea-rover",
-            ],
-            role: "st-dps",
+          styles: [
+            "lodestar-sea-rover",
+          ],
+          role: "st-dps",
         },
         {
-            styles: [
-                "nobody-seaside-holiday",
-            ],
-            role: "aoe-dps",
+          styles: [
+            "nobody-seaside-holiday",
+          ],
+          role: "aoe-dps",
         },
         {
-            styles: [
-                "ng-dream-producer",
-            ],
-            role: "support",
+          styles: [
+            "ng-dream-producer",
+          ],
+          role: "support",
         },
-    ],
+      ],
 
-    offField: [
+      offField: [
         {
-            styles: [
-                "windward-money-loving-gentleman",
-                "rainmaker-world-cleansing-rain",
-            ],
-            role: "healer",
+          styles: [
+            "windward-money-loving-gentleman",
+            "rainmaker-world-cleansing-rain",
+          ],
+          role: "healer",
         },
         {
-            styles: [
-                "gift-player-in-the-play",
-            ],
-            role: "support",
+          styles: [
+            "gift-player-in-the-play",
+          ],
+          role: "support",
         },
-    ],
-},
+      ],
+    },
   },
 };
 

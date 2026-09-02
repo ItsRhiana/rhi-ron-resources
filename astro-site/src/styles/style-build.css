@@ -35,14 +35,6 @@
     align-items: start;
 }
 
-
-/*
-   The wrappers do not create their own layout boxes.
-   Their children participate directly in build-top-grid.
-
-   This forces both section headings onto the exact same row.
-*/
-
 .build-section {
     display: contents;
 }
@@ -82,6 +74,7 @@
     grid-column: 2;
     grid-row: 2;
 }
+
 
 /* =========================================================
    Level & Position
@@ -433,9 +426,6 @@
 
 /* =========================================================
    Reuse Kit Skill Presentation
-
-   Only override the multi-column layout.
-   All typography/content styling still comes from style-kit.css.
    ========================================================= */
 
 .build-skill-preview .kit-skills {
@@ -619,12 +609,6 @@
     pointer-events: none;
 }
 
-
-/*
-   Tooltip appearance comes from the existing Kit
-   skill-reconstruction-effect styling.
-*/
-
 .build-reconstruction-tooltip
 .skill-reconstruction-effect {
     width: 100%;
@@ -691,14 +675,23 @@
     margin-top: 28px;
 }
 
+
+/* =========================================================
+   Team Composition
+   ========================================================= */
+
 .team-composition {
     display: flex;
 
     align-items: flex-end;
 
-    gap: 34px;
+    gap: 28px;
 
-    width: 100%;
+    width: max-content;
+    max-width: 100%;
+
+    margin:
+        0 auto !important;
 
     padding:
         18px 20px;
@@ -712,21 +705,23 @@
         var(--color-panel-bg);
 }
 
+
+/* =========================================================
+   Team Groups
+   ========================================================= */
+
 .team-on-field,
 .team-off-field {
     display: flex;
 
     align-items: flex-end;
 
-    gap: 14px;
-}
+    gap: 10px;
 
-.team-on-field {
-    flex: 1;
-}
+    flex:
+        0 0 auto;
 
-.team-off-field {
-    flex: 0 0 auto;
+    margin: 0 !important;
 }
 
 
@@ -741,7 +736,9 @@
 
     align-items: center;
 
-    gap: 8px;
+    gap: 4px;
+
+    margin: 0 !important;
 }
 
 .team-slot-styles {
@@ -750,226 +747,13 @@
     align-items: flex-end;
 
     gap: 8px;
-}
-
-
-/* =========================================================
-   Team Style
-   ========================================================= */
-
-.team-slot {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    width: 125px;
-
-    flex:
-        0 0 125px;
-
-    margin: 0;
-
-    color:
-        var(--color-text-primary);
-
-    text-decoration: none;
-}
-
-
-/* =========================================================
-   Team Card
-   ========================================================= */
-
-.team-card {
-    position: relative;
-
-    width: 125px;
-
-    overflow: hidden;
-
-    box-sizing: border-box;
-
-    border:
-        1px solid var(--color-border);
-
-    background:
-        var(--color-panel-bg-accent);
-}
-
-
-/* On-field = dome */
-
-.team-slot-on-field
-.team-card {
-    height: 155px;
-
-    border-radius:
-        62px 62px 0 0;
-}
-
-
-/* Off-field = horizontal rectangle */
-
-.team-slot-off-field {
-    width: 145px;
-
-    flex-basis: 145px;
-}
-
-.team-slot-off-field
-.team-card {
-    width: 145px;
-    height: 96px;
-
-    border-radius: 0;
-}
-
-
-/* =========================================================
-   Team Artwork
-   ========================================================= */
-
-.team-card-art {
-    width: 100%;
-    height: 100%;
-
-    max-width: none;
-
-    display: block;
 
     margin: 0 !important;
-
-    object-fit: cover;
-    object-position: center;
 }
-
-
-/* =========================================================
-   Team Card Bottom
-   ========================================================= */
-
-.team-card-bottom {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 4px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 1px;
-
-    padding:
-        12px 6px 4px;
-
-    box-sizing: border-box;
-
-    background:
-        linear-gradient(
-            to top,
-            color-mix(
-                in srgb,
-                var(--color-overlay-bg) 96%,
-                transparent
-            ) 0%,
-            color-mix(
-                in srgb,
-                var(--color-overlay-bg) 72%,
-                transparent
-            ) 55%,
-            transparent 100%
-        );
-}
-
-
-/* Desire = left aligned */
-
-.team-desire-row {
-    display: flex;
-
-    justify-content: flex-start;
-
-    width: 100%;
-}
-
-.team-desire {
-    width: 22px;
-    height: 22px;
-
-    max-width: none;
-
-    display: block;
-
-    margin: 0 !important;
-
-    object-fit: contain;
-}
-
-
-/* Name = centered below Desire */
-
-.team-card-name {
-    width: 100%;
-
-    overflow: hidden;
-
-    color:
-        var(--color-text-primary);
-
-    font-family:
-        var(--font-display);
-
-    font-size: 0.72rem;
-    font-weight: 700;
-
-    line-height: 1.1;
-
-    text-align: center;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   Team Rarity
-   ========================================================= */
-
-.team-rarity-line {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 4px;
-}
-
-.team-rarity-line.rarity-6 {
-    background:
-        var(--color-rarity-6);
-}
-
-.team-rarity-line.rarity-5 {
-    background:
-        var(--color-rarity-5);
-}
-
-.team-rarity-line.rarity-4 {
-    background:
-        var(--color-rarity-4);
-}
-
 
 /* =========================================================
    Team Role
+   Matches Tier List role header sizing
    ========================================================= */
 
 .team-role {
@@ -978,18 +762,22 @@
     align-items: center;
     justify-content: center;
 
-    gap: 5px;
+    gap: 7px;
 
     width: 100%;
+
+    margin: 0 !important;
 }
 
 .team-role img {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
 
     max-width: none;
 
     display: block;
+
+    flex-shrink: 0;
 
     margin: 0 !important;
 
@@ -997,31 +785,21 @@
 }
 
 .team-role span {
+    margin: 0 !important;
+
     color:
-        var(--color-text-description);
+        var(--color-text-primary);
 
     font-family:
         var(--font-body);
 
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
 
-    line-height: 1;
+    line-height: 1.2;
+
+    text-align: center;
 }
-
-
-/* =========================================================
-   Team Dimmed State
-   ========================================================= */
-
-.team-slot-dimmed {
-    filter:
-        grayscale(1)
-        brightness(0.55);
-
-    opacity: 0.55;
-}
-
 
 /* =========================================================
    Special Synergies
@@ -1326,7 +1104,7 @@
     }
 
 
-    /* Level & Position stays in rows 1–2 */
+    /* Level & Position */
 
     .build-section:nth-child(1)
     > .section-heading {
@@ -1339,11 +1117,11 @@
         grid-column: 1;
         grid-row: 2;
 
-        margin-bottom: 28px;
+        margin-bottom: 28px !important;
     }
 
 
-    /* Reconstruction moves below it */
+    /* Reconstruction */
 
     .build-section:nth-child(2)
     > .section-heading {
@@ -1357,12 +1135,13 @@
         grid-row: 4;
     }
 
+
+    /* Team remains horizontally scrollable */
+
     .team-composition {
         overflow-x: auto;
-    }
 
-    .team-on-field {
-        flex: 0 0 auto;
+        max-width: 100%;
     }
 
 }
