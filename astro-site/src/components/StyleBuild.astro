@@ -15,62 +15,50 @@ const build = style.build;
 ---
 
 <section class="style-build">
-
     <!-- =====================================================
          Recommended Build + Reconstruction
          ===================================================== -->
 
     <div class="build-top-grid">
-
         <!-- ==================================================
              Recommended Build
              ================================================== -->
 
         <div class="build-section">
-
-            <div class="section-heading">
-                Recommended Build
-            </div>
+            <div class="section-heading">Level &amp; Position</div>
 
             <div class="build-summary">
-
                 <div class="build-summary-main">
-
                     <div class="build-header-row">
-
                         <div class="build-level">
-                            STYLE LV.{build.styleLevel}
+                            <span class="build-level-prefix"> Lv. </span>
+
+                            <span class="build-level-value">
+                                {build.styleLevel}
+                            </span>
                         </div>
-
                         <div class="build-position">
-
                             <span class="position-primary">
                                 {build.position.primary}
                             </span>
 
-                            {build.position.secondary && (
-                                <>
-                                    <span class="position-arrow">
-                                        ›
-                                    </span>
+                            {
+                                build.position.secondary && (
+                                    <>
+                                        <span class="position-arrow">&gt;</span>
 
-                                    <span class="position-secondary">
-                                        {build.position.secondary}
-                                    </span>
-                                </>
-                            )}
-
+                                        <span class="position-secondary">
+                                            {build.position.secondary}
+                                        </span>
+                                    </>
+                                )
+                            }
                         </div>
-
                     </div>
 
-
                     <div class="build-skill-levels">
-
                         <div>
-                            <span>
-                                BASIC ATTACK
-                            </span>
+                            <span> BASIC ATTACK </span>
 
                             <strong>
                                 Lv.{build.skillLevels.basicAttack}
@@ -78,9 +66,7 @@ const build = style.build;
                         </div>
 
                         <div>
-                            <span>
-                                PASSIVE
-                            </span>
+                            <span> PASSIVE </span>
 
                             <strong>
                                 Lv.{build.skillLevels.passive}
@@ -88,51 +74,36 @@ const build = style.build;
                         </div>
 
                         <div>
-                            <span>
-                                ULTIMATE
-                            </span>
+                            <span> ULTIMATE </span>
 
                             <strong>
                                 Lv.{build.skillLevels.ultimate}
                             </strong>
                         </div>
-
                     </div>
-
                 </div>
-
 
                 <div class="build-summary-note">
                     {build.description}
                 </div>
-
             </div>
-
         </div>
-
 
         <!-- ==================================================
              Reconstruction
              ================================================== -->
 
         <div class="build-section">
-
-            <div class="section-heading">
-                Reconstruction
-            </div>
+            <div class="section-heading">Reconstruction</div>
 
             <div class="build-reconstruction-list">
-
                 {
                     build.reconstruction.map((item, index) => {
-                        const effect =
-                            reconstructionEffects[item.effect];
+                        const effect = reconstructionEffects[item.effect];
 
                         return (
                             <div class="build-reconstruction-row">
-
                                 <div class="build-reconstruction-choice">
-
                                     <span class="build-reconstruction-number">
                                         {index + 1}.
                                     </span>
@@ -157,92 +128,62 @@ const build = style.build;
                                             ◆
                                         </span>
 
-                                        <span>
-                                            {effect.name}
-                                        </span>
+                                        <span>{effect.name}</span>
 
                                         <span class="build-reconstruction-tooltip">
                                             <EffectText
                                                 text={effect.description}
                                             />
                                         </span>
-
                                     </span>
-
                                 </div>
-
 
                                 <div class="build-reconstruction-note">
                                     {item.note}
                                 </div>
-
                             </div>
                         );
                     })
                 }
-
             </div>
-
         </div>
-
     </div>
-
 
     <!-- =====================================================
          Generic Team
          ===================================================== -->
 
     <div class="build-team-section">
+        <div class="section-heading">Generic Team</div>
 
-        <div class="section-heading">
-            Generic Team
-        </div>
-
-        <TeamComposition
-            team={build.genericTeam}
-        />
-
+        <TeamComposition team={build.genericTeam} />
     </div>
-
 
     <!-- =====================================================
          Special Synergies
          ===================================================== -->
 
     <div class="build-synergy-section">
-
-        <div class="section-heading">
-            Special Synergies
-        </div>
+        <div class="section-heading">Special Synergies</div>
 
         <div class="special-synergy-warning">
             Special Synergies ≠ Best Teammates
         </div>
 
-
-        <SpecialSynergies
-            synergies={build.specialSynergies}
-        />
-
+        <SpecialSynergies synergies={build.specialSynergies} />
 
         <!-- ==================================================
              Special Synergy Team
              ================================================== -->
 
         <div class="special-synergy-team">
-
             <TeamComposition
                 team={build.specialSynergyTeam}
                 highlightedStyles={[
                     style.id,
-                    ...build.specialSynergies.map(
-                        (synergy) => synergy.style
-                    ),
+                    ...build.specialSynergies.map((synergy) => synergy.style),
                 ]}
             />
-
         </div>
-
     </div>
-
 </section>
