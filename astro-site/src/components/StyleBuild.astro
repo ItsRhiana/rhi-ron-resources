@@ -300,23 +300,34 @@ const build = style.build;
     </div>
 
 
-    <!-- =====================================================
-         Special Synergies
-         Fresh Rebuild — Stage 1
-         ===================================================== -->
+<!-- =====================================================
+     Special Synergies
+     ===================================================== -->
 
-    <div class="build-synergy-section">
-        <div class="section-heading">
-            Special Synergies
-        </div>
+<div class="build-synergy-section">
+    <div class="section-heading">
+        Special Synergies
+    </div>
 
-        <div class="special-synergy-warning">
-            Special Synergies ≠ Best Teammates
-        </div>
+    <div class="special-synergy-warning">
+        Special Synergies ≠ Best Teammates
+    </div>
 
-        <SpecialSynergies
-            synergies={build.specialSynergies}
+    <SpecialSynergies
+        synergies={build.specialSynergies}
+    />
+
+    <div class="special-synergy-team">
+        <TeamComposition
+            team={build.specialSynergyTeam}
+            highlightedStyles={[
+                style.id,
+                ...build.specialSynergies.flatMap(
+                    (synergy) => synergy.styles,
+                ),
+            ]}
         />
     </div>
+</div>
 
 </section>
