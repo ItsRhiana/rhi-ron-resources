@@ -5,114 +5,60 @@ import stats from "../data/stats";
 import reconstructionEffects, {
     sortReconstruction,
 } from "../data/reconstruction";
+import ReconstructionEntry from "./ReconstructionEntry.astro";
 
 interface Props {
     deepening: any[];
     reconstruction: any[];
 }
 
-const {
-    deepening,
-    reconstruction,
-} = Astro.props;
+const { deepening, reconstruction } = Astro.props;
 ---
 
 <aside class="kit-reflection">
-
-    <div class="section-heading">
-        Reflection
-    </div>
-
+    <div class="section-heading">Reflection</div>
 
     <div class="reflection-grid">
-
         <!-- Deepening -->
 
         <div class="reflection-section">
-
-            <div class="reflection-subheading">
-                DEEPENING
-            </div>
+            <div class="reflection-subheading">DEEPENING</div>
 
             <div class="deepening-list">
+                {
+                    deepening.map((item) => {
+                        const stat = stats[item.stat];
 
-                {deepening.map((item) => {
-                    const stat = stats[item.stat];
+                        return (
+                            <div class="deepening-row">
+                                <span class="deepening-stat">
+                                    <Icon name={stat.icon} size="20" />
 
-                    return (
-                        <div class="deepening-row">
+                                    {stat.deepeningName}
+                                </span>
 
-                            <span class="deepening-stat">
-
-                                <Icon
-                                    name={stat.icon}
-                                    size="20"
-                                />
-
-                                {stat.deepeningName}
-
-                            </span>
-
-                            <strong>
-                                {item.value}
-                            </strong>
-
-                        </div>
-                    );
-                })}
-
+                                <strong>{item.value}</strong>
+                            </div>
+                        );
+                    })
+                }
             </div>
-
         </div>
-
 
         <!-- Reconstruction -->
 
         <div class="reflection-section">
-
-            <div class="reflection-subheading">
-                RECONSTRUCTION
-            </div>
+            <div class="reflection-subheading">RECONSTRUCTION</div>
 
             <div class="reconstruction-list">
+                {
+                    sortReconstruction(reconstruction).map((effectId) => {
+                        const effect = reconstructionEffects[effectId];
 
-                {sortReconstruction(reconstruction).map((effectId) => {
-                    const effect =
-                        reconstructionEffects[effectId];
-
-                    return (
-                        <div class="reconstruction-row">
-
-<div
-    class:list={[
-        "reconstruction-rank",
-        `reconstruction-${effect.rank.toLowerCase()}`,
-    ]}
-    data-rank={effect.rank}
-></div>
-
-                            <div class="reconstruction-content">
-
-                                <strong>
-                                    {effect.name}
-                                </strong>
-
-<span class="reconstruction-description">
-    <EffectText
-        text={effect.description}
-    />
-</span>
-
-                            </div>
-
-                        </div>
-                    );
-                })}
-
+                        return <ReconstructionEntry effect={effect} />;
+                    })
+                }
             </div>
-
         </div>
-
     </div>
-
 </aside>

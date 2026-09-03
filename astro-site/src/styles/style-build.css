@@ -24,8 +24,7 @@
     display: grid;
 
     grid-template-columns:
-        minmax(0, 0.65fr)
-        minmax(0, 1.35fr);
+        minmax(0, 0.65fr) minmax(0, 1.35fr);
 
     grid-template-rows:
         auto auto;
@@ -34,6 +33,7 @@
 
     align-items: start;
 }
+
 .build-section {
     display: contents;
 }
@@ -41,8 +41,7 @@
 
 /* Level & Position heading */
 
-.build-section:nth-child(1)
-> .section-heading {
+.build-section:nth-child(1)>.section-heading {
     grid-column: 1;
     grid-row: 1;
 }
@@ -50,8 +49,7 @@
 
 /* Level & Position table */
 
-.build-section:nth-child(1)
-> .build-summary {
+.build-section:nth-child(1)>.build-summary {
     grid-column: 1;
     grid-row: 2;
 }
@@ -59,8 +57,7 @@
 
 /* Reconstruction heading */
 
-.build-section:nth-child(2)
-> .section-heading {
+.build-section:nth-child(2)>.section-heading {
     grid-column: 2;
     grid-row: 1;
 }
@@ -68,8 +65,7 @@
 
 /* Reconstruction table */
 
-.build-section:nth-child(2)
-> .build-reconstruction-list {
+.build-section:nth-child(2)>.build-reconstruction-list {
     grid-column: 2;
     grid-row: 2;
 }
@@ -398,8 +394,7 @@
     visibility: hidden;
 
     transform:
-        translateX(-50%)
-        translateY(-4px);
+        translateX(-50%) translateY(-4px);
 
     transition:
         opacity 0.12s ease,
@@ -409,16 +404,13 @@
     pointer-events: none;
 }
 
-.build-skill-level-item:hover
-.build-skill-preview,
-.build-skill-level-item:focus-within
-.build-skill-preview {
+.build-skill-level-item:hover .build-skill-preview,
+.build-skill-level-item:focus-within .build-skill-preview {
     opacity: 1;
     visibility: visible;
 
     transform:
-        translateX(-50%)
-        translateY(0);
+        translateX(-50%) translateY(0);
 }
 
 
@@ -509,14 +501,12 @@
     display: grid;
 
     grid-template-columns:
-        minmax(320px, 1fr)
-        minmax(300px, 1fr);
+        minmax(320px, 1fr) minmax(300px, 1fr);
 
     min-height: 110px;
 }
 
-.build-reconstruction-row
-+ .build-reconstruction-row {
+.build-reconstruction-row+.build-reconstruction-row {
     border-top:
         1px solid var(--color-border-soft);
 }
@@ -653,8 +643,7 @@
     pointer-events: none;
 }
 
-.build-reconstruction-tooltip
-.skill-reconstruction-effect {
+.build-reconstruction-tooltip .skill-reconstruction-effect {
     width: 100%;
 
     box-sizing: border-box;
@@ -668,10 +657,8 @@
     line-height: 1.2;
 }
 
-.build-reconstruction-effect:hover
-.build-reconstruction-tooltip,
-.build-reconstruction-effect:focus
-.build-reconstruction-tooltip {
+.build-reconstruction-effect:hover .build-reconstruction-tooltip,
+.build-reconstruction-effect:focus .build-reconstruction-tooltip {
     opacity: 1;
     visibility: visible;
 
@@ -885,15 +872,17 @@
     display: grid;
 
     grid-template-columns:
-        157px
-        minmax(280px, 0.9fr)
-        minmax(0, 1.1fr);
+        165px minmax(280px, 0.9fr) minmax(0, 1.1fr);
 
     min-width: 0;
 }
 
-.special-synergy-row
-+ .special-synergy-row {
+.special-synergy-row-no-note {
+    grid-template-columns:
+        165px minmax(0, 1fr);
+}
+
+.special-synergy-row+.special-synergy-row {
     border-top:
         1px solid var(--color-border-soft);
 }
@@ -906,222 +895,153 @@
 .special-synergy-style {
     display: flex;
 
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 
-    padding: 16px;
+    padding:
+        14px 16px;
 
     box-sizing: border-box;
-
-    text-decoration: none;
 }
 
-.special-synergy-card {
-    position: relative;
-
-    width: 125px;
-    height: 125px;
-
-    overflow: hidden;
-
-    background:
-        var(--color-panel-bg-accent);
-}
-
-.special-synergy-art {
-    width: 100%;
-    height: 100%;
-
-    max-width: none;
-
-    display: block;
-
-    margin: 0 !important;
-
-    object-fit: cover;
-    object-position: center;
-}
-
-
-/* =========================================================
-   Special Synergy Style Identity
-   ========================================================= */
-
-.special-synergy-overlay {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 4px;
-
+.special-synergy-style-list {
     display: flex;
 
-    flex-direction: column;
+    flex-wrap: wrap;
 
-    gap: 1px;
+    align-items: center;
+    justify-content: center;
 
-    padding:
-        12px 6px 4px;
-
-    box-sizing: border-box;
-
-    background:
-        linear-gradient(
-            to top,
-            color-mix(
-                in srgb,
-                var(--color-overlay-bg) 96%,
-                transparent
-            ),
-            transparent
-        );
-}
-
-.special-synergy-desire {
-    width: 22px;
-    height: 22px;
-
-    max-width: none;
-
-    display: block;
+    gap: 10px;
 
     margin: 0 !important;
-
-    object-fit: contain;
 }
-
-.special-synergy-name {
-    width: 100%;
-
-    overflow: hidden;
-
-    color:
-        var(--color-text-primary);
-
-    font-family:
-        var(--font-display);
-
-    font-size: 0.72rem;
-    font-weight: 700;
-
-    line-height: 1.1;
-
-    text-align: center;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   Special Synergy Rarity
-   ========================================================= */
-
-.special-synergy-rarity {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 4px;
-}
-
-.special-synergy-rarity.rarity-6 {
-    background:
-        var(--color-rarity-6);
-}
-
-.special-synergy-rarity.rarity-5 {
-    background:
-        var(--color-rarity-5);
-}
-
-.special-synergy-rarity.rarity-4 {
-    background:
-        var(--color-rarity-4);
-}
-
 
 /* =========================================================
    Special Synergy Ability
    ========================================================= */
 
 .special-synergy-ability {
-    display: flex;
+    position: relative;
 
+    display: flex;
     flex-direction: column;
 
-    gap: 8px;
+    justify-content: center;
 
     min-width: 0;
 
-    padding:
-        18px 20px;
+    padding: 0;
+}
 
-    border-left:
+.special-synergy-ability::before,
+.special-synergy-ability::after {
+    content: "";
+
+    position: absolute;
+
+    top: 10%;
+    bottom: 10%;
+
+    width: 1px;
+
+    background:
+        var(--color-border-soft);
+}
+
+.special-synergy-ability::before {
+    left: 0;
+}
+
+.special-synergy-ability::after {
+    right: 0;
+}
+
+.special-synergy-row-no-note
+.special-synergy-ability {
+    border-right: 0;
+}
+
+.special-synergy-effect {
+    min-width: 0;
+
+    margin: 0 !important;
+}
+
+.special-synergy-effect
++ .special-synergy-effect {
+    border-top:
         1px solid var(--color-border-soft);
-
-    border-right:
-        1px solid var(--color-border-soft);
 }
 
-.special-synergy-ability-label {
-    color:
-        var(--color-text-primary);
+/* =========================================================
+   Special Synergy — Reconstruction
+   ========================================================= */
 
-    font-family:
-        var(--font-display);
+.special-synergy-reconstruction
+.reconstruction-row {
+    min-height: 0;
 
-    font-size: 0.9rem;
-    font-weight: 700;
-
-    line-height: 1;
-
-    text-transform: uppercase;
+    margin: 0 !important;
 }
 
-.special-synergy-ability-description {
-    color:
-        var(--color-text-description);
+/* =========================================================
+   Special Synergy — Kit Skill
+   ========================================================= */
 
-    font-family:
-        var(--font-body);
+.special-synergy-skill
+.skill-column {
+    display: grid;
 
-    font-size: 1.1rem;
+    grid-template-rows:
+        auto auto auto auto;
 
-    line-height: 1.3;
+    width: 100%;
 
-    white-space: pre-line;
+    margin: 0 !important;
+    padding: 18px 20px;
+
+    box-sizing: border-box;
+
+    background:
+        transparent;
+
+    border-right: 0;
 }
-
 
 /* =========================================================
    Special Synergy Analysis
    ========================================================= */
 
 .special-synergy-note {
+    align-self: center;
+
     min-width: 0;
 
+    margin:
+        14px;
+
     padding:
-        18px 20px;
+        16px 18px;
+
+    background:
+        #F0EEED;
 
     color:
-        var(--color-text-description);
+        #373737;
+
+    border-radius:
+        10px;
 
     font-family:
         var(--font-body);
 
-    font-size: 1.1rem;
+    font-size: 1.14rem;
 
-    line-height: 1.3;
+    line-height: 1.2;
 
     white-space: pre-line;
 }
-
 
 /* =========================================================
    Special Synergy Team
@@ -1150,14 +1070,12 @@
 
     /* Level & Position */
 
-    .build-section:nth-child(1)
-    > .section-heading {
+    .build-section:nth-child(1)>.section-heading {
         grid-column: 1;
         grid-row: 1;
     }
 
-    .build-section:nth-child(1)
-    > .build-summary {
+    .build-section:nth-child(1)>.build-summary {
         grid-column: 1;
         grid-row: 2;
 
@@ -1167,14 +1085,12 @@
 
     /* Reconstruction */
 
-    .build-section:nth-child(2)
-    > .section-heading {
+    .build-section:nth-child(2)>.section-heading {
         grid-column: 1;
         grid-row: 3;
     }
 
-    .build-section:nth-child(2)
-    > .build-reconstruction-list {
+    .build-section:nth-child(2)>.build-reconstruction-list {
         grid-column: 1;
         grid-row: 4;
     }
@@ -1199,8 +1115,7 @@
 
     .special-synergy-row {
         grid-template-columns:
-            157px
-            minmax(0, 1fr);
+            157px minmax(0, 1fr);
     }
 
     .special-synergy-ability {
@@ -1245,23 +1160,23 @@
         grid-template-columns: 1fr;
     }
 
-.build-reconstruction-choice {
-    display: grid;
+    .build-reconstruction-choice {
+        display: grid;
 
-    grid-template-columns:
-        70px minmax(0, 1fr);
+        grid-template-columns:
+            70px minmax(0, 1fr);
 
-    align-items: center;
+        align-items: center;
 
-    min-width: 0;
+        min-width: 0;
 
-    padding:
-        18px 20px;
+        padding:
+            18px 20px;
 
-    font-family:
-        var(--font-body);
+        font-family:
+            var(--font-body);
 
-    font-size: 1.18rem;
-}
+        font-size: 1.18rem;
+    }
 
 }

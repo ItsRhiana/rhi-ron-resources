@@ -1,0 +1,161 @@
+---
+import StyleTag from "./StyleTag.astro";
+import SkillEffect from "./SkillEffect.astro";
+import SkillModifiers from "./SkillModifiers.astro";
+
+import { sortTags } from "../data/tags";
+
+interface Props {
+    type:
+        | "basicAttack"
+        | "passive"
+        | "ultimate";
+
+    skill: any;
+
+    awakeningEffects?: any[];
+    reconstructionEffects?: any[];
+
+    showModifiers?: boolean;
+}
+
+const {
+    type,
+    skill,
+    awakeningEffects = [],
+    reconstructionEffects = [],
+    showModifiers = true,
+} = Astro.props;
+
+const titles = {
+    basicAttack: "BASIC ATTACK",
+    passive: "PASSIVE",
+    ultimate: "ULTIMATE",
+};
+---
+
+<article class="skill-column">
+
+    <div class="skill-title">
+        {titles[type]}
+    </div>
+
+    <div class="skill-meta">
+
+        {
+            skill.tags?.length > 0 && (
+                <div class="skill-tags">
+                    {
+                        sortTags(skill.tags).map(
+                            (tagId) => (
+                                <StyleTag id={tagId} />
+                            )
+                        )
+                    }
+                </div>
+            )
+        }
+
+
+        {
+            type === "basicAttack" && (
+                <div class="attack-meta">
+
+                    <span>
+                        Shots
+
+                        <strong>
+                            {skill.shots}
+                        </strong>
+                    </span>
+
+                    <span>
+                        Speed
+
+                        <strong>
+                            {skill.speed}
+                        </strong>
+                    </span>
+
+                    <span>
+                        Range
+
+                        <strong>
+                            {skill.range}
+                        </strong>
+                    </span>
+
+                </div>
+            )
+        }
+
+
+        {
+            type === "passive" &&
+            skill.trigger && (
+                <div class="skill-meta-line">
+
+                    <span class="skill-meta-label">
+                        Trigger
+                    </span>
+
+                    <span class="skill-meta-value">
+                        {skill.trigger}
+                    </span>
+
+                </div>
+            )
+        }
+
+
+        {
+            type === "ultimate" && (
+                <div class="skill-meta-line">
+
+                    <span class="skill-meta-label">
+                        Flame Cost
+                    </span>
+
+                    <span class="skill-meta-value">
+                        {skill.flameCost}
+                    </span>
+
+                </div>
+            )
+        }
+
+    </div>
+
+
+    <div class="skill-divider"></div>
+
+
+    <div class="skill-effects">
+
+        {
+            skill.effects.map(
+                (effect) => (
+                    <SkillEffect
+                        effect={effect}
+                    />
+                )
+            )
+        }
+
+
+        {
+            showModifiers && (
+                <SkillModifiers
+                    awakeningEffects={
+                        awakeningEffects
+                    }
+                    reconstructionEffects={
+                        reconstructionEffects
+                    }
+                />
+            )
+        }
+
+    </div>
+
+</article>
