@@ -511,6 +511,7 @@
         1px solid var(--color-border-soft);
 }
 
+
 /* =========================================================
    Reconstruction Recommendation
    ========================================================= */
@@ -587,8 +588,6 @@
 .build-reconstruction-effect {
     margin-left: 8px;
 }
-
-
 
 .build-reconstruction-recommendation {
     flex: 0 0 auto;
@@ -752,7 +751,8 @@
     flex:
         0 0 auto;
 
-    margin: 0 !important;
+    margin:
+        0 !important;
 }
 
 
@@ -769,7 +769,8 @@
 
     gap: 4px;
 
-    margin: 0 !important;
+    margin:
+        0 !important;
 }
 
 .team-slot-styles {
@@ -779,12 +780,13 @@
 
     gap: 8px;
 
-    margin: 0 !important;
+    margin:
+        0 !important;
 }
+
 
 /* =========================================================
    Team Role
-   Matches Tier List role header sizing
    ========================================================= */
 
 .team-role {
@@ -797,7 +799,8 @@
 
     width: 100%;
 
-    margin: 0 !important;
+    margin:
+        0 !important;
 }
 
 .team-role img {
@@ -810,13 +813,15 @@
 
     flex-shrink: 0;
 
-    margin: 0 !important;
+    margin:
+        0 !important;
 
     object-fit: contain;
 }
 
 .team-role span {
-    margin: 0 !important;
+    margin:
+        0 !important;
 
     color:
         var(--color-text-primary);
@@ -832,8 +837,9 @@
     text-align: center;
 }
 
+
 /* =========================================================
-   Special Synergies
+   Special Synergies — Fresh Rebuild
    ========================================================= */
 
 .build-synergy-section {
@@ -857,10 +863,13 @@
 
 
 /* =========================================================
-   Special Synergy List
+   Special Synergy Table
    ========================================================= */
 
 .special-synergy-list {
+    margin:
+        0 !important;
+
     border:
         1px solid var(--color-border);
 
@@ -872,14 +881,14 @@
     display: grid;
 
     grid-template-columns:
-        165px minmax(280px, 0.9fr) minmax(0, 1.1fr);
+        165px minmax(300px, 0.9fr) minmax(320px, 1.1fr);
+
+    align-items: stretch;
 
     min-width: 0;
-}
 
-.special-synergy-row-no-note {
-    grid-template-columns:
-        165px minmax(0, 1fr);
+    margin:
+        0 !important;
 }
 
 .special-synergy-row+.special-synergy-row {
@@ -889,7 +898,7 @@
 
 
 /* =========================================================
-   Special Synergy Style Card
+   Special Synergy Style Column
    ========================================================= */
 
 .special-synergy-style {
@@ -898,8 +907,13 @@
     align-items: center;
     justify-content: center;
 
+    min-width: 0;
+
+    margin:
+        0 !important;
+
     padding:
-        14px 16px;
+        16px 20px;
 
     box-sizing: border-box;
 }
@@ -914,83 +928,57 @@
 
     gap: 10px;
 
-    margin: 0 !important;
+    margin:
+        0 !important;
 }
 
+
 /* =========================================================
-   Special Synergy Ability
+   Special Synergy Effect Column
    ========================================================= */
 
-.special-synergy-ability {
-    position: relative;
-
+.special-synergy-effect-column {
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
 
     min-width: 0;
 
+    margin:
+        0 !important;
+
     padding: 0;
+
+    box-sizing: border-box;
+
+    border-left:
+        1px solid var(--color-border-soft);
 }
 
-.special-synergy-ability::before,
-.special-synergy-ability::after {
-    content: "";
 
-    position: absolute;
+/* =========================================================
+   Special Synergy Effect Item
+   ========================================================= */
 
-    top: 10%;
-    bottom: 10%;
-
-    width: 1px;
-
-    background:
-        var(--color-border-soft);
-}
-
-.special-synergy-ability::before {
-    left: 0;
-}
-
-.special-synergy-ability::after {
-    right: 0;
-}
-
-.special-synergy-row-no-note
-.special-synergy-ability {
-    border-right: 0;
-}
-
-.special-synergy-effect {
+.special-synergy-effect-item {
     min-width: 0;
 
-    margin: 0 !important;
+    margin:
+        0 !important;
 }
 
-.special-synergy-effect
-+ .special-synergy-effect {
+.special-synergy-effect-item+.special-synergy-effect-item {
     border-top:
         1px solid var(--color-border-soft);
 }
 
 /* =========================================================
-   Special Synergy — Reconstruction
+   Special Synergy Skill
    ========================================================= */
 
-.special-synergy-reconstruction
-.reconstruction-row {
-    min-height: 0;
-
-    margin: 0 !important;
-}
-
-/* =========================================================
-   Special Synergy — Kit Skill
-   ========================================================= */
-
-.special-synergy-skill
-.skill-column {
+.special-synergy-effect-column .skill-column {
     display: grid;
 
     grid-template-rows:
@@ -998,8 +986,11 @@
 
     width: 100%;
 
-    margin: 0 !important;
-    padding: 18px 20px;
+    margin:
+        0 !important;
+
+    padding:
+        18px 20px;
 
     box-sizing: border-box;
 
@@ -1009,20 +1000,56 @@
     border-right: 0;
 }
 
+
+/* =========================================================
+   Special Synergy Reconstruction
+   ========================================================= */
+
+.special-synergy-effect-column .reconstruction-list {
+    margin:
+        0 !important;
+}
+
+.special-synergy-effect-column .reconstruction-row {
+    min-height: 0;
+
+    margin:
+        0 !important;
+}
+
 /* =========================================================
    Special Synergy Analysis
    ========================================================= */
 
-.special-synergy-note {
-    align-self: center;
+.special-synergy-analysis {
+    display: flex;
+
+    align-items: center;
 
     min-width: 0;
 
-    margin:
+    margin: 0 !important;
+
+    padding:
         14px;
+
+    box-sizing: border-box;
+
+    border-left:
+        1px solid var(--color-border-soft);
+}
+
+.special-synergy-analysis-card {
+    width: 100%;
+
+    min-width: 0;
+
+    margin: 0 !important;
 
     padding:
         16px 18px;
+
+    box-sizing: border-box;
 
     background:
         #F0EEED;
@@ -1044,13 +1071,14 @@
 }
 
 /* =========================================================
-   Special Synergy Team
+   Special Synergy — No Analysis
    ========================================================= */
 
-.special-synergy-team {
-    margin-top: 18px;
+.special-synergy-row-no-note {
+    grid-template-columns:
+        165px
+        minmax(0, 1fr);
 }
-
 
 /* =========================================================
    Build — Medium
@@ -1079,7 +1107,8 @@
         grid-column: 1;
         grid-row: 2;
 
-        margin-bottom: 28px !important;
+        margin-bottom:
+            28px !important;
     }
 
 
@@ -1108,32 +1137,6 @@
 
 
 /* =========================================================
-   Special Synergies — Medium
-   ========================================================= */
-
-@container (max-width: 900px) {
-
-    .special-synergy-row {
-        grid-template-columns:
-            157px minmax(0, 1fr);
-    }
-
-    .special-synergy-ability {
-        border-right: 0;
-    }
-
-    .special-synergy-note {
-        grid-column:
-            1 / -1;
-
-        border-top:
-            1px solid var(--color-border-soft);
-    }
-
-}
-
-
-/* =========================================================
    Build — Narrow
    ========================================================= */
 
@@ -1144,6 +1147,7 @@
             14px 12px;
     }
 
+
     .build-header-row {
         align-items: flex-start;
 
@@ -1152,13 +1156,16 @@
         gap: 12px;
     }
 
+
     .build-position {
         margin-left: 0;
     }
 
+
     .build-reconstruction-row {
         grid-template-columns: 1fr;
     }
+
 
     .build-reconstruction-choice {
         display: grid;
@@ -1177,6 +1184,21 @@
             var(--font-body);
 
         font-size: 1.18rem;
+    }
+
+
+    /*
+       For now, preserve the fresh Special Synergy
+       three-column geometry and allow horizontal overflow
+       rather than introducing responsive complexity.
+    */
+
+    .special-synergy-list {
+        overflow-x: auto;
+    }
+
+    .special-synergy-row {
+        min-width: 850px;
     }
 
 }

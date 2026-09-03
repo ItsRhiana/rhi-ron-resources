@@ -1,7 +1,6 @@
 ---
 import styles from "../data/styles";
 import reconstructionEffects from "../data/reconstruction";
-
 import EffectText from "./EffectText.astro";
 import StyleCard from "./StyleCard.astro";
 import SkillCard from "./SkillCard.astro";
@@ -11,7 +10,9 @@ interface Props {
     synergies: any[];
 }
 
-const { synergies } = Astro.props;
+const {
+    synergies,
+} = Astro.props;
 ---
 
 <div class="special-synergy-list">
@@ -25,19 +26,19 @@ const { synergies } = Astro.props;
                 );
 
             return (
-                <div
-                    class:list={[
-                        "special-synergy-row",
-                        {
-                            "special-synergy-row-no-note":
-                                !synergy.note,
-                        },
-                    ]}
-                >
+<div
+    class:list={[
+        "special-synergy-row",
+        {
+            "special-synergy-row-no-note":
+                !synergy.note,
+        },
+    ]}
+>
 
-                    <!-- =======================================
-                         Styles
-                         ======================================= -->
+                    <!-- ==================================================
+                         Style
+                         ================================================== -->
 
                     <div class="special-synergy-style">
 
@@ -70,84 +71,98 @@ const { synergies } = Astro.props;
                     </div>
 
 
-                    <!-- =======================================
-                         Effects
-                         Temporary rendering
-                         ======================================= -->
+                    <!-- ==================================================
+                         Effect
+                         ================================================== -->
 
-                    <div class="special-synergy-ability">
+                    <div class="special-synergy-effect-column">
 
-{
-    synergy.effects?.map(
-        (effect) => {
+                        {
+                            synergy.effects?.map(
+                                (effect) => {
 
-            if (effect.type === "skill") {
-                const sourceStyle =
-                    styles[effect.source];
+                                    if (
+                                        effect.type === "skill"
+                                    ) {
+                                        const sourceStyle =
+                                            styles[
+                                                effect.source
+                                            ];
 
-                const skill =
-                    sourceStyle.kit.skills[
-                        effect.skill
-                    ];
+                                        const skill =
+                                            sourceStyle
+                                                .kit
+                                                .skills[
+                                                    effect.skill
+                                                ];
 
-                return (
-                    <div class="special-synergy-effect special-synergy-skill">
+                                        return (
+                                            <div class="special-synergy-effect-item">
 
-                        <SkillCard
-                            type={effect.skill}
-                            skill={skill}
-                            showModifiers={false}
-                        />
+                                                <SkillCard
+                                                    type={
+                                                        effect.skill
+                                                    }
+                                                    skill={
+                                                        skill
+                                                    }
+                                                    showModifiers={
+                                                        false
+                                                    }
+                                                />
+
+                                            </div>
+                                        );
+                                    }
+
+
+                                    if (
+                                        effect.type ===
+                                        "reconstruction"
+                                    ) {
+                                        const reconstructionEffect =
+                                            reconstructionEffects[
+                                                effect.effect
+                                            ];
+
+                                        return (
+                                            <div class="special-synergy-effect-item">
+
+                                                <div class="reconstruction-list">
+
+                                                    <ReconstructionEntry
+                                                        effect={
+                                                            reconstructionEffect
+                                                        }
+                                                    />
+
+                                                </div>
+
+                                            </div>
+                                        );
+                                    }
+
+
+                                    return null;
+                                }
+                            )
+                        }
 
                     </div>
-                );
-            }
 
-if (
-    effect.type ===
-    "reconstruction"
-) {
-    const reconstructionEffect =
-        reconstructionEffects[
-            effect.effect
-        ];
+{
+    synergy.note && (
+        <div class="special-synergy-analysis">
 
-    return (
-        <div class="special-synergy-effect special-synergy-reconstruction">
-
-            <div class="reconstruction-list">
-
-                <ReconstructionEntry
-                    effect={reconstructionEffect}
+            <div class="special-synergy-analysis-card">
+                <EffectText
+                    text={synergy.note}
                 />
-
             </div>
 
         </div>
-    );
-}
-
-            return null;
-        }
     )
 }
-
-                    </div>
-
-
-                    <!-- =======================================
-                         Analysis
-                         ======================================= -->
-
-                    {
-                        synergy.note && (
-                            <div class="special-synergy-note">
-                                <EffectText
-                                    text={synergy.note}
-                                />
-                            </div>
-                        )
-                    }
 
                 </div>
             );
