@@ -79,7 +79,7 @@ const reconstructionEffects = {
         rank: "A",
         name: "Asset Allocation",
         description:
-            "Reduces the first ULT Flame cost by 1.",
+            "First ULT Flame cost is reduced by 1.",
         target: "ultimate",
     },
 

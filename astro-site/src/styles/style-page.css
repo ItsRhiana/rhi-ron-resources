@@ -424,6 +424,21 @@
     margin:
         0 0 6px;
 
+    color:
+        var(--color-awakening);
+
+    font-family:
+        var(--font-display);
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.02em;
+
+    text-transform: uppercase;
+
     white-space: nowrap;
 }
 

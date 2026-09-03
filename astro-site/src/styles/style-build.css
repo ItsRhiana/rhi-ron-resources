@@ -413,45 +413,6 @@
         translateX(-50%) translateY(0);
 }
 
-
-/* =========================================================
-   Reuse Kit Skill Presentation
-   ========================================================= */
-
-.build-skill-preview .kit-skills {
-    width: 100%;
-
-    margin: 0;
-}
-
-.build-skill-preview .skills-grid {
-    display: block;
-
-    width: 100%;
-
-    margin: 0;
-
-    border:
-        1px solid var(--color-border);
-}
-
-.build-skill-preview .skill-column {
-    display: grid;
-
-    grid-template-rows:
-        auto auto auto auto;
-
-    width: 100%;
-
-    margin: 0;
-    padding: 20px;
-
-    box-sizing: border-box;
-
-    border-right: 0;
-}
-
-
 /* =========================================================
    Level & Position Explanation
    ========================================================= */
@@ -975,46 +936,14 @@
 }
 
 /* =========================================================
-   Special Synergy Skill
-   ========================================================= */
-
-.special-synergy-effect-column .skill-column {
-    display: grid;
-
-    grid-template-rows:
-        auto auto auto auto;
-
-    width: 100%;
-
-    margin:
-        0 !important;
-
-    padding:
-        18px 20px;
-
-    box-sizing: border-box;
-
-    background:
-        transparent;
-
-    border-right: 0;
-}
-
-
-/* =========================================================
    Special Synergy Reconstruction
    ========================================================= */
 
-.special-synergy-effect-column .reconstruction-list {
-    margin:
-        0 !important;
-}
+.special-synergy-reconstruction {
+    margin: 0 !important;
 
-.special-synergy-effect-column .reconstruction-row {
-    min-height: 0;
-
-    margin:
-        0 !important;
+    padding:
+        0 20px;
 }
 
 /* =========================================================
@@ -1076,8 +1005,7 @@
 
 .special-synergy-row-no-note {
     grid-template-columns:
-        165px
-        minmax(0, 1fr);
+        165px minmax(0, 1fr);
 }
 
 /* =========================================================
