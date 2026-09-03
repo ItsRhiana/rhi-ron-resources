@@ -200,8 +200,8 @@ const lodestarSeaRover = {
           role: "vanguard",
         },
         {
-          styles: ["lodestar-sea-rover"],
-          role: "st-dps",
+          styles: ["ghost-vengeful-nursery-rhyme"],
+          role: "aoe-dps",
         },
         {
           styles: ["nobody-seaside-holiday"],
@@ -300,7 +300,10 @@ const lodestarSeaRover = {
 
       offField: [
         {
-          styles: ["windward-money-loving-gentleman"],
+          styles: [
+            "windward-money-loving-gentleman",
+            "rainmaker-world-cleansing-rain",
+          ],
           role: "healer",
         },
         {
