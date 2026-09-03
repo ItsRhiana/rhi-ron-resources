@@ -3,71 +3,64 @@
    ========================================================= */
 
 .skills-grid {
-    display: grid;
+  display: grid;
 
-    grid-template-columns:
-        minmax(220px, 1fr) minmax(300px, 2fr) minmax(300px, 2fr);
+  grid-template-columns: minmax(220px, 1fr) minmax(300px, 2fr) minmax(
+      300px,
+      2fr
+    );
 
-    /*
+  /*
        Shared internal card rows:
        1. title
        2. metadata
        3. divider
        4. skill effects / modifiers
     */
-    grid-template-rows:
-        auto auto auto auto;
+  grid-template-rows: auto auto auto auto;
 
-    width: 100%;
+  width: 100%;
 
-    margin: 0;
+  margin: 0;
 
-    border:
-        1px solid var(--color-border);
+  border: 1px solid var(--color-border);
 }
 
 .skill-column {
-    display: grid;
+  display: grid;
 
-    grid-row:
-        1 / 5;
+  grid-row: 1 / 5;
 
-    grid-template-rows:
-        subgrid;
+  grid-template-rows: subgrid;
 
-    min-width: 0;
+  min-width: 0;
 
-    margin: 0;
-    padding: 20px;
+  margin: 0;
+  padding: 20px;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    background:
-        var(--color-panel-bg);
+  background: var(--color-panel-bg);
 
-    border-right:
-        1px solid var(--color-border-soft);
+  border-right: 1px solid var(--color-border-soft);
 }
 
-.skill-column-embedded {
-    grid-row: auto;
+.skill-column-standalone {
+  grid-row: auto;
 
-    grid-template-rows:
-        auto auto auto auto;
+  grid-template-rows: auto auto auto auto;
 
-    width: 100%;
+  width: 100%;
 
-    padding:
-        18px 20px;
+  padding: 18px 20px;
 
-    background:
-        transparent;
+  background: transparent;
 
-    border-right: 0;
+  border-right: 0;
 }
 
 .skill-column:last-child {
-    border-right: 0;
+  border-right: 0;
 }
 
 /* =========================================================
@@ -75,237 +68,210 @@
    ========================================================= */
 
 .skill-title {
-    margin:
-        0 0 14px !important;
+  margin: 0 0 14px !important;
 
-    color:
-        var(--color-text-primary);
+  color: var(--color-text-primary);
 
-    font-family:
-        var(--font-display);
+  font-family: var(--font-display);
 
-    font-size: 1.1rem;
-    font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 600;
 
-    line-height: 1.2;
+  line-height: 1.2;
 
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .skill-meta {
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    align-items: flex-start;
+  align-items: flex-start;
 
-    gap: 9px;
+  gap: 9px;
 
-    margin: 0;
+  margin: 0;
 }
 
 .skill-meta-line {
-    display: grid;
+  display: grid;
 
-    grid-template-columns:
-        96px minmax(0, 1fr);
+  grid-template-columns: 96px minmax(0, 1fr);
 
-    align-items: baseline;
+  align-items: baseline;
 
-    margin: 0;
+  margin: 0;
 
-    font-family:
-        var(--font-body);
+  font-family: var(--font-body);
 
-    font-size: 1.07rem;
+  font-size: 1.07rem;
 
-    line-height: 1.35;
+  line-height: 1.35;
 }
 
 .skill-meta-label {
-    color:
-        var(--color-text-muted);
+  color: var(--color-text-muted);
 
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .skill-meta-value {
-    color:
-        var(--color-text-value);
+  color: var(--color-text-value);
 
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .skill-meta-value,
 .attack-meta strong {
-    min-width: 0;
+  min-width: 0;
 
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .skill-tags {
-    display: flex;
+  display: flex;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    gap: 5px;
+  gap: 5px;
 
-    margin: 0;
+  margin: 0;
 }
-
 
 /* =========================================================
    Basic Attack Metadata
    ========================================================= */
 
 .attack-meta {
-    display: grid;
+  display: grid;
 
-    grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
 
-    gap: 2px;
+  gap: 2px;
 
-    width: 100%;
+  width: 100%;
 
-    margin: 0;
+  margin: 0;
 }
 
-.attack-meta>span {
-    display: grid;
+.attack-meta > span {
+  display: grid;
 
-    grid-template-columns:
-        96px minmax(0, 1fr);
+  grid-template-columns: 96px minmax(0, 1fr);
 
-    justify-content: start;
-    align-items: center;
+  justify-content: start;
+  align-items: center;
 
-    min-height: 24px;
+  min-height: 24px;
 
-    margin: 0;
+  margin: 0;
 
-    color:
-        var(--color-text-muted);
+  color: var(--color-text-muted);
 
-    font-family:
-        var(--font-body);
+  font-family: var(--font-body);
 
-    font-size: 1.05rem;
+  font-size: 1.05rem;
 
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
 .attack-meta strong {
-    color:
-        var(--color-text-value);
+  color: var(--color-text-value);
 
-    font-family:
-        var(--font-body);
+  font-family: var(--font-body);
 
-    font-size: 1.05rem;
-    font-weight: inherit;
+  font-size: 1.05rem;
+  font-weight: inherit;
 
-    line-height: 1.2;
+  line-height: 1.2;
 }
-
 
 /* =========================================================
    Skill Content
    ========================================================= */
 
 .skill-divider {
-    width:
-        calc(100% - 8px);
+  width: calc(100% - 8px);
 
-    height: 1px;
+  height: 1px;
 
-    margin:
-        18px auto !important;
+  margin: 18px auto !important;
 
-    background:
-        var(--color-border-soft);
+  background: var(--color-border-soft);
 }
 
 .skill-effects {
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    gap: 16px;
+  gap: 16px;
 
-    margin: 0;
+  margin: 0;
 }
-
 
 /* =========================================================
    Skill-linked Modifiers
    ========================================================= */
 
 .skill-modifier-slot {
-    min-width: 0;
+  min-width: 0;
 
-    margin: 0;
+  margin: 0;
 }
 
 .skill-modifier-effects {
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    gap: 12px;
+  gap: 12px;
 
-    margin:
-        24px 0 0 !important;
+  margin: 24px 0 0 !important;
 }
-
 
 /* =========================================================
    Skill Awakening Modifier
    ========================================================= */
 
 .skill-awakening-effect {
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    gap: 5px;
+  gap: 5px;
 
-    margin: 0;
+  margin: 0;
 
-    padding:
-        10px 12px;
+  padding: 10px 12px;
 
-    color:
-        var(--color-text-description);
+  color: var(--color-text-description);
 
-    background:
-        var(--color-panel-bg-accent);
+  background: var(--color-panel-bg-accent);
 
-    border-left:
-        2px solid var(--color-awakening);
+  border-left: 2px solid var(--color-awakening);
 
-    font-family:
-        var(--font-body);
+  font-family: var(--font-body);
 
-    font-size: 1.12rem;
+  font-size: 1.12rem;
 
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
 .awakening-label {
-    color:
-        var(--color-awakening);
+  color: var(--color-awakening);
 
-    font-family:
-        var(--font-display);
+  font-family: var(--font-display);
 
-    font-size: 1rem;
-    font-weight: 800;
+  font-size: 1rem;
+  font-weight: 800;
 
-    line-height: 1.2;
+  line-height: 1.2;
 
-    letter-spacing: 0.02em;
+  letter-spacing: 0.02em;
 
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 /* =========================================================
@@ -313,77 +279,68 @@
    ========================================================= */
 
 .skill-reconstruction-effect {
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    gap: 5px;
+  gap: 5px;
 
-    margin: 0;
+  margin: 0;
 
-    padding:
-        10px 12px;
+  padding: 10px 12px;
 
-    color:
-        var(--color-text-description);
+  color: var(--color-text-description);
 
-    background:
-        var(--color-panel-bg-accent);
+  background: var(--color-panel-bg-accent);
 
-    border-left:
-        2px solid var(--reconstruction-color);
+  border-left: 2px solid var(--reconstruction-color);
 
-    font-family:
-        var(--font-body);
+  font-family: var(--font-body);
 
-    font-size: 1.12rem;
+  font-size: 1.12rem;
 
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
 .reconstruction-skill-label {
-    display: flex;
+  display: flex;
 
-    align-items: baseline;
+  align-items: baseline;
 
-    gap: 6px;
+  gap: 6px;
 
-    color:
-        var(--reconstruction-color);
+  color: var(--reconstruction-color);
 
-    font-family:
-        var(--font-display);
+  font-family: var(--font-display);
 
-    font-size: 1rem;
-    font-weight: 800;
+  font-size: 1rem;
+  font-weight: 800;
 
-    line-height: 1.2;
+  line-height: 1.2;
 
-    letter-spacing: 0.02em;
+  letter-spacing: 0.02em;
 
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .reconstruction-skill-rank {
-    font-weight: 800;
+  font-weight: 800;
 }
 
 .reconstruction-skill-separator {
-    opacity: 0.65;
+  opacity: 0.65;
 }
 
 .reconstruction-skill-name {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .skill-reconstruction-s {
-    --reconstruction-color:
-        var(--color-reconstruction-s);
+  --reconstruction-color: var(--color-reconstruction-s);
 }
 
 .skill-reconstruction-a {
-    --reconstruction-color:
-        var(--color-reconstruction-a);
+  --reconstruction-color: var(--color-reconstruction-a);
 }
 
 /* =========================================================
@@ -391,42 +348,9 @@
    ========================================================= */
 
 .kit-skills {
-    min-width: 0;
+  min-width: 0;
 
-    margin: 0;
-}
-
-.kit-skills-preview {
-    width: 100%;
-
-    margin: 0;
-}
-
-.skills-grid-preview {
-    display: block;
-
-    width: 100%;
-
-    margin: 0;
-
-    border:
-        1px solid var(--color-border);
-}
-
-.skills-grid-preview .skill-column {
-    display: grid;
-
-    grid-template-rows:
-        auto auto auto auto;
-
-    width: 100%;
-
-    margin: 0;
-    padding: 20px;
-
-    box-sizing: border-box;
-
-    border-right: 0;
+  margin: 0;
 }
 
 /* =========================================================
@@ -434,10 +358,12 @@
    ========================================================= */
 
 @container (max-width: 1050px) {
-    .skills-grid {
-        grid-template-columns:
-            minmax(190px, 1fr) minmax(240px, 2fr) minmax(240px, 2fr);
-    }
+  .skills-grid {
+    grid-template-columns: minmax(190px, 1fr) minmax(240px, 2fr) minmax(
+        240px,
+        2fr
+      );
+  }
 }
 
 /* =========================================================
@@ -445,27 +371,25 @@
    ========================================================= */
 
 @container (max-width: 700px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: none;
-    }
+  .skills-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
 
-    .skill-column {
-        display: grid;
+  .skill-column {
+    display: grid;
 
-        grid-column: 1;
-        grid-row: auto;
+    grid-column: 1;
+    grid-row: auto;
 
-        grid-template-rows:
-            auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
 
-        border-right: 0;
+    border-right: 0;
 
-        border-bottom:
-            1px solid var(--color-border-soft);
-    }
+    border-bottom: 1px solid var(--color-border-soft);
+  }
 
-    .skill-column:last-child {
-        border-bottom: 0;
-    }
+  .skill-column:last-child {
+    border-bottom: 0;
+  }
 }

@@ -1,56 +1,44 @@
 ---
+import "../styles/style-kit.css";
+
 import SkillPanel from "./SkillPanel.astro";
 import AwakeningPanel from "./AwakeningPanel.astro";
 import DeepeningPanel from "./DeepeningPanel.astro";
 import ReconstructionPanel from "./ReconstructionPanel.astro";
 
 interface Props {
-    style: any;
+  style: any;
 }
 
 const { style } = Astro.props;
 ---
 
 <section class="style-kit">
-    <div class="kit-main-grid">
-
-        <div class="kit-row-skills">
-            <SkillPanel
-                skills={style.kit.skills}
-                awakening={style.kit.awakening}
-                reconstruction={style.kit.reconstruction}
-            />
-        </div>
-
-        <div class="kit-row-progression">
-
-            <div class="section-heading kit-awakening-heading">
-                Awakening
-            </div>
-
-            <div class="section-heading kit-reflection-heading">
-                Reflection
-            </div>
-
-            <div class="kit-awakening-panel">
-                <AwakeningPanel
-                    awakening={style.kit.awakening}
-                />
-            </div>
-
-            <div class="kit-deepening-panel">
-                <DeepeningPanel
-                    deepening={style.kit.deepening}
-                />
-            </div>
-
-            <div class="kit-reconstruction-panel">
-                <ReconstructionPanel
-                    reconstruction={style.kit.reconstruction}
-                />
-            </div>
-
-        </div>
-
+  <div class="kit-main-grid">
+    <div class="kit-row-skills">
+      <SkillPanel
+        skills={style.kit.skills}
+        awakening={style.kit.awakening}
+        reconstruction={style.kit.reconstruction}
+      />
     </div>
+
+    <div class="kit-row-progression">
+      <div class="section-heading kit-awakening-heading">Awakening</div>
+
+      <div class="section-heading kit-reflection-heading">Reflection</div>
+
+      <div class="kit-awakening-panel">
+        <AwakeningPanel awakening={style.kit.awakening} />
+      </div>
+
+      <div class="kit-deepening-panel">
+        <DeepeningPanel deepening={style.kit.deepening} />
+      </div>
+
+      <div class="kit-reconstruction-panel">
+        <ReconstructionPanel reconstruction={style.kit.reconstruction} />
+      </div>
+    </div>
+  </div>
 </section>

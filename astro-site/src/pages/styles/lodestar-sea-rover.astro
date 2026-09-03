@@ -4,7 +4,6 @@ import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import "../../styles/fonts.css";
 import "../../styles/colors.css";
 import "../../styles/style-page.css";
-import "../../styles/style-kit.css";
 import "../../styles/style-build.css";
 
 import lodestar from "../../data/styles/lodestar-sea-rover";
@@ -15,17 +14,17 @@ import StyleBuild from "../../components/StyleBuild.astro";
 ---
 
 <StarlightPage
-    frontmatter={{
-        title: `${lodestar.characterName} — ${lodestar.styleName}`,
-        description: `${lodestar.characterName} — ${lodestar.styleName} Style details.`,
-        tableOfContents: false,
-        prev: false,
-        next: false,
+  frontmatter={{
+    title: `${lodestar.characterName} — ${lodestar.styleName}`,
+    description: `${lodestar.characterName} — ${lodestar.styleName} Style details.`,
+    tableOfContents: false,
+    prev: false,
+    next: false,
 
-        head: [
-            {
-                tag: "style",
-                content: `
+    head: [
+      {
+        tag: "style",
+        content: `
                     :root {
                         --sl-content-width: 100% !important;
                     }
@@ -34,98 +33,68 @@ import StyleBuild from "../../components/StyleBuild.astro";
                         max-width: none !important;
                     }
                 `,
-            },
-        ],
-    }}
+      },
+    ],
+  }}
 >
-    <div class="style-page">
-        <!-- ==================================================
+  <div class="style-page">
+    <!-- ==================================================
              Header
              ================================================== -->
 
-        <StyleHeader style={lodestar} />
+    <StyleHeader style={lodestar} />
 
-        <!-- ==================================================
+    <!-- ==================================================
              Tabs
              ================================================== -->
 
-<nav class="style-tabs">
+    <nav class="style-tabs">
+      <button class="active" type="button" data-style-tab="kit">
+        <span class="tab-label"> KIT </span>
+      </button>
 
-    <button
-        class="active"
-        type="button"
-        data-style-tab="kit"
-    >
-        <span class="tab-label">
-            KIT
-        </span>
-    </button>
+      <button type="button" data-style-tab="build">
+        <span class="tab-label"> BUILD RECOMMENDATION </span>
+      </button>
 
-    <button
-        type="button"
-        data-style-tab="build"
-    >
-        <span class="tab-label">
-            BUILD RECOMMENDATION
-        </span>
-    </button>
+      <button type="button" data-style-tab="review">
+        <span class="tab-label"> REVIEW </span>
+      </button>
+    </nav>
 
-    <button
-        type="button"
-        data-style-tab="review"
-    >
-        <span class="tab-label">
-            REVIEW
-        </span>
-    </button>
-
-</nav>
-
-        <!-- ==================================================
+    <!-- ==================================================
              Kit
              ================================================== -->
 
-<div data-style-panel="kit">
-    <StyleKit style={lodestar} />
-</div>
-
-<div data-style-panel="build" hidden>
-    <StyleBuild style={lodestar} />
-</div>
-
-<div data-style-panel="review" hidden>
-    REVIEW
-</div>
+    <div data-style-panel="kit">
+      <StyleKit style={lodestar} />
     </div>
 
-    <script>
-    const tabs =
-        document.querySelectorAll<HTMLButtonElement>(
-            "[data-style-tab]"
-        );
+    <div data-style-panel="build" hidden>
+      <StyleBuild style={lodestar} />
+    </div>
 
-    const panels =
-        document.querySelectorAll<HTMLElement>(
-            "[data-style-panel]"
-        );
+    <div data-style-panel="review" hidden>REVIEW</div>
+  </div>
+
+  <script>
+    const tabs =
+      document.querySelectorAll<HTMLButtonElement>("[data-style-tab]");
+
+    const panels = document.querySelectorAll<HTMLElement>("[data-style-panel]");
 
     tabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-            const target =
-                tab.dataset.styleTab;
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.styleTab;
 
-            tabs.forEach((item) => {
-                item.classList.toggle(
-                    "active",
-                    item === tab
-                );
-            });
-
-            panels.forEach((panel) => {
-                panel.hidden =
-                    panel.dataset.stylePanel !== target;
-            });
+        tabs.forEach((item) => {
+          item.classList.toggle("active", item === tab);
         });
+
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.stylePanel !== target;
+        });
+      });
     });
-</script>
+  </script>
 </StarlightPage>

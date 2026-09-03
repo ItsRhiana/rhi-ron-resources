@@ -2,57 +2,39 @@
 import SkillCard from "./SkillCard.astro";
 
 import reconstructionEffects, {
-    sortReconstruction,
+  sortReconstruction,
 } from "../data/reconstruction";
 
 import { getAwakeningModifiersForTarget } from "../utils/awakening";
 
 interface Props {
-    skills: any;
-    awakening?: any[];
-    reconstruction?: any[];
-    previewSkill?: "basicAttack" | "passive" | "ultimate";
+  skills: any;
+  awakening?: any[];
+  reconstruction?: any[];
 }
 
-const {
-    skills,
-    awakening = [],
-    reconstruction = [],
-    previewSkill,
-} = Astro.props;
-
-/* =========================================================
-   Preview State
-   ========================================================= */
-
-const isPreview = !!previewSkill;
-
-const showBasicAttack = !previewSkill || previewSkill === "basicAttack";
-
-const showPassive = !previewSkill || previewSkill === "passive";
-
-const showUltimate = !previewSkill || previewSkill === "ultimate";
+const { skills, awakening = [], reconstruction = [] } = Astro.props;
 
 /* =========================================================
    Skill Awakening Effects
    ========================================================= */
 
 const basicAttackAwakeningEffects = getAwakeningModifiersForTarget(
-    awakening,
-    "skillModifier",
-    "basicAttack",
+  awakening,
+  "skillModifier",
+  "basicAttack",
 );
 
 const passiveAwakeningEffects = getAwakeningModifiersForTarget(
-    awakening,
-    "skillModifier",
-    "passive",
+  awakening,
+  "skillModifier",
+  "passive",
 );
 
 const ultimateAwakeningEffects = getAwakeningModifiersForTarget(
-    awakening,
-    "skillModifier",
-    "ultimate",
+  awakening,
+  "skillModifier",
+  "ultimate",
 );
 
 /* =========================================================
@@ -60,83 +42,42 @@ const ultimateAwakeningEffects = getAwakeningModifiersForTarget(
    ========================================================= */
 
 function getReconstructionForTarget(target: string) {
-    return sortReconstruction(reconstruction)
-        .map((effectId) => reconstructionEffects[effectId])
-        .filter((effect) => effect.target === target);
+  return sortReconstruction(reconstruction)
+    .map((effectId) => reconstructionEffects[effectId])
+    .filter((effect) => effect.target === target);
 }
 
 const basicAttackReconstructionEffects =
-    getReconstructionForTarget("basicAttack");
+  getReconstructionForTarget("basicAttack");
 
 const passiveReconstructionEffects = getReconstructionForTarget("passive");
 
 const ultimateReconstructionEffects = getReconstructionForTarget("ultimate");
 ---
 
-<div
-    class:list={[
-        "kit-skills",
-        {
-            "kit-skills-preview": isPreview,
-        },
-    ]}
->
-    {!isPreview && <div class="section-heading">Lv.10 Skills</div>}
+<div class="kit-skills">
+  <div class="section-heading">Lv.10 Skills</div>
 
-    <div
-        class:list={[
-            "skills-grid",
-            {
-                "skills-grid-preview": isPreview,
-            },
-        ]}
-    >
-        <!-- ==================================================
-             Basic Attack
-             ================================================== -->
+  <div class="skills-grid">
+    <SkillCard
+      type="basicAttack"
+      skill={skills.basicAttack}
+      awakeningEffects={basicAttackAwakeningEffects}
+      reconstructionEffects={basicAttackReconstructionEffects}
+    />
 
-        {
-            showBasicAttack && (
-                <SkillCard
-                    type="basicAttack"
-                    skill={skills.basicAttack}
-                    awakeningEffects={basicAttackAwakeningEffects}
-                    reconstructionEffects={basicAttackReconstructionEffects}
-                    showModifiers={!isPreview}
-                />
-            )
-        }
+    <SkillCard
+      type="passive"
+      skill={skills.passive}
+      awakeningEffects={passiveAwakeningEffects}
+      reconstructionEffects={passiveReconstructionEffects}
+    />
 
-        <!-- ==================================================
-             Passive
-             ================================================== -->
-
-        {
-            showPassive && (
-                <SkillCard
-                    type="passive"
-                    skill={skills.passive}
-                    awakeningEffects={passiveAwakeningEffects}
-                    reconstructionEffects={passiveReconstructionEffects}
-                    showModifiers={!isPreview}
-                />
-            )
-        }
-
-        <!-- ==================================================
-             Ultimate
-             ================================================== -->
-
-        {
-            showUltimate && (
-                <SkillCard
-                    type="ultimate"
-                    skill={skills.ultimate}
-                    awakeningEffects={ultimateAwakeningEffects}
-                    reconstructionEffects={ultimateReconstructionEffects}
-                    showModifiers={!isPreview}
-                />
-            )
-        }
-    </div>
+    <SkillCard
+      type="ultimate"
+      skill={skills.ultimate}
+      awakeningEffects={ultimateAwakeningEffects}
+      reconstructionEffects={ultimateReconstructionEffects}
+    />
+  </div>
 </div>
