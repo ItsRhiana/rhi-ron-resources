@@ -2,7 +2,7 @@
 import EffectText from "./EffectText.astro";
 import TeamComposition from "./TeamComposition.astro";
 import SpecialSynergies from "./SpecialSynergies.astro";
-import SkillPanel from "./SkillPanel.astro";
+import SkillCard from "./SkillCard.astro";
 import reconstructionEffects from "../data/reconstruction";
 
 interface Props {
@@ -82,12 +82,14 @@ const build = style.build;
                                 </strong>
                             </div>
 
-                            <div class="build-skill-preview">
-                                <SkillPanel
-                                    skills={style.kit.skills}
-                                    previewSkill="basicAttack"
-                                />
-                            </div>
+<div class="build-skill-preview">
+    <SkillCard
+        type="basicAttack"
+        skill={style.kit.skills.basicAttack}
+        showModifiers={false}
+        standalone
+    />
+</div>
                         </div>
 
 
@@ -104,12 +106,14 @@ const build = style.build;
                                 </strong>
                             </div>
 
-                            <div class="build-skill-preview">
-                                <SkillPanel
-                                    skills={style.kit.skills}
-                                    previewSkill="passive"
-                                />
-                            </div>
+<div class="build-skill-preview">
+    <SkillCard
+        type="passive"
+        skill={style.kit.skills.passive}
+        showModifiers={false}
+        standalone
+    />
+</div>
                         </div>
 
 
@@ -126,12 +130,14 @@ const build = style.build;
                                 </strong>
                             </div>
 
-                            <div class="build-skill-preview">
-                                <SkillPanel
-                                    skills={style.kit.skills}
-                                    previewSkill="ultimate"
-                                />
-                            </div>
+<div class="build-skill-preview">
+    <SkillCard
+        type="ultimate"
+        skill={style.kit.skills.ultimate}
+        showModifiers={false}
+        standalone
+    />
+</div>
                         </div>
                     </div>
                 </div>

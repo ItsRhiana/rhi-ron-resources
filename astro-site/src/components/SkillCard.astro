@@ -8,110 +8,110 @@ import SkillModifiers from "./SkillModifiers.astro";
 import { sortTags } from "../data/tags";
 
 interface Props {
-    type: "basicAttack" | "passive" | "ultimate";
+  type: "basicAttack" | "passive" | "ultimate";
 
-    skill: any;
+  skill: any;
 
-    awakeningEffects?: any[];
-    reconstructionEffects?: any[];
+  awakeningEffects?: any[];
+  reconstructionEffects?: any[];
 
-    showModifiers?: boolean;
-    embedded?: boolean;
+  showModifiers?: boolean;
+  standalone?: boolean;
 }
 
 const {
-    type,
-    skill,
-    awakeningEffects = [],
-    reconstructionEffects = [],
-    showModifiers = true,
-    embedded = false,
+  type,
+  skill,
+  awakeningEffects = [],
+  reconstructionEffects = [],
+  showModifiers = true,
+  standalone = false,
 } = Astro.props;
 
 const titles = {
-    basicAttack: "BASIC ATTACK",
-    passive: "PASSIVE",
-    ultimate: "ULTIMATE",
+  basicAttack: "BASIC ATTACK",
+  passive: "PASSIVE",
+  ultimate: "ULTIMATE",
 };
 ---
 
 <article
-    class:list={[
-        "skill-column",
-        {
-            "skill-column-embedded": embedded,
-        },
-    ]}
+  class:list={[
+    "skill-column",
+    {
+      "skill-column-standalone": standalone,
+    },
+  ]}
 >
-    <div class="skill-title">
-        {titles[type]}
-    </div>
+  <div class="skill-title">
+    {titles[type]}
+  </div>
 
-    <div class="skill-meta">
-        {
-            skill.tags?.length > 0 && (
-                <div class="skill-tags">
-                    {sortTags(skill.tags).map((tagId) => (
-                        <StyleTag id={tagId} />
-                    ))}
-                </div>
-            )
-        }
+  <div class="skill-meta">
+    {
+      skill.tags?.length > 0 && (
+        <div class="skill-tags">
+          {sortTags(skill.tags).map((tagId) => (
+            <StyleTag id={tagId} />
+          ))}
+        </div>
+      )
+    }
 
-        {
-            type === "basicAttack" && (
-                <div class="attack-meta">
-                    <span>
-                        Shots
-                        <strong>{skill.shots}</strong>
-                    </span>
+    {
+      type === "basicAttack" && (
+        <div class="attack-meta">
+          <span>
+            Shots
+            <strong>{skill.shots}</strong>
+          </span>
 
-                    <span>
-                        Speed
-                        <strong>{skill.speed}</strong>
-                    </span>
+          <span>
+            Speed
+            <strong>{skill.speed}</strong>
+          </span>
 
-                    <span>
-                        Range
-                        <strong>{skill.range}</strong>
-                    </span>
-                </div>
-            )
-        }
+          <span>
+            Range
+            <strong>{skill.range}</strong>
+          </span>
+        </div>
+      )
+    }
 
-        {
-            type === "passive" && skill.trigger && (
-                <div class="skill-meta-line">
-                    <span class="skill-meta-label">Trigger</span>
+    {
+      type === "passive" && skill.trigger && (
+        <div class="skill-meta-line">
+          <span class="skill-meta-label">Trigger</span>
 
-                    <span class="skill-meta-value">{skill.trigger}</span>
-                </div>
-            )
-        }
+          <span class="skill-meta-value">{skill.trigger}</span>
+        </div>
+      )
+    }
 
-        {
-            type === "ultimate" && (
-                <div class="skill-meta-line">
-                    <span class="skill-meta-label">Flame Cost</span>
+    {
+      type === "ultimate" && (
+        <div class="skill-meta-line">
+          <span class="skill-meta-label">Flame Cost</span>
 
-                    <span class="skill-meta-value">{skill.flameCost}</span>
-                </div>
-            )
-        }
-    </div>
+          <span class="skill-meta-value">{skill.flameCost}</span>
+        </div>
+      )
+    }
+  </div>
 
-    <div class="skill-divider"></div>
+  <div class="skill-divider"></div>
 
-    <div class="skill-effects">
-        {skill.effects.map((effect) => <SkillEffect effect={effect} />)}
+  <div class="skill-effects">
+    {skill.effects.map((effect) => <SkillEffect effect={effect} />)}
 
-        {
-            showModifiers && (
-                <SkillModifiers
-                    awakeningEffects={awakeningEffects}
-                    reconstructionEffects={reconstructionEffects}
-                />
-            )
-        }
-    </div>
+    {
+      showModifiers && (
+        <SkillModifiers
+          awakeningEffects={awakeningEffects}
+          reconstructionEffects={reconstructionEffects}
+        />
+      )
+    }
+  </div>
 </article>
