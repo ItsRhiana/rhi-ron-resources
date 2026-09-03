@@ -1,0 +1,37 @@
+---
+import EffectText from "./EffectText.astro";
+
+interface Props {
+    effect: any;
+}
+
+const {
+    effect,
+} = Astro.props;
+---
+
+<div class="reconstruction-row">
+
+    <div
+        class:list={[
+            "reconstruction-rank",
+            `reconstruction-${effect.rank.toLowerCase()}`,
+        ]}
+        data-rank={effect.rank}
+    ></div>
+
+    <div class="reconstruction-content">
+
+        <strong>
+            {effect.name}
+        </strong>
+
+        <span class="reconstruction-description">
+            <EffectText
+                text={effect.description}
+            />
+        </span>
+
+    </div>
+
+</div>

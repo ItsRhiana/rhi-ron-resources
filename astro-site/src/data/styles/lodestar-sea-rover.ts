@@ -247,53 +247,64 @@ const lodestarSeaRover = {
     },
     specialSynergies: [
       {
-        style: "gift-player-in-the-play",
+        styles: [
+          "gift-player-in-the-play",
+        ],
 
-        ability: {
-          label: "Ultimate",
-
-          description:
-            "Increases the CRIT Rate of allies within a circular area by 17.5% for 30s.",
-        },
+        effects: [
+          {
+            type: "skill",
+            source: "gift-player-in-the-play",
+            skill: "ultimate",
+          },
+        ],
 
         note:
           "The long duration reliably offsets Lodestar's low CRIT Rate, making his high CRIT DMG more consistent when played on-field.",
       },
 
       {
-        style: "windward-money-loving-gentleman",
+        styles: [
+          "ng-dream-producer",
+        ],
 
-        ability: {
-          label: "A ◆ Battle Spirit Relay",
-
-          description:
-            "ULT grants the target +10% CRIT Rate for 10s.",
-        },
-      },
-
-      {
-        style: "ng-dream-producer",
-
-        ability: {
-          label: "Ultimate",
-
-          description:
-            "Moves a selected ally's ULT to NG's current ULT position, increases their next ULT CRIT DMG by 58%, and grants +1 [Storyboard].",
-        },
+        effects: [
+          {
+            type: "skill",
+            source: "ng-dream-producer",
+            skill: "ultimate",
+          },
+        ],
 
         note:
           "Lodestar's ULT builds up to 72% CRIT DMG for 10s. If NG pulls him forward for a second ULT before the self-buff expires, the new stacks can overlap with the first, reaching 144% CRIT DMG from Lodestar's own ULT effect.\n\nNG also adds another 58% CRIT DMG to the next ULT, although Lodestar is already heavily saturated with CRIT DMG at this point.\n\nThe main weakness is CRIT consistency: NG provides no CRIT Rate, so Lodestar still needs it from his build or another ally to reliably capitalize on the burst window.",
       },
 
       {
-        style: "rainmaker-world-cleansing-rain",
+        styles: [
+          "windward-money-loving-gentleman",
+        ],
 
-        ability: {
-          label: "Ultimate",
+        effects: [
+          {
+            type: "reconstruction",
+            effect: "battle-spirit-relay",
+          },
+        ],
+      },
 
-          description:
-            "Performs 21 sacrifices, each consuming 1% of Rainmaker's current HP to heal allies within range — total 29.4% Rainmaker Max HP healed per ally.\n\nGrants a teamwide CRIT Rate buff based on each ally's remaining HP, reaching up to +18% CRIT Rate below 40% Max HP for 15s.",
-        },
+      {
+        styles: [
+          "rainmaker-world-cleansing-rain",
+        ],
+
+        effects: [
+          {
+            type: "skill",
+            source: "rainmaker-world-cleansing-rain",
+            skill: "ultimate",
+          },
+        ],
 
         note:
           "The healing initially appears anti-synergistic with the HP-based CRIT Rate buff, but it is not applied immediately and takes roughly 3s to complete.\n\nThis creates a short timing window: Let Lodestar's HP drop critically low, cast Rainmaker's ULT, then cast Lodestar's ULT immediately before the healing pushes him back above 40%. This lets him receive the maximum CRIT Rate bonus while still being healed to safety.",

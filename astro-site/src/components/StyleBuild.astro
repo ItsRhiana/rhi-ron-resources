@@ -142,90 +142,78 @@ const build = style.build;
 
                         return (
                             <div class="build-reconstruction-row">
-<div class="build-reconstruction-choice">
+                                <div class="build-reconstruction-choice">
+                                    <div class="build-reconstruction-rank">
+                                        <span class="build-reconstruction-symbol">
+                                            ϒ
+                                        </span>
 
-    <div class="build-reconstruction-rank">
-        <span class="build-reconstruction-symbol">
-            ϒ
-        </span>
+                                        <span class="build-reconstruction-number">
+                                            {index + 1}
+                                        </span>
+                                    </div>
 
-        <span class="build-reconstruction-number">
-            {index + 1}
-        </span>
-    </div>
+                                    <div class="build-reconstruction-content">
+                                        {item.recommendation && (
+                                            <span class="build-reconstruction-recommendation">
+                                                {item.recommendation}
+                                            </span>
+                                        )}
 
+                                        <span
+                                            class:list={[
+                                                "build-reconstruction-effect",
+                                                `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                                            ]}
+                                            tabindex="0"
+                                        >
+                                            <span class="reconstruction-skill-label">
+                                                <span class="reconstruction-skill-rank">
+                                                    {effect.rank}
+                                                </span>
 
-    <div class="build-reconstruction-content">
+                                                <span class="reconstruction-skill-separator">
+                                                    ◇
+                                                </span>
 
-        {item.recommendation && (
-            <span class="build-reconstruction-recommendation">
-                {item.recommendation}
-            </span>
-        )}
+                                                <span class="reconstruction-skill-name">
+                                                    {effect.name}
+                                                </span>
+                                            </span>
 
-        <span
-            class:list={[
-                "build-reconstruction-effect",
-                `skill-reconstruction-${effect.rank.toLowerCase()}`,
-            ]}
-            tabindex="0"
-        >
-            <span class="reconstruction-skill-label">
+                                            <span class="build-reconstruction-tooltip">
+                                                <span
+                                                    class:list={[
+                                                        "skill-reconstruction-effect",
+                                                        `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                                                    ]}
+                                                >
+                                                    <span class="reconstruction-skill-label">
+                                                        <span class="reconstruction-skill-rank">
+                                                            {effect.rank}
+                                                        </span>
 
-                <span class="reconstruction-skill-rank">
-                    {effect.rank}
-                </span>
+                                                        <span class="reconstruction-skill-separator">
+                                                            ◇
+                                                        </span>
 
-                <span class="reconstruction-skill-separator">
-                    ◇
-                </span>
+                                                        <span class="reconstruction-skill-name">
+                                                            {effect.name}
+                                                        </span>
+                                                    </span>
 
-                <span class="reconstruction-skill-name">
-                    {effect.name}
-                </span>
-
-            </span>
-
-
-            <span class="build-reconstruction-tooltip">
-
-                <span
-                    class:list={[
-                        "skill-reconstruction-effect",
-                        `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                    ]}
-                >
-                    <span class="reconstruction-skill-label">
-
-                        <span class="reconstruction-skill-rank">
-                            {effect.rank}
-                        </span>
-
-                        <span class="reconstruction-skill-separator">
-                            ◇
-                        </span>
-
-                        <span class="reconstruction-skill-name">
-                            {effect.name}
-                        </span>
-
-                    </span>
-
-                    <span>
-                        <EffectText
-                            text={effect.description}
-                        />
-                    </span>
-
-                </span>
-
-            </span>
-
-        </span>
-
-    </div>
-
-</div>
+                                                    <span>
+                                                        <EffectText
+                                                            text={
+                                                                effect.description
+                                                            }
+                                                        />
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
 
                                 <div class="build-reconstruction-note">
                                     {item.note}
@@ -273,7 +261,9 @@ const build = style.build;
                 team={build.specialSynergyTeam}
                 highlightedStyles={[
                     style.id,
-                    ...build.specialSynergies.map((synergy) => synergy.style),
+                    ...build.specialSynergies.flatMap(
+                        (synergy) => synergy.styles,
+                    ),
                 ]}
             />
         </div>
