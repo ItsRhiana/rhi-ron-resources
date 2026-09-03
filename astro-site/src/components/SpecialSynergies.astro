@@ -99,49 +99,39 @@ const {
                                         return (
                                             <div class="special-synergy-effect-item">
 
-                                                <SkillCard
-                                                    type={
-                                                        effect.skill
-                                                    }
-                                                    skill={
-                                                        skill
-                                                    }
-                                                    showModifiers={
-                                                        false
-                                                    }
-                                                />
+<SkillCard
+    type={effect.skill}
+    skill={skill}
+    showModifiers={false}
+    embedded
+/>
 
                                             </div>
                                         );
                                     }
 
+if (
+    effect.type ===
+    "reconstruction"
+) {
+    const reconstructionEffect =
+        reconstructionEffects[
+            effect.effect
+        ];
 
-                                    if (
-                                        effect.type ===
-                                        "reconstruction"
-                                    ) {
-                                        const reconstructionEffect =
-                                            reconstructionEffects[
-                                                effect.effect
-                                            ];
+    return (
+        <div class="special-synergy-effect-item">
 
-                                        return (
-                                            <div class="special-synergy-effect-item">
+            <div class="special-synergy-reconstruction">
+                <ReconstructionEntry
+                    effect={reconstructionEffect}
+                    compact
+                />
+            </div>
 
-                                                <div class="reconstruction-list">
-
-                                                    <ReconstructionEntry
-                                                        effect={
-                                                            reconstructionEffect
-                                                        }
-                                                    />
-
-                                                </div>
-
-                                            </div>
-                                        );
-                                    }
-
+        </div>
+    );
+}
 
                                     return null;
                                 }

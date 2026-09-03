@@ -1,7 +1,5 @@
 ---
-import {
-    formatAwakeningLevel,
-} from "../utils/awakening";
+import { formatAwakeningLevel } from "../utils/awakening";
 
 interface Props {
     awakening: any[];
@@ -11,33 +9,112 @@ const { awakening } = Astro.props;
 ---
 
 <aside class="kit-awakening">
-
-    <div class="section-heading">
-        Awakening
-    </div>
+    <div class="section-heading">Awakening</div>
 
     <div class="awakening-list">
+        {
+            awakening.map((awakeningLevel) => (
+                <div class="awakening-row">
+                    <div class="awakening-level">
+                        {formatAwakeningLevel(awakeningLevel.level)}
+                    </div>
 
-        {awakening.map((awakeningLevel) => (
-            <div class="awakening-row">
-
-                <div class="awakening-level">
-                    {formatAwakeningLevel(awakeningLevel.level)}
+                    <div class="awakening-effects">
+                        {awakeningLevel.effects.map((effect) => (
+                            <div class="awakening-effect">
+                                {effect.description}
+                            </div>
+                        ))}
+                    </div>
                 </div>
-
-                <div class="awakening-effects">
-
-                    {awakeningLevel.effects.map((effect) => (
-                        <div class="awakening-effect">
-                            {effect.description}
-                        </div>
-                    ))}
-
-                </div>
-
-            </div>
-        ))}
-
+            ))
+        }
     </div>
-
 </aside>
+
+<style>
+    .kit-awakening {
+        min-width: 0;
+
+        margin: 0;
+    }
+    
+    .awakening-list {
+        margin: 0;
+
+        padding: 0 18px;
+
+        background: var(--color-panel-bg);
+
+        border: 1px solid var(--color-border);
+    }
+
+    .awakening-row {
+        display: grid;
+
+        grid-template-columns: 42px minmax(0, 1fr);
+
+        gap: 14px;
+
+        align-items: center;
+
+        min-height: 78px;
+
+        margin: 0;
+
+        padding: 16px 0;
+
+        box-sizing: border-box;
+
+        border-bottom: 1px solid var(--color-border-soft);
+    }
+
+    .awakening-row:last-child {
+        border-bottom: 0;
+    }
+
+    .awakening-level {
+        display: block;
+
+        margin: 0;
+
+        color: var(--color-awakening);
+
+        font-family: var(--font-display);
+
+        font-size: 1.5rem;
+        font-weight: 800;
+
+        line-height: 1;
+
+        text-align: left;
+    }
+
+    .awakening-effects {
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 16px;
+
+        min-width: 0;
+
+        margin: 0;
+        padding: 0;
+    }
+
+    .awakening-effect {
+        margin: 0;
+
+        color: var(--color-text-description);
+
+        font-family: var(--font-body);
+
+        font-size: 1.14rem;
+        font-weight: 400;
+
+        line-height: 1.2;
+    }
+</style>

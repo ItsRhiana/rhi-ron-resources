@@ -3,35 +3,154 @@ import EffectText from "./EffectText.astro";
 
 interface Props {
     effect: any;
+    compact?: boolean;
 }
 
-const {
-    effect,
-} = Astro.props;
+const { effect, compact = false } = Astro.props;
 ---
 
-<div class="reconstruction-row">
-
+<div
+    class:list={[
+        "reconstruction-row",
+        {
+            "reconstruction-row-compact": compact,
+        },
+    ]}
+>
     <div
         class:list={[
             "reconstruction-rank",
             `reconstruction-${effect.rank.toLowerCase()}`,
         ]}
         data-rank={effect.rank}
-    ></div>
+    >
+    </div>
 
     <div class="reconstruction-content">
-
         <strong>
             {effect.name}
         </strong>
 
         <span class="reconstruction-description">
-            <EffectText
-                text={effect.description}
-            />
+            <EffectText text={effect.description} />
         </span>
-
     </div>
-
 </div>
+
+<style>
+    .reconstruction-row {
+        display: grid;
+
+        grid-template-columns: 42px minmax(0, 1fr);
+
+        gap: 14px;
+
+        align-items: center;
+
+        min-height: 96px;
+
+        margin: 0;
+
+        padding: 16px 0;
+
+        box-sizing: border-box;
+
+        border-bottom: 1px solid var(--color-border-soft);
+    }
+
+    .reconstruction-row:last-child {
+        border-bottom: 0;
+    }
+
+    /* =========================================================
+   Reconstruction Rank Diamond
+   ========================================================= */
+
+    .reconstruction-rank {
+        width: 28px;
+        height: 28px;
+
+        display: grid;
+
+        place-items: center;
+
+        justify-self: center;
+
+        margin: 0;
+
+        border: 1px solid currentColor;
+
+        transform: rotate(45deg);
+
+        font-family: var(--font-display);
+
+        font-size: 0;
+        font-weight: 800;
+
+        line-height: 1;
+    }
+
+    .reconstruction-rank::after {
+        content: attr(data-rank);
+
+        transform: rotate(-45deg);
+
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+
+    .reconstruction-s {
+        color: var(--color-reconstruction-s);
+    }
+
+    .reconstruction-a {
+        color: var(--color-reconstruction-a);
+    }
+
+    /* =========================================================
+   Reconstruction Content
+   ========================================================= */
+
+    .reconstruction-content {
+        display: grid;
+
+        align-content: center;
+
+        gap: 5px;
+
+        min-width: 0;
+
+        margin: 0;
+        padding: 0;
+
+        border: 0;
+    }
+
+    .reconstruction-content strong {
+        margin: 0;
+
+        color: var(--color-text-primary);
+
+        font-family: var(--font-display);
+
+        font-size: 0.92rem;
+        font-weight: 600;
+
+        line-height: 1.25;
+
+        text-transform: none;
+    }
+
+    .reconstruction-description {
+        margin: 0;
+
+        color: var(--color-text-description);
+
+        font-family: var(--font-body);
+
+        font-size: 1.14rem;
+        font-weight: 400;
+
+        line-height: 1.2;
+    }
+</style>
