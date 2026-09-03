@@ -8,37 +8,26 @@ interface Props {
 const { awakening } = Astro.props;
 ---
 
-<aside class="kit-awakening">
-    <div class="section-heading">Awakening</div>
-
-    <div class="awakening-list">
-        {
-            awakening.map((awakeningLevel) => (
-                <div class="awakening-row">
-                    <div class="awakening-level">
-                        {formatAwakeningLevel(awakeningLevel.level)}
-                    </div>
-
-                    <div class="awakening-effects">
-                        {awakeningLevel.effects.map((effect) => (
-                            <div class="awakening-effect">
-                                {effect.description}
-                            </div>
-                        ))}
-                    </div>
+<div class="awakening-list">
+    {
+        awakening.map((awakeningLevel) => (
+            <div class="awakening-row">
+                <div class="awakening-level">
+                    {formatAwakeningLevel(awakeningLevel.level)}
                 </div>
-            ))
-        }
-    </div>
-</aside>
+
+                <div class="awakening-effects">
+                    {awakeningLevel.effects.map((effect) => (
+                        <div class="awakening-effect">{effect.description}</div>
+                    ))}
+                </div>
+            </div>
+        ))
+    }
+</div>
 
 <style>
-    .kit-awakening {
-        min-width: 0;
 
-        margin: 0;
-    }
-    
     .awakening-list {
         margin: 0;
 

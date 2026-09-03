@@ -5,10 +5,8 @@
 .skills-grid {
     display: grid;
 
-    .skills-grid {
-        grid-template-columns:
-            minmax(220px, 1fr) minmax(300px, 2fr) minmax(300px, 2fr);
-    }
+    grid-template-columns:
+        minmax(220px, 1fr) minmax(300px, 2fr) minmax(300px, 2fr);
 
     /*
        Shared internal card rows:
@@ -17,13 +15,15 @@
        3. divider
        4. skill effects / modifiers
     */
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows:
+        auto auto auto auto;
 
     width: 100%;
 
     margin: 0;
 
-    border: 1px solid var(--color-border);
+    border:
+        1px solid var(--color-border);
 }
 
 .skill-column {
@@ -389,7 +389,7 @@
 /* =========================================================
    Skill Preview
    ========================================================= */
-   
+
 .kit-skills {
     min-width: 0;
 

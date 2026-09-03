@@ -8,22 +8,17 @@
 
     margin: 0;
 
-    padding:
-        18px;
+    padding: 18px;
 
     box-sizing: border-box;
 
-    color:
-        var(--color-text-primary);
+    color: var(--color-text-primary);
+    background: var(--color-bg);
 
-    background:
-        var(--color-bg);
-
-    font-family:
-        var(--font-body);
-
+    font-family: var(--font-body);
     font-size: 1.05rem;
 }
+
 
 /* =========================================================
    Main Layout
@@ -41,25 +36,21 @@
     margin: 0;
 }
 
+
 /* =========================================================
-   Progression Row
+   Progression
    ========================================================= */
 
 .kit-row-progression {
     display: grid;
 
     grid-template-columns:
-        calc(
-            (
-                100%
-                - var(--deepening-column-width)
-                - var(--kit-progression-gap)
-                - var(--kit-progression-gap)
-            ) / 2
-        )
-        minmax(0, 1fr);
+        minmax(0, 1fr) var(--deepening-column-width) minmax(0, 1fr);
 
-    gap:
+    grid-template-rows:
+        auto auto;
+
+    column-gap:
         var(--kit-progression-gap);
 
     align-items: start;
@@ -69,6 +60,54 @@
     margin: 0;
 }
 
+
+/* =========================================================
+   Headings
+   ========================================================= */
+
+.kit-awakening-heading {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.kit-reflection-heading {
+    grid-column: 2 / 4;
+    grid-row: 1;
+}
+
+
+/* =========================================================
+   Panels
+   ========================================================= */
+
+.kit-awakening-panel {
+    grid-column: 1;
+    grid-row: 2;
+
+    min-width: 0;
+
+    margin: 0 !important;
+}
+
+.kit-deepening-panel {
+    grid-column: 2;
+    grid-row: 2;
+
+    min-width: 0;
+
+    margin: 0 !important;
+}
+
+.kit-reconstruction-panel {
+    grid-column: 3;
+    grid-row: 2;
+
+    min-width: 0;
+
+    margin: 0 !important;
+}
+
+
 /* =========================================================
    Medium
    ========================================================= */
@@ -77,10 +116,11 @@
 
     .kit-row-progression {
         grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 2fr);
+            minmax(0, 1fr) minmax(250px, 0.75fr) minmax(0, 1.25fr);
     }
+
 }
+
 
 /* =========================================================
    Narrow
@@ -89,8 +129,7 @@
 @container (max-width: 700px) {
 
     .style-kit {
-        padding:
-            14px 12px;
+        padding: 14px 12px;
     }
 
     .kit-main-grid {
@@ -100,7 +139,51 @@
     .kit-row-progression {
         grid-template-columns: 1fr;
 
-        gap: 22px;
+        grid-template-rows:
+            auto auto auto auto auto;
+
+        column-gap: 0;
+    }
+
+
+    /* Awakening */
+
+    .kit-awakening-heading,
+    .kit-reflection-heading {
+        margin-top: 0 !important;
+    }
+
+    .kit-awakening-heading {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .kit-awakening-panel {
+        grid-column: 1;
+        grid-row: 2;
+
+        margin-bottom: 22px;
+    }
+
+
+    /* Reflection */
+
+    .kit-reflection-heading {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .kit-deepening-panel {
+        grid-column: 1;
+        grid-row: 4;
+
+        margin-bottom:
+            var(--kit-progression-gap);
+    }
+
+    .kit-reconstruction-panel {
+        grid-column: 1;
+        grid-row: 5;
     }
 
 }
