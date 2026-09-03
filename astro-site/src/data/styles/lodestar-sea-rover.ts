@@ -1,17 +1,15 @@
 const lodestarSeaRover = {
-  id: 'lodestar-sea-rover',
+  id: "lodestar-sea-rover",
 
-  characterName: 'Lodestar',
-  styleName: 'Sea Rover',
+  characterName: "Lodestar",
+  styleName: "Sea Rover",
 
   rarity: 6,
-  class: 'annihilation',
-  desire: 'wrath',
+  class: "annihilation",
+  desire: "wrath",
 
   kit: {
-    tags: [
-      'single-target',
-    ],
+    tags: ["single-target"],
 
     actionFocus: {
       intel: 1,
@@ -28,54 +26,51 @@ const lodestarSeaRover = {
 
     deepening: [
       {
-        stat: 'atk',
-        value: '42%',
+        stat: "atk",
+        value: "42%",
       },
       {
-        stat: 'crit-rate',
-        value: '33.6%',
+        stat: "crit-rate",
+        value: "33.6%",
       },
       {
-        stat: 'dmg',
-        value: '36.48%',
+        stat: "dmg",
+        value: "36.48%",
       },
     ],
 
     reconstruction: [
-      'raging-sea-assault',
-      'tactical-balance',
-      'all-or-nothing',
-      'fleeting-brilliance',
+      "raging-sea-assault",
+      "tactical-balance",
+      "all-or-nothing",
+      "fleeting-brilliance",
     ],
 
     skills: {
       basicAttack: {
         shots: 1,
-        speed: 'Slow',
-        range: 'Mid',
+        speed: "Slow",
+        range: "Mid",
 
         tags: [],
 
         effects: [
           {
-            description:
-              'Deals DMG equal to {multiplier%} ATK to an enemy.',
+            description: "Deals DMG equal to {multiplier%} ATK to an enemy.",
             multiplier: 126,
           },
         ],
       },
 
       passive: {
-        trigger: '15s cooldown',
+        trigger: "15s cooldown",
 
-        tags: [
-          'single-target',
-        ],
+        tags: ["single-target"],
 
         effects: [
           {
             description:
-              'Fires 11 bullets toward the current target, each dealing DMG equal to {multiplier%} ATK.',
+              "Fires 11 bullets toward the current target, each dealing DMG equal to {multiplier%} ATK.",
             multiplier: 31,
           },
         ],
@@ -84,19 +79,17 @@ const lodestarSeaRover = {
       ultimate: {
         flameCost: 3,
 
-        tags: [
-          'single-target',
-        ],
+        tags: ["single-target"],
 
         effects: [
           {
             description:
-              'Deals DMG equal to {multiplier%} ATK ×12 to random enemies in a circular area.',
+              "Deals DMG equal to {multiplier%} ATK ×12 to random enemies in a circular area.",
             multiplier: 95,
           },
           {
             description:
-              'Each repeated hit on the same target increases CRIT DMG by 6% for 10s.',
+              "Each repeated hit on the same target increases CRIT DMG by 6% for 10s.",
           },
         ],
       },
@@ -108,12 +101,12 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            type: 'skillModifier',
-            target: 'ultimate',
-            description: 'ULT hit count +4.',
+            type: "skillModifier",
+            target: "ultimate",
+            description: "ULT hit count +4.",
           },
           {
-            description: 'ATK Bonus increases by 7%.',
+            description: "ATK Bonus increases by 7%.",
           },
         ],
       },
@@ -123,7 +116,7 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            description: 'CRIT Rate increases by 10%.',
+            description: "CRIT Rate increases by 10%.",
           },
         ],
       },
@@ -133,12 +126,12 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            type: 'actionFocusModifier',
-            target: 'execution',
-            description: 'Execution 3 → 4.',
+            type: "actionFocusModifier",
+            target: "execution",
+            description: "Execution 3 → 4.",
           },
           {
-            description: 'ATK Bonus increases by 21%.',
+            description: "ATK Bonus increases by 21%.",
           },
         ],
       },
@@ -148,7 +141,7 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            description: 'CRIT Rate increases by 10%.',
+            description: "CRIT Rate increases by 10%.",
           },
         ],
       },
@@ -158,10 +151,10 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            description: 'ATK Bonus increases by 14%.',
+            description: "ATK Bonus increases by 14%.",
           },
           {
-            description: 'CRIT Rate increases by 15%.',
+            description: "CRIT Rate increases by 15%.",
           },
         ],
       },
@@ -190,66 +183,50 @@ const lodestarSeaRover = {
         effect: "tactical-balance",
         recommendation: "",
 
-        note:
-          "With strong built-in CRIT DMG but only 38.6% CRIT Rate, trading 20% CRIT DMG for 20% CRIT Rate is favorable, making his ULT much more consistent.",
+        note: "With strong built-in CRIT DMG but only 38.6% CRIT Rate, trading 20% CRIT DMG for 20% CRIT Rate is favorable, making his ULT much more consistent.",
       },
 
       {
         effect: "fleeting-brilliance",
         recommendation: "Any effect except",
 
-        note:
-          "His Passive contributes little, and off-field he cannot trigger it at all.",
+        note: "His Passive contributes little, and off-field he cannot trigger it at all.",
       },
     ],
     genericTeam: {
       onField: [
         {
-          styles: [
-            "red-gloves-ace-lawyer",
-          ],
+          styles: ["red-gloves-ace-lawyer"],
           role: "vanguard",
         },
         {
-          styles: [
-            "lodestar-sea-rover",
-          ],
+          styles: ["lodestar-sea-rover"],
           role: "st-dps",
         },
         {
-          styles: [
-            "nobody-seaside-holiday",
-          ],
+          styles: ["nobody-seaside-holiday"],
           role: "aoe-dps",
         },
         {
-          styles: [
-            "general-thunder-commander",
-          ],
+          styles: ["general-thunder-commander"],
           role: "support",
         },
       ],
 
       offField: [
         {
-          styles: [
-            "laksa-spice-merchant",
-          ],
+          styles: ["laksa-spice-merchant"],
           role: "healer",
         },
         {
-          styles: [
-            "lodestar-sea-rover",
-          ],
+          styles: ["lodestar-sea-rover"],
           role: "st-dps",
         },
       ],
     },
     specialSynergies: [
       {
-        styles: [
-          "gift-player-in-the-play",
-        ],
+        styles: ["gift-player-in-the-play"],
 
         effects: [
           {
@@ -259,14 +236,11 @@ const lodestarSeaRover = {
           },
         ],
 
-        note:
-          "The long duration reliably offsets Lodestar's low CRIT Rate, making his high CRIT DMG more consistent when played on-field.",
+        note: "The long duration reliably offsets Lodestar's low CRIT Rate, making his high CRIT DMG more consistent when played on-field.",
       },
 
       {
-        styles: [
-          "ng-dream-producer",
-        ],
+        styles: ["ng-dream-producer"],
 
         effects: [
           {
@@ -276,14 +250,11 @@ const lodestarSeaRover = {
           },
         ],
 
-        note:
-          "Lodestar's ULT builds up to 72% CRIT DMG for 10s. If NG pulls him forward for a second ULT before the self-buff expires, the new stacks can overlap with the first, reaching 144% CRIT DMG from Lodestar's own ULT effect.\n\nNG also adds another 58% CRIT DMG to the next ULT, although Lodestar is already heavily saturated with CRIT DMG at this point.\n\nThe main weakness is CRIT consistency: NG provides no CRIT Rate, so Lodestar still needs it from his build or another ally to reliably capitalize on the burst window.",
+        note: "Lodestar's ULT builds up to 72% CRIT DMG for 10s. If NG pulls him forward for a second ULT before the self-buff expires, the new stacks can overlap with the first, reaching 144% CRIT DMG from Lodestar's own ULT effect.\n\nNG also adds another 58% CRIT DMG to the next ULT, although Lodestar is already heavily saturated with CRIT DMG at this point.\n\nThe main weakness is CRIT consistency: NG provides no CRIT Rate, so Lodestar still needs it from his build or another ally to reliably capitalize on the burst window.",
       },
 
       {
-        styles: [
-          "windward-money-loving-gentleman",
-        ],
+        styles: ["windward-money-loving-gentleman"],
 
         effects: [
           {
@@ -294,9 +265,7 @@ const lodestarSeaRover = {
       },
 
       {
-        styles: [
-          "rainmaker-world-cleansing-rain",
-        ],
+        styles: ["rainmaker-world-cleansing-rain"],
 
         effects: [
           {
@@ -306,50 +275,36 @@ const lodestarSeaRover = {
           },
         ],
 
-        note:
-          "The healing initially appears anti-synergistic with the HP-based CRIT Rate buff, but it is not applied immediately and takes roughly 3s to complete.\n\nThis creates a short timing window: Let Lodestar's HP drop critically low, cast Rainmaker's ULT, then cast Lodestar's ULT immediately before the healing pushes him back above 40%. This lets him receive the maximum CRIT Rate bonus while still being healed to safety.",
+        note: "The healing initially appears anti-synergistic with the HP-based CRIT Rate buff, but it is not applied immediately and takes roughly 3s to complete.\n\nThis creates a short timing window: Let Lodestar's HP drop critically low, cast Rainmaker's ULT, then cast Lodestar's ULT immediately before the healing pushes him back above 40%. This lets him receive the maximum CRIT Rate bonus while still being healed to safety.",
       },
     ],
     specialSynergyTeam: {
       onField: [
         {
-          styles: [
-            "red-gloves-ace-lawyer",
-          ],
+          styles: ["red-gloves-ace-lawyer"],
           role: "vanguard",
         },
         {
-          styles: [
-            "lodestar-sea-rover",
-          ],
+          styles: ["lodestar-sea-rover"],
           role: "st-dps",
         },
         {
-          styles: [
-            "nobody-seaside-holiday",
-          ],
+          styles: ["nobody-seaside-holiday"],
           role: "aoe-dps",
         },
         {
-          styles: [
-            "ng-dream-producer",
-          ],
+          styles: ["ng-dream-producer"],
           role: "support",
         },
       ],
 
       offField: [
         {
-          styles: [
-            "windward-money-loving-gentleman",
-            "rainmaker-world-cleansing-rain",
-          ],
+          styles: ["windward-money-loving-gentleman"],
           role: "healer",
         },
         {
-          styles: [
-            "gift-player-in-the-play",
-          ],
+          styles: ["gift-player-in-the-play"],
           role: "support",
         },
       ],
