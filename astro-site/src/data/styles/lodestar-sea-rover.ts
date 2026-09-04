@@ -281,7 +281,12 @@ const lodestarSeaRover = {
     specialSynergyTeam: {
       onField: [
         {
-          styles: ["red-gloves-ace-lawyer"],
+          styles: [
+            "red-gloves-ace-lawyer",
+            "red-gloves-ace-lawyer",
+            "red-gloves-ace-lawyer",
+            "red-gloves-ace-lawyer",
+          ],
           role: "vanguard",
         },
         {
