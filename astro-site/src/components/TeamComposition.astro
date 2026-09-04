@@ -1,9 +1,7 @@
 ---
-import styles from "../data/styles";
 import infiniteStairway from "../data/tier-lists/infinite-stairway";
 
-import TeamStyleCard from "./TeamStyleCard.astro";
-import TeamStyleComposite from "./TeamStyleComposite.astro";
+import TeamStyleSlot from "./TeamStyleSlot.astro";
 
 interface Props {
   team: any;
@@ -14,16 +12,8 @@ const { team, highlightedStyles } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
 
-function getStyle(styleId: string) {
-  return styles[styleId];
-}
-
 function getRole(roleId: string) {
   return infiniteStairway.columns.find((column) => column.id === roleId);
-}
-
-function isDimmed(styleId: string) {
-  return highlightedStyles && !highlightedStyles.includes(styleId);
 }
 ---
 
@@ -40,29 +30,11 @@ function isDimmed(styleId: string) {
         return (
           <div class="team-role-slot">
             <div class="team-slot-styles">
-              {slot.styles.length === 1 ? (
-                (() => {
-                  const style = getStyle(slot.styles[0]);
-
-                  return (
-                    <TeamStyleCard
-                      id={style.id}
-                      characterName={style.characterName}
-                      styleName={style.styleName}
-                      rarity={style.rarity}
-                      desire={style.desire}
-                      position="on-field"
-                      dimmed={isDimmed(style.id)}
-                    />
-                  );
-                })()
-              ) : (
-                <TeamStyleComposite
-                  styleIds={slot.styles}
-                  position="on-field"
-                  highlightedStyles={highlightedStyles}
-                />
-              )}
+              <TeamStyleSlot
+                styleIds={slot.styles}
+                position="on-field"
+                highlightedStyles={highlightedStyles}
+              />
             </div>
 
             <div class="team-role">
@@ -88,29 +60,11 @@ function isDimmed(styleId: string) {
         return (
           <div class="team-role-slot">
             <div class="team-slot-styles">
-              {slot.styles.length === 1 ? (
-                (() => {
-                  const style = getStyle(slot.styles[0]);
-
-                  return (
-                    <TeamStyleCard
-                      id={style.id}
-                      characterName={style.characterName}
-                      styleName={style.styleName}
-                      rarity={style.rarity}
-                      desire={style.desire}
-                      position="off-field"
-                      dimmed={isDimmed(style.id)}
-                    />
-                  );
-                })()
-              ) : (
-                <TeamStyleComposite
-                  styleIds={slot.styles}
-                  position="off-field"
-                  highlightedStyles={highlightedStyles}
-                />
-              )}
+              <TeamStyleSlot
+                styleIds={slot.styles}
+                position="off-field"
+                highlightedStyles={highlightedStyles}
+              />
             </div>
 
             <div class="team-role">
