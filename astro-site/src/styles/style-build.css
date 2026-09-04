@@ -370,6 +370,17 @@
 }
 
 /* =========================================================
+   Level & Position — Skill Preview Surface
+   ========================================================= */
+
+.build-skill-preview .skill-column-standalone {
+  background: var(--color-panel-bg);
+
+  border: 1px solid var(--color-border);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+/* =========================================================
    Level & Position Explanation
    ========================================================= */
 
