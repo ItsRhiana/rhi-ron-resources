@@ -290,11 +290,15 @@ const lodestarSeaRover = {
           role: "vanguard",
         },
         {
-          styles: ["lodestar-sea-rover"],
+          styles: [
+            "lodestar-sea-rover",
+            "lodestar-sea-rover",
+            "lodestar-sea-rover",
+          ],
           role: "st-dps",
         },
         {
-          styles: ["nobody-seaside-holiday"],
+          styles: ["nobody-seaside-holiday", "nobody-seaside-holiday"],
           role: "aoe-dps",
         },
         {
