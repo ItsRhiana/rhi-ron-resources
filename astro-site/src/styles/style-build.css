@@ -58,7 +58,12 @@
 
 /* Reconstruction table */
 
-.build-section:nth-child(2) > .build-reconstruction-list {
+.build-section:nth-child(2) > .build-recon-list {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.build-section:nth-child(2) > .build-reconstruction-panel {
   grid-column: 2;
   grid-row: 2;
 }
@@ -390,194 +395,6 @@
   padding: 18px 20px;
 
   white-space: pre-line;
-
-  background: #f0eeed;
-
-  color: #373737;
-
-  border-radius: 10px;
-
-  font-family: var(--font-body);
-
-  font-size: 1.14rem;
-
-  line-height: 1.2;
-}
-
-/* =========================================================
-   Reconstruction
-   ========================================================= */
-
-.build-reconstruction-list {
-  margin: 0 !important;
-
-  border: 1px solid var(--color-border);
-
-  background: var(--color-panel-bg);
-}
-
-.build-reconstruction-row {
-  display: grid;
-
-  grid-template-columns: minmax(320px, 1fr) minmax(300px, 1fr);
-
-  min-height: 110px;
-}
-
-.build-reconstruction-row + .build-reconstruction-row {
-  border-top: 1px solid var(--color-border-soft);
-}
-
-/* =========================================================
-   Reconstruction Recommendation
-   ========================================================= */
-
-.build-reconstruction-choice {
-  display: flex;
-
-  align-items: stretch;
-
-  min-width: 0;
-
-  padding: 14px 12px;
-
-  font-family: var(--font-body);
-
-  font-size: 1.18rem;
-}
-
-.build-reconstruction-rank {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 4px;
-
-  flex: 0 0 54px;
-
-  margin-right: 10px;
-
-  padding-right: 10px;
-
-  border-right: 1px solid var(--color-border-soft);
-
-  color: var(--color-text-muted);
-}
-
-.build-reconstruction-symbol {
-  font-family: var(--font-body);
-
-  font-size: 1.2rem;
-  font-weight: 800;
-
-  line-height: 1;
-}
-
-.build-reconstruction-number {
-  font-family: var(--font-body);
-
-  font-size: 1.8rem;
-  font-weight: 600;
-
-  line-height: 1;
-}
-
-.build-reconstruction-content {
-  display: flex;
-
-  align-items: center;
-
-  gap: 6px;
-
-  min-width: 0;
-}
-
-.build-reconstruction-recommendation,
-.build-reconstruction-effect {
-  margin-left: 8px;
-}
-
-.build-reconstruction-recommendation {
-  flex: 0 0 auto;
-
-  color: var(--color-text-primary);
-
-  font-family: var(--font-body);
-
-  font-size: 1.18rem;
-
-  line-height: 1.2;
-}
-
-.build-reconstruction-effect {
-  position: relative;
-
-  display: inline-flex;
-
-  min-width: 0;
-
-  cursor: default;
-}
-
-/* =========================================================
-   Reconstruction Tooltip
-   ========================================================= */
-
-.build-reconstruction-tooltip {
-  position: absolute;
-
-  left: 0;
-  top: calc(100% + 8px);
-
-  z-index: 30;
-
-  width: 300px;
-
-  opacity: 0;
-  visibility: hidden;
-
-  transform: translateY(-4px);
-
-  transition:
-    opacity 0.12s ease,
-    transform 0.12s ease,
-    visibility 0.12s ease;
-
-  pointer-events: none;
-}
-
-.build-reconstruction-tooltip .skill-reconstruction-effect {
-  width: 100%;
-
-  box-sizing: border-box;
-
-  font-family: var(--font-body);
-
-  font-size: 1.12rem;
-  font-weight: 400;
-
-  line-height: 1.2;
-}
-
-.build-reconstruction-effect:hover .build-reconstruction-tooltip,
-.build-reconstruction-effect:focus .build-reconstruction-tooltip {
-  opacity: 1;
-  visibility: visible;
-
-  transform: translateY(0);
-}
-
-/* =========================================================
-   Reconstruction Explanation
-   ========================================================= */
-
-.build-reconstruction-note {
-  margin: 14px;
-
-  padding: 16px 18px;
-
-  min-width: 0;
 
   background: #f0eeed;
 
@@ -937,7 +754,12 @@
     grid-row: 3;
   }
 
-  .build-section:nth-child(2) > .build-reconstruction-list {
+  .build-section:nth-child(2) > .build-recon-list {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .build-section:nth-child(2) > .build-reconstruction-panel {
     grid-column: 1;
     grid-row: 4;
   }
@@ -970,26 +792,6 @@
 
   .build-position {
     margin-left: 0;
-  }
-
-  .build-reconstruction-row {
-    grid-template-columns: 1fr;
-  }
-
-  .build-reconstruction-choice {
-    display: grid;
-
-    grid-template-columns: 70px minmax(0, 1fr);
-
-    align-items: center;
-
-    min-width: 0;
-
-    padding: 18px 20px;
-
-    font-family: var(--font-body);
-
-    font-size: 1.18rem;
   }
 
   /*

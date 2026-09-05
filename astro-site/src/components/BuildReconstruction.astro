@@ -1,0 +1,447 @@
+---
+import EffectText from "./EffectText.astro";
+
+import reconstructionEffects from "../data/reconstruction";
+
+interface Props {
+    recommendations: any[];
+}
+
+const {
+    recommendations,
+} = Astro.props;
+---
+
+<div class="build-recon-list">
+    {
+        recommendations.map((item, index) => {
+            const effect =
+                reconstructionEffects[item.effect];
+
+            return (
+                <div class="build-recon-row">
+
+                    <!-- ======================================
+                         Rank
+                         ====================================== -->
+
+                    <div class="build-recon-rank">
+                        <span class="build-recon-symbol">
+                            ϒ
+                        </span>
+
+                        <span class="build-recon-number">
+                            {index + 1}
+                        </span>
+                    </div>
+
+
+                    <!-- ======================================
+                         Recommendation
+                         ====================================== -->
+
+                    <div class="build-recon-main">
+
+                        {
+                            item.recommendation && (
+                                <span class="build-recon-prefix">
+                                    {item.recommendation}
+                                </span>
+                            )
+                        }
+
+                        <span
+                            class:list={[
+                                "build-recon-effect",
+                                `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                            ]}
+                            tabindex="0"
+                        >
+                            <span class="reconstruction-skill-label">
+                                <span class="reconstruction-skill-rank">
+                                    {effect.rank}
+                                </span>
+
+                                <span class="reconstruction-skill-separator">
+                                    ◇
+                                </span>
+
+                                <span class="reconstruction-skill-name">
+                                    {effect.name}
+                                </span>
+                            </span>
+
+
+                            <!-- ==============================
+                                 Tooltip
+                                 ============================== -->
+
+                            <span class="build-recon-tooltip">
+                                <span
+                                    class:list={[
+                                        "skill-reconstruction-effect",
+                                        `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                                    ]}
+                                >
+                                    <span class="reconstruction-skill-label">
+                                        <span class="reconstruction-skill-rank">
+                                            {effect.rank}
+                                        </span>
+
+                                        <span class="reconstruction-skill-separator">
+                                            ◇
+                                        </span>
+
+                                        <span class="reconstruction-skill-name">
+                                            {effect.name}
+                                        </span>
+                                    </span>
+
+                                    <span>
+                                        <EffectText
+                                            text={effect.description}
+                                        />
+                                    </span>
+                                </span>
+                            </span>
+                        </span>
+
+                    </div>
+
+
+                    <!-- ======================================
+                         Explanation
+                         ====================================== -->
+
+                    <div class="build-recon-note-cell">
+                        <div class="build-recon-note">
+                            {item.note}
+                        </div>
+                    </div>
+
+                </div>
+            );
+        })
+    }
+</div>
+
+
+<style>
+    /* =====================================================
+       Reconstruction Table
+       ===================================================== */
+
+    .build-recon-list {
+        width: 100%;
+
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+
+        border:
+            1px solid var(--color-border);
+
+        background:
+            var(--color-panel-bg);
+    }
+
+
+    /* =====================================================
+       Row
+
+       IMPORTANT:
+       Rank, recommendation and note are DIRECT grid cells.
+       ===================================================== */
+
+    .build-recon-row {
+        display: grid;
+
+        grid-template-columns:
+            72px
+            minmax(250px, 1fr)
+            minmax(300px, 1fr);
+
+        align-items: stretch;
+
+        min-height: 110px;
+
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+    }
+
+    .build-recon-row + .build-recon-row {
+        border-top:
+            1px solid var(--color-border-soft);
+    }
+
+
+    /* =====================================================
+       Rank Column
+       ===================================================== */
+
+    .build-recon-rank {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 4px;
+
+        min-width: 0;
+
+        margin: 0;
+
+        padding:
+            14px 10px;
+
+        box-sizing: border-box;
+
+        color:
+            var(--color-text-muted);
+    }
+
+    .build-recon-symbol {
+        margin: 0;
+
+        font-family:
+            var(--font-body);
+
+        font-size: 1.2rem;
+        font-weight: 800;
+
+        line-height: 1;
+    }
+
+    .build-recon-number {
+        margin: 0;
+
+        font-family:
+            var(--font-body);
+
+        font-size: 1.8rem;
+        font-weight: 600;
+
+        line-height: 1;
+    }
+
+
+    /* =====================================================
+       Recommendation Column
+
+       THIS BORDER IS THE RANK DIVIDER.
+
+       Because this element is a direct grid cell and the
+       grid uses align-items: stretch, the divider is always
+       exactly the full height of the row.
+       ===================================================== */
+
+    .build-recon-main {
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        min-width: 0;
+
+        margin: 0;
+
+        padding:
+            14px 18px;
+
+        box-sizing: border-box;
+
+        border-left:
+            1px solid var(--color-border-soft);
+
+        font-family:
+            var(--font-body);
+
+        font-size: 1.18rem;
+    }
+
+    .build-recon-prefix {
+        flex:
+            0 0 auto;
+
+        margin: 0;
+
+        color:
+            var(--color-text-primary);
+
+        font-family:
+            var(--font-body);
+
+        font-size: 1.18rem;
+
+        line-height: 1.2;
+    }
+
+
+    /* =====================================================
+       Effect
+       ===================================================== */
+
+    .build-recon-effect {
+        position: relative;
+
+        display: inline-flex;
+
+        min-width: 0;
+
+        margin: 0;
+
+        cursor: default;
+    }
+
+
+    /* =====================================================
+       Tooltip
+       ===================================================== */
+
+    .build-recon-tooltip {
+        position: absolute;
+
+        left: 0;
+        top:
+            calc(100% + 8px);
+
+        z-index: 30;
+
+        display: block;
+
+        width: 300px;
+
+        margin: 0;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform:
+            translateY(-4px);
+
+        transition:
+            opacity 0.12s ease,
+            transform 0.12s ease,
+            visibility 0.12s ease;
+
+        pointer-events: none;
+    }
+
+    .build-recon-tooltip
+    .skill-reconstruction-effect {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        font-family:
+            var(--font-body);
+
+        font-size: 1.12rem;
+        font-weight: 400;
+
+        line-height: 1.2;
+    }
+
+    .build-recon-effect:hover
+    .build-recon-tooltip,
+    .build-recon-effect:focus
+    .build-recon-tooltip {
+        opacity: 1;
+        visibility: visible;
+
+        transform:
+            translateY(0);
+    }
+
+
+    /* =====================================================
+       Explanation Column
+       ===================================================== */
+
+    .build-recon-note-cell {
+        display: flex;
+
+        align-items: stretch;
+
+        min-width: 0;
+
+        margin: 0;
+
+        padding: 14px;
+
+        box-sizing: border-box;
+    }
+
+    .build-recon-note {
+        display: flex;
+
+        align-items: center;
+
+        width: 100%;
+
+        min-width: 0;
+
+        margin: 0;
+
+        padding:
+            16px 18px;
+
+        box-sizing: border-box;
+
+        background:
+            #f0eeed;
+
+        color:
+            #373737;
+
+        border-radius:
+            10px;
+
+        font-family:
+            var(--font-body);
+
+        font-size: 1.14rem;
+
+        line-height: 1.2;
+    }
+
+
+    /* =====================================================
+       Narrow
+       ===================================================== */
+
+    @container (max-width: 760px) {
+        .build-recon-row {
+            grid-template-columns:
+                64px
+                minmax(0, 1fr);
+        }
+
+        .build-recon-note-cell {
+            grid-column:
+                1 / -1;
+
+            border-top:
+                1px solid var(--color-border-soft);
+        }
+
+        .build-recon-main {
+            padding:
+                16px 14px;
+        }
+
+        .build-recon-tooltip {
+            width:
+                min(
+                    300px,
+                    calc(100vw - 48px)
+                );
+        }
+    }
+</style>
