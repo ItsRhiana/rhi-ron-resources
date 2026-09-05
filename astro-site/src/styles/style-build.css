@@ -151,7 +151,7 @@
 
   align-items: center;
 
-  gap: 14px;
+  gap: 8px;
 
   margin-left: 0;
 }
@@ -163,10 +163,12 @@
   align-items: center;
   justify-content: center;
 
-  min-width: 130px;
-  min-height: 42px;
+  width: max-content;
 
-  padding: 8px 16px;
+  min-width: 0;
+  min-height: 0;
+
+  padding: 5px 10px;
 
   box-sizing: border-box;
 
@@ -178,10 +180,12 @@
 
   font-family: var(--font-display);
 
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
 
   line-height: 1;
+
+  white-space: nowrap;
 
   text-transform: uppercase;
 }
@@ -195,11 +199,9 @@
 /* On-field = shallow dome */
 
 .position-secondary {
-  min-height: 46px;
+  padding-top: 7px;
 
-  padding-top: 12px;
-
-  border-radius: 28px 28px 0 0;
+  border-radius: 18px 18px 0 0;
 }
 
 /* Priority separator */
