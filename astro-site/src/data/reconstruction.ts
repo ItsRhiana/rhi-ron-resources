@@ -2,7 +2,7 @@ const reconstructionEffects = {
     "raging-sea-assault": {
         rank: "S",
         name: "Raging Sea Assault",
-        description: "ULT's CRIT DMG gain increases to 11%.",
+        description: "ULT CRIT DMG effect increases to 11%.",
         target: "ultimate",
     },
     "into-the-frame": {
@@ -23,13 +23,13 @@ const reconstructionEffects = {
     "tactical-balance": {
         rank: "A",
         name: "Tactical Balance",
-        description: "CRIT Rate increases by 20%, CRIT DMG decreases by 20%.",
+        description: "CRIT Rate +20%; CRIT DMG -20%.",
     },
 
     "all-or-nothing": {
         rank: "A",
         name: "All or Nothing",
-        description: "ATK increases by 25%, HP decreases by 12%.",
+        description: "ATK +25%; HP -12%.",
     },
 
     "fleeting-brilliance": {

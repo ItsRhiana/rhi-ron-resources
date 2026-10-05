@@ -27,15 +27,15 @@ const lodestarSeaRover = {
     deepening: [
       {
         stat: "atk",
-        value: "42%",
+        value: "+42%",
       },
       {
         stat: "crit-rate",
-        value: "33.6%",
+        value: "+33.6%",
       },
       {
         stat: "dmg",
-        value: "36.48%",
+        value: "+36.48%",
       },
     ],
 
@@ -84,12 +84,12 @@ const lodestarSeaRover = {
         effects: [
           {
             description:
-              "Deals DMG equal to {multiplier%} ATK ×12 to random enemies in a circular area.",
+              "Deals DMG equal to {multiplier%} ATK ×12 in a circular area.",
             multiplier: 95,
           },
           {
             description:
-              "Each repeated hit on the same target increases CRIT DMG by 6% for 10s.",
+              "Each repeated hit on the same target grants +6% CRIT DMG for 10s.",
           },
         ],
       },
@@ -106,7 +106,7 @@ const lodestarSeaRover = {
             description: "ULT hit count +4.",
           },
           {
-            description: "ATK Bonus increases by 7%.",
+            description: "ATK +7%.",
           },
         ],
       },
@@ -116,7 +116,7 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            description: "CRIT Rate increases by 10%.",
+            description: "CRIT Rate +10%.",
           },
         ],
       },
@@ -131,7 +131,7 @@ const lodestarSeaRover = {
             description: "Execution 3 → 4.",
           },
           {
-            description: "ATK Bonus increases by 21%.",
+            description: "ATK +21%.",
           },
         ],
       },
@@ -141,7 +141,7 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            description: "CRIT Rate increases by 10%.",
+            description: "CRIT Rate +10%.",
           },
         ],
       },
@@ -151,10 +151,10 @@ const lodestarSeaRover = {
 
         effects: [
           {
-            description: "ATK Bonus increases by 14%.",
+            description: "ATK +14%.",
           },
           {
-            description: "CRIT Rate increases by 15%.",
+            description: "CRIT Rate +15%.",
           },
         ],
       },
@@ -200,8 +200,8 @@ const lodestarSeaRover = {
           role: "vanguard",
         },
         {
-          styles: ["ghost-vengeful-nursery-rhyme"],
-          role: "aoe-dps",
+          styles: ["chef-veteran-butcher"],
+          role: "st-dps",
         },
         {
           styles: ["nobody-seaside-holiday"],

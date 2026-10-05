@@ -94,6 +94,15 @@ const columnCount = infiniteStairway.columns.length;
 
 </div>
 
+<style is:global>
+  :root {
+    --sl-content-width: 100% !important;
+  }
+
+  .sl-markdown-content {
+    max-width: none !important;
+  }
+</style>
 
 <style>
 
@@ -115,7 +124,7 @@ const columnCount = infiniteStairway.columns.length;
 }
 
 
-  .tier-table {
+.tier-table {
     display: grid;
 
     grid-template-columns:
@@ -125,19 +134,16 @@ const columnCount = infiniteStairway.columns.length;
         minmax(155px, max-content)
       );
 
-    /* Gap between role columns */
     column-gap: 14px;
-
-    /* Tier rows remain connected vertically */
     row-gap: 0;
 
     width: max-content;
 
-    margin: 0 !important;
+    margin: 0 auto !important;
     padding: 0 !important;
 
     background: var(--color-bg);
-  }
+}
 
 
   /* Kill Starlight markdown margins inside the grid */

@@ -45,15 +45,15 @@ const giftPlayerInThePlay = {
         deepening: [
             {
                 stat: "atk",
-                value: "42%",
+                value: "+42%",
             },
             {
                 stat: "crit-rate",
-                value: "33.6%",
+                value: "+33.6%",
             },
             {
                 stat: "dmg",
-                value: "36.48%",
+                value: "+36.48%",
             },
         ],
 
@@ -139,11 +139,11 @@ const giftPlayerInThePlay = {
                 effects: [
                     {
                         description:
-                            "ATK Bonus increases by 2.7%.",
+                            "ATK +2.7%.",
                     },
                     {
                         description:
-                            "CRIT Rate increases by 8.2%.",
+                            "CRIT Rate +8.2%.",
                     },
                 ],
             },
@@ -155,7 +155,7 @@ const giftPlayerInThePlay = {
                 effects: [
                     {
                         description:
-                            "ATK Bonus increases by 5.5%.",
+                            "ATK +5.5%.",
                     },
                 ],
             },
@@ -173,7 +173,7 @@ const giftPlayerInThePlay = {
                     },
                     {
                         description:
-                            "ATK Bonus increases by 2.7%.",
+                            "ATK +2.7%.",
                     },
                 ],
             },
@@ -185,7 +185,7 @@ const giftPlayerInThePlay = {
                 effects: [
                     {
                         description:
-                            "CRIT Rate increases by 4.1%.",
+                            "CRIT Rate +4.1%.",
                     },
                 ],
             },
@@ -203,7 +203,7 @@ const giftPlayerInThePlay = {
                     },
                     {
                         description:
-                            "ATK Bonus increases by 2.7%.",
+                            "ATK +2.7%.",
                     },
                 ],
             },

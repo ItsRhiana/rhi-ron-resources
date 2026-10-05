@@ -45,15 +45,15 @@ const ngDreamProducer = {
         deepening: [
             {
                 stat: "atk",
-                value: "42%",
+                value: "+42%",
             },
             {
                 stat: "crit-rate",
-                value: "33.6%",
+                value: "+33.6%",
             },
             {
                 stat: "dmg",
-                value: "36.48%",
+                value: "+36.48%",
             },
         ],
 
@@ -136,13 +136,13 @@ const ngDreamProducer = {
                 effects: [
                     {
                         description:
-                            "ATK Bonus increases by 7%.",
+                            "ATK +7%.",
                     },
                     {
                         type: "skillModifier",
                         target: "ultimate",
                         description:
-                            "ULT also increases the target's next ULT DMG by 24%.",
+                            "ULT also independently +24% DMG to the target's next ULT.",
                     },
                 ],
             },
@@ -154,7 +154,7 @@ const ngDreamProducer = {
                 effects: [
                     {
                         description:
-                            "ATK Bonus increases by 14%.",
+                            "ATK +14%.",
                     },
                 ],
             },
@@ -172,7 +172,7 @@ const ngDreamProducer = {
                     },
                     {
                         description:
-                            "ATK Bonus increases by 21%.",
+                            "ATK +21%.",
                     },
                 ],
             },
@@ -184,7 +184,7 @@ const ngDreamProducer = {
                 effects: [
                     {
                         description:
-                            "CRIT Rate increases by 10%.",
+                            "CRIT Rate +10%.",
                     },
                 ],
             },
@@ -198,11 +198,11 @@ const ngDreamProducer = {
                         type: "skillModifier",
                         target: "ultimate",
                         description:
-                            "ULT CRIT DMG buff is additionally increased by 25%.",
+                            "ULT CRIT DMG buff additionally +25%.",
                     },
                     {
                         description:
-                            "ATK Bonus increases by 14%.",
+                            "ATK +14%.",
                     },
                 ],
             },

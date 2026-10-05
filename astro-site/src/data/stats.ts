@@ -1,19 +1,19 @@
 const stats = {
     hp: {
         name: "HP",
-        deepeningName: "HP Bonus",
+        deepeningName: "HP",
         icon: "hugeicons:favourite",
     },
 
     atk: {
         name: "ATK",
-        deepeningName: "ATK Bonus",
+        deepeningName: "ATK",
         icon: "hugeicons:gun",
     },
 
     def: {
         name: "DEF",
-        deepeningName: "DEF Bonus",
+        deepeningName: "DEF",
         icon: "hugeicons:shield-half",
     },
 
@@ -30,13 +30,13 @@ const stats = {
 
     dmg: {
         name: "DMG",
-        deepeningName: "DMG Bonus",
+        deepeningName: "DMG",
         icon: "hugeicons:bullet",
     },
 
     healing: {
         name: "Healing",
-        deepeningName: "Healing Bonus",
+        deepeningName: "Healing",
         icon: "hugeicons:heart-add",
     },
 };
