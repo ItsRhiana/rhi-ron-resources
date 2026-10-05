@@ -1,27 +1,27 @@
-const windwardMoneyLovingGentleman = {
-  id: "windward-money-loving-gentleman",
+const laksaSpiceMerchant = {
+  id: "laksa-spice-merchant",
 
-  characterName: "Windward",
-  styleName: "Money-Loving Gentleman",
+  characterName: "Laksa",
+  styleName: "Spice Merchant",
 
-  rarity: 6,
+  rarity: 5,
   class: "healer",
-  desire: "greed",
+  desire: "lust",
 
   kit: {
-    tags: ["healing", "atk", "def"],
+    tags: ["healing", "support"],
 
     actionFocus: {
-      intel: 2,
-      supplies: 3,
+      intel: 1,
+      supplies: 1,
       execution: 2,
-      strategy: 1,
+      strategy: 2,
     },
 
     stats: {
-      hp: 51981,
-      atk: 11671,
-      def: 13176,
+      hp: 43297,
+      atk: 9854,
+      def: 10837,
     },
 
     deepening: [
@@ -36,24 +36,24 @@ const windwardMoneyLovingGentleman = {
     ],
 
     reconstruction: [
-      "like-spring-rain",
-      "battle-spirit-relay",
-      "all-or-nothing",
-      "healing-enhancement",
+      "tactical-healing",
+      "enhanced-healing",
+      "asset-allocation",
+      "healing",
     ],
 
     skills: {
       basicAttack: {
         shots: 1,
-        speed: "Slow",
-        range: "Long",
+        speed: "Very slow",
+        range: "Very long",
 
         tags: [],
 
         effects: [
           {
-            description: "Deals DMG equal to {multiplier%} ATK to an enemy.",
-            multiplier: 90,
+            description: "Deals {multiplier%} ATK as DMG to an enemy.",
+            multiplier: 155,
           },
         ],
       },
@@ -61,34 +61,30 @@ const windwardMoneyLovingGentleman = {
       passive: {
         trigger: "15s cooldown",
 
-        tags: ["hot", "def-up"],
+        tags: ["healing", "ranged", "aoe"],
 
         effects: [
           {
             description:
-              "Restores {heal%} HP to the lowest-HP ally, then applies {stack:hot} in a circular area around them, restoring {hot%} of Windward’s ATK total.",
+              "Creates a spice bomb that slowly travels toward the farthest enemy for 10s. Each second, it heals allies in a circular area for {heal%} ATK and deals {dmg%} ATK to enemies.",
             multipliers: {
-              heal: 34.5,
-              hot: 36.6,
+              heal: 8.5,
+              dmg: 30,
             },
-          },
-          {
-            description:
-              "If the target is below 50% HP, also grants +8% DEF for 12s.",
           },
         ],
       },
 
       ultimate: {
-        flameCost: 3,
+        flameCost: 4,
 
-        tags: ["healing", "atk-up"],
+        tags: ["healing", "crit-dmg-up"],
 
         effects: [
           {
             description:
-              "Restores HP equal to {multiplier%} ATK to allies in a circular area and grants +16% ATK for 15s.",
-            multiplier: 182,
+              "Restores HP equal to {multiplier%} ATK to allies in a circular area and grants +16.5% CRIT DMG for 15s.",
+            multiplier: 240,
           },
         ],
       },
@@ -100,12 +96,10 @@ const windwardMoneyLovingGentleman = {
 
         effects: [
           {
-            type: "skillModifier",
-            target: "ultimate",
-            description: "ULT ATK buff increases by 9.5%.",
+            description: "ATK Bonus increases by 2.7%.",
           },
           {
-            description: "ATK Bonus increases by 7.0%.",
+            description: "Healing Bonus increases by 9%.",
           },
         ],
       },
@@ -115,7 +109,7 @@ const windwardMoneyLovingGentleman = {
 
         effects: [
           {
-            description: "Healing Bonus increases by 12.0%.",
+            description: "ATK Bonus increases by 5.5%.",
           },
         ],
       },
@@ -125,12 +119,12 @@ const windwardMoneyLovingGentleman = {
 
         effects: [
           {
-            type: "actionFocusModifier",
-            target: "supplies",
-            description: "✧Supplies 3 → 4.",
+            type: "skillModifier",
+            target: "ultimate",
+            description: "ULT CRIT DMG buff increases by 6%.",
           },
           {
-            description: "ATK Bonus increases by 21.0%.",
+            description: "ATK Bonus increases by 2.7%.",
           },
         ],
       },
@@ -140,7 +134,7 @@ const windwardMoneyLovingGentleman = {
 
         effects: [
           {
-            description: "Healing Bonus increases by 12.0%.",
+            description: "ATK Bonus increases by 4.5%.",
           },
         ],
       },
@@ -150,10 +144,12 @@ const windwardMoneyLovingGentleman = {
 
         effects: [
           {
-            description: "ATK Bonus increases by 14.0%.",
+            type: "actionFocusModifier",
+            target: "strategy",
+            description: "✧Strategy 2 → 3.",
           },
           {
-            description: "Healing Bonus increases by 17.0%.",
+            description: "ATK Bonus increases by 2.7%.",
           },
         ],
       },
@@ -176,11 +172,12 @@ const windwardMoneyLovingGentleman = {
 
     reconstruction: [
       {
-        effect: "battle-spirit-relay",
+        effect: "tactical-healing",
         recommendation: "",
       },
       {
-        recommendation: "Anything",
+        effect: "asset-allocation",
+        recommendation: "Anything except",
       },
     ],
 
@@ -206,7 +203,7 @@ const windwardMoneyLovingGentleman = {
 
       offField: [
         {
-          styles: ["windward-money-loving-gentleman"],
+          styles: ["laksa-spice-merchant"],
           role: "healer",
         },
         {
@@ -220,9 +217,9 @@ const windwardMoneyLovingGentleman = {
   analysis: [
     {
       type: "paragraph",
-      text: "ATK-scaling Healer + ATK buffer.\nPassive heals lowest-HP ally + nearby allies, and grants DEF if the target is <50% HP → reliable sustain + improved team durability when on-field.\nULT provides strong, immediate healing + ATK.\nA — Battle Spirit Relay adds CRIT Rate support.",
+      text: "ATK-scaling Healer + CRIT DMG buffer.\nPassive provides moving AoE healing → unreliable because allies may not stay in range.\nULT provides strong, immediate healing + CRIT DMG.\nCompared with 6★ Healers: highest healing ouput, but shorter range + expensive 4-Flame cost.\nA — Tactical Healing adds DMG support.",
     },
   ],
 };
 
-export default windwardMoneyLovingGentleman;
+export default laksaSpiceMerchant;

@@ -40,22 +40,45 @@ const {
                      Recommendation
                      ====================================== -->
 
-                <div class="build-recon-main">
+<div class="build-recon-main">
 
-                    {
-                        item.recommendation && (
-                            <span class="build-recon-prefix">
-                                {item.recommendation}
-                            </span>
-                        )
-                    }
+    {
+        item.recommendation && (
+            <span class="build-recon-prefix">
+                {item.recommendation}
+            </span>
+        )
+    }
 
+    {
+        effect && (
+            <span
+                class:list={[
+                    "build-recon-effect",
+                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                ]}
+                tabindex="0"
+            >
+                <span class="reconstruction-skill-label">
+                    <span class="reconstruction-skill-rank">
+                        {effect.rank}
+                    </span>
+
+                    <span class="reconstruction-skill-separator">
+                        ◇
+                    </span>
+
+                    <span class="reconstruction-skill-name">
+                        {effect.name}
+                    </span>
+                </span>
+
+                <span class="build-recon-tooltip">
                     <span
                         class:list={[
-                            "build-recon-effect",
+                            "skill-reconstruction-effect",
                             `skill-reconstruction-${effect.rank.toLowerCase()}`,
                         ]}
-                        tabindex="0"
                     >
                         <span class="reconstruction-skill-label">
                             <span class="reconstruction-skill-rank">
@@ -71,42 +94,16 @@ const {
                             </span>
                         </span>
 
-
-                        <!-- ==============================
-                             Tooltip
-                             ============================== -->
-
-                        <span class="build-recon-tooltip">
-                            <span
-                                class:list={[
-                                    "skill-reconstruction-effect",
-                                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                                ]}
-                            >
-                                <span class="reconstruction-skill-label">
-                                    <span class="reconstruction-skill-rank">
-                                        {effect.rank}
-                                    </span>
-
-                                    <span class="reconstruction-skill-separator">
-                                        ◇
-                                    </span>
-
-                                    <span class="reconstruction-skill-name">
-                                        {effect.name}
-                                    </span>
-                                </span>
-
-                                <span>
-                                    <EffectText
-                                        text={effect.description}
-                                    />
-                                </span>
-                            </span>
+                        <span>
+                            <EffectText text={effect.description} />
                         </span>
                     </span>
+                </span>
+            </span>
+        )
+    }
 
-                </div>
+</div>
 
 
                 <!-- ======================================

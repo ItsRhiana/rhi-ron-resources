@@ -3,82 +3,46 @@ import giftPlayerInThePlay from "./gift-player-in-the-play";
 import ngDreamProducer from "./ng-dream-producer";
 import windwardMoneyLovingGentleman from "./windward-money-loving-gentleman";
 import rainmakerWorldCleansingRain from "./rainmaker-world-cleansing-rain";
+import nobodyHiddenBrillianceInACup from "./nobody-hidden-brilliance-in-a-cup";
+import redGlovesAbyssalJudgment from "./red-gloves-abyssal-judgment";
+import redGlovesAceAttorney from "./red-gloves-ace-attorney";
+import tyrantLordOfTerra from "./tyrant-lord-of-terra";
+import chefVeteranButcher from "./chef-veteran-butcher";
+import ghostCovertInvestigator from "./ghost-covert-investigator";
+import laksaSpiceMerchant from "./laksa-spice-merchant";
+import ghostVengefulNurseryRhyme from "./ghost-vengeful-nursery-rhyme";
+import manipulatorTechnologyMinister from "./manipulator-technology-minister";
+import generalThunderCommander from "./general-thunder-commander";
+import headmistressScorchingSandsKnight from "./headmistress-scorching-sands-knight";
+import foolCardTableSeer from "./fool-card-table-seer";
+import knightSwordman from "./knight-swordman";
+import wolfPatrolGuard from "./wolf-patrol-guard";
+import theRefSilentVerdict from "./the-ref-silent-verdict";
 
 const styles = {
-  "red-gloves-abyssal-judgment": {
-    id: "red-gloves-abyssal-judgment",
-    characterName: "Red Gloves",
-    styleName: "Abyssal Judgment",
-    rarity: 6,
-    desire: "lust",
-  },
+  "red-gloves-abyssal-judgment": redGlovesAbyssalJudgment,
 
-  "fool-card-table-seer": {
-    id: "fool-card-table-seer",
-    characterName: "Fool",
-    styleName: "Card Table Seer",
-    rarity: 6,
-    desire: "envy",
-  },
+  "fool-card-table-seer": foolCardTableSeer,
 
-  "wolf-patrol-guard": {
-    id: "wolf-patrol-guard",
-    characterName: "Wolf",
-    styleName: "Patrol Guard",
-    rarity: 6,
-    desire: "greed",
-  },
+  "wolf-patrol-guard": wolfPatrolGuard,
 
-  "general-thunder-commander": {
-    id: "general-thunder-commander",
-    characterName: "General",
-    styleName: "Thunder Commander",
-    rarity: 6,
-    desire: "sloth",
-  },
+  "general-thunder-commander": generalThunderCommander,
 
-  "windward-money-loving-gentleman":
-    windwardMoneyLovingGentleman,
+  "windward-money-loving-gentleman": windwardMoneyLovingGentleman,
 
-  "tyrant-lord-of-terra": {
-    id: "tyrant-lord-of-terra",
-    characterName: "Tyrant",
-    styleName: "Lord of Terra",
-    rarity: 6,
-    desire: "pride",
-  },
+  "tyrant-lord-of-terra": tyrantLordOfTerra,
 
   "lodestar-sea-rover": lodestarSeaRover,
 
-  "ghost-vengeful-nursery-rhyme": {
-    id: "ghost-vengeful-nursery-rhyme",
-    characterName: "Ghost",
-    styleName: "Vengeful Nursery Rhyme",
-    rarity: 6,
-    desire: "envy",
-  },
+  "ghost-vengeful-nursery-rhyme": ghostVengefulNurseryRhyme,
 
-  "ng-dream-producer":
-    ngDreamProducer,
+  "ng-dream-producer": ngDreamProducer,
 
-  "rainmaker-world-cleansing-rain":
-    rainmakerWorldCleansingRain,
+  "rainmaker-world-cleansing-rain": rainmakerWorldCleansingRain,
 
-  "red-gloves-ace-attorney": {
-    id: "red-gloves-ace-attorney",
-    characterName: "Red Gloves",
-    styleName: "Ace Lawyer",
-    rarity: 5,
-    desire: "sloth",
-  },
+  "red-gloves-ace-attorney": redGlovesAceAttorney,
 
-  "chef-veteran-butcher": {
-    id: "chef-veteran-butcher",
-    characterName: "Chef",
-    styleName: "Veteran Butcher",
-    rarity: 5,
-    desire: "greed",
-  },
+  "chef-veteran-butcher": chefVeteranButcher,
 
   "nobody-seaside-holiday": {
     id: "nobody-seaside-holiday",
@@ -88,64 +52,21 @@ const styles = {
     desire: "pride",
   },
 
-  "headmistress-scorching-sands-knight": {
-    id: "headmistress-scorching-sands-knight",
-    characterName: "Headmistress",
-    styleName: "Scorching Sands Knight",
-    rarity: 6,
-    desire: "gluttony",
-  },
+  "headmistress-scorching-sands-knight": headmistressScorchingSandsKnight,
 
-  "gift-player-in-the-play":
-    giftPlayerInThePlay,
+  "gift-player-in-the-play": giftPlayerInThePlay,
 
-  "laksa-spice-merchant": {
-    id: "laksa-spice-merchant",
-    characterName: "Laksa",
-    styleName: "Spice Merchant",
-    rarity: 5,
-    desire: "lust",
-  },
+  "laksa-spice-merchant": laksaSpiceMerchant,
 
-  "manipulator-technology-minister": {
-    id: "manipulator-technology-minister",
-    characterName: "Manipulator",
-    styleName: "Technology Minister",
-    rarity: 5,
-    desire: "greed",
-  },
+  "manipulator-technology-minister": manipulatorTechnologyMinister,
 
-  "ghost-covert-investigator": {
-    id: "ghost-covert-investigator",
-    characterName: "Ghost",
-    styleName: "Covert Investigator",
-    rarity: 5,
-    desire: "envy",
-  },
+  "ghost-covert-investigator": ghostCovertInvestigator,
 
-  "the-ref-silent-verdict": {
-    id: "the-ref-silent-verdict",
-    characterName: "The Ref",
-    styleName: "Silent Verdict",
-    rarity: 5,
-    desire: "sloth",
-  },
+  "the-ref-silent-verdict": theRefSilentVerdict,
 
-    "nobody-hidden-brilliance-in-a-cup": {
-    id: "nobody-hidden-brilliance-in-a-cup",
-    characterName: "Nobody",
-    styleName: "Hidden Brilliance in a Cup",
-    rarity: 6,
-    desire: "envy",
-  },
+  "nobody-hidden-brilliance-in-a-cup": nobodyHiddenBrillianceInACup,
 
-    "knight-swordman": {
-    id: "knight-swordman",
-    characterName: "Knight",
-    styleName: "Swordman",
-    rarity: 6,
-    desire: "gluttony",
-  },
+  "knight-swordman": knightSwordman,
 };
 
 export default styles;

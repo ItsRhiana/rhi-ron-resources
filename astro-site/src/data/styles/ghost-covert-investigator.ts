@@ -1,27 +1,27 @@
-const giftPlayerInThePlay = {
-  id: "gift-player-in-the-play",
+const ghostCovertInvestigator = {
+  id: "ghost-covert-investigator",
 
-  characterName: "Gift",
-  styleName: "Player in the Play",
+  characterName: "Ghost",
+  styleName: "Covert Investigator",
 
   rarity: 5,
   class: "special-attack",
-  desire: "gluttony",
+  desire: "pride",
 
   kit: {
-    tags: ["atk-down", "crit"],
+    tags: ["dispel", "flame"],
 
     actionFocus: {
-      intel: 1,
-      supplies: 3,
-      execution: 2,
+      intel: 2,
+      supplies: 2,
+      execution: 1,
       strategy: 1,
     },
 
     stats: {
-      hp: 33863,
-      atk: 12042,
-      def: 10942,
+      hp: 33760,
+      atk: 11974,
+      def: 10973,
     },
 
     deepening: [
@@ -41,9 +41,9 @@ const giftPlayerInThePlay = {
 
     reconstruction: [
       "aid-the-strong",
-      "crimson-command",
-      "scorch-to-the-bone",
-      "crit",
+      "unstoppable-force",
+      "noose",
+      "crit-dmg",
     ],
 
     skills: {
@@ -57,21 +57,19 @@ const giftPlayerInThePlay = {
         effects: [
           {
             description: "Deals DMG equal to {multiplier%} ATK to an enemy.",
-            multiplier: 140,
+            multiplier: 64,
           },
         ],
       },
 
       passive: {
-        trigger: "Every 5 Basic Attacks",
-
-        tags: ["atk-down", "aoe"],
+        tags: [],
 
         effects: [
           {
             description:
-              "Deals DMG equal to {multiplier%} ATK in a circular area around the current target. On a CRIT hit, reduces targets’ ATK by 6% for 8s.",
-            multiplier: 295,
+              "Battle Start: +1 Flame, then restores 1 Flame to the team every {multiplier}s.",
+            multiplier: 20,
           },
         ],
       },
@@ -79,13 +77,13 @@ const giftPlayerInThePlay = {
       ultimate: {
         flameCost: 3,
 
-        tags: ["crit-up"],
+        tags: ["dispel", "aoe"],
 
         effects: [
           {
             description:
-              "Grants allies in a circular area +{multiplier%} CRIT Rate for 30s.",
-            multiplier: 17.5,
+              "Deals DMG equal to {multiplier%} ATK in a medium circular area and dispels 1 buff. On successful dispel, +1 Flame.",
+            multiplier: 360,
           },
         ],
       },
@@ -122,7 +120,7 @@ const giftPlayerInThePlay = {
           {
             type: "skillModifier",
             target: "ultimate",
-            description: "CRIT Rate buff +9s.",
+            description: "ULT dispels +1 buff.",
           },
           {
             description: "ATK +2.7%",
@@ -146,8 +144,8 @@ const giftPlayerInThePlay = {
         effects: [
           {
             type: "actionFocusModifier",
-            target: "strategy",
-            description: "✧Strategy 1 → 2.",
+            target: "intel",
+            description: "✧Intel 2 → 3.",
           },
           {
             description: "ATK +2.7%",
@@ -161,19 +159,24 @@ const giftPlayerInThePlay = {
     styleLevel: 80,
 
     skillLevels: {
-      basicAttack: 1,
-      passive: 1,
-      ultimate: 9,
+      basicAttack: 4,
+      passive: 9,
+      ultimate: 7,
     },
 
     position: {
-      primary: "Off-field",
+      primary: "On-field",
+      secondary: "Off-field",
     },
 
     reconstruction: [
       {
-        effect: "crimson-command",
+        effect: "unstoppable-force",
         recommendation: "",
+      },
+      {
+        effect: "crit-dmg",
+        recommendation: "Anything except",
       },
     ],
 
@@ -192,7 +195,7 @@ const giftPlayerInThePlay = {
           role: "aoe-dps",
         },
         {
-          styles: ["general-thunder-commander"],
+          styles: ["ghost-covert-investigator"],
           role: "support",
         },
       ],
@@ -213,14 +216,9 @@ const giftPlayerInThePlay = {
   analysis: [
     {
       type: "paragraph",
-      text: "AoE CRIT Rate buffer.\nInsignificant Passive ATK Down + squishy 5★ base stats → prefers off-field.\nULT grants long-duration AoE CRIT Rate.\nProvides little else → only worth investing on an already well-invested account.\nA ◇ Crimson Command sacrifices team survivability for DMG support.\nOther Recons require on-field use.",
-    },
-
-    {
-      type: "styles",
-      styleIds: ["wolf-patrol-guard", "lodestar-sea-rover"],
+      text: "AoE dispeller + Flame battery.\nPassive provides minor Flame Recovery Speed (~7.5% team Flame Recovery Speed increase).\nULT provides AoE dispel → main reason to use him.\nSuccessful dispel restores 1 Flame.\nA ◇ Unstoppable Force adds another dispel.",
     },
   ],
 };
 
-export default giftPlayerInThePlay;
+export default ghostCovertInvestigator;

@@ -128,7 +128,7 @@ const lodestarSeaRover = {
           {
             type: "actionFocusModifier",
             target: "execution",
-            description: "Execution 3 → 4.",
+            description: "✧Execution 3 → 4.",
           },
           {
             description: "ATK +21%.",
@@ -322,6 +322,22 @@ const lodestarSeaRover = {
       ],
     },
   },
+
+  analysis: [
+    {
+      type: "paragraph",
+      text: "ATK-scaling ST-oriented AoE burst DPS.\nRequires high investment.\nPassive projectile DMG is insignificant → prefers off-field.\nULT deals AoE DMG and grants 10s self-CRIT DMG from repeated hits on the same target → aim at as few enemies as possible, ideally 1–2.\nHuge self-CRIT DMG but low CRIT Rate → prioritize CRIT Rate; missed CRITs gain no value from the CRIT DMG buff.\nA ◇ Tactical Balance enables off-field use, where he cannot receive allied CRIT Rate buffs.",
+    },
+
+    {
+      type: "styles",
+      styleIds: [
+        "gift-player-in-the-play",
+        "rainmaker-world-cleansing-rain",
+        "windward-money-loving-gentleman",
+      ],
+    },
+  ],
 };
 
 export default lodestarSeaRover;

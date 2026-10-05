@@ -1,27 +1,27 @@
-const giftPlayerInThePlay = {
-  id: "gift-player-in-the-play",
+const chefVeteranButcher = {
+  id: "chef-veteran-butcher",
 
-  characterName: "Gift",
-  styleName: "Player in the Play",
+  characterName: "Chef",
+  styleName: "Veteran Butcher",
 
   rarity: 5,
-  class: "special-attack",
-  desire: "gluttony",
+  class: "annihilation",
+  desire: "greed",
 
   kit: {
-    tags: ["atk-down", "crit"],
+    tags: ["single-target"],
 
     actionFocus: {
       intel: 1,
-      supplies: 3,
-      execution: 2,
-      strategy: 1,
+      supplies: 2,
+      execution: 1,
+      strategy: 2,
     },
 
     stats: {
-      hp: 33863,
-      atk: 12042,
-      def: 10942,
+      hp: 28413,
+      atk: 15532,
+      def: 9076,
     },
 
     deepening: [
@@ -40,52 +40,55 @@ const giftPlayerInThePlay = {
     ],
 
     reconstruction: [
-      "aid-the-strong",
-      "crimson-command",
-      "scorch-to-the-bone",
-      "crit",
+      "ultimate-burst",
+      "asset-allocation",
+      "all-or-nothing",
+      "crit-dmg",
     ],
 
     skills: {
       basicAttack: {
-        shots: 1,
-        speed: "Very slow",
-        range: "Very long",
+        shots: 2,
+        speed: "Fast",
+        range: "Mid",
 
         tags: [],
 
         effects: [
           {
             description: "Deals DMG equal to {multiplier%} ATK to an enemy.",
-            multiplier: 140,
+            multiplier: 36,
           },
         ],
       },
 
       passive: {
-        trigger: "Every 5 Basic Attacks",
+        trigger: "15s cooldown",
 
-        tags: ["atk-down", "aoe"],
+        tags: ["crit-up", "aoe"],
 
         effects: [
           {
             description:
-              "Deals DMG equal to {multiplier%} ATK in a circular area around the current target. On a CRIT hit, reduces targets’ ATK by 6% for 8s.",
-            multiplier: 295,
+              "Deals DMG equal to {dmg%} ATK in a circular area around the lowest-HP enemy, 5s +{crit%} CRIT Rate.",
+            multipliers: {
+              dmg: 400,
+              crit: 50,
+            },
           },
         ],
       },
 
       ultimate: {
-        flameCost: 3,
+        flameCost: 4,
 
-        tags: ["crit-up"],
+        tags: ["ranged", "single-target"],
 
         effects: [
           {
             description:
-              "Grants allies in a circular area +{multiplier%} CRIT Rate for 30s.",
-            multiplier: 17.5,
+              "Deals DMG equal to {multiplier%} ATK to one enemy, and additionally deals DMG equal to 20% of the target's lost HP, capped at 400% of Chef’s ATK.",
+            multiplier: 1050,
           },
         ],
       },
@@ -100,7 +103,7 @@ const giftPlayerInThePlay = {
             description: "ATK +2.7%",
           },
           {
-            description: "CRIT Rate +8.2%",
+            description: "CRIT DMG -16.4%",
           },
         ],
       },
@@ -122,7 +125,7 @@ const giftPlayerInThePlay = {
           {
             type: "skillModifier",
             target: "ultimate",
-            description: "CRIT Rate buff +9s.",
+            description: "On ULT cast, 10s +30% ATK.",
           },
           {
             description: "ATK +2.7%",
@@ -147,7 +150,7 @@ const giftPlayerInThePlay = {
           {
             type: "actionFocusModifier",
             target: "strategy",
-            description: "✧Strategy 1 → 2.",
+            description: "✧Strategy 2 → 3.",
           },
           {
             description: "ATK +2.7%",
@@ -158,21 +161,25 @@ const giftPlayerInThePlay = {
   },
 
   build: {
-    styleLevel: 80,
+    styleLevel: 100,
 
     skillLevels: {
-      basicAttack: 1,
-      passive: 1,
+      basicAttack: 7,
+      passive: 9,
       ultimate: 9,
     },
 
     position: {
-      primary: "Off-field",
+      primary: "On-field",
     },
 
     reconstruction: [
       {
-        effect: "crimson-command",
+        effect: "ultimate-burst",
+        recommendation: "",
+      },
+      {
+        effect: "crit-dmg",
         recommendation: "",
       },
     ],
@@ -213,14 +220,9 @@ const giftPlayerInThePlay = {
   analysis: [
     {
       type: "paragraph",
-      text: "AoE CRIT Rate buffer.\nInsignificant Passive ATK Down + squishy 5★ base stats → prefers off-field.\nULT grants long-duration AoE CRIT Rate.\nProvides little else → only worth investing on an already well-invested account.\nA ◇ Crimson Command sacrifices team survivability for DMG support.\nOther Recons require on-field use.",
-    },
-
-    {
-      type: "styles",
-      styleIds: ["wolf-patrol-guard", "lodestar-sea-rover"],
+      text: "ATK-scaling burst finisher.\nPassive deals AoE DMG → helps deal with mobs.\nAlso grants a large 5s self-CRIT every 15s → aim to cast ULT within this window.\nULT has 2 components: normal ST DMG + a finisher that scales with missing enemy HP → strong in Infinite Stairway, but weaker in infinite-HP challenges.\nThis finisher ignores DEF and does not scale with DMG Bonus/CRIT DMG → in-combat ATK buffs are the main way to raise its cap.\nHigh self-CRIT, low CRIT DMG → prefers A ◇ Ultimate Burst and A ◇ CRIT DMG.\nA ◇ All or Nothing worsens his low 5★ durability.",
     },
   ],
 };
 
-export default giftPlayerInThePlay;
+export default chefVeteranButcher;
