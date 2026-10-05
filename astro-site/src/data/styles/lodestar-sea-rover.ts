@@ -196,7 +196,7 @@ const lodestarSeaRover = {
     genericTeam: {
       onField: [
         {
-          styles: ["red-gloves-ace-lawyer"],
+          styles: ["red-gloves-ace-attorney"],
           role: "vanguard",
         },
         {
@@ -282,10 +282,10 @@ const lodestarSeaRover = {
       onField: [
         {
           styles: [
-            "red-gloves-ace-lawyer",
-            "red-gloves-ace-lawyer",
-            "red-gloves-ace-lawyer",
-            "red-gloves-ace-lawyer",
+            "red-gloves-ace-attorney",
+            "red-gloves-ace-attorney",
+            "red-gloves-ace-attorney",
+            "red-gloves-ace-attorney",
           ],
           role: "vanguard",
         },

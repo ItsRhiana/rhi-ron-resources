@@ -1,0 +1,14 @@
+---
+const base = import.meta.env.BASE_URL;
+const target = `${base}tier-lists/`;
+---
+
+<meta http-equiv="refresh" content={`0;url=${target}`} />
+
+<script is:inline define:vars={{ target }}>
+  window.location.replace(target);
+</script>
+
+<p>
+  Redirecting to <a href={target}>Tier Lists</a>...
+</p>

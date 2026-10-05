@@ -7,12 +7,12 @@ const infiniteStairway = {
     },
     {
       id: 'st-dps',
-      name: 'ST DPS',
+      name: 'Boss Killer',
       icon: 'annihilation',
     },
     {
       id: 'aoe-dps',
-      name: 'AoE DPS',
+      name: 'Mob Clearer',
       icon: 'annihilation',
     },
     {
@@ -33,7 +33,7 @@ const infiniteStairway = {
 
       cells: {
         vanguard: [
-          'red-gloves-abyssal-judgment',
+          'nobody-hidden-brilliance-in-a-cup',
         ],
 
         'st-dps': [
@@ -59,10 +59,11 @@ const infiniteStairway = {
 
       cells: {
         vanguard: [
-          'tyrant-lord-of-terra',
+          'red-gloves-abyssal-judgment',
         ],
 
         'st-dps': [
+          'chef-veteran-butcher',
           'lodestar-sea-rover',
         ],
 
@@ -85,15 +86,16 @@ const infiniteStairway = {
 
       cells: {
         vanguard: [
-          'red-gloves-ace-lawyer',
+          'red-gloves-ace-attorney',
         ],
 
         'st-dps': [
-          'chef-veteran-butcher',
+          'knight-swordman',
         ],
 
         'aoe-dps': [
           'nobody-seaside-holiday',
+          'manipulator-technology-minister',
         ],
 
         support: [
@@ -111,12 +113,14 @@ const infiniteStairway = {
       rank: 'T3',
 
       cells: {
-        vanguard: [],
+        vanguard: [
+          'tyrant-lord-of-terra',
+        ],
 
         'st-dps': [],
 
         'aoe-dps': [
-          'manipulator-technology-minister',
+          'knight-swordman',
         ],
 
         support: [

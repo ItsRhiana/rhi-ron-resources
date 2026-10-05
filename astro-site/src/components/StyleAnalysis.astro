@@ -1,0 +1,88 @@
+---
+import StyleCard from "./StyleCard.astro";
+import styles from "../data/styles";
+
+interface Props {
+  analysis?: any[];
+}
+
+const {
+  analysis = [],
+} = Astro.props;
+---
+
+<section class="style-analysis">
+  {
+    analysis.length > 0 ? (
+      analysis.map((block) => {
+        if (block.type === "paragraph") {
+          return (
+            <p class="analysis-paragraph">
+              {block.text}
+            </p>
+          );
+        }
+
+        if (block.type === "styles") {
+          return (
+            <div class="analysis-style-cards">
+              {block.styleIds.map((styleId) => {
+                const style = styles[styleId];
+
+                return (
+                  <StyleCard
+                    id={style.id}
+                    characterName={style.characterName}
+                    styleName={style.styleName}
+                    rarity={style.rarity}
+                    desire={style.desire}
+                  />
+                );
+              })}
+            </div>
+          );
+        }
+
+        return null;
+      })
+    ) : (
+      <p class="analysis-paragraph">
+        Analysis coming soon.
+      </p>
+    )
+  }
+</section>
+
+<style>
+  .style-analysis {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+    margin: 0;
+    padding: 24px 18px;
+
+    color: var(--color-text-description);
+    background: var(--color-bg);
+
+    font-family: var(--font-body);
+    font-size: 1.14rem;
+    line-height: 1.5;
+  }
+
+  .analysis-paragraph {
+    max-width: 900px;
+
+    margin: 0 !important;
+  }
+
+  .analysis-style-cards {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin: 0;
+  }
+</style>

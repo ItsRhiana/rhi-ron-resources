@@ -64,8 +64,8 @@ const styles = {
   "rainmaker-world-cleansing-rain":
     rainmakerWorldCleansingRain,
 
-  "red-gloves-ace-lawyer": {
-    id: "red-gloves-ace-lawyer",
+  "red-gloves-ace-attorney": {
+    id: "red-gloves-ace-attorney",
     characterName: "Red Gloves",
     styleName: "Ace Lawyer",
     rarity: 5,
@@ -129,6 +129,22 @@ const styles = {
     styleName: "Silent Verdict",
     rarity: 5,
     desire: "sloth",
+  },
+
+    "nobody-hidden-brilliance-in-a-cup": {
+    id: "nobody-hidden-brilliance-in-a-cup",
+    characterName: "Nobody",
+    styleName: "Hidden Brilliance in a Cup",
+    rarity: 6,
+    desire: "envy",
+  },
+
+    "knight-swordman": {
+    id: "knight-swordman",
+    characterName: "Knight",
+    styleName: "Swordman",
+    rarity: 6,
+    desire: "gluttony",
   },
 };
 

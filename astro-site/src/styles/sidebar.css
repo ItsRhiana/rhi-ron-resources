@@ -1,13 +1,13 @@
 /* =========================================================
-   Sidebar collapsed state
+   Starlight Sidebar — Disabled
    ========================================================= */
 
-:root.sidebar-collapsed[data-has-sidebar] {
+:root[data-has-sidebar] {
     --sl-content-inline-start: 0rem;
 }
 
-:root.sidebar-collapsed .sidebar-pane {
-    display: none;
+.sidebar-pane {
+    display: none !important;
 }
 
 

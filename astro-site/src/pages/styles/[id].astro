@@ -1,0 +1,177 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+import "../../styles/fonts.css";
+import "../../styles/colors.css";
+import "../../styles/style-page.css";
+import "../../styles/style-build.css";
+
+import styles from "../../data/styles";
+
+import StyleHeader from "../../components/StyleHeader.astro";
+import StyleKit from "../../components/StyleKit.astro";
+import StyleBuild from "../../components/StyleBuild.astro";
+import StyleAnalysis from "../../components/StyleAnalysis.astro";
+
+export function getStaticPaths() {
+  return Object.values(styles).map((style) => ({
+    params: {
+      id: style.id,
+    },
+
+    props: {
+      style,
+    },
+  }));
+}
+
+const { style } = Astro.props;
+
+const hasDetails = !!style.kit;
+const hasBuild = !!style.build;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: `${style.characterName} — ${style.styleName}`,
+    description: `${style.characterName} — ${style.styleName} Style details.`,
+    tableOfContents: false,
+    prev: false,
+    next: false,
+
+    head: [
+      {
+        tag: "style",
+        content: `
+          :root {
+            --sl-content-width: 100% !important;
+          }
+
+          .sl-markdown-content {
+            max-width: none !important;
+          }
+        `,
+      },
+    ],
+  }}
+>
+  <div class="style-page">
+    {
+      hasDetails ? (
+        <>
+          <StyleHeader style={style} />
+
+          <nav class="style-tabs" role="tablist">
+            <button
+              class="active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              data-style-tab="kit"
+            >
+              <span class="tab-label">KIT</span>
+            </button>
+
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-style-tab="build"
+            >
+              <span class="tab-label">
+                BUILD RECOMMENDATION
+              </span>
+            </button>
+
+            <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-style-tab="analysis"
+            >
+              <span class="tab-label">
+                ANALYSIS
+              </span>
+            </button>
+          </nav>
+
+          <div data-style-panel="kit">
+            <StyleKit style={style} />
+          </div>
+
+          <div data-style-panel="build" hidden>
+            {
+              hasBuild ? (
+                <StyleBuild style={style} />
+              ) : (
+                <div class="style-placeholder">
+                  Build recommendation coming soon.
+                </div>
+              )
+            }
+          </div>
+
+          <div data-style-panel="analysis" hidden>
+            <StyleAnalysis analysis={style.analysis} />
+          </div>
+        </>
+      ) : (
+        <div class="style-placeholder">
+          <h1>
+            {style.characterName} — {style.styleName}
+          </h1>
+
+          <p>
+            Style details coming soon.
+          </p>
+        </div>
+      )
+    }
+
+  </div>
+
+  <script>
+    const tabs =
+      document.querySelectorAll<HTMLButtonElement>(
+        "[data-style-tab]",
+      );
+
+    const panels =
+      document.querySelectorAll<HTMLElement>(
+        "[data-style-panel]",
+      );
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.styleTab;
+
+        tabs.forEach((item) => {
+          const active = item === tab;
+
+          item.classList.toggle("active", active);
+
+          item.setAttribute(
+            "aria-selected",
+            String(active),
+          );
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden =
+            panel.dataset.stylePanel !== target;
+        });
+      });
+    });
+  </script>
+</StarlightPage>
+
+<style>
+  .style-placeholder {
+    padding: 32px 18px;
+
+    color: var(--color-text-description);
+    background: var(--color-bg);
+
+    font-family: var(--font-body);
+  }
+</style>

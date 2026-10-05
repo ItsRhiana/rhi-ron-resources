@@ -1,9 +1,11 @@
 ---
-import EffectText from "./EffectText.astro";
 import TeamComposition from "./TeamComposition.astro";
-import SpecialSynergies from "./SpecialSynergies.astro";
 import SkillCard from "./SkillCard.astro";
 import BuildReconstruction from "./BuildReconstruction.astro";
+
+// Temporarily disabled for initial site release.
+// import EffectText from "./EffectText.astro";
+// import SpecialSynergies from "./SpecialSynergies.astro";
 
 interface Props {
   style: any;
@@ -127,13 +129,15 @@ const build = style.build;
           </div>
         </div>
 
-        <!-- ==========================================
-                     Explanation
-                     ========================================== -->
+        {/*
+          Temporarily hidden for initial release.
 
-        <div class="build-summary-note">
-          {build.description}
-        </div>
+          Explanation:
+          <div class="build-summary-note">
+            {build.description}
+          </div>
+        */}
+
       </div>
     </div>
 
@@ -160,27 +164,29 @@ const build = style.build;
     <TeamComposition team={build.genericTeam} highlightedStyles={[style.id]} />
   </div>
 
-  <!-- =====================================================
-     Special Synergies
-     ===================================================== -->
+  {/*
+    =========================================================
+    Temporarily hidden for initial release: Special Synergies
+    =========================================================
 
-  <div class="build-synergy-section">
-    <div class="section-heading">Special Synergies</div>
+    <div class="build-synergy-section">
+      <div class="section-heading">Special Synergies</div>
 
-    <div class="special-synergy-warning">
-      Special Synergies ≠ Best Teammates
+      <div class="special-synergy-warning">
+        Special Synergies ≠ Best Teammates
+      </div>
+
+      <SpecialSynergies synergies={build.specialSynergies} />
+
+      <div class="special-synergy-team">
+        <TeamComposition
+          team={build.specialSynergyTeam}
+          highlightedStyles={[
+            style.id,
+            ...build.specialSynergies.flatMap((synergy) => synergy.styles),
+          ]}
+        />
+      </div>
     </div>
-
-    <SpecialSynergies synergies={build.specialSynergies} />
-
-    <div class="special-synergy-team">
-      <TeamComposition
-        team={build.specialSynergyTeam}
-        highlightedStyles={[
-          style.id,
-          ...build.specialSynergies.flatMap((synergy) => synergy.styles),
-        ]}
-      />
-    </div>
-  </div>
+  */}
 </section>

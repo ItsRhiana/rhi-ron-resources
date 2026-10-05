@@ -13,116 +13,119 @@ const {
 ---
 
 <div class="build-recon-list">
-    {
-        recommendations.map((item, index) => {
-            const effect =
-                reconstructionEffects[item.effect];
+{
+    recommendations.map((item, index) => {
+        const effect =
+            reconstructionEffects[item.effect];
 
-            return (
-                <div class="build-recon-row">
+        return (
+            <div class="build-recon-row">
 
-                    <!-- ======================================
-                         Rank
-                         ====================================== -->
+                <!-- ======================================
+                     Rank
+                     ====================================== -->
 
-                    <div class="build-recon-rank">
-                        <span class="build-recon-symbol">
-                            ϒ
-                        </span>
+                <div class="build-recon-rank">
+                    <span class="build-recon-symbol">
+                        ϒ
+                    </span>
 
-                        <span class="build-recon-number">
-                            {index + 1}
-                        </span>
-                    </div>
+                    <span class="build-recon-number">
+                        {index + 1}
+                    </span>
+                </div>
 
 
-                    <!-- ======================================
-                         Recommendation
-                         ====================================== -->
+                <!-- ======================================
+                     Recommendation
+                     ====================================== -->
 
-                    <div class="build-recon-main">
+                <div class="build-recon-main">
 
-                        {
-                            item.recommendation && (
-                                <span class="build-recon-prefix">
-                                    {item.recommendation}
-                                </span>
-                            )
-                        }
+                    {
+                        item.recommendation && (
+                            <span class="build-recon-prefix">
+                                {item.recommendation}
+                            </span>
+                        )
+                    }
 
-                        <span
-                            class:list={[
-                                "build-recon-effect",
-                                `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                            ]}
-                            tabindex="0"
-                        >
-                            <span class="reconstruction-skill-label">
-                                <span class="reconstruction-skill-rank">
-                                    {effect.rank}
-                                </span>
-
-                                <span class="reconstruction-skill-separator">
-                                    ◇
-                                </span>
-
-                                <span class="reconstruction-skill-name">
-                                    {effect.name}
-                                </span>
+                    <span
+                        class:list={[
+                            "build-recon-effect",
+                            `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                        ]}
+                        tabindex="0"
+                    >
+                        <span class="reconstruction-skill-label">
+                            <span class="reconstruction-skill-rank">
+                                {effect.rank}
                             </span>
 
+                            <span class="reconstruction-skill-separator">
+                                ◇
+                            </span>
 
-                            <!-- ==============================
-                                 Tooltip
-                                 ============================== -->
-
-                            <span class="build-recon-tooltip">
-                                <span
-                                    class:list={[
-                                        "skill-reconstruction-effect",
-                                        `skill-reconstruction-${effect.rank.toLowerCase()}`,
-                                    ]}
-                                >
-                                    <span class="reconstruction-skill-label">
-                                        <span class="reconstruction-skill-rank">
-                                            {effect.rank}
-                                        </span>
-
-                                        <span class="reconstruction-skill-separator">
-                                            ◇
-                                        </span>
-
-                                        <span class="reconstruction-skill-name">
-                                            {effect.name}
-                                        </span>
-                                    </span>
-
-                                    <span>
-                                        <EffectText
-                                            text={effect.description}
-                                        />
-                                    </span>
-                                </span>
+                            <span class="reconstruction-skill-name">
+                                {effect.name}
                             </span>
                         </span>
 
-                    </div>
 
+                        <!-- ==============================
+                             Tooltip
+                             ============================== -->
 
-                    <!-- ======================================
-                         Explanation
-                         ====================================== -->
+                        <span class="build-recon-tooltip">
+                            <span
+                                class:list={[
+                                    "skill-reconstruction-effect",
+                                    `skill-reconstruction-${effect.rank.toLowerCase()}`,
+                                ]}
+                            >
+                                <span class="reconstruction-skill-label">
+                                    <span class="reconstruction-skill-rank">
+                                        {effect.rank}
+                                    </span>
 
-                    <div class="build-recon-note-cell">
-                        <div class="build-recon-note">
-                            {item.note}
-                        </div>
-                    </div>
+                                    <span class="reconstruction-skill-separator">
+                                        ◇
+                                    </span>
+
+                                    <span class="reconstruction-skill-name">
+                                        {effect.name}
+                                    </span>
+                                </span>
+
+                                <span>
+                                    <EffectText
+                                        text={effect.description}
+                                    />
+                                </span>
+                            </span>
+                        </span>
+                    </span>
 
                 </div>
-            );
-        })
-    }
+
+
+                <!-- ======================================
+                     Explanation
+                     Temporarily hidden for release
+                     ====================================== -->
+
+                {/*
+                <div class="build-recon-note-cell">
+                    <div class="build-recon-note">
+                        {item.note}
+                    </div>
+                </div>
+                */}
+
+            </div>
+        );
+    })
+}
 </div>
 
 
@@ -155,13 +158,12 @@ const {
        Rank, recommendation and note are DIRECT grid cells.
        ===================================================== */
 
-    .build-recon-row {
-        display: grid;
+.build-recon-row {
+    display: grid;
 
-        grid-template-columns:
-            72px
-            minmax(250px, 1fr)
-            minmax(300px, 1fr);
+    grid-template-columns:
+        72px
+        minmax(250px, 1fr);
 
         align-items: stretch;
 
