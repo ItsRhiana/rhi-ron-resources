@@ -90,7 +90,7 @@ const infiniteStairway = {
         ],
 
         'st-dps': [
-          'knight-swordman',
+          'knight-swordsman',
         ],
 
         'aoe-dps': [
@@ -120,7 +120,7 @@ const infiniteStairway = {
         'st-dps': [],
 
         'aoe-dps': [
-          'knight-swordman',
+          'knight-swordsman',
         ],
 
         support: [

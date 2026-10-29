@@ -327,7 +327,7 @@ const reconstructionEffects = {
     target: "passive",
   },
 
-  //knight-swordman
+  //knight-swordsman
   cleansing: {
     rank: "S",
     name: "Cleansing",

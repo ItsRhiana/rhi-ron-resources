@@ -15,7 +15,7 @@ import manipulatorTechnologyMinister from "./manipulator-technology-minister";
 import generalThunderCommander from "./general-thunder-commander";
 import headmistressScorchingSandsKnight from "./headmistress-scorching-sands-knight";
 import foolCardTableSeer from "./fool-card-table-seer";
-import knightSwordman from "./knight-swordman";
+import knightswordsman from "./knight-swordsman";
 import wolfPatrolGuard from "./wolf-patrol-guard";
 import theRefSilentVerdict from "./the-ref-silent-verdict";
 
@@ -66,7 +66,7 @@ const styles = {
 
   "nobody-hidden-brilliance-in-a-cup": nobodyHiddenBrillianceInACup,
 
-  "knight-swordman": knightSwordman,
+  "knight-swordsman": knightswordsman,
 };
 
 export default styles;

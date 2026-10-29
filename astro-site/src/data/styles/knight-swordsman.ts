@@ -1,8 +1,8 @@
-const knightSwordman = {
-  id: "knight-swordman",
+const knightswordsman = {
+  id: "knight-swordsman",
 
   characterName: "Knight",
-  styleName: "Swordman",
+  styleName: "swordsman",
 
   rarity: 6,
   class: "annihilation",
@@ -214,7 +214,7 @@ const knightSwordman = {
           role: "st-dps",
         },
         {
-          styles: ["knight-swordman"],
+          styles: ["knight-swordsman"],
           role: "aoe-dps",
         },
         {
@@ -249,4 +249,4 @@ const knightSwordman = {
   ],
 };
 
-export default knightSwordman;
+export default knightswordsman;
